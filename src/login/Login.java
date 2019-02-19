@@ -22,7 +22,7 @@ public class Login extends HttpServlet {
         String password = req.getParameter("password");
         try {
             if (checkLogin(req, username, password)) {
-                resp.sendRedirect("subjects.jsp");
+                resp.sendRedirect("test.jsp");
             } else {
                 resp.sendRedirect("index.jsp?error=error");
             }

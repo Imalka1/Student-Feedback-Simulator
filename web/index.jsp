@@ -19,52 +19,8 @@
         error = request.getParameter("error");
     }
 %>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/font-awesome/latest/css/font-awesome.min.css">
-    <title>$Title$</title>
-    <style>
-        .col-center {
-            float: none;
-            margin: 0 auto
-        }
+<jsp:include page="header.jsp"/>
 
-        html,
-        body {
-            height: 100%;
-            margin: 0
-        }
-
-        .box {
-            display: flex;
-            flex-flow: column;
-            height: 100%;
-        }
-
-        .box .row1 {
-            /*border: 1px dotted grey;*/
-        }
-
-        /*.box .row1.header {*/
-        /*flex: 0 1 auto;*/
-        /*!* The above is shorthand for:*/
-        /*flex-grow: 0,*/
-        /*flex-shrink: 1,*/
-        /*flex-basis: auto*/
-        /**!*/
-        /*}*/
-
-        .box .row1.content {
-            flex: 1 1 auto;
-        }
-
-        .box .row1.footer {
-            flex: 0 1;
-        }
-    </style>
-</head>
 <body class="container-fluid">
 <div class="box">
     <div class="row1 content">
@@ -73,12 +29,12 @@
                 <form action="login" method="post">
                     <div class="row" style="margin-bottom: 30px">
                         <div class="col-12 col-center"
-                             style="text-align: center;margin-top: 60px;font-size: 30px;color: #007400;">
+                             style="text-align: center;margin-top: 60px;font-size: 30px;color: #df9e06;">
                             Student Feedback Form
                         </div>
                     </div>
                     <div class="row" style="margin-bottom: 30px">
-                        <div class="col-12 col-center" style="text-align: center;font-size: 14px;color: #004800">
+                        <div class="col-12 col-center" style="text-align: center;font-size: 14px;color: #422f02">
                             Login using your Student ID and Password
                         </div>
                     </div>
@@ -97,8 +53,8 @@
                     </div>
                     <div class="row" style="margin-bottom: 25px">
                         <div class="col-md-4 col-center">
-                            <button class="btn btn-success" type="submit"
-                                    style="width: 100%;height: 45px;background-color: #006900;font-size: 20px">
+                            <button class="btn" type="submit"
+                                    style="width: 100%;height: 45px;background-color: #ffb508;font-size: 20px">
                                 Login<i class="fa fa-sign-in" style="margin-left: 10px"></i>
                             </button>
                         </div>
@@ -120,5 +76,4 @@
             </div>
         </div>
     </div>
-
 <jsp:include page="footer.jsp"/>

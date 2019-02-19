@@ -11,7 +11,7 @@ import java.io.IOException;
 @WebServlet(urlPatterns = "/logout")
 public class Logout extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession sessionLogin = req.getSession(false);
         if (sessionLogin != null) {
             sessionLogin.invalidate();
