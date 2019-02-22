@@ -7,14 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40bfa0a6-8471-4d48-8251-ecc8bea6f65e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/StudentFeedbackSimulator_war_exploded/footer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/StudentFeedbackSimulator_war_exploded/footer.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/StudentFeedbackSimulator_war_exploded/mark_sheet.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/StudentFeedbackSimulator_war_exploded/mark_sheet.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/StudentFeedbackSimulator_war_exploded/subjects.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/StudentFeedbackSimulator_war_exploded/subjects.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/student_feedback.sql" beforeDir="false" afterPath="$PROJECT_DIR$/student_feedback.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/footer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/footer.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/mark_sheet.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/mark_sheet.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/subjects.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/subjects.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -71,7 +65,7 @@
         <counts>
           <entry key="css" value="24" />
           <entry key="java" value="390" />
-          <entry key="jsp" value="3357" />
+          <entry key="jsp" value="3376" />
           <entry key="scss" value="1" />
           <entry key="xml" value="3" />
         </counts>
@@ -80,7 +74,7 @@
         <counts>
           <entry key="CSS" value="24" />
           <entry key="JAVA" value="390" />
-          <entry key="JSP" value="3357" />
+          <entry key="JSP" value="3376" />
           <entry key="SCSS" value="1" />
           <entry key="XML" value="3" />
         </counts>
@@ -118,11 +112,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/mark_sheet.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="478">
-              <caret line="162" column="10" selection-start-line="162" selection-start-column="10" selection-end-line="162" selection-end-column="10" />
+            <state relative-caret-position="172">
+              <caret line="114" column="51" selection-start-line="114" selection-start-column="51" selection-end-line="114" selection-end-column="51" />
               <folding>
                 <element signature="e#1115#1177#0#HTML" expanded="true" />
                 <element signature="e#518#551#0#HTML" expanded="true" />
@@ -136,8 +130,8 @@
                 <element signature="e#3629#3660#0#HTML" expanded="true" />
                 <element signature="e#3999#4045#0#HTML" expanded="true" />
                 <element signature="e#3907#3953#0#HTML" expanded="true" />
+                <element signature="e#4917#4944#0#HTML" expanded="true" />
                 <element signature="e#4950#4970#0#HTML" expanded="true" />
-                <element signature="e#4930#7318#0#HTML" />
                 <element signature="e#5008#5027#0#HTML" expanded="true" />
                 <element signature="e#5093#5119#0#HTML" expanded="true" />
                 <element signature="e#5172#5198#0#HTML" expanded="true" />
@@ -168,11 +162,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/footer.jsp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
-              <caret line="5" column="46" selection-start-line="5" selection-start-column="46" selection-end-line="5" selection-end-column="46" />
+              <caret line="5" column="60" selection-start-line="5" selection-start-column="60" selection-end-line="5" selection-end-column="60" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="e#139#145#0#HTML" expanded="true" />
@@ -216,8 +210,8 @@
         <option value="$PROJECT_DIR$/web/subjects.jsp" />
         <option value="$PROJECT_DIR$/web/index.jsp" />
         <option value="$PROJECT_DIR$/web/header.jsp" />
-        <option value="$PROJECT_DIR$/web/mark_sheet.jsp" />
         <option value="$PROJECT_DIR$/web/footer.jsp" />
+        <option value="$PROJECT_DIR$/web/mark_sheet.jsp" />
       </list>
     </option>
   </component>
@@ -322,7 +316,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550817937998" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550819659518" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/mysql-connector-java-5.1.23-bin.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -406,12 +400,12 @@
       <workItem from="1550477532856" duration="18800000" />
       <workItem from="1550543976616" duration="11639000" />
       <workItem from="1550566605066" duration="18405000" />
-      <workItem from="1550673157271" duration="24660000" />
+      <workItem from="1550673157271" duration="25403000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="73662000" />
+    <option name="totallyTimeSpent" value="74405000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -584,10 +578,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/web/footer.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="60" selection-start-line="5" selection-start-column="60" selection-end-line="5" selection-end-column="60" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="e#139#145#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web/mark_sheet.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="162" column="10" selection-start-line="162" selection-start-column="10" selection-end-line="162" selection-end-column="10" />
+        <state relative-caret-position="172">
+          <caret line="114" column="51" selection-start-line="114" selection-start-column="51" selection-end-line="114" selection-end-column="51" />
           <folding>
             <element signature="e#1115#1177#0#HTML" expanded="true" />
             <element signature="e#518#551#0#HTML" expanded="true" />
@@ -601,8 +606,8 @@
             <element signature="e#3629#3660#0#HTML" expanded="true" />
             <element signature="e#3999#4045#0#HTML" expanded="true" />
             <element signature="e#3907#3953#0#HTML" expanded="true" />
+            <element signature="e#4917#4944#0#HTML" expanded="true" />
             <element signature="e#4950#4970#0#HTML" expanded="true" />
-            <element signature="e#4930#7318#0#HTML" />
             <element signature="e#5008#5027#0#HTML" expanded="true" />
             <element signature="e#5093#5119#0#HTML" expanded="true" />
             <element signature="e#5172#5198#0#HTML" expanded="true" />
@@ -619,17 +624,6 @@
             <element signature="e#6989#7015#0#HTML" expanded="true" />
             <element signature="e#7051#7077#0#HTML" expanded="true" />
             <element signature="e#7113#7139#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/footer.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="46" selection-start-line="5" selection-start-column="46" selection-end-line="5" selection-end-column="46" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="e#139#145#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>

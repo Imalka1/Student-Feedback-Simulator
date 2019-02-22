@@ -112,7 +112,7 @@
         <div class="row">
             <div class="col-12" style="background-color: #FFB508;height: 30px"></div>
         </div>
-        <div class="row">
+        <div class="row" style="margin-bottom: 50px">
             <div class="col-12" style="padding: 0px">
                 <table border="1px" style="width: 100%">
                     <tr>
