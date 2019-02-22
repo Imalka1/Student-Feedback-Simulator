@@ -6,28 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="40bfa0a6-8471-4d48-8251-ecc8bea6f65e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/StudentFeedbackSimulator_war_exploded/WEB-INF/classes/login/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/StudentFeedbackSimulator_war_exploded/WEB-INF/classes/login/Login.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/StudentFeedbackSimulator_war_exploded/assets/css/agency.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/StudentFeedbackSimulator_war_exploded/assets/css/agency.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/StudentFeedbackSimulator_war_exploded/assets/css/agency.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/StudentFeedbackSimulator_war_exploded/assets/css/agency.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/StudentFeedbackSimulator_war_exploded/assets/img/header-bg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/StudentFeedbackSimulator_war_exploded/assets/scss/_masthead.scss" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/StudentFeedbackSimulator_war_exploded/assets/scss/_masthead.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/StudentFeedbackSimulator_war_exploded/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/StudentFeedbackSimulator_war_exploded/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/StudentFeedbackSimulator_war_exploded/subjects.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/StudentFeedbackSimulator_war_exploded/subjects.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/StudentFeedbackSimulator_war_exploded/test.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/StudentFeedbackSimulator/login/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/StudentFeedbackSimulator/login/Login.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/login/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/login/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/css/agency.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/css/agency.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/css/agency.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/css/agency.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/img/header-bg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/scss/_masthead.scss" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/scss/_masthead.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/subjects.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/subjects.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/test.jsp" beforeDir="false" />
-    </list>
+    <list default="true" id="40bfa0a6-8471-4d48-8251-ecc8bea6f65e" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,7 +38,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="8" />
-          <entry key="java" value="8" />
+          <entry key="java" value="9" />
           <entry key="jpg" value="2" />
           <entry key="js" value="4" />
           <entry key="jsp" value="18" />
@@ -72,7 +51,7 @@
         <counts>
           <entry key="CSS" value="8" />
           <entry key="Image" value="3" />
-          <entry key="JAVA" value="8" />
+          <entry key="JAVA" value="9" />
           <entry key="JSP" value="18" />
           <entry key="JavaScript" value="4" />
           <entry key="SCSS" value="2" />
@@ -83,7 +62,7 @@
         <counts>
           <entry key="css" value="24" />
           <entry key="java" value="390" />
-          <entry key="jsp" value="3160" />
+          <entry key="jsp" value="3167" />
           <entry key="scss" value="1" />
           <entry key="xml" value="3" />
         </counts>
@@ -92,7 +71,7 @@
         <counts>
           <entry key="CSS" value="24" />
           <entry key="JAVA" value="390" />
-          <entry key="JSP" value="3160" />
+          <entry key="JSP" value="3167" />
           <entry key="SCSS" value="1" />
           <entry key="XML" value="3" />
         </counts>
@@ -139,11 +118,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/mark_sheet.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="116" column="66" selection-start-line="116" selection-start-column="66" selection-end-line="116" selection-end-column="66" />
+            <state relative-caret-position="189">
+              <caret line="122" column="71" selection-start-line="122" selection-start-column="71" selection-end-line="122" selection-end-column="71" />
               <folding>
                 <element signature="e#518#551#0#HTML" expanded="true" />
                 <element signature="e#2493#2535#0#HTML" expanded="true" />
@@ -166,13 +145,25 @@
                 <element signature="e#4832#4858#0#HTML" expanded="true" />
                 <element signature="e#4919#4945#0#HTML" expanded="true" />
                 <element signature="e#5000#5026#0#HTML" expanded="true" />
-                <element signature="e#5223#5248#0#HTML" expanded="true" />
+                <element signature="e#5257#5301#0#HTML" expanded="true" />
                 <element signature="e#5283#5308#0#HTML" expanded="true" />
                 <element signature="e#5361#5387#0#HTML" expanded="true" />
                 <element signature="e#5422#5448#0#HTML" expanded="true" />
                 <element signature="e#5484#5510#0#HTML" expanded="true" />
                 <element signature="e#5546#5572#0#HTML" expanded="true" />
                 <element signature="e#5608#5634#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/db/DBConnection.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" column="9" lean-forward="true" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -301,6 +292,13 @@
               <item name="StudentFeedbackSimulator" type="b2602c69:ProjectViewProjectNode" />
               <item name="StudentFeedbackSimulator" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="StudentFeedbackSimulator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="StudentFeedbackSimulator" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
               <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -312,7 +310,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550807305705" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550807847446" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/mysql-connector-java-5.1.23-bin.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -396,15 +394,16 @@
       <workItem from="1550477532856" duration="18800000" />
       <workItem from="1550543976616" duration="11639000" />
       <workItem from="1550566605066" duration="18405000" />
-      <workItem from="1550673157271" duration="17998000" />
+      <workItem from="1550673157271" duration="18809000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67000000" />
+    <option name="totallyTimeSpent" value="67811000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16308725" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -448,16 +447,6 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/web/assets/js/bootstrap.js">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/db/DBConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="88" selection-start-line="12" selection-start-column="73" selection-end-line="12" selection-end-column="88" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/assets/js/agency.js">
       <provider selected="true" editor-type-id="text-editor" />
@@ -583,8 +572,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/mark_sheet.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="116" column="66" selection-start-line="116" selection-start-column="66" selection-end-line="116" selection-end-column="66" />
+        <state relative-caret-position="189">
+          <caret line="122" column="71" selection-start-line="122" selection-start-column="71" selection-end-line="122" selection-end-column="71" />
           <folding>
             <element signature="e#518#551#0#HTML" expanded="true" />
             <element signature="e#2493#2535#0#HTML" expanded="true" />
@@ -607,13 +596,23 @@
             <element signature="e#4832#4858#0#HTML" expanded="true" />
             <element signature="e#4919#4945#0#HTML" expanded="true" />
             <element signature="e#5000#5026#0#HTML" expanded="true" />
-            <element signature="e#5223#5248#0#HTML" expanded="true" />
+            <element signature="e#5257#5301#0#HTML" expanded="true" />
             <element signature="e#5283#5308#0#HTML" expanded="true" />
             <element signature="e#5361#5387#0#HTML" expanded="true" />
             <element signature="e#5422#5448#0#HTML" expanded="true" />
             <element signature="e#5484#5510#0#HTML" expanded="true" />
             <element signature="e#5546#5572#0#HTML" expanded="true" />
             <element signature="e#5608#5634#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/db/DBConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="9" lean-forward="true" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
