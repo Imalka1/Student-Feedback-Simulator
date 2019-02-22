@@ -140,16 +140,16 @@
                         ResultSet rst2 = preparedStatement.executeQuery();
                         while (rst2.next()) {
                     %>
-                    <tr>
-                        <td style="text-align: right;padding-right: 5px"><%= ++value%>
+                    <tr id="tr<%= ++value%>">
+                        <td style="text-align: right;padding-right: 5px"><%= value%>
                         </td>
                         <td style="padding-left: 5px"><%= rst2.getString(1)%>
                         </td>
-                        <td style="text-align: center">5</td>
-                        <td style="text-align: center">4</td>
-                        <td style="text-align: center">3</td>
-                        <td style="text-align: center">2</td>
-                        <td style="text-align: center">1</td>
+                        <td class="tdMark" style="text-align: center;cursor: pointer">5</td>
+                        <td class="tdMark" style="text-align: center;cursor: pointer">4</td>
+                        <td class="tdMark" style="text-align: center;cursor: pointer">3</td>
+                        <td class="tdMark" style="text-align: center;cursor: pointer">2</td>
+                        <td class="tdMark" style="text-align: center;cursor: pointer">1</td>
                     </tr>
                     <%
                             }

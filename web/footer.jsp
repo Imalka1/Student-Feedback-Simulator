@@ -10,7 +10,7 @@
 </div>
 
 <!-- Bootstrap core JavaScript -->
-<script src="assets/vendor/jquery/jquery.min.js"></script>
+<script src="assets/js/jquery-3.2.1.min.js"></script>
 <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Plugin JavaScript -->
@@ -22,7 +22,7 @@
 
 <!-- Custom scripts for this template -->
 <script src="assets/js/agency.min.js"></script>
-
+<script src="marks_controller/marksController.js"></script>
 </body>
 
 </html>
