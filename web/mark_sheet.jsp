@@ -135,15 +135,16 @@
                         </td>
                     </tr>
                     <%
-                        PreparedStatement preparedStatement = connection.prepareStatement("select text from evaluation_criteria where echid=?");
+                        PreparedStatement preparedStatement = connection.prepareStatement("select ecid,text from evaluation_criteria where echid=?");
                         preparedStatement.setObject(1, rst1.getInt(1));
                         ResultSet rst2 = preparedStatement.executeQuery();
                         while (rst2.next()) {
                     %>
-                    <tr id="tr<%= ++value%>">
+                    <tr id="tr<%= ++value%>" class="trMarks">
                         <td style="text-align: right;padding-right: 5px"><%= value%>
                         </td>
-                        <td style="padding-left: 5px"><%= rst2.getString(1)%>
+                        <td style="padding-left: 5px">
+                            <%= rst2.getString(2)%><input type="hidden" value="<%= rst2.getInt(1)%>">
                         </td>
                         <td class="tdMark" style="text-align: center;cursor: pointer">5</td>
                         <td class="tdMark" style="text-align: center;cursor: pointer">4</td>
@@ -158,9 +159,18 @@
                 </table>
             </div>
         </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="col-center" style="width: fit-content;margin: auto">
+                    <button id="btnSubmit" class="btn" style="background-color: #ffbf05;margin-bottom: 50px">Submit
+                        Marks
+                    </button>
+                </div>
+            </div>
+        </div>
         <%--<div class="row">--%>
-            <%--<div class="col-12" style="background-color: #FFB508;height: 30px"></div>--%>
+        <%--<div class="col-12" style="background-color: #FFB508;height: 30px"></div>--%>
         <%--</div>--%>
     </div>
-<%--</div>--%>
+    <%--</div>--%>
 <jsp:include page="footer.jsp"/>
