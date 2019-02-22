@@ -1,5 +1,10 @@
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
+<%@ page import="db.DBConnection" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.PreparedStatement" %>
 <%
     String logout = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/logout";
     HttpSession sessionLogin = request.getSession(false);
@@ -14,6 +19,9 @@
 %>
 <%
     String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+
+    Connection connection = DBConnection.getDBConnection().getConnection();
+    Statement createStatement = connection.createStatement();
 %>
 <jsp:include page="header.jsp"/>
 <style>
@@ -23,7 +31,8 @@
             padding-bottom: 0px;
         }
     }
-    .padding_5_txt{
+
+    .padding_5_txt {
         padding-left: 5px;
     }
 </style>
@@ -116,18 +125,36 @@
                         <th width="10%" style="text-align: center">Disagree</th>
                         <th width="10%" style="text-align: center">Strongly Disagree</th>
                     </tr>
+                    <%
+                        int value = 0;
+                        ResultSet rst1 = createStatement.executeQuery("select echid,text from evaluation_criteria_heading");
+                        while (rst1.next()) {
+                    %>
                     <tr>
-                       <td colspan="7" class="padding_5_txt">Enthusiasm</td>
+                        <td colspan="7" class="padding_5_txt"><%= rst1.getString(2)%>
+                        </td>
                     </tr>
+                    <%
+                        PreparedStatement preparedStatement = connection.prepareStatement("select text from evaluation_criteria where echid=?");
+                        preparedStatement.setObject(1, rst1.getInt(1));
+                        ResultSet rst2 = preparedStatement.executeQuery();
+                        while (rst2.next()) {
+                    %>
                     <tr>
-                        <td style="text-align: right;padding-right: 5px">1</td>
-                        <td style="padding-left: 5px">Lecturer was punctual</td>
+                        <td style="text-align: right;padding-right: 5px"><%= ++value%>
+                        </td>
+                        <td style="padding-left: 5px"><%= rst2.getString(1)%>
+                        </td>
                         <td style="text-align: center">5</td>
                         <td style="text-align: center">4</td>
                         <td style="text-align: center">3</td>
                         <td style="text-align: center">2</td>
                         <td style="text-align: center">1</td>
                     </tr>
+                    <%
+                            }
+                        }
+                    %>
                 </table>
             </div>
         </div>
