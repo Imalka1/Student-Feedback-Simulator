@@ -73,7 +73,16 @@
         <%--</div>--%>
         <%--</div>--%>
         <%--</header>--%>
-
+        <div class="row">
+            <div class="col-12" style="padding: 0px">
+                <div class="alert alert-success" style="text-align: center;font-weight: bold">
+                    Marks have been submitted successfully
+                </div>
+                <div class="alert alert-danger" style="text-align: center;font-weight: bold">
+                    Failed to submit marks
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-12" style="background-color: #FFB508;height: 30px"></div>
         </div>

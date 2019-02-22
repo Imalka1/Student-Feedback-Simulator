@@ -21,7 +21,6 @@ $('#btnSubmit').click(function () {
     }
     marks = marks.slice(0, -1);
     ecids = ecids.slice(0, -1);
-    console.log(marks)
     $.ajax(
         {
             type: "post",
