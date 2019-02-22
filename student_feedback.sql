@@ -16,14 +16,24 @@ INSERT INTO `studentfeedback`.`evaluation_criteria_heading`
 (`echid`,
 `text`)
 VALUES
-(1,'Enthusiasm'),(2,'Organization');
+(1,'Enthusiasm'),
+(2,'Organization'),
+(3,'Lecturer student interaction');
 
 
 INSERT INTO `studentfeedback`.`evaluation_criteria`
 (`echid`,
 `text`)
 VALUES
-(1,'Lecturer was punctual'),(2,'Lecturer was prepared for lectures'),(2,'Lectureres were well structured');
+(1,'Lecturer was punctual'),
+(2,'Lecturer was prepared for lectures'),
+(2,'Lectureres were well structured'),
+(2,'Details of course content and learning outcomes were provided'),
+(3,'Student were encouraged to ask questions'),
+(3,'Lecturer appreciated students participation'),
+(3,'Student were motivated to learn'),
+(3,'Attention was given to the students individually'),
+(3,'Feedback provided for the students questions were understood');
 
 SELECT `evaluation_criteria_heading`.`echid`,
     `evaluation_criteria_heading`.`text`

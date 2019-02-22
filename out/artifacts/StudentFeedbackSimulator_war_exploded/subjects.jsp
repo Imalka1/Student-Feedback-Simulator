@@ -5,7 +5,7 @@
         if (sessionLogin.getAttribute("login") == null) {
 //            response.sendRedirect("index.jsp");
 %>
-<jsp:forward page="index.jsp"/>
+<%--<jsp:forward page="index.jsp"/>--%>
 <%
         }
     }

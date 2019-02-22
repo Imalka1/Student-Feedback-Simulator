@@ -1,12 +1,13 @@
-<footer>
-    <div class="container">
+<div class="row1 footer">
+
+<%--<div class="container row1 footer">--%>
         <div class="row">
             <div class="col-12">
-                <div>Copyright &copy; - 2019</div>
+                <div style="text-align: center;padding: 10px">Copyright &copy; - 2019</div>
             </div>
-        </div>
+        <%--</div>--%>
     </div>
-</footer>
+</div>
 
 <!-- Bootstrap core JavaScript -->
 <script src="assets/vendor/jquery/jquery.min.js"></script>
