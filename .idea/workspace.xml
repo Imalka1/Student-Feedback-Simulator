@@ -6,10 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="40bfa0a6-8471-4d48-8251-ecc8bea6f65e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/web/footer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/footer.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/mark_sheet.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/mark_sheet.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="40bfa0a6-8471-4d48-8251-ecc8bea6f65e" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -65,7 +62,7 @@
         <counts>
           <entry key="css" value="24" />
           <entry key="java" value="390" />
-          <entry key="js" value="292" />
+          <entry key="js" value="301" />
           <entry key="jsp" value="3405" />
           <entry key="scss" value="1" />
           <entry key="xml" value="3" />
@@ -76,7 +73,7 @@
           <entry key="CSS" value="24" />
           <entry key="JAVA" value="390" />
           <entry key="JSP" value="3405" />
-          <entry key="JavaScript" value="292" />
+          <entry key="JavaScript" value="301" />
           <entry key="SCSS" value="1" />
           <entry key="XML" value="3" />
         </counts>
@@ -158,8 +155,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/marks_controller/marksController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="38" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
+            <state relative-caret-position="187">
+              <caret line="11" column="3" lean-forward="true" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -303,7 +300,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550826719947" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550826853653" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/mysql-connector-java-5.1.23-bin.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -387,12 +384,12 @@
       <workItem from="1550477532856" duration="18800000" />
       <workItem from="1550543976616" duration="11639000" />
       <workItem from="1550566605066" duration="18405000" />
-      <workItem from="1550673157271" duration="29294000" />
+      <workItem from="1550673157271" duration="29557000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78296000" />
+    <option name="totallyTimeSpent" value="78559000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -617,8 +614,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/marks_controller/marksController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="38" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
+        <state relative-caret-position="187">
+          <caret line="11" column="3" lean-forward="true" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
         </state>
       </provider>
     </entry>
