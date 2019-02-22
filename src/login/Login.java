@@ -4,10 +4,7 @@ import db.DBConnection;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,8 +18,8 @@ public class Login extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         try {
-            if (checkLogin(req, username, password)) {
-                resp.sendRedirect("test.jsp");
+            if (checkLogin(req, resp, username, password)) {
+                resp.sendRedirect("subjects.jsp");
             } else {
                 resp.sendRedirect("index.jsp?error=error");
             }
@@ -33,7 +30,7 @@ public class Login extends HttpServlet {
         }
     }
 
-    private boolean checkLogin(HttpServletRequest request, String username, String password) throws SQLException, ClassNotFoundException {
+    private boolean checkLogin(HttpServletRequest request, HttpServletResponse resp, String username, String password) throws SQLException, ClassNotFoundException {
         HttpSession sessionLogin = request.getSession(false);
         Connection connection = DBConnection.getDBConnection().getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement("select uid from user where username=? && password=?");
@@ -42,6 +39,14 @@ public class Login extends HttpServlet {
         ResultSet rst = preparedStatement.executeQuery();
         if (rst.next()) {
             sessionLogin.setAttribute("login", "logged");
+            HttpSession ses = request.getSession();
+            Cookie cookie = new Cookie("JSESSIONID", ses.getId());
+            cookie.setMaxAge(60 * 60 * 24 * 365 * 10);
+            resp.addCookie(cookie);
+//            for(Cookie a:request.getCookies()){
+//                System.out.println(a.getName());
+//            }
+//            sessionLogin.setMaxInactiveInterval(60 * 60 * 24 * 365 * 10);
             return true;
         }
         return false;

@@ -20,22 +20,32 @@
     }
 %>
 <jsp:include page="header.jsp"/>
-
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<style>
+    body {
+        background-image: url("assets/img/image.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        /*background-position: center center;*/
+        background-attachment: fixed;
+        position: relative;
+        min-height: 500px;
+        overflow-y: scroll;
+        /*background-color: #D49E00;*/
+    }
+</style>
 <body class="container-fluid">
 <div class="box">
     <div class="row1 content">
         <div class="row">
             <div class="col-12">
                 <form action="login" method="post">
-                    <div class="row" style="margin-bottom: 30px">
+                    <div class="row" style="margin-bottom: 60px">
                         <div class="col-12 col-center"
-                             style="text-align: center;margin-top: 60px;font-size: 30px;color: #df9e06;">
+                             style="text-align: center;margin-top: 80px;font-size: 30px;color: #ffffff">
                             Student Feedback Form
-                        </div>
-                    </div>
-                    <div class="row" style="margin-bottom: 30px">
-                        <div class="col-12 col-center" style="text-align: center;font-size: 14px;color: #422f02">
-                            Login using your Student ID and Password
                         </div>
                     </div>
                     <div class="row" style="margin-bottom: 25px">
@@ -54,9 +64,14 @@
                     <div class="row" style="margin-bottom: 25px">
                         <div class="col-md-4 col-center">
                             <button class="btn" type="submit"
-                                    style="width: 100%;height: 45px;background-color: #ffb508;font-size: 20px">
+                                    style="width: 100%;height: 45px;background-color: #ffbf05;font-size: 20px">
                                 Login<i class="fa fa-sign-in" style="margin-left: 10px"></i>
                             </button>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 30px">
+                        <div class="col-12 col-center" style="text-align: center;font-size: 14px;color: #422f02">
+                            Login using your Student ID and Password
                         </div>
                     </div>
                     <%
