@@ -11,6 +11,7 @@ $('.tdMark').click(function () {
 });
 
 $('#btnSubmit').click(function () {
+    console.log($('#yearSemester option:selected').val())
     var marks = "";
     var ecids = "";
     for (var i = 0; i < $('td.tdMark').length; i++) {

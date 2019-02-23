@@ -14,10 +14,10 @@ public class MarksController extends HttpServlet {
         String[] marks = req.getParameter("marks").split(",");
         String[] ecids = req.getParameter("ecids").split(",");
         for (String mark : marks) {
-//            System.out.println(mark);
+            System.out.println(mark);
         }
         for(String ecid:ecids){
-//            System.out.println(ecid);
+            System.out.println(ecid);
         }
     }
 }

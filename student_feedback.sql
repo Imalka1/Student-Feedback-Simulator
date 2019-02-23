@@ -4,6 +4,7 @@ use studentfeedback;
 create table user(uid int auto_increment,username varchar(100),password varchar(100),constraint primary key(uid));	
 create table evaluation_criteria_heading(echid int,text varchar(100),constraint primary key(echid));
 create table evaluation_criteria(ecid int auto_increment,echid int,text varchar(100),constraint primary key(ecid),constraint foreign key(echid) references evaluation_criteria_heading(echid));
+create table semester(semid int auto_increment,text varchar(100),constraint primary key(semid));
 
 INSERT INTO `studentfeedback`.`user`
 (
@@ -50,6 +51,12 @@ VALUES
 (6,'Lecture was good'),
 (6,'Course content'),
 (6,'Module/subject was understood');
+
+INSERT INTO `studentfeedback`.`semester`
+(`text`)
+VALUES
+('Year 1 Semester 1'),('Year 1 Semester 2'),('Year 2 Semester 1'),('Year 2 Semester 2');
+
 
 SELECT `evaluation_criteria_heading`.`echid`,
     `evaluation_criteria_heading`.`text`

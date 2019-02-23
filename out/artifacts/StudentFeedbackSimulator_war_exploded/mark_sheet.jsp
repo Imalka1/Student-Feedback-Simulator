@@ -98,8 +98,22 @@
             <div class="col-md-4" style="border: 1px solid black">
                 Year and semester
             </div>
-            <div class="col-md-8" style="border: 1px solid black;color: #747474">
-                Year 1 / Semester 1
+            <div class="col-md-8" style="border: 1px solid black;padding: 0px">
+                <select id="yearSemester" class="form-control"
+                        style="color: #747474;padding-top: 0px;padding-bottom: 0px">
+                    <%
+                        {
+                            Statement createStatement = connection.createStatement();
+                            ResultSet rst = createStatement.executeQuery("select semid,text from semester");
+                            while (rst.next()) {
+                    %>
+                    <option value="<%= rst.getInt(1)%>"><%= rst.getString(2)%>
+                    </option>
+                    <%
+                            }
+                        }
+                    %>
+                </select>
             </div>
         </div>
         <div class="row">
@@ -134,20 +148,22 @@
                         <th width="10%" style="text-align: center">Strongly Disagree</th>
                     </tr>
                     <%
-                        int value = 0;
-                        Statement createStatement = connection.createStatement();
-                        ResultSet rst1 = createStatement.executeQuery("select echid,text from evaluation_criteria_heading");
-                        while (rst1.next()) {
+                        {
+                            int value = 0;
+                            Statement createStatement = connection.createStatement();
+                            ResultSet rst1 = createStatement.executeQuery("select echid,text from evaluation_criteria_heading");
+                            while (rst1.next()) {
                     %>
                     <tr>
                         <td colspan="7" class="padding_5_txt" style="font-weight: 600"><%= rst1.getString(2)%>
                         </td>
                     </tr>
                     <%
-                        PreparedStatement preparedStatement = connection.prepareStatement("select ecid,text from evaluation_criteria where echid=?");
-                        preparedStatement.setObject(1, rst1.getInt(1));
-                        ResultSet rst2 = preparedStatement.executeQuery();
-                        while (rst2.next()) {
+                        {
+                            PreparedStatement preparedStatement = connection.prepareStatement("select ecid,text from evaluation_criteria where echid=?");
+                            preparedStatement.setObject(1, rst1.getInt(1));
+                            ResultSet rst2 = preparedStatement.executeQuery();
+                            while (rst2.next()) {
                     %>
                     <tr id="tr<%= ++value%>" class="trMarks">
                         <td style="text-align: right;padding-right: 5px"><%= value%>
@@ -162,6 +178,8 @@
                         <td class="tdMark" style="text-align: center;cursor: pointer">1</td>
                     </tr>
                     <%
+                                    }
+                                }
                             }
                         }
                     %>
