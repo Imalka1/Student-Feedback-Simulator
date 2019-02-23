@@ -1,17 +1,34 @@
 drop database studentfeedback;
 create database studentfeedback;
 use studentfeedback;
-create table user(uid int auto_increment,username varchar(100),password varchar(100),constraint primary key(uid));	
+create table faculty(facid int auto_increment,name varchar(100),constraint primary key(facid));
+create table degree(degid int auto_increment,facid int,name varchar(100),constraint primary key(degid),constraint foreign key(facid) references faculty(facid));
+create table user(uid varchar(100),degid int,username varchar(100),password varchar(100),accountType varchar(20),constraint primary key(uid),constraint foreign key(degid) references degree(degid));	
 create table evaluation_criteria_heading(echid int,text varchar(100),constraint primary key(echid));
 create table evaluation_criteria(ecid int auto_increment,echid int,text varchar(100),constraint primary key(ecid),constraint foreign key(echid) references evaluation_criteria_heading(echid));
 create table semester(semid int auto_increment,text varchar(100),constraint primary key(semid));
+create table lecturer(lecid varchar(100),name varchar(100),constraint primary key(lecid));
+create table subject(subid varchar(100),lecid varchar(100),degid int,title varchar(100),credits int,constraint primary key(subid),constraint foreign key(lecid) references lecturer(lecid),constraint foreign key(degid) references degree(degid));
+create table marks(uid varchar(100),subid varchar(100),ecid int,dateOfSubmitted date,constraint primary key(uid,subid,dateOfSubmitted),constraint foreign key(uid) references user(uid),constraint foreign key(subid) references subject(subid),constraint foreign key(ecid) references evaluation_criteria(ecid));
+
+INSERT INTO `studentfeedback`.`faculty`
+(`name`)
+VALUES
+('Department of Computer Science');
+
+INSERT INTO `studentfeedback`.`degree`
+(`facid`,`name`)
+VALUES
+(1,'BSc (Computer Science)');
 
 INSERT INTO `studentfeedback`.`user`
-(
+(`uid`,
+`degid`,
 `username`,
-`password`)
+`password`,
+`accountType`)
 VALUES
-('abc123','123');
+('abc123',1,'Amal Silva','123','student');
 
 INSERT INTO `studentfeedback`.`evaluation_criteria_heading`
 (`echid`,
@@ -23,7 +40,6 @@ VALUES
 (4,'Task Organization'),
 (5,'Clarity'),
 (6,'Learning Experiences');
-
 
 INSERT INTO `studentfeedback`.`evaluation_criteria`
 (`echid`,
@@ -73,4 +89,4 @@ SELECT `user`.`uid`,
     `user`.`password`
 FROM `studentfeedback`.`user`;
 
-
+select f.name,d.name from user u,faculty f,degree d where f.facid=d.facid && d.degid=u.degid && u.uid='abc123';

@@ -31,14 +31,14 @@ public class Login extends HttpServlet {
     }
 
     private boolean checkLogin(HttpServletRequest request, HttpServletResponse resp, String username, String password) throws SQLException, ClassNotFoundException {
-        HttpSession sessionLogin = request.getSession(false);
+        HttpSession sessionLogin = request.getSession(true);
         Connection connection = DBConnection.getDBConnection().getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement("select uid from user where username=? && password=?");
+        PreparedStatement preparedStatement = connection.prepareStatement("select uid from user where uid=? && password=?");
         preparedStatement.setObject(1, username);
         preparedStatement.setObject(2, password);
         ResultSet rst = preparedStatement.executeQuery();
         if (rst.next()) {
-            sessionLogin.setAttribute("login", "logged");
+            sessionLogin.setAttribute("uid", rst.getString(1));
             HttpSession ses = request.getSession();
             Cookie cookie = new Cookie("JSESSIONID", ses.getId());
             cookie.setMaxAge(60 * 60 * 24 * 365 * 10);

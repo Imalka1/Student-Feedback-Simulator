@@ -1,14 +1,20 @@
+<%@ page import="db.DBConnection" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.PreparedStatement" %>
 <%
-    String logout = request.getScheme()+ "://" + request.getServerName() + ":" + request.getServerPort() + "/logout";
+    String logout = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/logout";
     HttpSession sessionLogin = request.getSession(false);
     if (sessionLogin != null) {
-        if (sessionLogin.getAttribute("login") == null) {
+        if (sessionLogin.getAttribute("uid") == null) {
 //            response.sendRedirect("index.jsp");
 %>
 <%--<jsp:forward page="index.jsp"/>--%>
 <%
         }
     }
+    Connection connection = DBConnection.getDBConnection().getConnection();
 %>
 <jsp:include page="header.jsp"/>
 
@@ -42,11 +48,35 @@
 <header class="masthead">
     <div class="container">
         <div class="intro-text">
-            <div class="intro-lead-in">Department of Computer Science</div>
-            <div class="intro-lead-in">BSc (Computer Science)</div>
+            <%
+                {
+                    PreparedStatement preparedStatement = connection.prepareStatement("select f.name,d.name from user u,faculty f,degree d where f.facid=d.facid && d.degid=u.degid && u.uid=?");
+                    preparedStatement.setObject(1, sessionLogin.getAttribute("uid"));
+                    ResultSet rst = preparedStatement.executeQuery();
+                    while (rst.next()) {
+            %>
+            <div class="intro-lead-in"><%= rst.getString(1)%>
+            </div>
+            <div class="intro-lead-in"><%= rst.getString(2)%>
+            </div>
+            <%
+                    }
+                }
+            %>
             <div class="col-center"
                  style="background-color: #ffb508;width: fit-content;color: #402901;padding: 20px;padding-left: 30px;padding-right: 30px;font-size: 18px;border-radius: 35px;margin-top: 80px;font-weight: bold">
-                Online - abc@gmail.com
+                <%
+                    {
+                        PreparedStatement preparedStatement = connection.prepareStatement("select username from user where uid=?");
+                        preparedStatement.setObject(1, sessionLogin.getAttribute("uid"));
+                        ResultSet rst = preparedStatement.executeQuery();
+                        while (rst.next()) {
+                %>
+                Online - <%= rst.getString(1)%>
+                <%
+                        }
+                    }
+                %>
             </div>
         </div>
     </div>

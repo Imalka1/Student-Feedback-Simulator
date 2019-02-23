@@ -9,7 +9,7 @@
     String logout = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/logout";
     HttpSession sessionLogin = request.getSession(false);
     if (sessionLogin != null) {
-        if (sessionLogin.getAttribute("login") == null) {
+        if (sessionLogin.getAttribute("uid") == null) {
 //            response.sendRedirect("index.jsp");
 %>
 <%--<jsp:forward page="index.jsp"/>--%>
