@@ -73,6 +73,20 @@ INSERT INTO `studentfeedback`.`semester`
 VALUES
 ('Year 1 Semester 1'),('Year 1 Semester 2'),('Year 2 Semester 1'),('Year 2 Semester 2');
 
+INSERT INTO `studentfeedback`.`lecturer`
+(`lecid`,
+`name`)
+VALUES
+('L001','Kamal Perera'),('L002','Nimal Silva');
+
+INSERT INTO `studentfeedback`.`subject`
+(`subid`,
+`lecid`,
+`degid`,
+`title`,
+`credits`)
+VALUES
+('CSC 101','L001',1,'Progamming',3),('CSC 102','L002',1,'Database Management System',2);
 
 SELECT `evaluation_criteria_heading`.`echid`,
     `evaluation_criteria_heading`.`text`

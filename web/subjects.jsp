@@ -15,6 +15,7 @@
         }
     }
     Connection connection = DBConnection.getDBConnection().getConnection();
+    int degid = 0;
 %>
 <jsp:include page="header.jsp"/>
 
@@ -50,10 +51,11 @@
         <div class="intro-text">
             <%
                 {
-                    PreparedStatement preparedStatement = connection.prepareStatement("select f.name,d.name from user u,faculty f,degree d where f.facid=d.facid && d.degid=u.degid && u.uid=?");
+                    PreparedStatement preparedStatement = connection.prepareStatement("select f.name,d.name,d.degid from user u,faculty f,degree d where f.facid=d.facid && d.degid=u.degid && u.uid=?");
                     preparedStatement.setObject(1, sessionLogin.getAttribute("uid"));
                     ResultSet rst = preparedStatement.executeQuery();
-                    while (rst.next()) {
+                    if (rst.next()) {
+                        degid = rst.getInt(3);
             %>
             <div class="intro-lead-in"><%= rst.getString(1)%>
             </div>
@@ -84,79 +86,45 @@
 
 <!-- About -->
 <section id="about">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row" style="margin-bottom: 80px">
             <div class="col-lg-12 text-center">
                 <h2 class="section-heading text-uppercase">Subjects</h2>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-12" style="padding: 0px">
                 <ul class="timeline">
-                    <li>
-                        <div class="timeline-image">
-                            <img class="rounded-circle img-fluid" src="img/about/1.jpg" alt="">
-                        </div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4 class="subheading">Programming</h4>
-                            </div>
-                            <div class="timeline-body">
-                                <p class="text-muted">Lecturer - Kamal Silva</p>
-                            </div>
-                        </div>
-                    </li>
+                    <%
+                        {
+                            PreparedStatement preparedStatement = connection.prepareStatement("select title,l.name,credits from subject s,lecturer l where l.lecid=s.lecid && degid=?");
+                            preparedStatement.setObject(1, degid);
+                            ResultSet rst = preparedStatement.executeQuery();
+                            while (rst.next()) {
+                    %>
                     <li class="timeline-inverted">
                         <div class="timeline-image">
-                            <img class="rounded-circle img-fluid" src="img/about/2.jpg" alt="">
+                            <img class="rounded-circle img-fluid" alt="">
                         </div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4 class="subheading">Database</h4>
+                                <h4 class="subheading"><%= rst.getString(1)%>
+                                </h4>
                             </div>
                             <div class="timeline-body">
-                                <p class="text-muted">Lecturer - Nimal Perera</p>
+                                <p class="text-muted">Lecturer - <%= rst.getString(2)%>
+                                </p>
+                                <p class="text-muted">Credits - <%= rst.getString(3)%>
+                                </p>
                             </div>
                         </div>
                     </li>
-                    <li>
-                        <div class="timeline-image">
-                            <img class="rounded-circle img-fluid" src="img/about/3.jpg" alt="">
-                        </div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4>December 2012</h4>
-                                <h4 class="subheading">Transition to Full Service</h4>
-                            </div>
-                            <div class="timeline-body">
-                                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut
-                                    voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit
-                                    vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                            </div>
-                        </div>
-                    </li>
+                    <%
+                            }
+                        }
+                    %>
                     <li class="timeline-inverted">
-                        <div class="timeline-image">
-                            <img class="rounded-circle img-fluid" src="img/about/4.jpg" alt="">
-                        </div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4>July 2014</h4>
-                                <h4 class="subheading">Phase Two Expansion</h4>
-                            </div>
-                            <div class="timeline-body">
-                                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut
-                                    voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit
-                                    vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="timeline-inverted">
-                        <div class="timeline-image">
-                            <%--<h4>Be Part--%>
-                            <%--<br>Of Our--%>
-                            <%--<br>Story!</h4>--%>
-                        </div>
+                        <div class="timeline-image" style="background-color: #c8a52a"></div>
                     </li>
                 </ul>
             </div>
