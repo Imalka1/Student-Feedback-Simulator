@@ -40,12 +40,17 @@ public class Login extends HttpServlet {
         if (rst.next()) {
             sessionLogin.setAttribute("uid", rst.getString(1));
             HttpSession ses = request.getSession();
-            Cookie cookie = new Cookie("JSESSIONID", ses.getId());
-            cookie.setMaxAge(60 * 60 * 24 * 365 * 10);
-            resp.addCookie(cookie);
-//            for(Cookie a:request.getCookies()){
-//                System.out.println(a.getName());
-//            }
+//            Cookie cookie = new Cookie("JSESSIONID", ses.getId());
+//            cookie.setMaxAge(60 * 60 * 24 * 365 * 10);
+//            resp.addCookie(cookie);
+            for (Cookie cookie : request.getCookies()) {
+                if (cookie.getName().equals("JSESSIONID")) {
+                    cookie.setMaxAge(60 * 60 * 24 * 365 * 10);
+                    resp.addCookie(cookie);
+                }
+                System.out.println(cookie.getName());
+                System.out.println(cookie.getMaxAge());
+            }
 //            sessionLogin.setMaxInactiveInterval(60 * 60 * 24 * 365 * 10);
             return true;
         }

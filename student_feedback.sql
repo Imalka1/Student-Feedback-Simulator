@@ -78,7 +78,7 @@ VALUES
 INSERT INTO `studentfeedback`.`semester`
 (`text`)
 VALUES
-('Year 1 Semester 1'),('Year 1 Semester 2'),('Year 2 Semester 1'),('Year 2 Semester 2');
+('Year 1 / Semester 1'),('Year 1 / Semester 2'),('Year 2 / Semester 1'),('Year 2 / Semester 2');
 
 INSERT INTO `studentfeedback`.`lecturer`
 (`lecid`,

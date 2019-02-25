@@ -80,7 +80,7 @@
                         rst = preparedStatement.executeQuery();
                         if (rst.next()) {
             %>
-            <div class="intro-lead-in" style="padding-top: 30px"><%= rst.getString(1)%>
+            <div class="intro-lead-in" style="padding-top: 30px;color: #FFB508"><%= rst.getString(1)%>
             </div>
             <%
                         }
