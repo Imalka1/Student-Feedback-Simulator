@@ -20,12 +20,12 @@ VALUES
 INSERT INTO `studentfeedback`.`batch`
 (`intake`)
 VALUES
-('2018-01-05');
+('2018-01-05'),('2019-01-05');
 
 INSERT INTO `studentfeedback`.`degree`
 (`facid`,`name`)
 VALUES
-(1,'BSc (Computer Science)');
+(1,'BSc (Computer Science)'),(1,'BSc (Information Systems)');
 
 INSERT INTO `studentfeedback`.`user`
 (`uid`,
@@ -35,7 +35,7 @@ INSERT INTO `studentfeedback`.`user`
 `password`,
 `accountType`)
 VALUES
-('abc123',1,1,'Amal Silva','123','student');
+('abc123',1,1,'Amal Silva','123','student'),('abc456',2,2,'Sunil Perera','456','student');
 
 INSERT INTO `studentfeedback`.`evaluation_criteria_heading`
 (`echid`,
@@ -96,7 +96,10 @@ INSERT INTO `studentfeedback`.`subject`
 VALUES
 ('CSC 101','L001',1,1,'Progamming',3),('CSC 102','L002',1,1,'Database Management System',2),
 ('CSC 201','L001',1,2,'Progamming - 2',3),('CSC 202','L002',1,2,'Database Management System - 2',2),
-('CSC 301','L001',1,3,'Progamming - 3',3),('CSC 302','L002',1,3,'Database Management System - 3',2);
+('CSC 301','L001',1,3,'Progamming - 3',3),('CSC 302','L002',1,3,'Database Management System - 3',2),
+('IS 101','L001',2,1,'Progamming',3),('IS 102','L002',2,1,'Web Development',2),
+('IS 201','L001',2,2,'Progamming - 2',3),('IS 202','L002',2,2,'Web Development - 2',2),
+('IS 301','L001',2,3,'Progamming - 3',3),('IS 302','L002',2,3,'Web Development - 3',2);
 
 SELECT `evaluation_criteria_heading`.`echid`,
     `evaluation_criteria_heading`.`text`
