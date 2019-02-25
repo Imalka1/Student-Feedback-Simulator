@@ -12,7 +12,7 @@
         if (sessionLogin.getAttribute("uid") == null) {
 //            response.sendRedirect("index.jsp");
 %>
-<%--<jsp:forward page="index.jsp"/>--%>
+<jsp:forward page="index.jsp"/>
 <%
         }
     }
@@ -98,22 +98,27 @@
             <div class="col-md-4" style="border: 1px solid black">
                 Year and semester
             </div>
-            <div class="col-md-8" style="border: 1px solid black;padding: 0px">
-                <select id="yearSemester" class="form-control"
-                        style="color: #747474;padding-top: 0px;padding-bottom: 0px">
+            <div class="col-md-8" style="border: 1px solid black;color: #747474">
                     <%
                         {
-                            Statement createStatement = connection.createStatement();
-                            ResultSet rst = createStatement.executeQuery("select semid,text from semester");
-                            while (rst.next()) {
+                            PreparedStatement preparedStatement = connection.prepareStatement("select year(curdate())-year(b.intake),month(curdate())-month(b.intake) from user u,batch b where u.batchid=b.batchid && u.uid=?");
+                            preparedStatement.setObject(1, sessionLogin.getAttribute("uid"));
+                            ResultSet rst = preparedStatement.executeQuery();
+                            if (rst.next()) {
+                                int yearDiff = rst.getInt(1);
+                                int monthDiff = rst.getInt(2);
+                                int semid = (yearDiff * 12 + monthDiff) / 6 + 1;
+                                preparedStatement = connection.prepareStatement("select text from semester where semid=?");
+                                preparedStatement.setObject(1, semid);
+                                rst = preparedStatement.executeQuery();
+                                if (rst.next()) {
                     %>
-                    <option value="<%= rst.getInt(1)%>"><%= rst.getString(2)%>
-                    </option>
+                    <%= rst.getString(1)%>
                     <%
+                                }
                             }
                         }
                     %>
-                </select>
             </div>
         </div>
         <div class="row">

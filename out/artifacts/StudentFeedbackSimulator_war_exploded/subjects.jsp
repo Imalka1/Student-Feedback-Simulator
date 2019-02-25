@@ -10,12 +10,13 @@
         if (sessionLogin.getAttribute("uid") == null) {
 //            response.sendRedirect("index.jsp");
 %>
-<%--<jsp:forward page="index.jsp"/>--%>
+<jsp:forward page="index.jsp"/>
 <%
         }
     }
     Connection connection = DBConnection.getDBConnection().getConnection();
     int degid = 0;
+    int semid =0;
 %>
 <jsp:include page="header.jsp"/>
 
@@ -65,6 +66,27 @@
                     }
                 }
             %>
+            <%
+                {
+                    PreparedStatement preparedStatement = connection.prepareStatement("select year(curdate())-year(b.intake),month(curdate())-month(b.intake) from user u,batch b where u.batchid=b.batchid && u.uid=?");
+                    preparedStatement.setObject(1, sessionLogin.getAttribute("uid"));
+                    ResultSet rst = preparedStatement.executeQuery();
+                    if (rst.next()) {
+                        int yearDiff = rst.getInt(1);
+                        int monthDiff = rst.getInt(2);
+                        semid = (yearDiff * 12 + monthDiff) / 6 + 1;
+                        preparedStatement = connection.prepareStatement("select text from semester where semid=?");
+                        preparedStatement.setObject(1, semid);
+                        rst = preparedStatement.executeQuery();
+                        if (rst.next()) {
+            %>
+            <div class="intro-lead-in" style="padding-top: 30px"><%= rst.getString(1)%>
+            </div>
+            <%
+                        }
+                    }
+                }
+            %>
             <div class="col-center"
                  style="background-color: #ffb508;width: fit-content;color: #402901;padding: 20px;padding-left: 30px;padding-right: 30px;font-size: 18px;border-radius: 35px;margin-top: 80px;font-weight: bold">
                 <%
@@ -97,8 +119,9 @@
                 <ul class="timeline">
                     <%
                         {
-                            PreparedStatement preparedStatement = connection.prepareStatement("select title,l.name,credits from subject s,lecturer l where l.lecid=s.lecid && degid=?");
+                            PreparedStatement preparedStatement = connection.prepareStatement("select title,l.name,credits from subject s,lecturer l where l.lecid=s.lecid && degid=? && semid=?");
                             preparedStatement.setObject(1, degid);
+                            preparedStatement.setObject(2, semid);
                             ResultSet rst = preparedStatement.executeQuery();
                             while (rst.next()) {
                     %>
@@ -124,7 +147,7 @@
                         }
                     %>
                     <%--<li class="timeline-inverted">--%>
-                        <%--<div class="timeline-image" style="background-color: #c8a52a"></div>--%>
+                    <%--<div class="timeline-image" style="background-color: #c8a52a"></div>--%>
                     <%--</li>--%>
                 </ul>
             </div>

@@ -3,18 +3,24 @@ create database studentfeedback;
 use studentfeedback;
 create table faculty(facid int auto_increment,name varchar(100),constraint primary key(facid));
 create table degree(degid int auto_increment,facid int,name varchar(100),constraint primary key(degid),constraint foreign key(facid) references faculty(facid));
-create table user(uid varchar(100),degid int,username varchar(100),password varchar(100),accountType varchar(20),constraint primary key(uid),constraint foreign key(degid) references degree(degid));	
+create table batch(batchid int auto_increment,intake date,constraint primary key(batchid));
+create table user(uid varchar(100),degid int,batchid int,username varchar(100),password varchar(100),accountType varchar(20),constraint primary key(uid),constraint foreign key(degid) references degree(degid),constraint foreign key(batchid) references batch(batchid));	
 create table evaluation_criteria_heading(echid int,text varchar(100),constraint primary key(echid));
 create table evaluation_criteria(ecid int auto_increment,echid int,text varchar(100),constraint primary key(ecid),constraint foreign key(echid) references evaluation_criteria_heading(echid));
 create table semester(semid int auto_increment,text varchar(100),constraint primary key(semid));
 create table lecturer(lecid varchar(100),name varchar(100),constraint primary key(lecid));
-create table subject(subid varchar(100),lecid varchar(100),degid int,title varchar(100),credits int,constraint primary key(subid),constraint foreign key(lecid) references lecturer(lecid),constraint foreign key(degid) references degree(degid));
+create table subject(subid varchar(100),lecid varchar(100),degid int,semid int,title varchar(100),credits int,constraint primary key(subid),constraint foreign key(lecid) references lecturer(lecid),constraint foreign key(degid) references degree(degid),constraint foreign key(semid) references semester(semid));
 create table marks(uid varchar(100),subid varchar(100),ecid int,dateOfSubmitted date,constraint primary key(uid,subid,dateOfSubmitted),constraint foreign key(uid) references user(uid),constraint foreign key(subid) references subject(subid),constraint foreign key(ecid) references evaluation_criteria(ecid));
 
 INSERT INTO `studentfeedback`.`faculty`
 (`name`)
 VALUES
 ('Department of Computer Science');
+
+INSERT INTO `studentfeedback`.`batch`
+(`intake`)
+VALUES
+('2018-01-05');
 
 INSERT INTO `studentfeedback`.`degree`
 (`facid`,`name`)
@@ -24,11 +30,12 @@ VALUES
 INSERT INTO `studentfeedback`.`user`
 (`uid`,
 `degid`,
+`batchid`,
 `username`,
 `password`,
 `accountType`)
 VALUES
-('abc123',1,'Amal Silva','123','student');
+('abc123',1,1,'Amal Silva','123','student');
 
 INSERT INTO `studentfeedback`.`evaluation_criteria_heading`
 (`echid`,
@@ -83,10 +90,13 @@ INSERT INTO `studentfeedback`.`subject`
 (`subid`,
 `lecid`,
 `degid`,
+`semid`,
 `title`,
 `credits`)
 VALUES
-('CSC 101','L001',1,'Progamming',3),('CSC 102','L002',1,'Database Management System',2);
+('CSC 101','L001',1,1,'Progamming',3),('CSC 102','L002',1,1,'Database Management System',2),
+('CSC 201','L001',1,2,'Progamming - 2',3),('CSC 202','L002',1,2,'Database Management System - 2',2),
+('CSC 301','L001',1,3,'Progamming - 3',3),('CSC 302','L002',1,3,'Database Management System - 3',2);
 
 SELECT `evaluation_criteria_heading`.`echid`,
     `evaluation_criteria_heading`.`text`
@@ -104,3 +114,5 @@ SELECT `user`.`uid`,
 FROM `studentfeedback`.`user`;
 
 select f.name,d.name from user u,faculty f,degree d where f.facid=d.facid && d.degid=u.degid && u.uid='abc123';
+
+select month(curdate())-month('2020-04-03');
