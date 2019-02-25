@@ -102,7 +102,7 @@
                             ResultSet rst = preparedStatement.executeQuery();
                             while (rst.next()) {
                     %>
-                    <li class="timeline-inverted">
+                    <li class="timeline-inverted" style="cursor: pointer">
                         <div class="timeline-image">
                             <img class="rounded-circle img-fluid" alt="">
                         </div>
