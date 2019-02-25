@@ -384,7 +384,7 @@ header.masthead .intro-text .intro-heading {
     top: 0;
     bottom: 0;
     left: 40px;
-    width: 2px;
+    width: 0px;
     margin-left: -1.5px;
     content: '';
     background-color: #e9ecef
@@ -496,7 +496,7 @@ header.masthead .intro-text .intro-heading {
 
     .timeline > li .timeline-panel {
         float: left;
-        width: 43%;
+        width: 49.5%;
         padding: 0 20px 20px 30px;
         text-align: right
     }
@@ -505,7 +505,7 @@ header.masthead .intro-text .intro-heading {
         left: 50%;
         width: 100px;
         height: 100px;
-        margin-left: -50px
+        margin-left: -110px
     }
 
     .timeline > li .timeline-image h4 {
@@ -533,7 +533,7 @@ header.masthead .intro-text .intro-heading {
     .timeline > li .timeline-image {
         width: 150px;
         height: 150px;
-        margin-left: -75px
+        margin-left: -165px
     }
 
     .timeline > li .timeline-image h4 {
@@ -559,7 +559,7 @@ header.masthead .intro-text .intro-heading {
     .timeline > li .timeline-image {
         width: 170px;
         height: 170px;
-        margin-left: -85px
+        margin-left: -185px
     }
 
     .timeline > li .timeline-image h4 {

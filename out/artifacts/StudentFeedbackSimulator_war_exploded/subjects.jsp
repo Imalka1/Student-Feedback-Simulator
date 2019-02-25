@@ -123,9 +123,9 @@
                             }
                         }
                     %>
-                    <li class="timeline-inverted">
-                        <div class="timeline-image" style="background-color: #c8a52a"></div>
-                    </li>
+                    <%--<li class="timeline-inverted">--%>
+                        <%--<div class="timeline-image" style="background-color: #c8a52a"></div>--%>
+                    <%--</li>--%>
                 </ul>
             </div>
         </div>
