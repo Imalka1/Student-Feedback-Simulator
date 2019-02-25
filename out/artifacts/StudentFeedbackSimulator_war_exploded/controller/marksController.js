@@ -28,7 +28,7 @@ $('#btnSubmit').click(function () {
             url: "http://" + window.location.hostname + ":8080/processMarks",
             data: {
                 marks: marks,
-                ecids:ecids
+                ecids: ecids
             },
             success: function (response) {
 
@@ -38,4 +38,8 @@ $('#btnSubmit').click(function () {
             }
         }
     );
+})
+
+$('#backBtn').click(function () {
+    document.location.href = "subjects.jsp";
 })

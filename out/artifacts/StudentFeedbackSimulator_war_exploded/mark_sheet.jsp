@@ -49,6 +49,11 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ml-auto">
+                        <li class="nav-item" style="margin-right: 50px">
+                            <a class="js-scroll-trigger" id="backBtn"
+                               style="cursor: pointer;font-family: Montserrat,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';text-decoration: none;color: white">
+                                Back</a>
+                        </li>
                         <form action="logout" method="post">
                             <li class="nav-item">
                                 <a id="btnLogout" class="js-scroll-trigger" href="<%= logout%>"
@@ -92,7 +97,18 @@
                 Degree Programme
             </div>
             <div class="col-md-8" style="border: 1px solid black;color: #747474">
-                BSc(Computer Science)
+                <%
+                    {
+                        PreparedStatement preparedStatement = connection.prepareStatement("select d.name,d.degid from user u,degree d where d.degid=u.degid && u.uid=?");
+                        preparedStatement.setObject(1, sessionLogin.getAttribute("uid"));
+                        ResultSet rst = preparedStatement.executeQuery();
+                        if (rst.next()) {
+                %>
+                <%= rst.getString(1)%>
+                <%
+                        }
+                    }
+                %>
             </div>
         </div>
         <div class="row">
@@ -100,34 +116,45 @@
                 Year and semester
             </div>
             <div class="col-md-8" style="border: 1px solid black;color: #747474">
-                    <%
-                        {
-                            PreparedStatement preparedStatement = connection.prepareStatement("select year(curdate())-year(b.intake),month(curdate())-month(b.intake) from user u,batch b where u.batchid=b.batchid && u.uid=?");
-                            preparedStatement.setObject(1, sessionLogin.getAttribute("uid"));
-                            ResultSet rst = preparedStatement.executeQuery();
+                <%
+                    {
+                        PreparedStatement preparedStatement = connection.prepareStatement("select year(curdate())-year(b.intake),month(curdate())-month(b.intake) from user u,batch b where u.batchid=b.batchid && u.uid=?");
+                        preparedStatement.setObject(1, sessionLogin.getAttribute("uid"));
+                        ResultSet rst = preparedStatement.executeQuery();
+                        if (rst.next()) {
+                            int yearDiff = rst.getInt(1);
+                            int monthDiff = rst.getInt(2);
+                            int semid = (yearDiff * 12 + monthDiff) / 6 + 1;
+                            preparedStatement = connection.prepareStatement("select text from semester where semid=?");
+                            preparedStatement.setObject(1, semid);
+                            rst = preparedStatement.executeQuery();
                             if (rst.next()) {
-                                int yearDiff = rst.getInt(1);
-                                int monthDiff = rst.getInt(2);
-                                int semid = (yearDiff * 12 + monthDiff) / 6 + 1;
-                                preparedStatement = connection.prepareStatement("select text from semester where semid=?");
-                                preparedStatement.setObject(1, semid);
-                                rst = preparedStatement.executeQuery();
-                                if (rst.next()) {
-                    %>
-                    <%= rst.getString(1)%>
-                    <%
-                                }
+                %>
+                <%= rst.getString(1)%>
+                <%
                             }
                         }
-                    %>
+                    }
+                %>
             </div>
         </div>
         <div class="row">
             <div class="col-md-4" style="border: 1px solid black">
-                Course Unit Title, Code and Number of credit
+                Course Unit Title / Code / Number of credits
             </div>
             <div class="col-md-8" style="border: 1px solid black;color: #747474">
-                Course Unit Title, <%= subjectId%> and Number of credit
+                <%
+                    {
+                        PreparedStatement preparedStatement = connection.prepareStatement("select title,credits from subject where subid=?");
+                        preparedStatement.setObject(1, subjectId);
+                        ResultSet rst = preparedStatement.executeQuery();
+                        if (rst.next()) {
+                %>
+                <%= rst.getString(1)%> / <%= subjectId%> / <%= rst.getInt(2)%>
+                <%
+                        }
+                    }
+                %>
             </div>
         </div>
         <div class="row">
