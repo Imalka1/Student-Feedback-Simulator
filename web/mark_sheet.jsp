@@ -6,6 +6,7 @@
 <%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.PreparedStatement" %>
 <%
+    String subjectId = request.getParameter("subjectId");
     String logout = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/logout";
     HttpSession sessionLogin = request.getSession(false);
     if (sessionLogin != null) {
@@ -123,10 +124,10 @@
         </div>
         <div class="row">
             <div class="col-md-4" style="border: 1px solid black">
-                Course Unit Title, Code and Number of credit
+                Course Unit Title, Code and Number of credits
             </div>
             <div class="col-md-8" style="border: 1px solid black;color: #747474">
-                Course Unit Title, Code and Number of credit
+                Course Unit Title, <%= subjectId%> and Number of credit
             </div>
         </div>
         <div class="row">

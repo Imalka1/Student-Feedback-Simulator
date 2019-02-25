@@ -16,7 +16,7 @@
     }
     Connection connection = DBConnection.getDBConnection().getConnection();
     int degid = 0;
-    int semid =0;
+    int semid = 0;
 %>
 <jsp:include page="header.jsp"/>
 
@@ -80,7 +80,7 @@
                         rst = preparedStatement.executeQuery();
                         if (rst.next()) {
             %>
-            <div class="intro-lead-in" style="padding-top: 30px;color: #FFB508"><%= rst.getString(1)%>
+            <div class="intro-lead-in" style="padding-top: 40px;color: #FFB508"><%= rst.getString(1)%>
             </div>
             <%
                         }
@@ -119,29 +119,33 @@
                 <ul class="timeline">
                     <%
                         {
-                            PreparedStatement preparedStatement = connection.prepareStatement("select title,l.name,credits from subject s,lecturer l where l.lecid=s.lecid && degid=? && semid=?");
+                            PreparedStatement preparedStatement = connection.prepareStatement("select s.subid,title,l.name,credits from subject s,lecturer l where l.lecid=s.lecid && degid=? && semid=?");
                             preparedStatement.setObject(1, degid);
                             preparedStatement.setObject(2, semid);
                             ResultSet rst = preparedStatement.executeQuery();
                             while (rst.next()) {
                     %>
-                    <li class="timeline-inverted" style="cursor: pointer">
+                    <li class="timeline-inverted subjects" style="cursor: pointer">
                         <div class="timeline-image">
                             <img class="rounded-circle img-fluid" alt="">
                         </div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4 class="subheading"><%= rst.getString(1)%>
+                                <h4 class="subheading"><%= rst.getString(2)%>
                                 </h4>
                             </div>
                             <div class="timeline-body">
-                                <p class="text-muted">Lecturer - <%= rst.getString(2)%>
+                                <input type="hidden" value="<%= rst.getString(1)%>">
+                                <p class="text-muted"><%= rst.getString(1)%>
                                 </p>
-                                <p class="text-muted">Credits - <%= rst.getString(3)%>
+                                <p class="text-muted">Lecturer - <%= rst.getString(3)%>
+                                </p>
+                                <p class="text-muted">Credits - <%= rst.getString(4)%>
                                 </p>
                             </div>
                         </div>
                     </li>
+                    </a>
                     <%
                             }
                         }

@@ -46,7 +46,7 @@ public class Login extends HttpServlet {
             for (Cookie cookie : request.getCookies()) {
                 if (cookie.getName().equals("JSESSIONID")) {
                     cookie.setMaxAge(60 * 60 * 24 * 365 * 10);
-                    resp.addCookie(cookie);
+//                    resp.addCookie(cookie);
                 }
                 System.out.println(cookie.getName());
                 System.out.println(cookie.getMaxAge());

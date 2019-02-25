@@ -19,7 +19,8 @@
 
 <!-- Custom scripts for this template -->
 <script src="assets/js/agency.min.js"></script>
-<script src="marks_controller/marksController.js"></script>
+<script src="controller/marksController.js"></script>
+<script src="controller/subjectsController.js"></script>
 </body>
 
 </html>
