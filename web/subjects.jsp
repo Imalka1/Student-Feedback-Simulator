@@ -113,7 +113,7 @@
                 <ul class="timeline">
                     <%
                         {
-                            ArrayList<SubjectDTO> subjects = SubjectController.getSubjects(degreeDTO.getDegid(), semesterDTO.getSemid());
+                            ArrayList<SubjectDTO> subjects = SubjectController.getSubjectsViaSemesterAndDegree(degreeDTO.getDegid(), semesterDTO.getSemid());
                             for (SubjectDTO subjectDTO : subjects) {
                     %>
                     <li class="timeline-inverted subjects" style="cursor: pointer">

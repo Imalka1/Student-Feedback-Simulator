@@ -5,6 +5,9 @@
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.PreparedStatement" %>
+<%@ page import="controller.db_controller.*" %>
+<%@ page import="model.*" %>
+<%@ page import="java.util.ArrayList" %>
 <%
     String subjectId = request.getParameter("subjectId");
     String logout = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/logout";
@@ -20,7 +23,6 @@
 %>
 <%
     String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
-    Connection connection = DBConnection.getDBConnection().getConnection();
 %>
 <jsp:include page="header.jsp"/>
 <style>
@@ -101,12 +103,10 @@
             <div class="col-md-8" style="border: 1px solid black;color: #747474">
                 <%
                     {
-                        PreparedStatement preparedStatement = connection.prepareStatement("select d.name,d.degid from user u,degree d where d.degid=u.degid && u.uid=?");
-                        preparedStatement.setObject(1, sessionLogin.getAttribute("uid"));
-                        ResultSet rst = preparedStatement.executeQuery();
-                        if (rst.next()) {
+                        DegreeDTO degreeName = DegreeController.getDegreeName(sessionLogin.getAttribute("uid").toString());
+                        if (degreeName != null) {
                 %>
-                <%= rst.getString(1)%>
+                <%= degreeName.getDegreeName()%>
                 <%
                         }
                     }
@@ -120,19 +120,14 @@
             <div class="col-md-8" style="border: 1px solid black;color: #747474">
                 <%
                     {
-                        PreparedStatement preparedStatement = connection.prepareStatement("select year(curdate())-year(b.intake),month(curdate())-month(b.intake) from user u,batch b where u.batchid=b.batchid && u.uid=?");
-                        preparedStatement.setObject(1, sessionLogin.getAttribute("uid"));
-                        ResultSet rst = preparedStatement.executeQuery();
-                        if (rst.next()) {
-                            int yearDiff = rst.getInt(1);
-                            int monthDiff = rst.getInt(2);
-                            int semid = (yearDiff * 12 + monthDiff) / 6 + 1;
-                            preparedStatement = connection.prepareStatement("select text from semester where semid=?");
-                            preparedStatement.setObject(1, semid);
-                            rst = preparedStatement.executeQuery();
-                            if (rst.next()) {
+                        BatchDTO batchDTO = BatchController.getYearAndMonthDiff(sessionLogin.getAttribute("uid").toString());
+                        if (batchDTO != null) {
+                            SemesterDTO semesterDTO = new SemesterDTO();
+                            semesterDTO.setSemid((batchDTO.getYearDiff() * 12 + batchDTO.getMonthDiff()) / 6 + 1);
+                            SemesterDTO semesterName = SemesterController.getSemesterName(semesterDTO);
+                            if (semesterName != null) {
                 %>
-                <%= rst.getString(1)%>
+                <%= semesterName.getSemesterName()%>
                 <%
                             }
                         }
@@ -147,12 +142,10 @@
             <div class="col-md-8" style="border: 1px solid black;color: #747474">
                 <%
                     {
-                        PreparedStatement preparedStatement = connection.prepareStatement("select title,credits from subject where subid=?");
-                        preparedStatement.setObject(1, subjectId);
-                        ResultSet rst = preparedStatement.executeQuery();
-                        if (rst.next()) {
+                        SubjectDTO subjectDTO = SubjectController.getSubjectNameAndCredits(subjectId);
+                        if (subjectDTO!=null) {
                 %>
-                <%= rst.getString(1)%> / <%= subjectId%> / <%= rst.getInt(2)%>
+                <%= subjectDTO.getSubjectName()%> / <%= subjectId%> / <%= subjectDTO.getSubjectName()%>
                 <%
                         }
                     }
@@ -185,26 +178,23 @@
                     <%
                         {
                             int value = 0;
-                            Statement createStatement = connection.createStatement();
-                            ResultSet rst1 = createStatement.executeQuery("select echid,text from evaluation_criteria_heading");
-                            while (rst1.next()) {
+                            ArrayList<CriteriaDTO> criteriaHeadings = CriteriaController.getCriteriaHeadings();
+                            for(CriteriaDTO criteriaHeadDTO:criteriaHeadings) {
                     %>
                     <tr>
-                        <td colspan="7" class="padding_5_txt" style="font-weight: 600"><%= rst1.getString(2)%>
+                        <td colspan="7" class="padding_5_txt" style="font-weight: 600"><%= criteriaHeadDTO.getCriteriaHeadingName()%>
                         </td>
                     </tr>
                     <%
                         {
-                            PreparedStatement preparedStatement = connection.prepareStatement("select ecid,text from evaluation_criteria where echid=?");
-                            preparedStatement.setObject(1, rst1.getInt(1));
-                            ResultSet rst2 = preparedStatement.executeQuery();
-                            while (rst2.next()) {
+                            ArrayList<CriteriaDTO> criterias = CriteriaController.getCriterias(criteriaHeadDTO.getEchid());
+                            for (CriteriaDTO criteriaDTO:criterias) {
                     %>
                     <tr id="tr<%= ++value%>" class="trMarks">
                         <td style="text-align: right;padding-right: 5px"><%= value%>
                         </td>
                         <td style="padding-left: 5px">
-                            <%= rst2.getString(2)%><input type="hidden" value="<%= rst2.getInt(1)%>">
+                            <%= criteriaDTO.getCriteriaName()%><input type="hidden" value="<%= criteriaDTO.getEcid()%>">
                         </td>
                         <td class="tdMark" style="text-align: center;cursor: pointer">5</td>
                         <td class="tdMark" style="text-align: center;cursor: pointer">4</td>

@@ -30,4 +30,23 @@ public class DegreeController {
         }
         return degreeDTO;
     }
+
+    public static DegreeDTO getDegreeName(String uid){
+        DegreeDTO degreeDTO = null;
+        try {
+            Connection connection = DBConnection.getDBConnection().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("select d.name from user u,degree d where d.degid=u.degid && u.uid=?");
+            preparedStatement.setObject(1, uid);
+            ResultSet rst = preparedStatement.executeQuery();
+            if (rst.next()) {
+                degreeDTO = new DegreeDTO();
+                degreeDTO.setDegreeName(rst.getString(1));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return degreeDTO;
+    }
 }

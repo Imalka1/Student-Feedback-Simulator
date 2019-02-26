@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class SubjectController {
 
-    public static ArrayList<SubjectDTO> getSubjects(int degid, int semid) {
+    public static ArrayList<SubjectDTO> getSubjectsViaSemesterAndDegree(int degid, int semid) {
         ArrayList<SubjectDTO> subjectDTOS = new ArrayList<>();
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();
@@ -33,5 +33,25 @@ public class SubjectController {
             e.printStackTrace();
         }
         return subjectDTOS;
+    }
+
+    public static SubjectDTO getSubjectNameAndCredits(String subjectId) {
+        SubjectDTO subjectDTO = null;
+        try {
+            Connection connection = DBConnection.getDBConnection().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("select title,credits from subject where subid=?");
+            preparedStatement.setObject(1, subjectId);
+            ResultSet rst = preparedStatement.executeQuery();
+            if (rst.next()) {
+                subjectDTO = new SubjectDTO();
+                subjectDTO.setSubjectName(rst.getString(1));
+                subjectDTO.setCredits(rst.getInt(2));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return subjectDTO;
     }
 }
