@@ -16,28 +16,24 @@ public class LoginController extends HttpServlet {
         HttpSession sessionLogin = req.getSession(true);
         String username = req.getParameter("username");
         String password = req.getParameter("password");
-        try {
-            UserDTO userDTO = UserController.chkLogin(username, password);
-            if (userDTO != null) {
-                sessionLogin.setAttribute("uid", userDTO.getUid());
-                HttpSession ses = req.getSession();
+        UserDTO userDTO = UserController.chkLogin(username, password);
+        if (userDTO != null) {
+            sessionLogin.setAttribute("uid", userDTO.getUid());
+            HttpSession ses = req.getSession();
 //            Cookie cookie = new Cookie("JSESSIONID", ses.getId());
 //            cookie.setMaxAge(60 * 60 * 24 * 365 * 10);
 //            resp.addCookie(cookie);
-                for (Cookie cookie : req.getCookies()) {
-                    if (cookie.getName().equals("JSESSIONID")) {
-                        cookie.setMaxAge(60 * 60 * 24 * 365 * 10);
+            for (Cookie cookie : req.getCookies()) {
+                if (cookie.getName().equals("JSESSIONID")) {
+                    cookie.setMaxAge(60 * 60 * 24 * 365 * 10);
 //                    resp.addCookie(cookie);
-                    }
-                    System.out.println(cookie.getName());
-                    System.out.println(cookie.getMaxAge());
                 }
-                resp.sendRedirect("subjects.jsp");
-            } else {
-                resp.sendRedirect("index.jsp?error=error");
+                System.out.println(cookie.getName());
+                System.out.println(cookie.getMaxAge());
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+            resp.sendRedirect("subjects.jsp");
+        } else {
+            resp.sendRedirect("index.jsp?error=error");
         }
     }
 }

@@ -9,27 +9,42 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserController {
-    private static Connection connection;
 
-    public UserController() {
+    public static UserDTO chkLogin(String username, String password) {
+        UserDTO userDTO = null;
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            PreparedStatement preparedStatement = connection.prepareStatement("select uid from user where uid=? && password=?");
+            preparedStatement.setObject(1, username);
+            preparedStatement.setObject(2, password);
+            ResultSet rst = preparedStatement.executeQuery();
+            if (rst.next()) {
+                userDTO = new UserDTO();
+                userDTO.setUid(rst.getString(1));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
+        return userDTO;
     }
 
-    public static UserDTO chkLogin(String username, String password) throws SQLException {
+    public static UserDTO getUsername(String uid) {
         UserDTO userDTO = null;
-        PreparedStatement preparedStatement = connection.prepareStatement("select uid from user where uid=? && password=?");
-        preparedStatement.setObject(1, username);
-        preparedStatement.setObject(2, password);
-        ResultSet rst = preparedStatement.executeQuery();
-        if (rst.next()) {
-            userDTO = new UserDTO();
-            userDTO.setUid(rst.getString(1));
+        try {
+            Connection connection = DBConnection.getDBConnection().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("select username from user where uid=?");
+            preparedStatement.setObject(1, uid);
+            ResultSet rst = preparedStatement.executeQuery();
+            if (rst.next()) {
+                userDTO = new UserDTO();
+                userDTO.setUsername(rst.getString(1));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
         return userDTO;
     }

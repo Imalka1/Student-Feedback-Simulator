@@ -3,8 +3,9 @@
 <%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.PreparedStatement" %>
-<%@ page import="controller.db_controller.DegreeController" %>
-<%@ page import="model.DegreeDTO" %>
+<%@ page import="controller.db_controller.*" %>
+<%@ page import="model.*" %>
+<%@ page import="java.util.ArrayList" %>
 <%
     String logout = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/logout";
     HttpSession sessionLogin = request.getSession(false);
@@ -17,8 +18,7 @@
         }
     }
     DegreeDTO degreeDTO;
-    int degid = 0;
-    int semid = 0;
+    SemesterDTO semesterDTO;
 %>
 <jsp:include page="header.jsp"/>
 
@@ -59,9 +59,9 @@
                     degreeDTO = DegreeController.getDegreeData(sessionLogin.getAttribute("uid").toString());
                     if (degreeDTO != null) {
             %>
-            <div class="intro-lead-in"><%= degreeDTO.getDegreeName()%>
+            <div class="intro-lead-in"><%= degreeDTO.getFacultyName()%>
             </div>
-            <div class="intro-lead-in"><%= degreeDTO.getDegid()%>
+            <div class="intro-lead-in"><%= degreeDTO.getDegreeName()%>
             </div>
             <%
                     }
@@ -69,19 +69,14 @@
             %>
             <%
                 {
-                    PreparedStatement preparedStatement = connection.prepareStatement("select year(curdate())-year(b.intake),month(curdate())-month(b.intake) from user u,batch b where u.batchid=b.batchid && u.uid=?");
-                    preparedStatement.setObject(1, sessionLogin.getAttribute("uid"));
-                    ResultSet rst = preparedStatement.executeQuery();
-                    if (rst.next()) {
-                        int yearDiff = rst.getInt(1);
-                        int monthDiff = rst.getInt(2);
-                        semid = (yearDiff * 12 + monthDiff) / 6 + 1;
-                        preparedStatement = connection.prepareStatement("select text from semester where semid=?");
-                        preparedStatement.setObject(1, semid);
-                        rst = preparedStatement.executeQuery();
-                        if (rst.next()) {
+                    BatchDTO batchDTO = BatchController.getYearAndMonthDiff(sessionLogin.getAttribute("uid").toString());
+                    semesterDTO = new SemesterDTO();
+                    if (batchDTO != null) {
+                        semesterDTO.setSemid((batchDTO.getYearDiff() * 12 + batchDTO.getMonthDiff()) / 6 + 1);
+                        SemesterDTO semesterName = SemesterController.getSemesterName(semesterDTO);
+                        if (semesterName != null) {
             %>
-            <div class="intro-lead-in" style="padding-top: 40px;color: #FFB508"><%= rst.getString(1)%>
+            <div class="intro-lead-in" style="padding-top: 40px;color: #FFB508"><%= semesterName.getSemesterName()%>
             </div>
             <%
                         }
@@ -92,12 +87,10 @@
                  style="background-color: #ffb508;width: fit-content;color: #402901;padding: 20px;padding-left: 30px;padding-right: 30px;font-size: 18px;border-radius: 35px;margin-top: 80px;font-weight: bold">
                 <%
                     {
-                        PreparedStatement preparedStatement = connection.prepareStatement("select username from user where uid=?");
-                        preparedStatement.setObject(1, sessionLogin.getAttribute("uid"));
-                        ResultSet rst = preparedStatement.executeQuery();
-                        while (rst.next()) {
+                        UserDTO userDTO = UserController.getUsername(sessionLogin.getAttribute("uid").toString());
+                        if (userDTO != null) {
                 %>
-                Online - <%= rst.getString(1)%>
+                Online - <%= userDTO.getUsername()%>
                 <%
                         }
                     }
@@ -120,11 +113,8 @@
                 <ul class="timeline">
                     <%
                         {
-                            PreparedStatement preparedStatement = connection.prepareStatement("select s.subid,title,l.name,credits from subject s,lecturer l where l.lecid=s.lecid && degid=? && semid=?");
-                            preparedStatement.setObject(1, degid);
-                            preparedStatement.setObject(2, semid);
-                            ResultSet rst = preparedStatement.executeQuery();
-                            while (rst.next()) {
+                            ArrayList<SubjectDTO> subjects = SubjectController.getSubjects(degreeDTO.getDegid(), semesterDTO.getSemid());
+                            for (SubjectDTO subjectDTO : subjects) {
                     %>
                     <li class="timeline-inverted subjects" style="cursor: pointer">
                         <div class="timeline-image">
@@ -132,16 +122,16 @@
                         </div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4 class="subheading"><%= rst.getString(2)%>
+                                <h4 class="subheading"><%= subjectDTO.getSubjectName()%>
                                 </h4>
                             </div>
                             <div class="timeline-body">
-                                <input type="hidden" value="<%= rst.getString(1)%>">
-                                <p class="text-muted"><%= rst.getString(1)%>
+                                <input type="hidden" value="<%= subjectDTO.getSubjectId()%>">
+                                <p class="text-muted"><%= subjectDTO.getSubjectId()%>
                                 </p>
-                                <p class="text-muted">Lecturer - <%= rst.getString(3)%>
+                                <p class="text-muted">Lecturer - <%= subjectDTO.getLecturerName()%>
                                 </p>
-                                <p class="text-muted">Credits - <%= rst.getString(4)%>
+                                <p class="text-muted">Credits - <%= subjectDTO.getCredits()%>
                                 </p>
                             </div>
                         </div>
