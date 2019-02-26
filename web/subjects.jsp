@@ -3,6 +3,8 @@
 <%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.PreparedStatement" %>
+<%@ page import="controller.db_controller.DegreeController" %>
+<%@ page import="model.DegreeDTO" %>
 <%
     String logout = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/logout";
     HttpSession sessionLogin = request.getSession(false);
@@ -14,7 +16,7 @@
 <%
         }
     }
-    Connection connection = DBConnection.getDBConnection().getConnection();
+    DegreeDTO degreeDTO;
     int degid = 0;
     int semid = 0;
 %>
@@ -54,15 +56,12 @@
         <div class="intro-text">
             <%
                 {
-                    PreparedStatement preparedStatement = connection.prepareStatement("select f.name,d.name,d.degid from user u,faculty f,degree d where f.facid=d.facid && d.degid=u.degid && u.uid=?");
-                    preparedStatement.setObject(1, sessionLogin.getAttribute("uid"));
-                    ResultSet rst = preparedStatement.executeQuery();
-                    if (rst.next()) {
-                        degid = rst.getInt(3);
+                    degreeDTO = DegreeController.getDegreeData(sessionLogin.getAttribute("uid").toString());
+                    if (degreeDTO != null) {
             %>
-            <div class="intro-lead-in"><%= rst.getString(1)%>
+            <div class="intro-lead-in"><%= degreeDTO.getDegreeName()%>
             </div>
-            <div class="intro-lead-in"><%= rst.getString(2)%>
+            <div class="intro-lead-in"><%= degreeDTO.getDegid()%>
             </div>
             <%
                     }

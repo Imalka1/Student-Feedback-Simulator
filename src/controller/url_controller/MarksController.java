@@ -1,4 +1,4 @@
-package marks_controller;
+package controller.url_controller;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
