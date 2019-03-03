@@ -1,4 +1,5 @@
 $('.tdMark').click(function () {
+    console.log($(this).parent())
     if ($(this).css("background-color") == "rgb(48, 118, 29)") {
         $(this).css('background-color', "rgba(0, 0, 0, 0)");
         $(this).css('color', 'black');
@@ -11,7 +12,6 @@ $('.tdMark').click(function () {
 });
 
 $('#btnSubmit').click(function () {
-    console.log($('#yearSemester option:selected').val())
     var marks = "";
     var ecids = "";
     for (var i = 0; i < $('td.tdMark').length; i++) {
