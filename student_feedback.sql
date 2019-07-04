@@ -20,7 +20,7 @@ VALUES
 INSERT INTO `studentfeedback`.`batch`
 (`intake`)
 VALUES
-('2018-01-05'),('2019-01-05');
+('2019-01-05'),('2020-01-05');
 
 INSERT INTO `studentfeedback`.`degree`
 (`facid`,`name`)
@@ -115,6 +115,11 @@ SELECT `user`.`uid`,
     `user`.`username`,
     `user`.`password`
 FROM `studentfeedback`.`user`;
+
+SELECT `batch`.`batchid`,
+    `batch`.`intake`
+FROM `studentfeedback`.`batch`;
+
 
 select f.name,d.name from user u,faculty f,degree d where f.facid=d.facid && d.degid=u.degid && u.uid='abc123';
 

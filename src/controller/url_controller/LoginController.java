@@ -11,6 +11,7 @@ import java.sql.SQLException;
 
 @WebServlet(urlPatterns = "/login")
 public class LoginController extends HttpServlet {
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession sessionLogin = req.getSession(true);
@@ -23,14 +24,14 @@ public class LoginController extends HttpServlet {
 //            Cookie cookie = new Cookie("JSESSIONID", ses.getId());
 //            cookie.setMaxAge(60 * 60 * 24 * 365 * 10);
 //            resp.addCookie(cookie);
-            for (Cookie cookie : req.getCookies()) {
-                if (cookie.getName().equals("JSESSIONID")) {
-                    cookie.setMaxAge(60 * 60 * 24 * 365 * 10);
-//                    resp.addCookie(cookie);
-                }
-                System.out.println(cookie.getName());
-                System.out.println(cookie.getMaxAge());
-            }
+//            for (Cookie cookie : req.getCookies()) {
+//                if (cookie.getName().equals("JSESSIONID")) {
+//                    cookie.setMaxAge(60 * 60 * 24 * 365 * 10);
+////                    resp.addCookie(cookie);
+//                }
+//                System.out.println(cookie.getName());
+//                System.out.println(cookie.getMaxAge());
+//            }
             resp.sendRedirect("subjects.jsp");
         } else {
             resp.sendRedirect("index.jsp?error=error");
