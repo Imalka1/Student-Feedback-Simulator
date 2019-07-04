@@ -14,7 +14,7 @@ public class BatchController {
         BatchDTO batchDTO = new BatchDTO();
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("select year(curdate())-year(b.intake),month(curdate())-month(b.intake) from user u,batch b where u.batchid=b.batchid && u.uid=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("select year(curdate())-year(b.intake),month(curdate())-month(b.intake) from student s,batch b,user u where s.batchid=b.batchid && u.uid=s.uid && s.uid=?");
             preparedStatement.setObject(1, uid);
             ResultSet rst = preparedStatement.executeQuery();
             if (rst.next()) {

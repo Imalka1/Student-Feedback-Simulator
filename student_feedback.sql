@@ -4,7 +4,9 @@ use studentfeedback;
 create table faculty(facid int auto_increment,name varchar(100),constraint primary key(facid));
 create table degree(degid int auto_increment,facid int,name varchar(100),constraint primary key(degid),constraint foreign key(facid) references faculty(facid));
 create table batch(batchid int auto_increment,intake date,constraint primary key(batchid));
-create table user(uid varchar(100),degid int,batchid int,username varchar(100),password varchar(100),accountType varchar(20),constraint primary key(uid),constraint foreign key(degid) references degree(degid),constraint foreign key(batchid) references batch(batchid));	
+create table user(uid varchar(100),password varchar(100),accountType varchar(20),constraint primary key(uid));	
+create table student(stid int auto_increment,uid varchar(100),degid int,batchid int,student_name varchar(100),constraint primary key(stid),constraint foreign key(uid) references user(uid),constraint foreign key(degid) references degree(degid),constraint foreign key(batchid) references batch(batchid));
+create table admin(adminid int auto_increment,uid varchar(100),admin_name varchar(100),constraint primary key(adminid),constraint foreign key(uid) references user(uid));
 create table evaluation_criteria_heading(echid int,text varchar(100),constraint primary key(echid));
 create table evaluation_criteria(ecid int auto_increment,echid int,text varchar(100),constraint primary key(ecid),constraint foreign key(echid) references evaluation_criteria_heading(echid));
 create table semester(semid int auto_increment,text varchar(100),constraint primary key(semid));
@@ -29,13 +31,25 @@ VALUES
 
 INSERT INTO `studentfeedback`.`user`
 (`uid`,
-`degid`,
-`batchid`,
-`username`,
 `password`,
 `accountType`)
 VALUES
-('abc123',1,1,'Amal Silva','123','student'),('abc456',2,2,'Sunil Perera','456','student');
+('IT123','123','student'),('IT456','456','student'),('ADMIN789','789','admin');
+
+INSERT INTO `studentfeedback`.`student`
+(`uid`,
+`degid`,
+`batchid`,
+`student_name`)
+VALUES
+('IT123',1,1,'Amal Silva'),('IT456',2,2,'Kamal Silva');
+
+INSERT INTO `studentfeedback`.`admin`
+(`uid`,
+`admin_name`)
+VALUES
+('ADMIN789','Nimal Silva');
+
 
 INSERT INTO `studentfeedback`.`evaluation_criteria_heading`
 (`echid`,
@@ -123,4 +137,8 @@ FROM `studentfeedback`.`batch`;
 
 select f.name,d.name from user u,faculty f,degree d where f.facid=d.facid && d.degid=u.degid && u.uid='abc123';
 
+select year(curdate())-year(b.intake),month(curdate())-month(b.intake) from student s,batch b,user u where s.batchid=b.batchid && u.uid=s.uid && s.uid='IT123';
+
 select month(curdate())-month('2020-04-03');
+
+select text from semester where semid=2;

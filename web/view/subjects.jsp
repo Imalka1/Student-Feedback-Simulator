@@ -1,59 +1,54 @@
-<%@ page import="db.DBConnection" %>
-<%@ page import="java.sql.Connection" %>
-<%@ page import="java.sql.Statement" %>
-<%@ page import="java.sql.ResultSet" %>
-<%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="controller.db_controller.*" %>
 <%@ page import="model.*" %>
 <%@ page import="java.util.ArrayList" %>
+
+<jsp:include page="header.jsp"/>
 <%
-    String logout = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/logout";
     HttpSession sessionLogin = request.getSession(false);
     if (sessionLogin != null) {
         if (sessionLogin.getAttribute("uid") == null) {
 //            response.sendRedirect("index.jsp");
 %>
-<jsp:forward page="index.jsp"/>
+<jsp:forward page="../index.jsp"/>
 <%
         }
     }
     DegreeDTO degreeDTO;
     SemesterDTO semesterDTO;
 %>
-<jsp:include page="header.jsp"/>
 
-<body id="page-top">
+<%--<body id="page-top">--%>
 
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-    <div class="container">
-        <a class="navbar-brand js-scroll-trigger">Student Feedback Form</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                aria-label="Toggle navigation">
-            Menu
-            <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav text-uppercase ml-auto">
-                <form action="logout" method="post">
-                    <li class="nav-item">
-                        <a id="btnLogout" class="js-scroll-trigger" href="<%= logout%>"
-                           style="cursor: pointer;font-family: Montserrat,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';text-decoration: none;color: white">
-                            Logout
-                            <%--<i class="fa fa-sign-out" style="margin-left: 20px"></i>--%>
-                        </a>
-                    </li>
-                </form>
-            </ul>
-        </div>
-    </div>
-</nav>
+<%--<!-- Navigation -->--%>
+<%--<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">--%>
+    <%--<div class="container">--%>
+        <%--<a class="navbar-brand js-scroll-trigger">Student Feedback Form</a>--%>
+        <%--<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"--%>
+                <%--data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"--%>
+                <%--aria-label="Toggle navigation">--%>
+            <%--Menu--%>
+            <%--<i class="fas fa-bars"></i>--%>
+        <%--</button>--%>
+        <%--<div class="collapse navbar-collapse" id="navbarResponsive">--%>
+            <%--<ul class="navbar-nav text-uppercase ml-auto">--%>
+                <%--<form action="logout" method="post">--%>
+                    <%--<li class="nav-item">--%>
+                        <%--<a id="btnLogout" class="js-scroll-trigger" href="<%= logout%>"--%>
+                           <%--style="cursor: pointer;font-family: Montserrat,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';text-decoration: none;color: white">--%>
+                            <%--Logout--%>
+                            <%--&lt;%&ndash;<i class="fa fa-sign-out" style="margin-left: 20px"></i>&ndash;%&gt;--%>
+                        <%--</a>--%>
+                    <%--</li>--%>
+                <%--</form>--%>
+            <%--</ul>--%>
+        <%--</div>--%>
+    <%--</div>--%>
+<%--</nav>--%>
 
 <!-- Header -->
 <header class="masthead">
     <div class="container">
-        <div class="intro-text">
+        <div class="intro-text" style="padding-top: 200px">
             <%
                 {
                     degreeDTO = DegreeController.getDegreeData(sessionLogin.getAttribute("uid").toString());
@@ -87,7 +82,7 @@
                  style="background-color: #ffb508;width: fit-content;color: #402901;padding: 20px;padding-left: 30px;padding-right: 30px;font-size: 18px;border-radius: 35px;margin-top: 80px;font-weight: bold">
                 <%
                     {
-                        UserDTO userDTO = UserController.getUsername(sessionLogin.getAttribute("uid").toString());
+                        UserDTO userDTO = UserController.getStudentUsername(sessionLogin.getAttribute("uid").toString());
                         if (userDTO != null) {
                 %>
                 Online - <%= userDTO.getUsername()%>

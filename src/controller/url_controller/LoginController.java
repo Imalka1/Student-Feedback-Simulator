@@ -32,9 +32,13 @@ public class LoginController extends HttpServlet {
 //                System.out.println(cookie.getName());
 //                System.out.println(cookie.getMaxAge());
 //            }
-            resp.sendRedirect("subjects.jsp");
+            if (userDTO.getAccountType().equals("student")) {
+                resp.sendRedirect("/view/subjects.jsp");
+            } else if (userDTO.getAccountType().equals("admin")) {
+                resp.sendRedirect("/view/admin/user_accounts.jsp");
+            }
         } else {
-            resp.sendRedirect("index.jsp?error=error");
+            resp.sendRedirect("/index.jsp?error=error");
         }
     }
 }

@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<jsp:include page="main_header.jsp"/>
 <%
     HttpSession sessionLogin = request.getSession(false);
     if (sessionLogin != null) {
@@ -12,13 +14,12 @@
         error = request.getParameter("error");
     }
 %>
-<jsp:include page="header.jsp"/>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 <style>
     body {
-        background-image: url("assets/img/image.jpg");
+        background-image: url("/assets/img/image.jpg");
         background-size: cover;
         background-repeat: no-repeat;
         /*background-position: center center;*/
@@ -34,7 +35,7 @@
     <div class="row1 content">
         <div class="row">
             <div class="col-12">
-                <form action="login" method="post">
+                <form action="/login" method="post">
                     <div class="row" style="margin-bottom: 60px">
                         <div class="col-12 col-center"
                              style="text-align: center;margin-top: 80px;font-size: 30px;color: #ffffff">
@@ -84,4 +85,4 @@
             </div>
         </div>
     </div>
-<jsp:include page="footer.jsp"/>
+<jsp:include page="view/footer.jsp"/>
