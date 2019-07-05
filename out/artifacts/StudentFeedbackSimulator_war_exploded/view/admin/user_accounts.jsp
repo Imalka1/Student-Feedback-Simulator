@@ -33,7 +33,7 @@
 
         </div>
     </div>
-    <div class="row" style="margin-top: 20px;text-align: center">
+    <div class="row" style="margin-top: 20px;text-align: center;font-size: 20px">
         <div class="col-1">
             Year
         </div>
@@ -98,9 +98,14 @@
         <%--</div>--%>
     </div>
 
-    <hr style="margin-top: 50px;margin-bottom: 50px">
+    <hr style="margin-top: 50px;margin-bottom: 50px;background-color: #b0b0b0">
 
     <div class="row">
+        <div class="col-12" style="font-size: 35px;text-align: center">
+            Student Configurations
+        </div>
+    </div>
+    <div class="row" style="margin-top: 50px">
         <div class="col-3">
             Registration Number :
         </div>
@@ -142,8 +147,13 @@
         </div>
     </div>
 
-    <hr style="margin-bottom: 50px">
+    <hr style="margin-bottom: 50px;background-color: #b0b0b0">
 
+    <div class="row">
+        <div class="col-12" style="font-size: 35px;text-align: center">
+            Registered Students
+        </div>
+    </div>
     <div class="row" style="margin-bottom: 50px;margin-top: 50px">
         <div class="col-12" style="padding: 0px">
             <table border="1px" style="width: 100%">
