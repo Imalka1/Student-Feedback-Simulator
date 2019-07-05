@@ -14,18 +14,19 @@
         }
     }
 %>
-<style>
-    @media (min-width: 992px) {
-        #mainNav {
-            padding-top: 0px;
-            padding-bottom: 0px;
-        }
-    }
+<%--<style>--%>
+    <%--@media (min-width: 992px) {--%>
+        <%--#mainNav {--%>
+            <%--padding-top: 0px;--%>
+            <%--padding-bottom: 0px;--%>
+        <%--}--%>
+    <%--}--%>
 
-    .padding_5_txt {
-        padding-left: 5px;
-    }
-</style>
+    <%--.padding_5_txt {--%>
+        <%--padding-left: 5px;--%>
+    <%--}--%>
+<%--</style>--%>
+
 <div style="margin-top: 80px;margin-left: 30px;margin-right: 30px">
     <div class="row">
         <div class="col-12" id="response">
@@ -43,7 +44,7 @@
             Batch
         </div>
     </div>
-    <%--<form action="" method="post">--%>
+
     <div class="row">
         <div class="col-1">
             <select class="form-control" id="year">
@@ -96,7 +97,53 @@
         <%--</div>--%>
         <%--</div>--%>
     </div>
-    <%--</form>--%>
+
+    <hr style="margin-top: 50px;margin-bottom: 50px">
+
+    <div class="row">
+        <div class="col-3">
+            Registration Number :
+        </div>
+        <div class="col-9">
+            <input class="form-control" type="text" id="regNo">
+        </div>
+    </div>
+    <div class="row" style="margin-top: 20px">
+        <div class="col-3">
+            Student Name :
+        </div>
+        <div class="col-9">
+            <input class="form-control" type="text" id="studetName">
+        </div>
+    </div>
+    <div class="row" style="margin-top: 20px">
+        <div class="col-3">
+            National ID :
+        </div>
+        <div class="col-9">
+            <input class="form-control" type="text" id="nationalId">
+        </div>
+    </div>
+    <div class="row" style="margin-top: 50px">
+        <div class="col-4">
+            <div class="col-center" style="width: fit-content;margin: auto">
+                <button id="btnAdd" class="btn" style="background-color: #ffbf05;margin-bottom: 50px">Submit</button>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="col-center" style="width: fit-content;margin: auto">
+                <button id="btnUpdate" class="btn" style="background-color: #ffbf05;margin-bottom: 50px">Update</button>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="col-center" style="width: fit-content;margin: auto">
+                <button id="btnDelete" class="btn" style="background-color: #ffbf05;margin-bottom: 50px">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <hr style="margin-bottom: 50px">
+
     <div class="row" style="margin-bottom: 50px;margin-top: 50px">
         <div class="col-12" style="padding: 0px">
             <table border="1px" style="width: 100%">
@@ -113,52 +160,8 @@
     </div>
     <div class="row" style="margin-bottom: 50px">
         <div class="col-4"><i class="fa fa-arrow-circle-left fa-3x" style="float: right;margin-right: 30px" id="decPageNo"></i></div>
-        <div class="col-4" style="text-align: center;font-size: 25px;font-weight: bold" id="pageNo"></div>
+        <div class="col-4" style="text-align: center;font-size: 30px;font-weight: bold" id="pageNo"></div>
         <div class="col-4"><i class="fa fa-arrow-circle-right fa-3x" style="margin-left: 30px" id="incPageNo"></i></div>
-    </div>
-
-    <hr>
-
-    <div class="row" style="margin-top: 50px">
-        <div class="col-4">
-            Registration Number :
-        </div>
-        <div class="col-8">
-            <input class="form-control" type="text" id="regNo">
-        </div>
-    </div>
-    <div class="row" style="margin-top: 20px">
-        <div class="col-4">
-            Student Name :
-        </div>
-        <div class="col-8">
-            <input class="form-control" type="text" id="studetName">
-        </div>
-    </div>
-    <div class="row" style="margin-top: 20px">
-        <div class="col-4">
-            National ID :
-        </div>
-        <div class="col-8">
-            <input class="form-control" type="text" id="nationalId">
-        </div>
-    </div>
-    <div class="row" style="margin-top: 100px">
-        <div class="col-4">
-            <div class="col-center" style="width: fit-content;margin: auto">
-                <button id="btnAdd" class="btn" style="background-color: #ffbf05;margin-bottom: 50px">Submit</button>
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="col-center" style="width: fit-content;margin: auto">
-                <button id="btnUpdate" class="btn" style="background-color: #ffbf05;margin-bottom: 50px">Update</button>
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="col-center" style="width: fit-content;margin: auto">
-                <button id="btnDelete" class="btn" style="background-color: #ffbf05;margin-bottom: 50px">Delete</button>
-            </div>
-        </div>
     </div>
 </div>
 </div>
