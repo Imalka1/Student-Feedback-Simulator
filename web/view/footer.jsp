@@ -7,20 +7,21 @@
 </div>
 
 <!-- Bootstrap core JavaScript -->
-<script src="../assets/js/jquery-3.2.1.min.js"></script>
-<script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/js/jquery-3.2.1.min.js"></script>
+<%--<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>--%>
 
 <!-- Plugin JavaScript -->
-<script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+<%--<script src="/assets/vendor/jquery-easing/jquery.easing.min.js"></script>--%>
 
 <!-- Contact form JavaScript -->
-<script src="../assets/js/jqBootstrapValidation.js"></script>
-<script src="../assets/js/contact_me.js"></script>
+<%--<script src="/assets/js/jqBootstrapValidation.js"></script>--%>
+<%--<script src="/assets/js/contact_me.js"></script>--%>
 
 <!-- Custom scripts for this template -->
-<script src="../assets/js/agency.min.js"></script>
-<script src="../controller/marksController.js"></script>
-<script src="../controller/subjectsController.js"></script>
+<%--<script src="/assets/js/agency.min.js"></script>--%>
+<script src="/controller/marksController.js"></script>
+<script src="/controller/subjectsController.js"></script>
+<script src="/controller/userAccountController.js"></script>
 </body>
 
 </html>

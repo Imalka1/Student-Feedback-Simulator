@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BatchController {
 
@@ -27,5 +29,44 @@ public class BatchController {
             e.printStackTrace();
         }
         return batchDTO;
+    }
+
+    public static List<BatchDTO> getYears() {
+        List<BatchDTO> batchDTOs = new ArrayList<>();
+        try {
+            Connection connection = DBConnection.getDBConnection().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("select distinct year(intake) from batch");
+            ResultSet rst = preparedStatement.executeQuery();
+            while (rst.next()) {
+                BatchDTO batchDTO = new BatchDTO();
+                batchDTO.setYear(rst.getInt(1));
+                batchDTOs.add(batchDTO);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return batchDTOs;
+    }
+
+    public static List<BatchDTO> getAllBatches() {
+        List<BatchDTO> batchDTOs = new ArrayList<>();
+        try {
+            Connection connection = DBConnection.getDBConnection().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("select batchid,name from batch");
+            ResultSet rst = preparedStatement.executeQuery();
+            while (rst.next()) {
+                BatchDTO batchDTO = new BatchDTO();
+                batchDTO.setBatchid(rst.getInt(1));
+                batchDTO.setBatchName(rst.getString(2));
+                batchDTOs.add(batchDTO);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return batchDTOs;
     }
 }

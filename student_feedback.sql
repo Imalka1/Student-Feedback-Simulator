@@ -1,18 +1,105 @@
 drop database studentfeedback;
 create database studentfeedback;
 use studentfeedback;
-create table faculty(facid int auto_increment,name varchar(100),constraint primary key(facid));
-create table degree(degid int auto_increment,facid int,name varchar(100),constraint primary key(degid),constraint foreign key(facid) references faculty(facid));
-create table batch(batchid int auto_increment,intake date,constraint primary key(batchid));
-create table user(uid varchar(100),password varchar(100),accountType varchar(20),constraint primary key(uid));	
-create table student(stid int auto_increment,uid varchar(100),degid int,batchid int,student_name varchar(100),constraint primary key(stid),constraint foreign key(uid) references user(uid),constraint foreign key(degid) references degree(degid),constraint foreign key(batchid) references batch(batchid));
-create table admin(adminid int auto_increment,uid varchar(100),admin_name varchar(100),constraint primary key(adminid),constraint foreign key(uid) references user(uid));
-create table evaluation_criteria_heading(echid int,text varchar(100),constraint primary key(echid));
-create table evaluation_criteria(ecid int auto_increment,echid int,text varchar(100),constraint primary key(ecid),constraint foreign key(echid) references evaluation_criteria_heading(echid));
-create table semester(semid int auto_increment,text varchar(100),constraint primary key(semid));
-create table lecturer(lecid varchar(100),name varchar(100),constraint primary key(lecid));
-create table subject(subid varchar(100),lecid varchar(100),degid int,semid int,title varchar(100),credits int,constraint primary key(subid),constraint foreign key(lecid) references lecturer(lecid),constraint foreign key(degid) references degree(degid),constraint foreign key(semid) references semester(semid));
-create table marks(uid varchar(100),subid varchar(100),ecid int,dateOfSubmitted date,constraint primary key(uid,subid,dateOfSubmitted),constraint foreign key(uid) references user(uid),constraint foreign key(subid) references subject(subid),constraint foreign key(ecid) references evaluation_criteria(ecid));
+
+create table faculty(
+facid int auto_increment,
+name varchar(100),
+constraint primary key(facid)
+);
+
+create table degree(
+degid int auto_increment,
+facid int,
+name varchar(100),
+constraint primary key(degid),
+constraint foreign key(facid) references faculty(facid)
+);
+
+create table batch(
+batchid int auto_increment,
+intake date,
+name varchar(100),
+constraint primary key(batchid)
+);
+
+create table user(
+uid varchar(100),
+password varchar(100),
+accountType varchar(20),
+constraint primary key(uid)
+);	
+
+create table student(
+stid int auto_increment,
+uid varchar(100),
+degid int,
+batchid int,
+student_name varchar(100),
+national_id varchar(100),
+constraint primary key(stid),
+constraint foreign key(uid) references user(uid),
+constraint foreign key(degid) references degree(degid),
+constraint foreign key(batchid) references batch(batchid)
+);
+
+create table admin(
+adminid int auto_increment,
+uid varchar(100),
+admin_name varchar(100),
+constraint primary key(adminid),
+constraint foreign key(uid) references user(uid)
+);
+
+create table evaluation_criteria_heading(
+echid int,
+text varchar(100),
+constraint primary key(echid)
+);
+
+create table evaluation_criteria(
+ecid int auto_increment,
+echid int,
+text varchar(100),
+constraint primary key(ecid),
+constraint foreign key(echid) references evaluation_criteria_heading(echid)
+);
+
+create table semester(
+semid int auto_increment,
+text varchar(100),
+constraint primary key(semid)
+);
+
+create table lecturer(
+lecid varchar(100),
+name varchar(100),
+constraint primary key(lecid)
+);
+
+create table subject(
+subid varchar(100),
+lecid varchar(100),
+degid int,
+semid int,
+title varchar(100),
+credits int,
+constraint primary key(subid),
+constraint foreign key(lecid) references lecturer(lecid),
+constraint foreign key(degid) references degree(degid),
+constraint foreign key(semid) references semester(semid)
+);
+
+create table marks(
+uid varchar(100),
+subid varchar(100),
+ecid int,
+dateOfSubmitted date,
+constraint primary key(uid,subid,dateOfSubmitted),
+constraint foreign key(uid) references user(uid),
+constraint foreign key(subid) references subject(subid),
+constraint foreign key(ecid) references evaluation_criteria(ecid)
+);
 
 INSERT INTO `studentfeedback`.`faculty`
 (`name`)
@@ -20,9 +107,10 @@ VALUES
 ('Department of Computer Science');
 
 INSERT INTO `studentfeedback`.`batch`
-(`intake`)
+(`intake`,
+`name`)
 VALUES
-('2019-01-05'),('2020-01-05');
+('2019-01-05','Year 1 Semester 1'),('2020-01-05','Year 1 Semester 2');
 
 INSERT INTO `studentfeedback`.`degree`
 (`facid`,`name`)
@@ -37,12 +125,14 @@ VALUES
 ('IT123','123','student'),('IT456','456','student'),('ADMIN789','789','admin');
 
 INSERT INTO `studentfeedback`.`student`
-(`uid`,
+(
+`uid`,
 `degid`,
 `batchid`,
-`student_name`)
+`student_name`,
+`national_id`)
 VALUES
-('IT123',1,1,'Amal Silva'),('IT456',2,2,'Kamal Silva');
+('IT123',1,1,'Amal Silva','951761150V'),('IT456',2,2,'Kamal Silva','961751150V');
 
 INSERT INTO `studentfeedback`.`admin`
 (`uid`,
@@ -142,3 +232,7 @@ select year(curdate())-year(b.intake),month(curdate())-month(b.intake) from stud
 select month(curdate())-month('2020-04-03');
 
 select text from semester where semid=2;
+
+select distinct year(intake) from batch;
+
+select uid,student_name,national_id,b.name from student s,batch b where b.batchid=s.batchid limit 0,20;

@@ -3,6 +3,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
+<%@ page import="java.util.List" %>
 
 <jsp:include page="header.jsp"/>
 <%
@@ -129,7 +130,7 @@
                 <%
                     {
                         int value = 0;
-                        ArrayList<CriteriaDTO> criteriaHeadings = CriteriaController.getCriteriaHeadings();
+                        List<CriteriaDTO> criteriaHeadings = CriteriaController.getCriteriaHeadings();
                         for (CriteriaDTO criteriaHeadDTO : criteriaHeadings) {
                 %>
                 <tr>
@@ -139,7 +140,7 @@
                 </tr>
                 <%
                     {
-                        ArrayList<CriteriaDTO> criterias = CriteriaController.getCriterias(criteriaHeadDTO.getEchid());
+                        List<CriteriaDTO> criterias = CriteriaController.getCriterias(criteriaHeadDTO.getEchid());
                         for (CriteriaDTO criteriaDTO : criterias) {
                 %>
                 <tr id="tr<%= ++value%>" class="trMarks">

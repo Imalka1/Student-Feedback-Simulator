@@ -3,10 +3,9 @@ package controller.db_controller;
 import db.DBConnection;
 import model.DegreeDTO;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DegreeController {
 
@@ -48,5 +47,25 @@ public class DegreeController {
             e.printStackTrace();
         }
         return degreeDTO;
+    }
+
+    public static List<DegreeDTO> getAllDegrees(){
+        List<DegreeDTO> degreeDTOS = new ArrayList<>();
+        try {
+            Connection connection = DBConnection.getDBConnection().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("select degid,name from degree");
+            ResultSet rst = preparedStatement.executeQuery();
+            while (rst.next()) {
+                DegreeDTO degreeDTO = new DegreeDTO();
+                degreeDTO.setDegid(rst.getInt(1));
+                degreeDTO.setDegreeName(rst.getString(2));
+                degreeDTOS.add(degreeDTO);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return degreeDTOS;
     }
 }

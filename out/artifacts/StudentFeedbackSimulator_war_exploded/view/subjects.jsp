@@ -1,6 +1,7 @@
 <%@ page import="controller.db_controller.*" %>
 <%@ page import="model.*" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
 
 <jsp:include page="header.jsp"/>
 <%
@@ -82,10 +83,10 @@
                  style="background-color: #ffb508;width: fit-content;color: #402901;padding: 20px;padding-left: 30px;padding-right: 30px;font-size: 18px;border-radius: 35px;margin-top: 80px;font-weight: bold">
                 <%
                     {
-                        UserDTO userDTO = UserController.getStudentUsername(sessionLogin.getAttribute("uid").toString());
-                        if (userDTO != null) {
+                        StudentDTO studentDTO = StudentController.getStudentUsername(sessionLogin.getAttribute("uid").toString());
+                        if (studentDTO != null) {
                 %>
-                Online - <%= userDTO.getUsername()%>
+                Online - <%= studentDTO.getStudentName()%>
                 <%
                         }
                     }
@@ -108,7 +109,7 @@
                 <ul class="timeline">
                     <%
                         {
-                            ArrayList<SubjectDTO> subjects = SubjectController.getSubjectsViaSemesterAndDegree(degreeDTO.getDegid(), semesterDTO.getSemid());
+                            List<SubjectDTO> subjects = SubjectController.getSubjectsViaSemesterAndDegree(degreeDTO.getDegid(), semesterDTO.getSemid());
                             for (SubjectDTO subjectDTO : subjects) {
                     %>
                     <li class="timeline-inverted subjects" style="cursor: pointer">

@@ -8,11 +8,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class SubjectController {
 
-    public static ArrayList<SubjectDTO> getSubjectsViaSemesterAndDegree(int degid, int semid) {
-        ArrayList<SubjectDTO> subjectDTOS = new ArrayList<>();
+    public static List<SubjectDTO> getSubjectsViaSemesterAndDegree(int degid, int semid) {
+        List<SubjectDTO> subjectDTOS = new ArrayList<>();
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("select s.subid,title,l.name,credits from subject s,lecturer l where l.lecid=s.lecid && degid=? && semid=?");

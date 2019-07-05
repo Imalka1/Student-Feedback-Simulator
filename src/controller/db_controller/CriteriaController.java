@@ -5,11 +5,12 @@ import model.CriteriaDTO;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class CriteriaController {
 
-    public static ArrayList<CriteriaDTO> getCriteriaHeadings() {
-        ArrayList<CriteriaDTO> criteriaDTOS = new ArrayList<>();
+    public static List<CriteriaDTO> getCriteriaHeadings() {
+        List<CriteriaDTO> criteriaDTOS = new ArrayList<>();
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();
             Statement createStatement = connection.createStatement();
@@ -28,8 +29,8 @@ public class CriteriaController {
         return criteriaDTOS;
     }
 
-    public static ArrayList<CriteriaDTO> getCriterias(int echid) {
-        ArrayList<CriteriaDTO> criteriaDTOS = new ArrayList<>();
+    public static List<CriteriaDTO> getCriterias(int echid) {
+        List<CriteriaDTO> criteriaDTOS = new ArrayList<>();
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("select ecid,text from evaluation_criteria where echid=?");

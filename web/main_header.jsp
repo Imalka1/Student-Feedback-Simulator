@@ -21,7 +21,7 @@
     <!-- Custom styles for this template -->
     <link href="/assets/css/agency.min.css" rel="stylesheet">
     <%--<meta name="viewport" content="width=device-width, initial-scale=1">--%>
-    <link rel="stylesheet" href="assets/font-awesome/latest/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/font-awesome/latest/css/font-awesome.min.css">
     <title>$Title$</title>
     <script src="/assets/js/jquery-3.2.1.min.js"></script>
     <style>

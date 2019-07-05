@@ -17,7 +17,7 @@
 <body id="page-top">
 <div class="box">
     <div class="row1 content">
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style="background-color: #232323">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style="background-color: rgba(35,35,35,0.81)">
             <div class="container">
                 <a class="navbar-brand js-scroll-trigger">Student Feedback Form</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
