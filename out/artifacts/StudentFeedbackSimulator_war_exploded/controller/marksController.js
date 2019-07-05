@@ -41,5 +41,7 @@ $('#btnSubmit').click(function () {
 })
 
 $('#backBtn').click(function () {
-    document.location.href = "subjects.jsp";
+    if(window.location.pathname=='/view/mark_sheet.jsp'){
+        document.location.href = "subjects.jsp";
+    }
 })
