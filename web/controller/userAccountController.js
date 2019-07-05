@@ -52,8 +52,6 @@ function loadStudents() {
                         '                    </td>\n' +
                         '                    <td style="text-align: center">' + obj.Students[i].NationalId +
                         '                    </td>\n' +
-                        '                    <td style="text-align: center">' + obj.Students[i].BatchName +
-                        '                    </td>\n' +
                         '                    <td style="text-align: center"><i class="fa fa-search"></i>\n' +
                         '                    </td>\n' +
                         '                </tr>'

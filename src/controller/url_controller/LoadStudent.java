@@ -30,7 +30,6 @@ public class LoadStudent extends HttpServlet {
             studentJson.put("RegId", studentDTO.getUid());
             studentJson.put("StudentName", studentDTO.getStudentName());
             studentJson.put("NationalId", studentDTO.getNationalId());
-            studentJson.put("BatchName", studentDTO.getBatchName());
             studentsJson.add(studentJson);
         }
         obj.put("Students",studentsJson);

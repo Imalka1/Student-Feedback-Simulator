@@ -34,7 +34,7 @@ public class StudentController {
         List<StudentDTO> studentDTOS = new ArrayList<>();
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("select uid,student_name,national_id,b.name from student s,batch b,degree d where b.batchid=s.batchid && d.degid=s.degid && d.degid=? && b.batchid=? && year(b.intake)=? limit ?,50 ");
+            PreparedStatement preparedStatement = connection.prepareStatement("select uid,student_name,national_id from student s,batch b,degree d where b.batchid=s.batchid && d.degid=s.degid && d.degid=? && b.batchid=? && year(b.intake)=? limit ?,50 ");
             preparedStatement.setObject(1, degid);
             preparedStatement.setObject(2, batchid);
             preparedStatement.setObject(3, year);
@@ -45,7 +45,6 @@ public class StudentController {
                 studentDTO.setUid(rst.getString(1));
                 studentDTO.setStudentName(rst.getString(2));
                 studentDTO.setNationalId(rst.getString(3));
-                studentDTO.setBatchName(rst.getString(4));
                 studentDTOS.add(studentDTO);
             }
         } catch (SQLException e) {

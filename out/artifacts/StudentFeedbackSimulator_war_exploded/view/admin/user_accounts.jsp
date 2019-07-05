@@ -31,11 +31,11 @@
 </style>
 <div style="margin-top: 80px;margin-left: 30px;margin-right: 30px;">
     <div class="row" style="margin-top: 20px;text-align: center">
-        <div class="col-8">
-            Degree
-        </div>
-        <div class="col-2">
+        <div class="col-1">
             Year
+        </div>
+        <div class="col-9">
+            Degree
         </div>
         <div class="col-2">
             Batch
@@ -43,22 +43,7 @@
     </div>
     <%--<form action="" method="post">--%>
     <div class="row">
-        <div class="col-8">
-            <select class="form-control" id="degree">
-                <%
-                    {
-                        List<DegreeDTO> allDegrees = DegreeController.getAllDegrees();
-                        for (DegreeDTO degreeDTO : allDegrees) {
-                %>
-                <option value="<%= degreeDTO.getDegid()%>"><%= degreeDTO.getDegreeName()%>
-                </option>
-                <%
-                        }
-                    }
-                %>
-            </select>
-        </div>
-        <div class="col-2">
+        <div class="col-1">
             <select class="form-control" id="year">
                 <%
                     {
@@ -66,6 +51,21 @@
                         for (BatchDTO batchDTO : years) {
                 %>
                 <option value="<%= batchDTO.getYear()%>"><%= batchDTO.getYear()%>
+                </option>
+                <%
+                        }
+                    }
+                %>
+            </select>
+        </div>
+        <div class="col-9">
+            <select class="form-control" id="degree">
+                <%
+                    {
+                        List<DegreeDTO> allDegrees = DegreeController.getAllDegrees();
+                        for (DegreeDTO degreeDTO : allDegrees) {
+                %>
+                <option value="<%= degreeDTO.getDegid()%>"><%= degreeDTO.getDegreeName()%>
                 </option>
                 <%
                         }
@@ -100,42 +100,22 @@
             <table border="1px" style="width: 100%">
                 <tr>
                     <th width="20%" style="text-align: center">Registration Number</th>
-                    <th width="45%" style="text-align: center">Student Name</th>
-                    <th width="15%" style="text-align: center">Batch</th>
+                    <th width="60%" style="text-align: center">Student Name</th>
                     <th width="15%" style="text-align: center">National ID</th>
                     <th width="5%" style="text-align: center">View</th>
                 </tr>
                 <tbody id="studentsDataBody">
-                <%--<%--%>
-                    <%--{--%>
-                        <%--List<StudentDTO> allStudents = StudentController.getAllStudents(0);--%>
-                        <%--for (StudentDTO studentDTO : allStudents) {--%>
-                <%--%>--%>
-                <%--<tr>--%>
-                    <%--<td style="text-align: center"><%= studentDTO.getUid()%>--%>
-                    <%--</td>--%>
-                    <%--<td style="padding-left: 5px"><%= studentDTO.getStudentName()%>--%>
-                    <%--</td>--%>
-                    <%--<td style="text-align: center"><%= studentDTO.getBatchName()%>--%>
-                    <%--</td>--%>
-                    <%--<td style="text-align: center"><%= studentDTO.getNationalId()%>--%>
-                    <%--</td>--%>
-                    <%--<td style="text-align: center"><i class="fa fa-search"></i>--%>
-                    <%--</td>--%>
-                <%--</tr>--%>
-                <%--<%--%>
-                        <%--}--%>
-                    <%--}--%>
-                <%--%>--%>
                 </tbody>
             </table>
         </div>
     </div>
-    <div class="row">
+    <div class="row" style="margin-bottom: 50px">
         <div class="col-4"><i class="fa fa-arrow-circle-left fa-3x" style="float: right;margin-right: 30px" id="decPageNo"></i></div>
         <div class="col-4" style="text-align: center;font-size: 20px;font-weight: bold" id="pageNo"></div>
         <div class="col-4"><i class="fa fa-arrow-circle-right fa-3x" style="margin-left: 30px" id="incPageNo"></i></div>
     </div>
+
+    <hr>
 
     <div class="row" style="margin-top: 50px">
         <div class="col-4">
@@ -162,12 +142,17 @@
         </div>
     </div>
     <div class="row" style="margin-top: 100px">
-        <div class="col-6">
+        <div class="col-4">
             <div class="col-center" style="width: fit-content;margin: auto">
-                <button id="btnSubmit" class="btn" style="background-color: #ffbf05;margin-bottom: 50px">Submit</button>
+                <button id="btnAdd" class="btn" style="background-color: #ffbf05;margin-bottom: 50px">Submit</button>
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-4">
+            <div class="col-center" style="width: fit-content;margin: auto">
+                <button id="btnUpdate" class="btn" style="background-color: #ffbf05;margin-bottom: 50px">Update</button>
+            </div>
+        </div>
+        <div class="col-4">
             <div class="col-center" style="width: fit-content;margin: auto">
                 <button id="btnDelete" class="btn" style="background-color: #ffbf05;margin-bottom: 50px">Delete</button>
             </div>
