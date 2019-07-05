@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class SemesterController {
 
-    public static SemesterDTO getSemesterName(SemesterDTO semesterDTO) {
+    public SemesterDTO getSemesterName(SemesterDTO semesterDTO) {
         SemesterDTO semDTO = new SemesterDTO();
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();

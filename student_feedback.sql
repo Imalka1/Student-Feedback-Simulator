@@ -235,4 +235,4 @@ select text from semester where semid=2;
 
 select distinct year(intake) from batch;
 
-select uid,student_name,national_id,b.name from student s,batch b where b.batchid=s.batchid limit 0,20;
+select uid,student_name,national_id,b.name from student s,batch b,degree d where b.batchid=s.batchid && d.degid=s.degid && d.degid=1 && b.batchid=1 && year(b.intake)='2019' limit 0,20;

@@ -1,6 +1,5 @@
 <%@ page import="model.*" %>
 <%@ page import="controller.db_controller.*" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.util.List" %>
@@ -55,7 +54,7 @@
         <div class="col-md-8" style="border: 1px solid black;color: #747474">
             <%
                 {
-                    DegreeDTO degreeName = DegreeController.getDegreeName(sessionLogin.getAttribute("uid").toString());
+                    DegreeDTO degreeName = new DegreeController().getDegreeName(sessionLogin.getAttribute("uid").toString());
                     if (degreeName != null) {
             %>
             <%= degreeName.getDegreeName()%>
@@ -72,11 +71,11 @@
         <div class="col-md-8" style="border: 1px solid black;color: #747474">
             <%
                 {
-                    BatchDTO batchDTO = BatchController.getYearAndMonthDiff(sessionLogin.getAttribute("uid").toString());
+                    BatchDTO batchDTO = new BatchController().getYearAndMonthDiff(sessionLogin.getAttribute("uid").toString());
                     if (batchDTO != null) {
                         SemesterDTO semesterDTO = new SemesterDTO();
                         semesterDTO.setSemid((batchDTO.getYearDiff() * 12 + batchDTO.getMonthDiff()) / 6 + 1);
-                        SemesterDTO semesterName = SemesterController.getSemesterName(semesterDTO);
+                        SemesterDTO semesterName = new SemesterController().getSemesterName(semesterDTO);
                         if (semesterName != null) {
             %>
             <%= semesterName.getSemesterName()%>
@@ -94,7 +93,7 @@
         <div class="col-md-8" style="border: 1px solid black;color: #747474">
             <%
                 {
-                    SubjectDTO subjectDTO = SubjectController.getSubjectNameAndCredits(subjectId);
+                    SubjectDTO subjectDTO = new SubjectController().getSubjectNameAndCredits(subjectId);
                     if (subjectDTO != null) {
             %>
             <%= subjectDTO.getSubjectName()%> / <%= subjectId%> / <%= subjectDTO.getSubjectName()%>
@@ -130,7 +129,7 @@
                 <%
                     {
                         int value = 0;
-                        List<CriteriaDTO> criteriaHeadings = CriteriaController.getCriteriaHeadings();
+                        List<CriteriaDTO> criteriaHeadings = new CriteriaController().getCriteriaHeadings();
                         for (CriteriaDTO criteriaHeadDTO : criteriaHeadings) {
                 %>
                 <tr>
@@ -140,7 +139,7 @@
                 </tr>
                 <%
                     {
-                        List<CriteriaDTO> criterias = CriteriaController.getCriterias(criteriaHeadDTO.getEchid());
+                        List<CriteriaDTO> criterias = new CriteriaController().getCriterias(criteriaHeadDTO.getEchid());
                         for (CriteriaDTO criteriaDTO : criterias) {
                 %>
                 <tr id="tr<%= ++value%>" class="trMarks">

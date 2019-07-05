@@ -1,4 +1,4 @@
-package controller.url_controller;
+package controller.url_controller.auth;
 
 import controller.db_controller.UserController;
 import model.UserDTO;
@@ -17,7 +17,7 @@ public class LoginController extends HttpServlet {
         HttpSession sessionLogin = req.getSession(true);
         String username = req.getParameter("username");
         String password = req.getParameter("password");
-        UserDTO userDTO = UserController.chkLogin(username, password);
+        UserDTO userDTO = new UserController().chkLogin(username, password);
         if (userDTO != null) {
             sessionLogin.setAttribute("uid", userDTO.getUid());
             HttpSession ses = req.getSession();

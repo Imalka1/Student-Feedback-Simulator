@@ -9,7 +9,7 @@ import java.util.List;
 
 public class DegreeController {
 
-    public static DegreeDTO getDegreeData(String uid) {
+    public DegreeDTO getDegreeData(String uid) {
         DegreeDTO degreeDTO = null;
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();
@@ -30,7 +30,7 @@ public class DegreeController {
         return degreeDTO;
     }
 
-    public static DegreeDTO getDegreeName(String uid){
+    public DegreeDTO getDegreeName(String uid){
         DegreeDTO degreeDTO = null;
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();
@@ -49,7 +49,7 @@ public class DegreeController {
         return degreeDTO;
     }
 
-    public static List<DegreeDTO> getAllDegrees(){
+    public List<DegreeDTO> getAllDegrees(){
         List<DegreeDTO> degreeDTOS = new ArrayList<>();
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();

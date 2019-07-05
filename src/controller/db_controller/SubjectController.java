@@ -12,7 +12,7 @@ import java.util.List;
 
 public class SubjectController {
 
-    public static List<SubjectDTO> getSubjectsViaSemesterAndDegree(int degid, int semid) {
+    public List<SubjectDTO> getSubjectsViaSemesterAndDegree(int degid, int semid) {
         List<SubjectDTO> subjectDTOS = new ArrayList<>();
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();
@@ -36,7 +36,7 @@ public class SubjectController {
         return subjectDTOS;
     }
 
-    public static SubjectDTO getSubjectNameAndCredits(String subjectId) {
+    public SubjectDTO getSubjectNameAndCredits(String subjectId) {
         SubjectDTO subjectDTO = null;
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();

@@ -28,6 +28,39 @@ $('#batch').change(function () {
     loadStudents();
 })
 
+$('#regNo').keyup(function () {
+    $(this).val($(this).val().toUpperCase())
+})
+
+$('#btnAdd').click(function () {
+    $.ajax(
+        {
+            type: "post",
+            url: window.location.origin + "/add_student",
+            data: {
+                degree: $('#degree').val(),
+                year: $('#year').val(),
+                batch: $('#batch').val(),
+                regNo: $('#regNo').val(),
+                studetName: $('#studetName').val(),
+                nationalId: $('#nationalId').val()
+            },
+            success: function (response) {
+                if (JSON.parse(response)==true) {
+                    loadStudents();
+                    $('#response').html('<div class="alert alert-success" style="text-align: center;font-weight: bold">Student has been submitted successfully</div>')
+                } else {
+                    console.log(123)
+                    $('#response').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Failed to add student</div>')
+                }
+            },
+            error: function () {
+
+            }
+        }
+    );
+})
+
 function loadStudents() {
     $.ajax(
         {

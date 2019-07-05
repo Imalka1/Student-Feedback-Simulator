@@ -12,7 +12,7 @@ import java.util.List;
 
 public class BatchController {
 
-    public static BatchDTO getYearAndMonthDiff(String uid) {
+    public BatchDTO getYearAndMonthDiff(String uid) {
         BatchDTO batchDTO = new BatchDTO();
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();
@@ -31,7 +31,7 @@ public class BatchController {
         return batchDTO;
     }
 
-    public static List<BatchDTO> getYears() {
+    public List<BatchDTO> getYears() {
         List<BatchDTO> batchDTOs = new ArrayList<>();
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();
@@ -50,7 +50,7 @@ public class BatchController {
         return batchDTOs;
     }
 
-    public static List<BatchDTO> getAllBatches() {
+    public List<BatchDTO> getAllBatches() {
         List<BatchDTO> batchDTOs = new ArrayList<>();
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();

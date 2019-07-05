@@ -9,7 +9,7 @@ import java.util.List;
 
 public class CriteriaController {
 
-    public static List<CriteriaDTO> getCriteriaHeadings() {
+    public List<CriteriaDTO> getCriteriaHeadings() {
         List<CriteriaDTO> criteriaDTOS = new ArrayList<>();
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();
@@ -29,7 +29,7 @@ public class CriteriaController {
         return criteriaDTOS;
     }
 
-    public static List<CriteriaDTO> getCriterias(int echid) {
+    public List<CriteriaDTO> getCriterias(int echid) {
         List<CriteriaDTO> criteriaDTOS = new ArrayList<>();
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();

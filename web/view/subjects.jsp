@@ -1,6 +1,5 @@
 <%@ page import="controller.db_controller.*" %>
 <%@ page import="model.*" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
 
 <jsp:include page="header.jsp"/>
@@ -52,7 +51,7 @@
         <div class="intro-text" style="padding-top: 200px">
             <%
                 {
-                    degreeDTO = DegreeController.getDegreeData(sessionLogin.getAttribute("uid").toString());
+                    degreeDTO = new DegreeController().getDegreeData(sessionLogin.getAttribute("uid").toString());
                     if (degreeDTO != null) {
             %>
             <div class="intro-lead-in"><%= degreeDTO.getFacultyName()%>
@@ -65,11 +64,11 @@
             %>
             <%
                 {
-                    BatchDTO batchDTO = BatchController.getYearAndMonthDiff(sessionLogin.getAttribute("uid").toString());
+                    BatchDTO batchDTO = new BatchController().getYearAndMonthDiff(sessionLogin.getAttribute("uid").toString());
                     semesterDTO = new SemesterDTO();
                     if (batchDTO != null) {
                         semesterDTO.setSemid((batchDTO.getYearDiff() * 12 + batchDTO.getMonthDiff()) / 6 + 1);
-                        SemesterDTO semesterName = SemesterController.getSemesterName(semesterDTO);
+                        SemesterDTO semesterName = new SemesterController().getSemesterName(semesterDTO);
                         if (semesterName != null) {
             %>
             <div class="intro-lead-in" style="padding-top: 40px;color: #FFB508"><%= semesterName.getSemesterName()%>
@@ -83,7 +82,7 @@
                  style="background-color: #ffb508;width: fit-content;color: #402901;padding: 20px;padding-left: 30px;padding-right: 30px;font-size: 18px;border-radius: 35px;margin-top: 80px;font-weight: bold">
                 <%
                     {
-                        StudentDTO studentDTO = StudentController.getStudentUsername(sessionLogin.getAttribute("uid").toString());
+                        StudentDTO studentDTO = new StudentController().getStudentUsername(sessionLogin.getAttribute("uid").toString());
                         if (studentDTO != null) {
                 %>
                 Online - <%= studentDTO.getStudentName()%>
@@ -109,7 +108,7 @@
                 <ul class="timeline">
                     <%
                         {
-                            List<SubjectDTO> subjects = SubjectController.getSubjectsViaSemesterAndDegree(degreeDTO.getDegid(), semesterDTO.getSemid());
+                            List<SubjectDTO> subjects = new SubjectController().getSubjectsViaSemesterAndDegree(degreeDTO.getDegid(), semesterDTO.getSemid());
                             for (SubjectDTO subjectDTO : subjects) {
                     %>
                     <li class="timeline-inverted subjects" style="cursor: pointer">
