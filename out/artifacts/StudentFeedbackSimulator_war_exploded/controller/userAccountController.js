@@ -53,6 +53,9 @@ $('#btnAdd').click(function () {
                     console.log(123)
                     $('#response').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Failed to add student</div>')
                 }
+                setTimeout(function() {
+                    $('#response').html('');
+                }, 3000);
             },
             error: function () {
 
