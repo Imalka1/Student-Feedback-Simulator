@@ -32,6 +32,24 @@ $('#regNo').keyup(function () {
     $(this).val($(this).val().toUpperCase())
 })
 
+$('#btnNewStudent').click(function () {
+    $('#regNo').val('')
+    $('#studetName').val('')
+    $('#nationalId').val('')
+    $('#btnAdd').prop("disabled",false);
+    $('#btnUpdate').prop("disabled",true);
+    $('#btnDelete').prop("disabled",true);
+})
+
+$(document).on('click', '.btnViewStudent', function () {
+    $('#regNo').val($(this).parent().children().eq(0).html())
+    $('#studetName').val($(this).parent().children().eq(1).html())
+    $('#nationalId').val($(this).parent().children().eq(2).html())
+    $('#btnAdd').prop("disabled",true);
+    $('#btnUpdate').prop("disabled",false);
+    $('#btnDelete').prop("disabled",false);
+})
+
 $('#btnAdd').click(function () {
     $.ajax(
         {
@@ -46,13 +64,44 @@ $('#btnAdd').click(function () {
                 nationalId: $('#nationalId').val()
             },
             success: function (response) {
-                if (JSON.parse(response)==true) {
+                if (JSON.parse(response) == true) {
                     loadStudents();
                     $('#response').html('<div class="alert alert-success" style="text-align: center;font-weight: bold">Student has been submitted successfully</div>')
                 } else {
                     $('#response').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Failed to add student</div>')
                 }
-                setTimeout(function() {
+                setTimeout(function () {
+                    $('#response').html('');
+                }, 3000);
+            },
+            error: function () {
+
+            }
+        }
+    );
+})
+
+$('#btnUpdate').click(function () {
+    $.ajax(
+        {
+            type: "post",
+            url: window.location.origin + "/update_student",
+            data: {
+                degree: $('#degree').val(),
+                year: $('#year').val(),
+                batch: $('#batch').val(),
+                regNo: $('#regNo').val(),
+                studetName: $('#studetName').val(),
+                nationalId: $('#nationalId').val()
+            },
+            success: function (response) {
+                if (JSON.parse(response) == true) {
+                    loadStudents();
+                    $('#response').html('<div class="alert alert-success" style="text-align: center;font-weight: bold">Student has been submitted successfully</div>')
+                } else {
+                    $('#response').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Failed to add student</div>')
+                }
+                setTimeout(function () {
                     $('#response').html('');
                 }, 3000);
             },
@@ -87,7 +136,7 @@ function loadStudents() {
                         '                    </td>\n' +
                         '                    <td style="text-align: center">' + obj.Students[i].NationalId +
                         '                    </td>\n' +
-                        '                    <td style="text-align: center"><i class="fa fa-search"></i>\n' +
+                        '                    <td class="btnViewStudent" style="text-align: center;cursor: pointer"><i class="fa fa-search"></i>\n' +
                         '                    </td>\n' +
                         '                </tr>'
                 }

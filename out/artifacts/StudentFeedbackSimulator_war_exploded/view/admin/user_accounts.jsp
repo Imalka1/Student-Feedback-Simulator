@@ -101,16 +101,25 @@
     <hr style="margin-top: 50px;margin-bottom: 50px;background-color: #b0b0b0">
 
     <div class="row">
-        <div class="col-12" style="font-size: 35px;text-align: center">
+        <div class="col-12" style="font-size: 32px;text-align: center">
             Student Configurations
         </div>
     </div>
-    <div class="row" style="margin-top: 50px">
+    <div class="row" style="margin-top: 50px;font-size: 12px">
+        <div class="col-3"></div>
+        <div class="col-9">
+            (The registration number cannot be updated)
+        </div>
+    </div>
+    <div class="row">
         <div class="col-3">
             Registration Number :
         </div>
-        <div class="col-9">
+        <div class="col-7">
             <input class="form-control" type="text" id="regNo">
+        </div>
+        <div class="col-2">
+            <button id="btnNewStudent" class="btn" style="background-color: #ffbf05;width: 100%">Click for new student</button>
         </div>
     </div>
     <div class="row" style="margin-top: 20px">
@@ -137,12 +146,12 @@
         </div>
         <div class="col-4">
             <div class="col-center" style="width: fit-content;margin: auto">
-                <button id="btnUpdate" class="btn" style="background-color: #ffbf05;margin-bottom: 50px">Update</button>
+                <button id="btnUpdate" class="btn" style="background-color: #ffbf05;margin-bottom: 50px" disabled>Update</button>
             </div>
         </div>
         <div class="col-4">
             <div class="col-center" style="width: fit-content;margin: auto">
-                <button id="btnDelete" class="btn" style="background-color: #ffbf05;margin-bottom: 50px">Delete</button>
+                <button id="btnDelete" class="btn" style="background-color: #ffbf05;margin-bottom: 50px" disabled>Delete</button>
             </div>
         </div>
     </div>
@@ -150,7 +159,7 @@
     <hr style="margin-bottom: 50px;background-color: #b0b0b0">
 
     <div class="row">
-        <div class="col-12" style="font-size: 35px;text-align: center">
+        <div class="col-12" style="font-size: 32px;text-align: center">
             Registered Students
         </div>
     </div>
