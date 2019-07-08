@@ -93,4 +93,40 @@ public class StudentController {
         }
         return false;
     }
+
+    public boolean updateStudent(StudentDTO studentDTO) {
+        try {
+            Connection connection = DBConnection.getDBConnection().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("update student set degid=?,batchid=?,student_name=?,national_id=? where uid=?");
+            preparedStatement.setObject(1, studentDTO.getDegId());
+            preparedStatement.setObject(2, studentDTO.getBatchId());
+            preparedStatement.setObject(3, studentDTO.getStudentName());
+            preparedStatement.setObject(4, studentDTO.getNationalId());
+            preparedStatement.setObject(5, studentDTO.getUid());
+            if (preparedStatement.executeUpdate() > 0) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean deleteStudent(StudentDTO studentDTO) {
+        try {
+            Connection connection = DBConnection.getDBConnection().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("delete from user where uid=?");
+            preparedStatement.setObject(1, studentDTO.getUid());
+            if (preparedStatement.executeUpdate() > 0) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

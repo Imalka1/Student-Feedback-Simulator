@@ -13,7 +13,7 @@ degid int auto_increment,
 facid int,
 name varchar(100),
 constraint primary key(degid),
-constraint foreign key(facid) references faculty(facid)
+constraint foreign key(facid) references faculty(facid) on delete cascade
 );
 
 create table batch(
@@ -38,9 +38,9 @@ batchid int,
 student_name varchar(100),
 national_id varchar(100),
 constraint primary key(stid),
-constraint foreign key(uid) references user(uid),
-constraint foreign key(degid) references degree(degid),
-constraint foreign key(batchid) references batch(batchid)
+constraint foreign key(uid) references user(uid) on delete cascade,
+constraint foreign key(degid) references degree(degid) on delete cascade,
+constraint foreign key(batchid) references batch(batchid) on delete cascade
 );
 
 create table admin(
@@ -48,7 +48,7 @@ adminid int auto_increment,
 uid varchar(100),
 admin_name varchar(100),
 constraint primary key(adminid),
-constraint foreign key(uid) references user(uid)
+constraint foreign key(uid) references user(uid) on delete cascade
 );
 
 create table evaluation_criteria_heading(
@@ -62,7 +62,7 @@ ecid int auto_increment,
 echid int,
 text varchar(100),
 constraint primary key(ecid),
-constraint foreign key(echid) references evaluation_criteria_heading(echid)
+constraint foreign key(echid) references evaluation_criteria_heading(echid) on delete cascade
 );
 
 create table semester(
@@ -85,9 +85,9 @@ semid int,
 title varchar(100),
 credits int,
 constraint primary key(subid),
-constraint foreign key(lecid) references lecturer(lecid),
-constraint foreign key(degid) references degree(degid),
-constraint foreign key(semid) references semester(semid)
+constraint foreign key(lecid) references lecturer(lecid) on delete cascade,
+constraint foreign key(degid) references degree(degid) on delete cascade,
+constraint foreign key(semid) references semester(semid) on delete cascade
 );
 
 create table marks(
@@ -96,9 +96,9 @@ subid varchar(100),
 ecid int,
 dateOfSubmitted date,
 constraint primary key(uid,subid,dateOfSubmitted),
-constraint foreign key(uid) references user(uid),
-constraint foreign key(subid) references subject(subid),
-constraint foreign key(ecid) references evaluation_criteria(ecid)
+constraint foreign key(uid) references user(uid) on delete cascade,
+constraint foreign key(subid) references subject(subid) on delete cascade,
+constraint foreign key(ecid) references evaluation_criteria(ecid) on delete cascade
 );
 
 INSERT INTO `studentfeedback`.`faculty`

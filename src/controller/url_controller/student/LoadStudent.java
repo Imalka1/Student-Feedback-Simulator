@@ -18,10 +18,10 @@ import java.util.List;
 public class LoadStudent extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int degree = Integer.parseInt(req.getParameter("degree"));
-        int year = Integer.parseInt(req.getParameter("year"));
-        int batch = Integer.parseInt(req.getParameter("batch"));
-        int pageNo = Integer.parseInt(req.getParameter("page_no"));
+        int degree = Integer.parseInt(req.getParameter("degree").trim());
+        int year = Integer.parseInt(req.getParameter("year").trim());
+        int batch = Integer.parseInt(req.getParameter("batch").trim());
+        int pageNo = Integer.parseInt(req.getParameter("page_no").trim());
         List<StudentDTO> allStudents = new StudentController().getAllStudents(degree, batch, year, pageNo);
         JSONObject obj = new JSONObject();
         JSONArray studentsJson = new JSONArray();

@@ -141,7 +141,7 @@
     <div class="row" style="margin-top: 50px">
         <div class="col-4">
             <div class="col-center" style="width: fit-content;margin: auto">
-                <button id="btnAdd" class="btn" style="background-color: #ffbf05;margin-bottom: 50px">Submit</button>
+                <button id="btnAdd" class="btn" style="background-color: #ffbf05;margin-bottom: 50px" disabled>Submit</button>
             </div>
         </div>
         <div class="col-4">

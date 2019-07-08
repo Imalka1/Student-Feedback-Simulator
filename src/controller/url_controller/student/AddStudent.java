@@ -15,11 +15,11 @@ import java.io.PrintWriter;
 public class AddStudent extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int degree = Integer.parseInt(req.getParameter("degree"));
-        int batch = Integer.parseInt(req.getParameter("batch"));
-        String regNo = req.getParameter("regNo");
-        String studetName = req.getParameter("studetName");
-        String nationalId = req.getParameter("nationalId");
+        int degree = Integer.parseInt(req.getParameter("degree").trim());
+        int batch = Integer.parseInt(req.getParameter("batch").trim());
+        String regNo = req.getParameter("regNo").trim();
+        String studetName = req.getParameter("studetName").trim();
+        String nationalId = req.getParameter("nationalId").trim();
         StudentDTO studentDTO = new StudentDTO();
         studentDTO.setUid(regNo);
         studentDTO.setStudentName(studetName);
@@ -33,6 +33,5 @@ public class AddStudent extends HttpServlet {
         } else {
             writer.println(false);
         }
-
     }
 }

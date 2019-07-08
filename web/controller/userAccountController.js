@@ -33,21 +33,27 @@ $('#regNo').keyup(function () {
 })
 
 $('#btnNewStudent').click(function () {
-    $('#regNo').val('')
-    $('#studetName').val('')
-    $('#nationalId').val('')
-    $('#btnAdd').prop("disabled",false);
-    $('#btnUpdate').prop("disabled",true);
-    $('#btnDelete').prop("disabled",true);
+    setTextFieldsEmpty();
+    setFieldsToNewStudent();
 })
 
 $(document).on('click', '.btnViewStudent', function () {
     $('#regNo').val($(this).parent().children().eq(0).html())
     $('#studetName').val($(this).parent().children().eq(1).html())
     $('#nationalId').val($(this).parent().children().eq(2).html())
-    $('#btnAdd').prop("disabled",true);
-    $('#btnUpdate').prop("disabled",false);
-    $('#btnDelete').prop("disabled",false);
+    setFieldsToExistingStudent();
+})
+
+$('#regNo').keyup(function () {
+    validateSubmission();
+})
+
+$('#studetName').keyup(function () {
+    validateSubmission();
+})
+
+$('#nationalId').keyup(function () {
+    validateSubmission();
 })
 
 $('#btnAdd').click(function () {
@@ -97,9 +103,36 @@ $('#btnUpdate').click(function () {
             success: function (response) {
                 if (JSON.parse(response) == true) {
                     loadStudents();
-                    $('#response').html('<div class="alert alert-success" style="text-align: center;font-weight: bold">Student has been submitted successfully</div>')
+                    $('#response').html('<div class="alert alert-success" style="text-align: center;font-weight: bold">Student has been updated successfully</div>')
                 } else {
-                    $('#response').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Failed to add student</div>')
+                    $('#response').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Failed to update student</div>')
+                }
+                setTimeout(function () {
+                    $('#response').html('');
+                }, 3000);
+            },
+            error: function () {
+
+            }
+        }
+    );
+})
+
+$('#btnDelete').click(function () {
+    $.ajax(
+        {
+            type: "post",
+            url: window.location.origin + "/delete_student",
+            data: {
+                regNo: $('#regNo').val()
+            },
+            success: function (response) {
+                if (JSON.parse(response) == true) {
+                    loadStudents();
+                    $('#response').html('<div class="alert alert-success" style="text-align: center;font-weight: bold">Student has been deleted successfully</div>');
+                    setTextFieldsEmpty();
+                } else {
+                    $('#response').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Failed to delete student</div>')
                 }
                 setTimeout(function () {
                     $('#response').html('');
@@ -147,4 +180,32 @@ function loadStudents() {
             }
         }
     );
+}
+
+function setTextFieldsEmpty() {
+    $('#regNo').val('')
+    $('#studetName').val('')
+    $('#nationalId').val('')
+}
+
+function setFieldsToNewStudent() {
+    $('#btnAdd').prop("disabled", true);
+    $('#btnUpdate').prop("disabled", true);
+    $('#btnDelete').prop("disabled", true);
+    $('#regNo').prop("disabled", false);
+}
+
+function setFieldsToExistingStudent() {
+    $('#btnAdd').prop("disabled", true);
+    $('#btnUpdate').prop("disabled", false);
+    $('#btnDelete').prop("disabled", false);
+    $('#regNo').prop("disabled", true);
+}
+
+function validateSubmission() {
+    if ($('#regNo').val() !== '' && $('#studetName').val() !== '' && $('#nationalId').val() != '') {
+        $('#btnAdd').prop("disabled", false);
+    } else {
+        $('#btnAdd').prop("disabled", true);
+    }
 }
