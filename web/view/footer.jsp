@@ -22,7 +22,7 @@
 <%--<script src="/assets/js/agency.min.js"></script>--%>
 <script src="/controller/marksController.js"></script>
 <script src="/controller/subjectsController.js"></script>
-<script src="/controller/userAccountController.js"></script>
+<script src="/controller/admin/userAccountController.js"></script>
 </body>
 
 </html>

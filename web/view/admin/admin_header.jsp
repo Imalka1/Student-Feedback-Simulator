@@ -1,7 +1,7 @@
 <%
     String logout = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/logout";
 %>
-<jsp:include page="../main_header.jsp"/>
+<jsp:include page="../../main_header.jsp"/>
 <style>
     @media (min-width: 992px) {
         #mainNav {
@@ -10,9 +10,9 @@
         }
     }
 
-    .padding_5_txt {
-        padding-left: 5px;
-    }
+    /*.padding_5_txt {*/
+        /*padding-left: 5px;*/
+    /*}*/
 </style>
 <body id="page-top">
 <div class="box">
@@ -26,10 +26,10 @@
                     Menu
                     <i class="fas fa-bars"></i>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
+                <div class="navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ml-auto">
                         <li class="nav-item" style="margin-right: 50px">
-                            <a class="js-scroll-trigger" id="backBtn" style="cursor: pointer;font-family: Montserrat,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';text-decoration: none;color: white">Back</a>
+                            <a class="js-scroll-trigger" id="backBtn" style="cursor: pointer;font-family: Montserrat,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';text-decoration: none;color: white">Results</a>
                         </li>
                         <form action="logout" method="post">
                             <li class="nav-item">

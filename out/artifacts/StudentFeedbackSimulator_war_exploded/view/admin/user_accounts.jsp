@@ -2,7 +2,7 @@
 <%@ page import="model.*" %>
 <%@ page import="java.util.List" %>
 
-<jsp:include page="../header.jsp"/>
+<jsp:include page="admin_header.jsp"/>
 <%
     HttpSession sessionLogin = request.getSession(false);
     if (sessionLogin != null) {
