@@ -98,6 +98,7 @@
             %>
             <%= subject.getSubjectName()%> / <%= subjectId%> / <%= subject.getCredits()%> / <%= subject.getLecturerName()%>
             <input type="hidden" id="sublecid" value="<%= subject.getSublecId()%>">
+            <input type="hidden" id="uid" value="<%= sessionLogin.getAttribute("uid")%>">
             <%
                     }
                 }

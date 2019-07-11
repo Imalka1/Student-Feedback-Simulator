@@ -17,11 +17,12 @@ public class MarkController {
             connection = DBConnection.getDBConnection().getConnection();
             connection.setAutoCommit(false);
             for (Mark mark : marks) {
-                PreparedStatement preparedStatement = connection.prepareStatement("insert into marks values (?,?,?,?)");
-                preparedStatement.setObject(1, mark.getEcid());
-                preparedStatement.setObject(2, mark.getDateOfSubmitted());
-                preparedStatement.setObject(3, mark.getSublecid());
-                preparedStatement.setObject(4, mark.getMarks());
+                PreparedStatement preparedStatement = connection.prepareStatement("insert into marks values (?,?,?,?,?)");
+                preparedStatement.setObject(1, mark.getUid());
+                preparedStatement.setObject(2, mark.getEcid());
+                preparedStatement.setObject(3, mark.getDateOfSubmitted());
+                preparedStatement.setObject(4, mark.getSublecid());
+                preparedStatement.setObject(5, mark.getMarks());
                 if (preparedStatement.executeUpdate() > 0) {
                     count++;
                 }

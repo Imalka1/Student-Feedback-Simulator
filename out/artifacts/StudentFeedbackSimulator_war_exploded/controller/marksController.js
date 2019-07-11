@@ -28,12 +28,15 @@ $('#btnSubmit').click(function () {
             type: "post",
             url: "http://" + window.location.hostname + ":8080/processMarks",
             data: {
+                uid: $('#uid').val(),
                 sublecid: $('#sublecid').val(),
                 marks: JSON.stringify(marks),
                 ecids: JSON.stringify(ecids)
             },
             success: function (response) {
-                console.log(response)
+                if (JSON.parse(response) == true) {
+                    $('#btnSubmit').prop("disabled", true);
+                }
             },
             error: function () {
 

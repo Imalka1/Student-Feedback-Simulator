@@ -99,11 +99,13 @@ constraint foreign key(lecid) references lecturer(lecid) on delete cascade
 );
 
 create table marks(
+uid varchar(100),
 ecid int,
 dateOfSubmitted date,
 sublecid int,
 marks int,
 constraint primary key(ecid,dateOfSubmitted,sublecid),
+constraint foreign key(uid) references user(uid) on delete cascade,
 constraint foreign key(sublecid) references subject_lecturer(sublecid) on delete cascade,
 constraint foreign key(ecid) references evaluation_criteria(ecid) on delete cascade
 );
@@ -250,11 +252,12 @@ select distinct year(intake) from batch;
 
 select uid,student_name,national_id,b.name from student s,batch b,degree d where b.batchid=s.batchid && d.degid=s.degid && d.degid=1 && b.batchid=1 && year(b.intake)='2019' order by uid asc limit 0,20;
 
-SELECT 
+SELECT `marks`.`uid`,
     `marks`.`ecid`,
     `marks`.`dateOfSubmitted`,
     `marks`.`sublecid`,
     `marks`.`marks`
 FROM `studentfeedback`.`marks`;
+
 
 

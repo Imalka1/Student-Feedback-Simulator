@@ -28,6 +28,7 @@ public class MarksController extends HttpServlet {
         List<Mark> marks=new ArrayList<>();
         for (int i = 0; i < jsonObjectIds.size(); i++) {
             Mark mark = new Mark();
+            mark.setUid(req.getParameter("uid"));
             mark.setSublecid(Integer.parseInt(req.getParameter("sublecid")));
             mark.setEcid(Integer.parseInt(jsonObjectIds.get(i).toString()));
             mark.setMarks(Integer.parseInt(jsonObjectMarks.get(i).toString()));
