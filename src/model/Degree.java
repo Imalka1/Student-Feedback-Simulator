@@ -1,6 +1,6 @@
 package model;
 
-public class DegreeDTO {
+public class Degree {
     private int degid;
     private int facid;
     private String facultyName;

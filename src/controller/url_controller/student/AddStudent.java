@@ -1,7 +1,7 @@
 package controller.url_controller.student;
 
 import controller.db_controller.StudentController;
-import model.StudentDTO;
+import model.Student;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,15 +20,15 @@ public class AddStudent extends HttpServlet {
         String regNo = req.getParameter("regNo").trim();
         String studetName = req.getParameter("studetName").trim();
         String nationalId = req.getParameter("nationalId").trim();
-        StudentDTO studentDTO = new StudentDTO();
-        studentDTO.setUid(regNo);
-        studentDTO.setStudentName(studetName);
-        studentDTO.setNationalId(nationalId);
-        studentDTO.setDegId(degree);
-        studentDTO.setBatchId(batch);
+        Student student = new Student();
+        student.setUid(regNo);
+        student.setStudentName(studetName);
+        student.setNationalId(nationalId);
+        student.setDegId(degree);
+        student.setBatchId(batch);
 
         PrintWriter writer = resp.getWriter();
-        if (new StudentController().addStudent(studentDTO)) {
+        if (new StudentController().addStudent(student)) {
             writer.println(true);
         } else {
             writer.println(false);

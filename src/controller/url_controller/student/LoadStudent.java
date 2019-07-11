@@ -1,7 +1,7 @@
 package controller.url_controller.student;
 
 import controller.db_controller.StudentController;
-import model.StudentDTO;
+import model.Student;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -22,14 +22,14 @@ public class LoadStudent extends HttpServlet {
         int year = Integer.parseInt(req.getParameter("year").trim());
         int batch = Integer.parseInt(req.getParameter("batch").trim());
         int pageNo = Integer.parseInt(req.getParameter("page_no").trim());
-        List<StudentDTO> allStudents = new StudentController().getAllStudents(degree, batch, year, pageNo);
+        List<Student> allStudents = new StudentController().getAllStudents(degree, batch, year, pageNo);
         JSONObject obj = new JSONObject();
         JSONArray studentsJson = new JSONArray();
-        for (StudentDTO studentDTO : allStudents) {
+        for (Student student : allStudents) {
             JSONObject studentJson = new JSONObject();
-            studentJson.put("RegId", studentDTO.getUid());
-            studentJson.put("StudentName", studentDTO.getStudentName());
-            studentJson.put("NationalId", studentDTO.getNationalId());
+            studentJson.put("RegId", student.getUid());
+            studentJson.put("StudentName", student.getStudentName());
+            studentJson.put("NationalId", student.getNationalId());
             studentsJson.add(studentJson);
         }
         obj.put("Students",studentsJson);

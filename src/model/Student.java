@@ -1,6 +1,6 @@
 package model;
 
-public class StudentDTO {
+public class Student {
     private int stid;
     private String uid;
     private int degId;

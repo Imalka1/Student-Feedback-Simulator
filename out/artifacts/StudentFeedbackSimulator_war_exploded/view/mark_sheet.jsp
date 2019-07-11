@@ -54,7 +54,7 @@
         <div class="col-md-8" style="border: 1px solid black;color: #747474">
             <%
                 {
-                    DegreeDTO degreeName = new DegreeController().getDegreeName(sessionLogin.getAttribute("uid").toString());
+                    Degree degreeName = new DegreeController().getDegreeName(sessionLogin.getAttribute("uid").toString());
                     if (degreeName != null) {
             %>
             <%= degreeName.getDegreeName()%>
@@ -71,11 +71,11 @@
         <div class="col-md-8" style="border: 1px solid black;color: #747474">
             <%
                 {
-                    BatchDTO batchDTO = new BatchController().getYearAndMonthDiff(sessionLogin.getAttribute("uid").toString());
-                    if (batchDTO != null) {
-                        SemesterDTO semesterDTO = new SemesterDTO();
-                        semesterDTO.setSemid((batchDTO.getYearDiff() * 12 + batchDTO.getMonthDiff()) / 6 + 1);
-                        SemesterDTO semesterName = new SemesterController().getSemesterName(semesterDTO);
+                    Batch batch = new BatchController().getYearAndMonthDiff(sessionLogin.getAttribute("uid").toString());
+                    if (batch != null) {
+                        Semester semester = new Semester();
+                        semester.setSemid((batch.getYearDiff() * 12 + batch.getMonthDiff()) / 6 + 1);
+                        Semester semesterName = new SemesterController().getSemesterName(semester);
                         if (semesterName != null) {
             %>
             <%= semesterName.getSemesterName()%>
@@ -88,15 +88,16 @@
     </div>
     <div class="row">
         <div class="col-md-4" style="border: 1px solid black">
-            Course Unit Title / Code / Number of credits
+            Course Unit Title / Code / Number of credits / Lecturer
         </div>
         <div class="col-md-8" style="border: 1px solid black;color: #747474">
             <%
                 {
-                    SubjectDTO subjectDTO = new SubjectController().getSubjectNameAndCredits(subjectId);
-                    if (subjectDTO != null) {
+                    Subject subject = new SubjectController().getSubjectNameAndCredits(subjectId);
+                    if (subject != null) {
             %>
-            <%= subjectDTO.getSubjectName()%> / <%= subjectId%> / <%= subjectDTO.getSubjectName()%>
+            <%= subject.getSubjectName()%> / <%= subjectId%> / <%= subject.getCredits()%> / <%= subject.getLecturerName()%>
+            <input type="hidden" id="sublecid" value="<%= subject.getSublecId()%>">
             <%
                     }
                 }
@@ -129,8 +130,8 @@
                 <%
                     {
                         int value = 0;
-                        List<CriteriaDTO> criteriaHeadings = new CriteriaController().getCriteriaHeadings();
-                        for (CriteriaDTO criteriaHeadDTO : criteriaHeadings) {
+                        List<Criteria> criteriaHeadings = new CriteriaController().getCriteriaHeadings();
+                        for (Criteria criteriaHeadDTO : criteriaHeadings) {
                 %>
                 <tr>
                     <td colspan="7" class="padding_5_txt"
@@ -139,14 +140,14 @@
                 </tr>
                 <%
                     {
-                        List<CriteriaDTO> criterias = new CriteriaController().getCriterias(criteriaHeadDTO.getEchid());
-                        for (CriteriaDTO criteriaDTO : criterias) {
+                        List<Criteria> criterias = new CriteriaController().getCriterias(criteriaHeadDTO.getEchid());
+                        for (Criteria criteria : criterias) {
                 %>
                 <tr id="tr<%= ++value%>" class="trMarks">
                     <td style="text-align: right;padding-right: 5px"><%= value%>
                     </td>
                     <td style="padding-left: 5px">
-                        <%= criteriaDTO.getCriteriaName()%><input type="hidden" value="<%= criteriaDTO.getEcid()%>">
+                        <%= criteria.getCriteriaName()%><input type="hidden" value="<%= criteria.getEcid()%>">
                     </td>
                     <td class="tdMark" style="text-align: center;cursor: pointer">5</td>
                     <td class="tdMark" style="text-align: center;cursor: pointer">4</td>

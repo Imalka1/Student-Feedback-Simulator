@@ -10,9 +10,9 @@
         }
     }
 
-    .padding_5_txt {
-        padding-left: 5px;
-    }
+    /*.padding_5_txt {*/
+        /*padding-left: 5px;*/
+    /*}*/
 </style>
 <body id="page-top">
 <div class="box">

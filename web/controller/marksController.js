@@ -22,19 +22,18 @@ $('#btnSubmit').click(function () {
             marks.push($('td.tdMark').eq(i).text());
         }
     }
-    // marks = marks.slice(0, -1);
-    // ecids = ecids.slice(0, -1);
-    console.log(JSON.stringify(marks))
+    // console.log(JSON.stringify(marks))
     $.ajax(
         {
             type: "post",
             url: "http://" + window.location.hostname + ":8080/processMarks",
             data: {
+                sublecid: $('#sublecid').val(),
                 marks: JSON.stringify(marks),
                 ecids: JSON.stringify(ecids)
             },
             success: function (response) {
-
+                console.log(response)
             },
             error: function () {
 
@@ -44,7 +43,7 @@ $('#btnSubmit').click(function () {
 })
 
 $('#backBtn').click(function () {
-    if(window.location.pathname=='/view/mark_sheet.jsp'){
+    if (window.location.pathname == '/view/mark_sheet.jsp') {
         document.location.href = "subjects.jsp";
     }
 })

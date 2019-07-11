@@ -13,8 +13,8 @@
 <%
         }
     }
-    DegreeDTO degreeDTO;
-    SemesterDTO semesterDTO;
+    Degree degree;
+    Semester semester;
 %>
 
 <%--<body id="page-top">--%>
@@ -51,12 +51,12 @@
         <div class="intro-text" style="padding-top: 200px">
             <%
                 {
-                    degreeDTO = new DegreeController().getDegreeData(sessionLogin.getAttribute("uid").toString());
-                    if (degreeDTO != null) {
+                    degree = new DegreeController().getDegreeData(sessionLogin.getAttribute("uid").toString());
+                    if (degree != null) {
             %>
-            <div class="intro-lead-in"><%= degreeDTO.getFacultyName()%>
+            <div class="intro-lead-in"><%= degree.getFacultyName()%>
             </div>
-            <div class="intro-lead-in"><%= degreeDTO.getDegreeName()%>
+            <div class="intro-lead-in"><%= degree.getDegreeName()%>
             </div>
             <%
                     }
@@ -64,11 +64,11 @@
             %>
             <%
                 {
-                    BatchDTO batchDTO = new BatchController().getYearAndMonthDiff(sessionLogin.getAttribute("uid").toString());
-                    semesterDTO = new SemesterDTO();
-                    if (batchDTO != null) {
-                        semesterDTO.setSemid((batchDTO.getYearDiff() * 12 + batchDTO.getMonthDiff()) / 6 + 1);
-                        SemesterDTO semesterName = new SemesterController().getSemesterName(semesterDTO);
+                    Batch batch = new BatchController().getYearAndMonthDiff(sessionLogin.getAttribute("uid").toString());
+                    semester = new Semester();
+                    if (batch != null) {
+                        semester.setSemid((batch.getYearDiff() * 12 + batch.getMonthDiff()) / 6 + 1);
+                        Semester semesterName = new SemesterController().getSemesterName(semester);
                         if (semesterName != null) {
             %>
             <div class="intro-lead-in" style="padding-top: 40px;color: #FFB508"><%= semesterName.getSemesterName()%>
@@ -82,10 +82,10 @@
                  style="background-color: #ffb508;width: fit-content;color: #402901;padding: 20px;padding-left: 30px;padding-right: 30px;font-size: 18px;border-radius: 35px;margin-top: 80px;font-weight: bold">
                 <%
                     {
-                        StudentDTO studentDTO = new StudentController().getStudentUsername(sessionLogin.getAttribute("uid").toString());
-                        if (studentDTO != null) {
+                        Student student = new StudentController().getStudentUsername(sessionLogin.getAttribute("uid").toString());
+                        if (student != null) {
                 %>
-                Online - <%= studentDTO.getStudentName()%>
+                Online - <%= student.getStudentName()%>
                 <%
                         }
                     }
@@ -108,8 +108,8 @@
                 <ul class="timeline">
                     <%
                         {
-                            List<SubjectDTO> subjects = new SubjectController().getSubjectsViaSemesterAndDegree(degreeDTO.getDegid(), semesterDTO.getSemid());
-                            for (SubjectDTO subjectDTO : subjects) {
+                            List<Subject> subjects = new SubjectController().getSubjectsViaSemesterAndDegree(degree.getDegid(), semester.getSemid());
+                            for (Subject subject : subjects) {
                     %>
                     <li class="timeline-inverted subjects" style="cursor: pointer">
                         <div class="timeline-image">
@@ -117,16 +117,16 @@
                         </div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4 class="subheading"><%= subjectDTO.getSubjectName()%>
+                                <h4 class="subheading"><%= subject.getSubjectName()%>
                                 </h4>
                             </div>
                             <div class="timeline-body">
-                                <input type="hidden" value="<%= subjectDTO.getSubjectId()%>">
-                                <p class="text-muted"><%= subjectDTO.getSubjectId()%>
+                                <input type="hidden" value="<%= subject.getSubjectId()%>">
+                                <p class="text-muted"><%= subject.getSubjectId()%>
                                 </p>
-                                <p class="text-muted">Lecturer - <%= subjectDTO.getLecturerName()%>
+                                <p class="text-muted">Lecturer - <%= subject.getLecturerName()%>
                                 </p>
-                                <p class="text-muted">Credits - <%= subjectDTO.getCredits()%>
+                                <p class="text-muted">Credits - <%= subject.getCredits()%>
                                 </p>
                             </div>
                         </div>

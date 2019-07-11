@@ -1,7 +1,7 @@
 package controller.url_controller.student;
 
 import controller.db_controller.StudentController;
-import model.StudentDTO;
+import model.Student;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,11 +16,11 @@ public class DeleteStudent extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String regNo = req.getParameter("regNo").trim();
-        StudentDTO studentDTO = new StudentDTO();
-        studentDTO.setUid(regNo);
+        Student student = new Student();
+        student.setUid(regNo);
 
         PrintWriter writer = resp.getWriter();
-        if (new StudentController().deleteStudent(studentDTO)) {
+        if (new StudentController().deleteStudent(student)) {
             writer.println(true);
         } else {
             writer.println(false);

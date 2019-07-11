@@ -50,10 +50,10 @@
             <select class="form-control" id="year">
                 <%
                     {
-                        List<BatchDTO> years = new BatchController().getYears();
-                        for (BatchDTO batchDTO : years) {
+                        List<Batch> years = new BatchController().getYears();
+                        for (Batch batch : years) {
                 %>
-                <option value="<%= batchDTO.getYear()%>"><%= batchDTO.getYear()%>
+                <option value="<%= batch.getYear()%>"><%= batch.getYear()%>
                 </option>
                 <%
                         }
@@ -65,10 +65,10 @@
             <select class="form-control" id="degree">
                 <%
                     {
-                        List<DegreeDTO> allDegrees = new DegreeController().getAllDegrees();
-                        for (DegreeDTO degreeDTO : allDegrees) {
+                        List<Degree> allDegrees = new DegreeController().getAllDegrees();
+                        for (Degree degree : allDegrees) {
                 %>
-                <option value="<%= degreeDTO.getDegid()%>"><%= degreeDTO.getDegreeName()%>
+                <option value="<%= degree.getDegid()%>"><%= degree.getDegreeName()%>
                 </option>
                 <%
                         }
@@ -80,10 +80,10 @@
             <select class="form-control" id="batch">
                 <%
                     {
-                        List<BatchDTO> allBatches = new BatchController().getAllBatches();
-                        for (BatchDTO batchDTO : allBatches) {
+                        List<Batch> allBatches = new BatchController().getAllBatches();
+                        for (Batch batch : allBatches) {
                 %>
-                <option value="<%= batchDTO.getBatchid()%>"><%= batchDTO.getBatchName()%>
+                <option value="<%= batch.getBatchid()%>"><%= batch.getBatchName()%>
                 </option>
                 <%
                         }

@@ -1,6 +1,6 @@
 package model;
 
-public class SemesterDTO {
+public class Semester {
     private int semid;
     private String semesterName;
 

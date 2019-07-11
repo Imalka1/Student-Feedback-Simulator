@@ -1,6 +1,6 @@
 package model;
 
-public class UserDTO {
+public class User {
     private String uid;
     private String password;
     private String accountType;

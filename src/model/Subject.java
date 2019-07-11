@@ -1,8 +1,8 @@
 package model;
 
-public class SubjectDTO {
+public class Subject {
     private String subjectId;
-    private String lecid;
+    private int sublecId;
     private int degid;
     private int semid;
     private String subjectName;
@@ -25,12 +25,12 @@ public class SubjectDTO {
         this.subjectId = subjectId;
     }
 
-    public String getLecid() {
-        return lecid;
+    public int getSublecId() {
+        return sublecId;
     }
 
-    public void setLecid(String lecid) {
-        this.lecid = lecid;
+    public void setSublecId(int sublecId) {
+        this.sublecId = sublecId;
     }
 
     public int getDegid() {

@@ -1,6 +1,6 @@
 package model;
 
-public class BatchDTO {
+public class Batch {
     private int batchid;
     private String intake;
     private int year;

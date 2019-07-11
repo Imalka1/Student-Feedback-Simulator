@@ -1,7 +1,7 @@
 package controller.db_controller;
 
 import db.DBConnection;
-import model.BatchDTO;
+import model.Batch;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,61 +12,61 @@ import java.util.List;
 
 public class BatchController {
 
-    public BatchDTO getYearAndMonthDiff(String uid) {
-        BatchDTO batchDTO = new BatchDTO();
+    public Batch getYearAndMonthDiff(String uid) {
+        Batch batch = new Batch();
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("select year(curdate())-year(b.intake),month(curdate())-month(b.intake) from student s,batch b,user u where s.batchid=b.batchid && u.uid=s.uid && s.uid=?");
             preparedStatement.setObject(1, uid);
             ResultSet rst = preparedStatement.executeQuery();
             if (rst.next()) {
-                batchDTO.setYearDiff(rst.getInt(1));
-                batchDTO.setMonthDiff(rst.getInt(2));
+                batch.setYearDiff(rst.getInt(1));
+                batch.setMonthDiff(rst.getInt(2));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return batchDTO;
+        return batch;
     }
 
-    public List<BatchDTO> getYears() {
-        List<BatchDTO> batchDTOs = new ArrayList<>();
+    public List<Batch> getYears() {
+        List<Batch> batches = new ArrayList<>();
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("select distinct year(intake) from batch");
             ResultSet rst = preparedStatement.executeQuery();
             while (rst.next()) {
-                BatchDTO batchDTO = new BatchDTO();
-                batchDTO.setYear(rst.getInt(1));
-                batchDTOs.add(batchDTO);
+                Batch batch = new Batch();
+                batch.setYear(rst.getInt(1));
+                batches.add(batch);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return batchDTOs;
+        return batches;
     }
 
-    public List<BatchDTO> getAllBatches() {
-        List<BatchDTO> batchDTOs = new ArrayList<>();
+    public List<Batch> getAllBatches() {
+        List<Batch> batches = new ArrayList<>();
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("select batchid,name from batch");
             ResultSet rst = preparedStatement.executeQuery();
             while (rst.next()) {
-                BatchDTO batchDTO = new BatchDTO();
-                batchDTO.setBatchid(rst.getInt(1));
-                batchDTO.setBatchName(rst.getString(2));
-                batchDTOs.add(batchDTO);
+                Batch batch = new Batch();
+                batch.setBatchid(rst.getInt(1));
+                batch.setBatchName(rst.getString(2));
+                batches.add(batch);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return batchDTOs;
+        return batches;
     }
 }

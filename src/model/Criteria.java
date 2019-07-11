@@ -1,6 +1,6 @@
 package model;
 
-public class CriteriaDTO {
+public class Criteria {
     private int echid;
     private int ecid;
     private String criteriaHeadingName;
