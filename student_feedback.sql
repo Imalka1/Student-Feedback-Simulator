@@ -104,7 +104,7 @@ ecid int,
 dateOfSubmitted date,
 sublecid int,
 marks int,
-constraint primary key(ecid,dateOfSubmitted,sublecid),
+constraint primary key(uid,ecid,dateOfSubmitted,sublecid),
 constraint foreign key(uid) references user(uid) on delete cascade,
 constraint foreign key(sublecid) references subject_lecturer(sublecid) on delete cascade,
 constraint foreign key(ecid) references evaluation_criteria(ecid) on delete cascade
