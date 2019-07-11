@@ -1,4 +1,5 @@
 $('.tdMark').click(function () {
+    // console.log($(this).parent())
     if ($(this).css("background-color") == "rgb(48, 118, 29)") {
         $(this).css('background-color', "rgba(0, 0, 0, 0)");
         $(this).css('color', 'black');
@@ -11,27 +12,28 @@ $('.tdMark').click(function () {
 });
 
 $('#btnSubmit').click(function () {
-    console.log($('#yearSemester option:selected').val())
-    var marks = "";
-    var ecids = "";
+    var marks = Array();
+    var ecids = Array();
     for (var i = 0; i < $('td.tdMark').length; i++) {
         if ($('td.tdMark').eq(i).css("background-color") == "rgb(48, 118, 29)") {
-            ecids += $('td.tdMark').eq(i).parent().children().eq(1).children('input').val() + ","
-            marks += $('td.tdMark').eq(i).text() + ","
+            // ecids += $('td.tdMark').eq(i).parent().children().eq(1).children('input').val() + ","
+            // marks += $('td.tdMark').eq(i).text() + ","
+            ecids.push($('td.tdMark').eq(i).parent().children().eq(1).children('input').val());
+            marks.push($('td.tdMark').eq(i).text());
         }
     }
-    marks = marks.slice(0, -1);
-    ecids = ecids.slice(0, -1);
+    // console.log(JSON.stringify(marks))
     $.ajax(
         {
             type: "post",
             url: "http://" + window.location.hostname + ":8080/processMarks",
             data: {
-                marks: marks,
-                ecids: ecids
+                sublecid: $('#sublecid').val(),
+                marks: JSON.stringify(marks),
+                ecids: JSON.stringify(ecids)
             },
             success: function (response) {
-
+                console.log(response)
             },
             error: function () {
 
@@ -41,5 +43,7 @@ $('#btnSubmit').click(function () {
 })
 
 $('#backBtn').click(function () {
-    document.location.href = "subjects.jsp";
+    if (window.location.pathname == '/view/mark_sheet.jsp') {
+        document.location.href = "subjects.jsp";
+    }
 })
