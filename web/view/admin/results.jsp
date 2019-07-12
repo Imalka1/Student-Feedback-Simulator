@@ -1,4 +1,4 @@
-<jsp:include page="admin_header.jsp"/>
+<jsp:include page="../header.jsp"/>
 <%
     String logout = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/logout";
     HttpSession sessionLogin = request.getSession(false);
