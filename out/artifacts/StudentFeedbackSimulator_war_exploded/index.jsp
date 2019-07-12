@@ -5,7 +5,7 @@
     HttpSession sessionLogin = request.getSession(false);
     if (sessionLogin != null) {
         if (sessionLogin.getAttribute("login") != null) {
-            response.sendRedirect("subjects.jsp");
+            response.sendRedirect("landing_page(student).jsp");
         }
     }
 

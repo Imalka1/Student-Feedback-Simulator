@@ -21,7 +21,8 @@
 <!-- Custom scripts for this template -->
 <%--<script src="/assets/js/agency.min.js"></script>--%>
 <script src="/controller/marksController.js"></script>
-<script src="/controller/subjectsController.js"></script>
+<script src="/controller/landingPage(student)Controller.js"></script>
+<script src="/controller/admin/landingPage(admin)Controller.js"></script>
 <script src="/controller/admin/userAccountController.js"></script>
 </body>
 
