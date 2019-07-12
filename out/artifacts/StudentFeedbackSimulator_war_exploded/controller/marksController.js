@@ -23,26 +23,41 @@ $('#btnSubmit').click(function () {
         }
     }
     // console.log(JSON.stringify(marks))
-    $.ajax(
-        {
-            type: "post",
-            url: "http://" + window.location.hostname + ":8080/processMarks",
-            data: {
-                uid: $('#uid').val(),
-                sublecid: $('#sublecid').val(),
-                marks: JSON.stringify(marks),
-                ecids: JSON.stringify(ecids)
-            },
-            success: function (response) {
-                if (JSON.parse(response) == true) {
-                    $('#btnSubmit').prop("disabled", true);
-                }
-            },
-            error: function () {
+    if (marks.length > 0) {
+        $.ajax(
+            {
+                type: "post",
+                url: "http://" + window.location.hostname + ":8080/processMarks",
+                data: {
+                    uid: $('#uid').val(),
+                    sublecid: $('#sublecid').val(),
+                    marks: JSON.stringify(marks),
+                    ecids: JSON.stringify(ecids)
+                },
+                success: function (response) {
+                    if (JSON.parse(response) == true) {
+                        $('#btnSubmit').prop("disabled", true);
+                        $('#messageBox').html('<div class="alert alert-success" style="text-align: center;font-weight: bold">Marks have been submitted successfully</div>')
+                    } else {
+                        $('#messageBox').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Failed to submit marks</div>')
+                    }
+                    setTimeout(function () {
+                        $('#messageBox').html('');
+                    }, 4000);
+                    window.scrollTo(0, 0);
+                },
+                error: function () {
 
+                }
             }
-        }
-    );
+        );
+    } else {
+        $('#messageBox').html('<div class="alert alert-warning" style="text-align: center;font-weight: bold">No marks have been selected to submit</div>');
+        setTimeout(function () {
+            $('#messageBox').html('');
+        }, 4000);
+        window.scrollTo(0, 0);
+    }
 })
 
 $('#backBtn').click(function () {

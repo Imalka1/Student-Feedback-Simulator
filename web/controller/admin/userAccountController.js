@@ -136,7 +136,7 @@ $('#btnDelete').click(function () {
                 }
                 setTimeout(function () {
                     $('#response').html('');
-                }, 3000);
+                }, 4000);
             },
             error: function () {
 
