@@ -6,6 +6,7 @@
 
 <jsp:include page="header.jsp"/>
 <%
+    String logout = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/logout";
     String subjectId = request.getParameter("subjectId");
     HttpSession sessionLogin = request.getSession(false);
     if (sessionLogin != null) {
@@ -20,19 +21,24 @@
     String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
 %>
 
-<%--<!-- Header -->--%>
-<%--<header class="masthead">--%>
-<%--<div class="container">--%>
-<%--<div class="intro-text">--%>
-<%--<div class="intro-lead-in">Department of Computer Science</div>--%>
-<%--<div class="intro-lead-in">BSc (Computer Science)</div>--%>
-<%--<div class="col-center"--%>
-<%--style="background-color: #ffb508;width: fit-content;color: #402901;padding: 20px;padding-left: 30px;padding-right: 30px;font-size: 18px;border-radius: 35px;margin-top: 80px;font-weight: bold">--%>
-<%--Online - abc@gmail.com--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--</header>--%>
+<div class="collapse navbar-collapse" id="navbarResponsive">
+    <ul class="navbar-nav text-uppercase ml-auto">
+        <li class="nav-item" style="margin-right: 50px">
+            <a class="js-scroll-trigger" style="cursor: pointer;font-family: Montserrat,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';text-decoration: none;color: white" href="subjects.jsp">Back</a>
+        </li>
+        <form action="logout" method="post">
+            <li class="nav-item">
+                <a id="btnLogout" class="js-scroll-trigger" href="<%= logout%>"
+                   style="cursor: pointer;font-family: Montserrat,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';text-decoration: none;color: white">
+                    Logout
+                    <%--<i class="fa fa-sign-out" style="margin-left: 20px"></i>--%>
+                </a>
+            </li>
+        </form>
+    </ul>
+</div>
+</div>
+</nav>
 <div style="margin-top: 80px;margin-left: 30px;margin-right: 30px;">
     <div class="row">
         <div class="col-12" style="padding: 0px" id="messageBox"></div>

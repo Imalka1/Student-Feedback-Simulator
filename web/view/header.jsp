@@ -1,6 +1,3 @@
-<%
-    String logout = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/logout";
-%>
 <jsp:include page="../main_header.jsp"/>
 <style>
     @media (min-width: 992px) {
@@ -26,21 +23,3 @@
                     Menu
                     <i class="fas fa-bars"></i>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav text-uppercase ml-auto">
-                        <li class="nav-item" style="margin-right: 50px">
-                            <a class="js-scroll-trigger" id="backBtn" style="cursor: pointer;font-family: Montserrat,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';text-decoration: none;color: white">Back</a>
-                        </li>
-                        <form action="logout" method="post">
-                            <li class="nav-item">
-                                <a id="btnLogout" class="js-scroll-trigger" href="<%= logout%>"
-                                   style="cursor: pointer;font-family: Montserrat,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';text-decoration: none;color: white">
-                                    Logout
-                                    <%--<i class="fa fa-sign-out" style="margin-left: 20px"></i>--%>
-                                </a>
-                            </li>
-                        </form>
-                    </ul>
-                </div>
-            </div>
-        </nav>
