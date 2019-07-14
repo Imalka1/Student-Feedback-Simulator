@@ -130,31 +130,33 @@ $('#btnDelete').click(function () {
 //----------------------------------------------Students Table (Start)--------------------------------------------------
 
 var pageNo = 0;
+var pagesCount = 0;
 var studentsArray;
 
 $(window).on("load", function () {
-    $('#pageNo').html(pageNo + 1);
     loadStudents();
+    $('#pageNo').html((pageNo + 1) + ' / ' + ((studentsArray.length - 1) / 10 + 1));
 });
 
 function loadStudents() {
     $.ajax(
         {
+            async: false,
             type: "post",
             url: window.location.origin + "/load_students",
             data: {
                 degree: $('#degree').val(),
                 year: $('#year').val(),
                 batch: $('#batch').val()
-                // page_no: page_no * 10
             },
             success: function (response) {
                 var obj = JSON.parse(response);
                 // console.log(obj.Students)
-                studentsArray = Array()
+                studentsArray = Array();
                 for (var i = 0; i < obj.Students.length; i++) {
                     studentsArray.push(obj.Students[i]);
                 }
+                pagesCount = (studentsArray.length - 1) / 10 + 1;
                 fillTheTable();
             },
             error: function () {
@@ -165,13 +167,15 @@ function loadStudents() {
 }
 
 $('#incPageNo').click(function () {
-    $('#pageNo').html(++pageNo + 1);
-    fillTheTable();
+    if (pageNo + 1 < pagesCount) {
+        $('#pageNo').html((++pageNo + 1) + ' / ' + pagesCount);
+        fillTheTable();
+    }
 })
 
 $('#decPageNo').click(function () {
     if (pageNo > 0) {
-        $('#pageNo').html(--pageNo + 1);
+        $('#pageNo').html((--pageNo + 1) + ' / ' + pagesCount);
         fillTheTable();
     }
 })
