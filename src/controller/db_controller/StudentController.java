@@ -31,15 +31,14 @@ public class StudentController {
         return student;
     }
 
-    public List<Student> getAllStudents(int degid, int batchid, int year, int pageNo) {
+    public List<Student> getAllStudents(int degid, int batchid, int year) {
         List<Student> students = new ArrayList<>();
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("select uid,student_name,national_id from student s,batch b,degree d where b.batchid=s.batchid && d.degid=s.degid && d.degid=? && b.batchid=? && year(b.intake)=? order by uid desc limit ?,50");
+            PreparedStatement preparedStatement = connection.prepareStatement("select uid,student_name,national_id from student s,batch b,degree d where b.batchid=s.batchid && d.degid=s.degid && d.degid=? && b.batchid=? && year(b.intake)=? order by uid desc");
             preparedStatement.setObject(1, degid);
             preparedStatement.setObject(2, batchid);
             preparedStatement.setObject(3, year);
-            preparedStatement.setObject(4, pageNo);
             ResultSet rst = preparedStatement.executeQuery();
             while (rst.next()) {
                 Student student = new Student();

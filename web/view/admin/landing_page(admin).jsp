@@ -81,7 +81,7 @@
                         </div>
                     </li>
 
-                    <li class="timeline-inverted" style="cursor: pointer" id="userAccountsPage">
+                    <li class="timeline-inverted" style="cursor: pointer" id="studentAccountsPage">
                         <div class="timeline-image">
                             <img class="rounded-circle img-fluid" alt="">
                         </div>
@@ -92,6 +92,22 @@
                             </div>
                             <div class="timeline-body">
                                 <p class="text-muted">Manage Student Accounts
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="timeline-inverted" style="cursor: pointer" id="adminAccountsPage">
+                        <div class="timeline-image">
+                            <img class="rounded-circle img-fluid" alt="">
+                        </div>
+                        <div class="timeline-panel" style="padding-top: 50px">
+                            <div class="timeline-heading">
+                                <h4 class="subheading">User Accounts (Admin)
+                                </h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p class="text-muted">Manage Admin Accounts
                                 </p>
                             </div>
                         </div>

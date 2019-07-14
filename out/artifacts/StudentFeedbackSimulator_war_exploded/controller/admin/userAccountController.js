@@ -1,21 +1,3 @@
-var page_no = 0;
-$(window).on("load", function () {
-    $('#pageNo').html(page_no + 1);
-    loadStudents();
-});
-
-$('#incPageNo').click(function () {
-    $('#pageNo').html(++page_no + 1);
-    loadStudents();
-})
-
-$('#decPageNo').click(function () {
-    if (page_no > 0) {
-        $('#pageNo').html(--page_no + 1);
-        loadStudents();
-    }
-})
-
 $('#degree').change(function () {
     loadStudents();
 })
@@ -145,6 +127,16 @@ $('#btnDelete').click(function () {
     );
 })
 
+//----------------------------------------------Students Table (Start)--------------------------------------------------
+
+var pageNo = 0;
+var studentsArray;
+
+$(window).on("load", function () {
+    $('#pageNo').html(pageNo + 1);
+    loadStudents();
+});
+
 function loadStudents() {
     $.ajax(
         {
@@ -153,27 +145,17 @@ function loadStudents() {
             data: {
                 degree: $('#degree').val(),
                 year: $('#year').val(),
-                batch: $('#batch').val(),
-                page_no: page_no * 10
+                batch: $('#batch').val()
+                // page_no: page_no * 10
             },
             success: function (response) {
                 var obj = JSON.parse(response);
-                var tableData = '';
-                console.log(obj)
+                // console.log(obj.Students)
+                studentsArray = Array()
                 for (var i = 0; i < obj.Students.length; i++) {
-                    tableData += '' +
-                        '<tr>\n' +
-                        '                    <td style="text-align: center">' + obj.Students[i].RegId +
-                        '                    </td>\n' +
-                        '                    <td style="padding-left: 5px">' + obj.Students[i].StudentName +
-                        '                    </td>\n' +
-                        '                    <td style="text-align: center">' + obj.Students[i].NationalId +
-                        '                    </td>\n' +
-                        '                    <td class="btnViewStudent" style="text-align: center;cursor: pointer"><i class="fa fa-search"></i>\n' +
-                        '                    </td>\n' +
-                        '                </tr>'
+                    studentsArray.push(obj.Students[i]);
                 }
-                $('#studentsDataBody').html(tableData);
+                fillTheTable();
             },
             error: function () {
 
@@ -181,6 +163,34 @@ function loadStudents() {
         }
     );
 }
+
+$('#incPageNo').click(function () {
+    $('#pageNo').html(++pageNo + 1);
+    fillTheTable();
+})
+
+$('#decPageNo').click(function () {
+    if (pageNo > 0) {
+        $('#pageNo').html(--pageNo + 1);
+        fillTheTable();
+    }
+})
+
+function fillTheTable() {
+    var tableData = '';
+    for (var i = pageNo * 10; i < studentsArray.length; i++) {
+        tableData +=
+            '<tr>' +
+            '<td style="text-align: center">' + studentsArray[i].RegId + '</td>' +
+            '<td style="padding-left: 5px">' + studentsArray[i].StudentName + '</td>' +
+            '<td style="text-align: center">' + studentsArray[i].NationalId + '</td>' +
+            '<td class="btnViewStudent" style="text-align: center;cursor: pointer"><i class="fa fa-search"></i></td>' +
+            '</tr>';
+    }
+    $('#studentsDataBody').html(tableData);
+}
+
+//-----------------------------------------------Students Table (End)---------------------------------------------------
 
 function setTextFieldsEmpty() {
     $('#regNo').val('')

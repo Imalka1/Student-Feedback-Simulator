@@ -15,14 +15,14 @@ import java.io.PrintWriter;
 import java.util.List;
 
 @WebServlet(urlPatterns = "/load_students")
-public class LoadStudent extends HttpServlet {
+public class LoadStudents extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int degree = Integer.parseInt(req.getParameter("degree").trim());
         int year = Integer.parseInt(req.getParameter("year").trim());
         int batch = Integer.parseInt(req.getParameter("batch").trim());
-        int pageNo = Integer.parseInt(req.getParameter("page_no").trim());
-        List<Student> allStudents = new StudentController().getAllStudents(degree, batch, year, pageNo);
+//        int pageNo = Integer.parseInt(req.getParameter("page_no").trim());
+        List<Student> allStudents = new StudentController().getAllStudents(degree, batch, year);
         JSONObject obj = new JSONObject();
         JSONArray studentsJson = new JSONArray();
         for (Student student : allStudents) {
