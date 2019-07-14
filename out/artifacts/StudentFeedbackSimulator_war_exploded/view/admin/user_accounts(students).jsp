@@ -114,8 +114,11 @@
     </div>
     <div class="row" style="margin-top: 50px;font-size: 12px">
         <div class="col-3"></div>
-        <div class="col-7">
+        <div class="col-5">
             (The registration number cannot be updated)
+        </div>
+        <div class="col-2" style="text-align: center">
+            (Search student)
         </div>
         <div class="col-2" style="text-align: center">
             (Click for a new student)
@@ -125,8 +128,11 @@
         <div class="col-3">
             Registration Number :
         </div>
-        <div class="col-7">
+        <div class="col-5">
             <input class="form-control" type="text" id="regNo">
+        </div>
+        <div class="col-2">
+            <button id="btnSearchStudent" class="btn" style="background-color: #ffbf05;width: 100%">Search student</button>
         </div>
         <div class="col-2">
             <button id="btnNewStudent" class="btn" style="background-color: #ffbf05;width: 100%">New student</button>

@@ -194,6 +194,16 @@ function fillTheTable() {
     $('#studentsDataBody').html(tableData);
 }
 
+$('#btnSearchStudent').click(function () {
+    for (var i = 0; i < studentsArray.length; i++) {
+        if ($('#regNo').val()===studentsArray[i].RegId) {
+            $('#studetName').val(studentsArray[i].StudentName)
+            $('#nationalId').val(studentsArray[i].NationalId)
+            setFieldsToExistingStudent();
+        }
+    }
+})
+
 //-----------------------------------------------Students Table (End)---------------------------------------------------
 
 function setTextFieldsEmpty() {
