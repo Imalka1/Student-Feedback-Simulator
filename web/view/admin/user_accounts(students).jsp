@@ -121,7 +121,7 @@
             (Search student)
         </div>
         <div class="col-2" style="text-align: center">
-            (Click for a new student)
+            (Click to clear fields)
         </div>
     </div>
     <div class="row">
@@ -135,7 +135,7 @@
             <button id="btnSearchStudent" class="btn" style="background-color: #ffbf05;width: 100%">Search student</button>
         </div>
         <div class="col-2">
-            <button id="btnNewStudent" class="btn" style="background-color: #ffbf05;width: 100%">New student</button>
+            <button id="btnNewStudent" class="btn" style="background-color: #ffbf05;width: 100%">Clear</button>
         </div>
     </div>
     <div class="row" style="margin-top: 20px">
