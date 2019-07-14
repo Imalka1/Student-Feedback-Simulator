@@ -41,10 +41,10 @@
         </div>
     </div>
     <div class="row" style="margin-top: 20px;text-align: center;font-size: 20px">
-        <div class="col-1">
+        <div class="col-2">
             Year
         </div>
-        <div class="col-9">
+        <div class="col-8">
             Degree
         </div>
         <div class="col-2">
@@ -53,7 +53,7 @@
     </div>
 
     <div class="row">
-        <div class="col-1">
+        <div class="col-2">
             <select class="form-control" id="year">
                 <%
                     {
@@ -68,7 +68,7 @@
                 %>
             </select>
         </div>
-        <div class="col-9">
+        <div class="col-8">
             <select class="form-control" id="degree">
                 <%
                     {
