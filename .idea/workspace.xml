@@ -129,13 +129,13 @@
           <entry key="dummy" value="1" />
           <entry key="java" value="2319" />
           <entry key="js" value="1817" />
-          <entry key="jsp" value="2021" />
+          <entry key="jsp" value="2075" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="2319" />
-          <entry key="JSP" value="2021" />
+          <entry key="JSP" value="2075" />
           <entry key="JavaScript" value="1817" />
           <entry key="PLAIN_TEXT" value="1" />
         </counts>
@@ -144,8 +144,8 @@
         <counts>
           <entry key="css" value="1" />
           <entry key="java" value="98" />
-          <entry key="js" value="26" />
-          <entry key="jsp" value="111" />
+          <entry key="js" value="28" />
+          <entry key="jsp" value="113" />
           <entry key="xml" value="2" />
         </counts>
       </usages-collector>
@@ -153,8 +153,8 @@
         <counts>
           <entry key="CSS" value="1" />
           <entry key="JAVA" value="98" />
-          <entry key="JSP" value="111" />
-          <entry key="JavaScript" value="26" />
+          <entry key="JSP" value="113" />
+          <entry key="JavaScript" value="28" />
           <entry key="XML" value="2" />
         </counts>
       </usages-collector>
@@ -173,6 +173,20 @@
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/view/student/mark_sheet.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2569">
+              <caret line="6" selection-start-line="6" selection-end-line="6" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/controller/passwordController.js">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -196,8 +210,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/view/forgot_password.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="62" column="6" selection-start-line="62" selection-start-column="6" selection-end-line="62" selection-end-column="6" />
+            <state relative-caret-position="270">
+              <caret line="53" column="65" selection-start-line="53" selection-start-column="65" selection-end-line="53" selection-end-column="65" />
               <folding>
                 <element signature="e#556#617#0#HTML" expanded="true" />
                 <element signature="e#1038#1062#0#HTML" expanded="true" />
@@ -220,14 +234,28 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/controller/student/marksController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="324">
+              <caret line="60" column="2" selection-start-line="60" selection-start-column="2" selection-end-line="60" selection-end-column="2" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
-        <option value="JavaScript File" />
         <option value="Jsp File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -244,7 +272,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/web/mark_sheet.jsp" />
         <option value="$PROJECT_DIR$/src/controller/url_controller/LogoutController.java" />
         <option value="$PROJECT_DIR$/src/controller/url_controller/LoginController.java" />
         <option value="$PROJECT_DIR$/web/header.jsp" />
@@ -294,6 +321,7 @@
         <option value="$PROJECT_DIR$/web/index.jsp" />
         <option value="$PROJECT_DIR$/web/view/header.jsp" />
         <option value="$PROJECT_DIR$/web/view/footer.jsp" />
+        <option value="$PROJECT_DIR$/web/controller/passwordController.js" />
         <option value="$PROJECT_DIR$/web/view/forgot_password.jsp" />
       </list>
     </option>
@@ -320,10 +348,10 @@
     <servers />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1433" />
-    <option name="y" value="-27" />
-    <option name="width" value="1549" />
-    <option name="height" value="837" />
+    <option name="x" value="275" />
+    <option name="y" value="-23" />
+    <option name="width" value="1378" />
+    <option name="height" value="739" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -462,7 +490,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1563192481850" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1563202763611" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/javax.mail.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -625,17 +653,17 @@
       <workItem from="1562301880794" duration="7595000" />
       <workItem from="1562320436982" duration="45536000" />
       <workItem from="1562649815943" duration="23012000" />
-      <workItem from="1562943880761" duration="32076000" />
+      <workItem from="1562943880761" duration="34746000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="333620000" />
+    <option name="totallyTimeSpent" value="336290000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1374" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14750378" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13087249" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -645,7 +673,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="0" weight="0.32907802" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32907802" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.35573772" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.30780143" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
@@ -675,7 +703,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/test.jsp" />
     <entry file="file://$PROJECT_DIR$/web/assets/css/agency.min.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="365">
@@ -1020,18 +1047,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/controller/student/marksController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="60" column="2" selection-start-line="60" selection-start-column="2" selection-end-line="60" selection-end-column="2" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/controller/admin/userAccountController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="321">
@@ -1058,24 +1073,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/view/student/mark_sheet.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" selection-start-line="6" selection-end-line="6" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/view/admin/user_accounts(students).jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="113" column="10" lean-forward="true" selection-start-line="107" selection-start-column="4" selection-end-line="113" selection-end-column="10" />
-          <folding>
-            <element signature="e#1653#1714#0#HTML" expanded="true" />
-            <element signature="e#1829#1888#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/view/footer.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1097,10 +1094,43 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/web/view/admin/user_accounts(students).jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="113" column="10" lean-forward="true" selection-start-line="107" selection-start-column="4" selection-end-line="113" selection-end-column="10" />
+          <folding>
+            <element signature="e#1653#1714#0#HTML" expanded="true" />
+            <element signature="e#1829#1888#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/controller/student/marksController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="60" column="2" selection-start-line="60" selection-start-column="2" selection-end-line="60" selection-end-column="2" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/view/student/mark_sheet.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2569">
+          <caret line="6" selection-start-line="6" selection-end-line="6" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/controller/passwordController.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/web/view/forgot_password.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="62" column="6" selection-start-line="62" selection-start-column="6" selection-end-line="62" selection-end-column="6" />
+        <state relative-caret-position="270">
+          <caret line="53" column="65" selection-start-line="53" selection-start-column="65" selection-end-line="53" selection-end-column="65" />
           <folding>
             <element signature="e#556#617#0#HTML" expanded="true" />
             <element signature="e#1038#1062#0#HTML" expanded="true" />

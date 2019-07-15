@@ -16,10 +16,10 @@
             Email Address :
         </div>
         <div class="col-7">
-            <input class="form-control" type="text" id="regNo">
+            <input class="form-control" type="text" id="emailAddress">
         </div>
         <div class="col-2">
-            <button id="btnSearchStudent" class="btn" style="background-color: #ffbf05;width: 100%">Send</button>
+            <button id="btnSendEmail" class="btn" style="background-color: #ffbf05;width: 100%">Send</button>
         </div>
     </div>
     <div class="row" style="margin-top: 20px">
@@ -27,7 +27,7 @@
             Confirmation Code :
         </div>
         <div class="col-9">
-            <input class="form-control" type="text" id="regNo">
+            <input class="form-control" type="text" id="code">
         </div>
     </div>
 
@@ -43,7 +43,7 @@
             New Password :
         </div>
         <div class="col-9">
-            <input class="form-control" type="text" id="regNo">
+            <input class="form-control" type="text" id="nPassword">
         </div>
     </div>
     <div class="row" style="margin-top: 20px">
@@ -51,12 +51,12 @@
             Confirm Password :
         </div>
         <div class="col-9">
-            <input class="form-control" type="text" id="regNo">
+            <input class="form-control" type="text" id="cPassword">
         </div>
     </div>
     <div class="row" style="margin-top: 50px;margin-bottom: 30px">
         <div class="col-2" style="float: none;margin: 0 auto">
-            <button id="btnSearchStudent" class="btn" style="background-color: #ffbf05">Reset Password</button>
+            <button id="btnResetPassword" class="btn" style="background-color: #ffbf05">Reset Password</button>
         </div>
     </div>
 </div>
