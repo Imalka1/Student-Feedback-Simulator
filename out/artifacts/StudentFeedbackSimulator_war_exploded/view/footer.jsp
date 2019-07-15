@@ -1,4 +1,4 @@
-<div class="container row1 footer">
+<div class="container footer">
     <div class="row">
         <div class="col-12">
             <hr style="margin-bottom: 10px">
@@ -20,8 +20,8 @@
 
 <!-- Custom scripts for this template -->
 <%--<script src="/assets/js/agency.min.js"></script>--%>
-<script src="/controller/marksController.js"></script>
-<script src="/controller/landingPage(student)Controller.js"></script>
+<script src="/controller/student/marksController.js"></script>
+<script src="/controller/student/landingPage(student)Controller.js"></script>
 <script src="/controller/admin/landingPage(admin)Controller.js"></script>
 <script src="/controller/admin/userAccountController.js"></script>
 </body>

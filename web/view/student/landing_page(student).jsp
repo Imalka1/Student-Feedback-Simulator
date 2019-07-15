@@ -2,7 +2,7 @@
 <%@ page import="model.*" %>
 <%@ page import="java.util.List" %>
 
-<jsp:include page="header.jsp"/>
+<jsp:include page="../header.jsp"/>
 <%
     String logout = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/logout";
     HttpSession sessionLogin = request.getSession(false);
@@ -10,7 +10,7 @@
         if (sessionLogin.getAttribute("uid") == null) {
 //            response.sendRedirect("index.jsp");
 %>
-<jsp:forward page="../index.jsp"/>
+<jsp:forward page="../../index.jsp"/>
 <%
         }
     }
@@ -133,5 +133,5 @@
         </div>
     </div>
 </section>
-<jsp:include page="footer.jsp"/>
+<jsp:include page="../footer.jsp"/>
 <!-- Footer -->

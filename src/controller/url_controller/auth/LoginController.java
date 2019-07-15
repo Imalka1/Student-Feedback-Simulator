@@ -19,7 +19,8 @@ public class LoginController extends HttpServlet {
         User user = new UserController().chkLogin(username, password);
         if (user != null) {
             sessionLogin.setAttribute("uid", user.getUid());
-            HttpSession ses = req.getSession();
+            sessionLogin.setAttribute("accountType", user.getAccountType());
+//            HttpSession ses = req.getSession();
 //            Cookie cookie = new Cookie("JSESSIONID", ses.getId());
 //            cookie.setMaxAge(60 * 60 * 24 * 365 * 10);
 //            resp.addCookie(cookie);
@@ -32,7 +33,7 @@ public class LoginController extends HttpServlet {
 //                System.out.println(cookie.getMaxAge());
 //            }
             if (user.getAccountType().equals("student")) {
-                resp.sendRedirect("/view/landing_page(student).jsp");
+                resp.sendRedirect("/view/student/landing_page(student).jsp");
             } else if (user.getAccountType().equals("admin")) {
                 resp.sendRedirect("/view/admin/landing_page(admin).jsp");
             }

@@ -10,6 +10,7 @@
         <element id="directory" name="lib">
           <element id="library" level="project" name="mysql-connector-java-5.1.23-bin" />
           <element id="library" level="project" name="json-simple-1.1.1" />
+          <element id="library" level="project" name="javax.mail" />
         </element>
       </element>
     </root>
