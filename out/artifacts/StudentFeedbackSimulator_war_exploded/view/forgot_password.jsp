@@ -27,7 +27,7 @@
             Confirmation Code :
         </div>
         <div class="col-9">
-            <input class="form-control" type="text" id="code">
+            <input class="form-control" type="text" id="confirmationCode">
         </div>
     </div>
 

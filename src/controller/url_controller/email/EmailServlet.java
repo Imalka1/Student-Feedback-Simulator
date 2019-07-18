@@ -40,7 +40,7 @@ public class EmailServlet extends HttpServlet {
             Session session = Session.getInstance(props, auth);
 
             MimeMessage msg = new MimeMessage(session);
-            msg.setText(number + "");
+            msg.setText(String.valueOf(number));
             msg.setSubject("Confirmation Code");
             msg.setFrom(new InternetAddress("webphpjava@gmail.com"));
             msg.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
