@@ -14,7 +14,7 @@ $('#regNo').keyup(function () {
     $(this).val($(this).val().toUpperCase())
 })
 
-$('#btnNewStudent').click(function () {
+$('#btnClear').click(function () {
     setTextFieldsEmpty();
     setFieldsToNewStudent();
 })
@@ -23,6 +23,7 @@ $(document).on('click', '.btnViewStudent', function () {
     $('#regNo').val($(this).parent().children().eq(0).html())
     $('#studetName').val($(this).parent().children().eq(1).html())
     $('#nationalId').val($(this).parent().children().eq(2).html())
+    $('#emailAddress').val($(this).parent().children().eq(3).html())
     setFieldsToExistingStudent();
 })
 
@@ -38,6 +39,10 @@ $('#nationalId').keyup(function () {
     validateSubmission();
 })
 
+$('#emailAddress').keyup(function () {
+    validateSubmission();
+})
+
 $('#btnAdd').click(function () {
     $.ajax(
         {
@@ -49,7 +54,8 @@ $('#btnAdd').click(function () {
                 batch: $('#batch').val(),
                 regNo: $('#regNo').val(),
                 studetName: $('#studetName').val(),
-                nationalId: $('#nationalId').val()
+                nationalId: $('#nationalId').val(),
+                emailAddress: $('#emailAddress').val()
             },
             success: function (response) {
                 if (JSON.parse(response) == true) {
@@ -80,7 +86,8 @@ $('#btnUpdate').click(function () {
                 batch: $('#batch').val(),
                 regNo: $('#regNo').val(),
                 studetName: $('#studetName').val(),
-                nationalId: $('#nationalId').val()
+                nationalId: $('#nationalId').val(),
+                emailAddress: $('#emailAddress').val()
             },
             success: function (response) {
                 if (JSON.parse(response) == true) {
@@ -188,6 +195,7 @@ function fillTheTable() {
             '<td style="text-align: center">' + studentsArray[i].RegId + '</td>' +
             '<td style="padding-left: 5px">' + studentsArray[i].StudentName + '</td>' +
             '<td style="text-align: center">' + studentsArray[i].NationalId + '</td>' +
+            '<td style="padding-left: 5px">' + studentsArray[i].EmailAddress + '</td>' +
             '<td class="btnViewStudent" style="text-align: center;cursor: pointer"><i class="fa fa-search"></i></td>' +
             '</tr>';
     }
@@ -196,8 +204,9 @@ function fillTheTable() {
 
 $('#btnSearchStudent').click(function () {
     for (var i = 0; i < studentsArray.length; i++) {
-        if ($('#regNo').val()===studentsArray[i].RegId) {
+        if ($('#regNo').val() === studentsArray[i].RegId) {
             $('#studetName').val(studentsArray[i].StudentName)
+            $('#emailAddress').val(studentsArray[i].EmailAddress)
             $('#nationalId').val(studentsArray[i].NationalId)
             setFieldsToExistingStudent();
         }
@@ -210,6 +219,7 @@ function setTextFieldsEmpty() {
     $('#regNo').val('')
     $('#studetName').val('')
     $('#nationalId').val('')
+    $('#emailAddress').val('')
 }
 
 function setFieldsToNewStudent() {
@@ -227,7 +237,7 @@ function setFieldsToExistingStudent() {
 }
 
 function validateSubmission() {
-    if ($('#regNo').val() !== '' && $('#studetName').val() !== '' && $('#nationalId').val() != '') {
+    if ($('#regNo').val() !== '' && $('#studetName').val() !== '' && $('#nationalId').val() !== '' && $('#emailAddress').val() !== '') {
         $('#btnAdd').prop("disabled", false);
     } else {
         $('#btnAdd').prop("disabled", true);

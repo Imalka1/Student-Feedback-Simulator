@@ -24,6 +24,7 @@
 <script src="/controller/student/landingPage(student)Controller.js"></script>
 <script src="/controller/admin/landingPage(admin)Controller.js"></script>
 <script src="/controller/admin/userAccountController.js"></script>
+<script src="/controller/passwordController.js"></script>
 </body>
 
 </html>

@@ -135,7 +135,7 @@
             <button id="btnSearchStudent" class="btn" style="background-color: #ffbf05;width: 100%">Search student</button>
         </div>
         <div class="col-2">
-            <button id="btnNewStudent" class="btn" style="background-color: #ffbf05;width: 100%">Clear</button>
+            <button id="btnClear" class="btn" style="background-color: #ffbf05;width: 100%">Clear</button>
         </div>
     </div>
     <div class="row" style="margin-top: 20px">
@@ -152,6 +152,14 @@
         </div>
         <div class="col-9">
             <input class="form-control" type="text" id="nationalId">
+        </div>
+    </div>
+    <div class="row" style="margin-top: 20px">
+        <div class="col-3">
+            Email Address :
+        </div>
+        <div class="col-9">
+            <input class="form-control" type="email" id="emailAddress">
         </div>
     </div>
     <div class="row" style="margin-top: 50px">
@@ -183,9 +191,10 @@
         <div class="col-12" style="padding: 0px">
             <table border="1px" style="width: 100%">
                 <tr>
-                    <th width="20%" style="text-align: center">Registration Number</th>
-                    <th width="60%" style="text-align: center">Student Name</th>
-                    <th width="15%" style="text-align: center">National ID</th>
+                    <th width="15%" style="text-align: center">Registration Number</th>
+                    <th width="40%" style="text-align: center">Student Name</th>
+                    <th width="10%" style="text-align: center">National ID</th>
+                    <th width="30%" style="text-align: center">Email Address</th>
                     <th width="5%" style="text-align: center">View</th>
                 </tr>
                 <tbody id="studentsDataBody">
