@@ -21,7 +21,6 @@ $('#btnSendEmail').click(function () {
             },
             success: function (response) {
                 confirmationCode = JSON.parse(response);
-                // console.log(response);
             },
             error: function (err) {
                 console.log(err)
@@ -34,13 +33,27 @@ $('#confirmationCode').keyup(function () {
     if (parseInt($(this).val()) === confirmationCode) {
         $('#nPassword').prop("disabled", false);
         $('#cPassword').prop("disabled", false);
-        $('#btnResetPassword').prop("disabled", false);
-    }else{
+    } else {
         $('#nPassword').prop("disabled", true);
         $('#cPassword').prop("disabled", true);
+    }
+});
+
+$('#nPassword').keyup(function () {
+    checkPasswordConfirmation();
+});
+
+$('#cPassword').keyup(function () {
+    checkPasswordConfirmation();
+});
+
+function checkPasswordConfirmation() {
+    if ($('#nPassword').val() === $('#cPassword').val()) {
+        $('#btnResetPassword').prop("disabled", false);
+    } else {
         $('#btnResetPassword').prop("disabled", true);
     }
-})
+}
 
 function isEmail(email) {
     var regex = /^([a-z])([a-z0-9])*([._-]([a-z0-9])+)*@+([a-z])*([._-]([a-z0-9])+)*([.]([a-z])+)+$/;

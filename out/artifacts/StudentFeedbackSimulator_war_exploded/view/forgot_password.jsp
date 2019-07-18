@@ -43,7 +43,7 @@
             New Password :
         </div>
         <div class="col-9">
-            <input class="form-control" type="text" id="nPassword" disabled>
+            <input class="form-control" type="password" id="nPassword" disabled>
         </div>
     </div>
     <div class="row" style="margin-top: 20px">
@@ -51,7 +51,7 @@
             Confirm Password :
         </div>
         <div class="col-9">
-            <input class="form-control" type="text" id="cPassword" disabled>
+            <input class="form-control" type="password" id="cPassword" disabled>
         </div>
     </div>
     <div class="row" style="margin-top: 50px;margin-bottom: 30px">
