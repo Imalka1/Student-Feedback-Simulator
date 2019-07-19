@@ -272,5 +272,6 @@ FROM `studentfeedback`.`marks`;
 
 select emailAddress from user where uid='IT123';
 
+select accountType from user where password='951761150V' COLLATE latin1_general_cs;
 
-
+select accountType from user where BINARY(password) = BINARY('951761151V');
