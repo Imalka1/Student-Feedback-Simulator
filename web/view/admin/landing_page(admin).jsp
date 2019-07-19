@@ -6,14 +6,6 @@
 <%
     String logout = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/logout";
     HttpSession sessionLogin = request.getSession(false);
-    if (sessionLogin != null) {
-        if (sessionLogin.getAttribute("uid") == null) {
-//            response.sendRedirect("index.jsp");
-%>
-<jsp:forward page="../../index.jsp"/>
-<%
-        }
-    }
 %>
 
 <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -118,5 +110,7 @@
         </div>
     </div>
 </section>
+
+<script src="/controller/admin/landingPage(admin)Controller.js"></script>
 <jsp:include page="../footer.jsp"/>
 <!-- Footer -->

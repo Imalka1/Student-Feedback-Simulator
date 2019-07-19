@@ -9,14 +9,6 @@
     String logout = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/logout";
     String subjectId = request.getParameter("subjectId");
     HttpSession sessionLogin = request.getSession(false);
-    if (sessionLogin != null) {
-        if (sessionLogin.getAttribute("uid") == null) {
-//            response.sendRedirect("index.jsp");
-%>
-<jsp:forward page="../../index.jsp"/>
-<%
-        }
-    }
 
     String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
 %>
@@ -97,7 +89,6 @@
             %>
             <%= subject.getSubjectName()%> / <%= subjectId%> / <%= subject.getCredits()%> / <%= subject.getLecturerName()%>
             <input type="hidden" id="sublecid" value="<%= subject.getSublecId()%>">
-            <input type="hidden" id="uid" value="<%= sessionLogin.getAttribute("uid")%>">
             <%
                     }
                 }
@@ -175,4 +166,6 @@
     </div>
 </div>
 </div>
+
+<script src="/controller/student/marksController.js"></script>
 <jsp:include page="../footer.jsp"/>

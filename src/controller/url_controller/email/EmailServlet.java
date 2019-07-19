@@ -29,7 +29,7 @@ public class EmailServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         User user = new User();
-        user.setUid(request.getParameter("uid"));
+        user.setUid(request.getParameter("userId"));
         User emailViaUid = new UserController().getEmailViaUid(user);
         int number = new Random().nextInt(1000000);
 

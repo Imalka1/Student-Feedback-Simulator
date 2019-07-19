@@ -42,7 +42,7 @@ public class LoginController extends HttpServlet {
                     resp.sendRedirect("/view/admin/landing_page(admin).jsp");
                 }
             }
-            
+
         } else {
             resp.sendRedirect("/index.jsp?error=error");
         }

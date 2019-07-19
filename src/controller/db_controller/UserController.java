@@ -14,7 +14,7 @@ public class UserController {
         User userObj = null;
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("select accountType from user where uid=? && password=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("select accountType from user where uid=? && binary(password) = binary(?)");
             preparedStatement.setObject(1, user.getUid());
             preparedStatement.setObject(2, user.getPassword());
             ResultSet rst = preparedStatement.executeQuery();

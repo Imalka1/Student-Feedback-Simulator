@@ -3,5 +3,5 @@ $('#resultsPage').click(function () {
 })
 
 $('#studentAccountsPage').click(function () {
-    document.location.href = 'user_accounts(students).jsp';
+    document.location.href = 'user_accounts.jsp';
 })

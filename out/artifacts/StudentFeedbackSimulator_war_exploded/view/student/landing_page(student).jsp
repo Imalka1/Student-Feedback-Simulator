@@ -6,14 +6,7 @@
 <%
     String logout = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/logout";
     HttpSession sessionLogin = request.getSession(false);
-    if (sessionLogin != null) {
-        if (sessionLogin.getAttribute("uid") == null) {
-//            response.sendRedirect("index.jsp");
-%>
-<jsp:forward page="../../index.jsp"/>
-<%
-        }
-    }
+
     Degree degree;
     Semester semester;
 %>
@@ -135,5 +128,7 @@
         </div>
     </div>
 </section>
+
+<script src="/controller/student/landingPage(student)Controller.js"></script>
 <jsp:include page="../footer.jsp"/>
 <!-- Footer -->

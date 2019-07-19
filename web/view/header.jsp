@@ -1,3 +1,14 @@
+<%
+    HttpSession sessionLogin = request.getSession(false);
+    if (sessionLogin != null) {
+        if (sessionLogin.getAttribute("uid") == null) {
+//            response.sendRedirect("index.jsp");
+%>
+<jsp:forward page="../index.jsp"/>
+<%
+        }
+    }
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,6 +70,7 @@
     </style>
 </head>
 <body id="page-top">
+<input type="hidden" id="uid" value="<%= sessionLogin.getAttribute("uid")%>">
 <div class="box">
     <div class="row1 content">
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style="background-color: rgba(35,35,35,0.81)">

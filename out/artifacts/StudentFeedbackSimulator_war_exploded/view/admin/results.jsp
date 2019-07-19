@@ -1,15 +1,6 @@
 <jsp:include page="../header.jsp"/>
 <%
     String logout = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/logout";
-    HttpSession sessionLogin = request.getSession(false);
-    if (sessionLogin != null) {
-        if (sessionLogin.getAttribute("uid") == null) {
-//            response.sendRedirect("index.jsp");
-%>
-<jsp:forward page="../../index.jsp"/>
-<%
-        }
-    }
 %>
 <div class="navbar-collapse" id="navbarResponsive">
     <ul class="navbar-nav text-uppercase ml-auto">
