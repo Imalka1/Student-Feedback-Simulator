@@ -129,7 +129,7 @@
         <counts>
           <entry key="dummy" value="1" />
           <entry key="java" value="2673" />
-          <entry key="js" value="2775" />
+          <entry key="js" value="3591" />
           <entry key="jsp" value="2279" />
         </counts>
       </usages-collector>
@@ -137,7 +137,7 @@
         <counts>
           <entry key="JAVA" value="2673" />
           <entry key="JSP" value="2279" />
-          <entry key="JavaScript" value="2774" />
+          <entry key="JavaScript" value="3590" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="RegExp" value="1" />
         </counts>
@@ -167,8 +167,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/controller/admin/userAccountController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="192" column="60" lean-forward="true" selection-start-line="192" selection-start-column="60" selection-end-line="192" selection-end-column="60" />
+            <state relative-caret-position="4233">
+              <caret line="249" column="120" selection-start-line="249" selection-start-column="120" selection-end-line="249" selection-end-column="120" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
@@ -447,7 +447,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1563554629190" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1563558583547" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/javax.mail.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -612,15 +612,16 @@
       <workItem from="1562649815943" duration="23012000" />
       <workItem from="1562943880761" duration="37605000" />
       <workItem from="1563336025810" duration="17611000" />
-      <workItem from="1563545609829" duration="7366000" />
+      <workItem from="1563545609829" duration="8748000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="364126000" />
+    <option name="totallyTimeSpent" value="365508000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13489933" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -1084,8 +1085,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/controller/admin/userAccountController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="192" column="60" lean-forward="true" selection-start-line="192" selection-start-column="60" selection-end-line="192" selection-end-column="60" />
+        <state relative-caret-position="4233">
+          <caret line="249" column="120" selection-start-line="249" selection-start-column="120" selection-end-line="249" selection-end-column="120" />
           <folding>
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
