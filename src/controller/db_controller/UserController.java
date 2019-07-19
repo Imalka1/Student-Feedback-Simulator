@@ -34,11 +34,10 @@ public class UserController {
     public boolean addUser(User user) {
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("insert into user (uid,password,accountType,emailAddress) values (?,?,?,?)");
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into user (uid,password,accountType) values (?,?,?)");
             preparedStatement.setObject(1, user.getUid());
             preparedStatement.setObject(2, user.getPassword());
             preparedStatement.setObject(3, "student");
-            preparedStatement.setObject(4, user.getEmailAddress());
             if (preparedStatement.executeUpdate() > 0) {
                 return true;
             }

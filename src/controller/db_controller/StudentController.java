@@ -35,7 +35,7 @@ public class StudentController {
         List<Student> students = new ArrayList<>();
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("select u.uid,student_name,national_id,emailAddress from student s,batch b,degree d,user u where b.batchid=s.batchid && d.degid=s.degid && d.degid=? && b.batchid=? && u.uid=s.uid && year(b.intake)=? order by u.uid desc");
+            PreparedStatement preparedStatement = connection.prepareStatement("select uid,student_name,national_id,emailAddress from student s,batch b,degree d where b.batchid=s.batchid && d.degid=s.degid && d.degid=? && b.batchid=? && year(b.intake)=? order by uid desc");
             preparedStatement.setObject(1, degid);
             preparedStatement.setObject(2, batchid);
             preparedStatement.setObject(3, year);
@@ -64,15 +64,15 @@ public class StudentController {
             User user = new User();
             user.setUid(student.getUid());
             user.setPassword(student.getNationalId());
-            user.setEmailAddress(student.getEmailAddress());
             boolean addUser = new UserController().addUser(user);
             if (addUser) {
-                PreparedStatement preparedStatement = connection.prepareStatement("insert into student (uid,degid,batchid,student_name,national_id) values (?,?,?,?,?)");
+                PreparedStatement preparedStatement = connection.prepareStatement("insert into student (uid,degid,batchid,student_name,national_id,emailAddress) values (?,?,?,?,?,?)");
                 preparedStatement.setObject(1, student.getUid());
                 preparedStatement.setObject(2, student.getDegId());
                 preparedStatement.setObject(3, student.getBatchId());
                 preparedStatement.setObject(4, student.getStudentName());
                 preparedStatement.setObject(5, student.getNationalId());
+                preparedStatement.setObject(6, student.getEmailAddress());
                 if (preparedStatement.executeUpdate() > 0) {
                     return true;
                 } else {

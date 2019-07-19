@@ -26,7 +26,6 @@ constraint primary key(batchid)
 create table user(
 uid varchar(100),
 password varchar(100),
-emailAddress varchar(100),
 accountType varchar(20),
 constraint primary key(uid)
 );	
@@ -38,6 +37,7 @@ degid int,
 batchid int,
 student_name varchar(100),
 national_id varchar(100),
+emailAddress varchar(100),
 constraint primary key(stid),
 constraint foreign key(uid) references user(uid) on delete cascade,
 constraint foreign key(degid) references degree(degid) on delete cascade,
@@ -48,6 +48,7 @@ create table admin(
 adminid int auto_increment,
 uid varchar(100),
 admin_name varchar(100),
+emailAddress varchar(100),
 constraint primary key(adminid),
 constraint foreign key(uid) references user(uid) on delete cascade
 );
@@ -130,25 +131,26 @@ VALUES
 INSERT INTO `studentfeedback`.`user`
 (`uid`,
 `password`,
-`accountType`,
-`emailAddress`)
+`accountType`)
 VALUES
-('IT123','123','student','imalkagunawardana1@gmail.com'),('IT456','456','student','imalkagunawardana1@gmail.com'),('ADMIN789','789','admin','imalkagunawardana1@gmail.com');
+('IT123','123','student'),('IT456','456','student'),('ADMIN789','789','admin');
 
 INSERT INTO `studentfeedback`.`student`
 (`uid`,
 `degid`,
 `batchid`,
 `student_name`,
-`national_id`)
+`national_id`,
+`emailAddress`)
 VALUES
-('IT123',1,1,'Amal Silva','951761150V'),('IT456',2,2,'Kamal Silva','961751150V');
+('IT123',1,1,'Amal Silva','951761150V','imalkagunawardana1@gmail.com'),('IT456',2,2,'Kamal Silva','961751150V','imalkagunawardana1@gmail.com');
 
 INSERT INTO `studentfeedback`.`admin`
 (`uid`,
-`admin_name`)
+`admin_name`,
+`emailAddress`)
 VALUES
-('ADMIN789','Nimal Silva');
+('ADMIN789','Nimal Silva','imalkagunawardana1@gmail.com');
 
 
 INSERT INTO `studentfeedback`.`evaluation_criteria_heading`

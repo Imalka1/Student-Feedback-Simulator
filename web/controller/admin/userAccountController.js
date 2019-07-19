@@ -10,6 +10,8 @@ $('#batch').change(function () {
     loadStudents();
 })
 
+//----------------------------------------------------------------------------------------------------------------------
+
 $('#regNo').keyup(function () {
     $(this).val($(this).val().toUpperCase())
 })
@@ -49,10 +51,15 @@ $('#emailAddress').keyup(function () {
 });
 
 function validateSubmission() {
-    if ($('#regNo').val() !== '' && $('#studetName').val() !== '' && $('#nationalId').val() !== '' && $('#emailAddress').val() !== '' && isEmail($('#emailAddress').val())) {
+    if (newStudent && $('#regNo').val() !== '' && $('#studetName').val() !== '' && $('#nationalId').val() !== '' && $('#emailAddress').val() !== '' && isEmail($('#emailAddress').val())) {
         $('#btnAdd').prop("disabled", false);
+        $('#btnUpdate').prop("disabled", true);
+    } else if (!newStudent && $('#regNo').val() !== '' && $('#studetName').val() !== '' && $('#nationalId').val() !== '' && $('#emailAddress').val() !== '' && isEmail($('#emailAddress').val())) {
+        $('#btnAdd').prop("disabled", true);
+        $('#btnUpdate').prop("disabled", false);
     } else {
         $('#btnAdd').prop("disabled", true);
+        $('#btnUpdate').prop("disabled", true);
     }
 }
 
@@ -82,6 +89,7 @@ $('#btnAdd').click(function () {
                 } else {
                     $('#response').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Failed to add student</div>')
                 }
+                window.scrollTo(0, 0);
                 setTimeout(function () {
                     $('#response').html('');
                 }, 3000);
@@ -114,6 +122,7 @@ $('#btnUpdate').click(function () {
                 } else {
                     $('#response').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Failed to update student</div>')
                 }
+                window.scrollTo(0, 0);
                 setTimeout(function () {
                     $('#response').html('');
                 }, 3000);
@@ -141,6 +150,7 @@ $('#btnDelete').click(function () {
                 } else {
                     $('#response').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Failed to delete student</div>')
                 }
+                window.scrollTo(0, 0);
                 setTimeout(function () {
                     $('#response').html('');
                 }, 4000);
@@ -240,7 +250,12 @@ function setTextFieldsEmpty() {
     $('#emailAddress').val('')
 }
 
+//----------------------------------------------------------------------------------------------------------------------
+
+var newStudent = true;
+
 function setFieldsToNewStudent() {
+    newStudent = true;
     $('#btnAdd').prop("disabled", true);
     $('#btnUpdate').prop("disabled", true);
     $('#btnDelete').prop("disabled", true);
@@ -248,6 +263,7 @@ function setFieldsToNewStudent() {
 }
 
 function setFieldsToExistingStudent() {
+    newStudent = false;
     $('#btnAdd').prop("disabled", true);
     $('#btnUpdate').prop("disabled", false);
     $('#btnDelete').prop("disabled", false);
