@@ -26,6 +26,7 @@ constraint primary key(batchid)
 create table user(
 uid varchar(100),
 password varchar(100),
+emailAddress varchar(100),
 accountType varchar(20),
 constraint primary key(uid)
 );	
@@ -129,9 +130,10 @@ VALUES
 INSERT INTO `studentfeedback`.`user`
 (`uid`,
 `password`,
-`accountType`)
+`accountType`,
+`emailAddress`)
 VALUES
-('IT123','123','student'),('IT456','456','student'),('ADMIN789','789','admin');
+('IT123','123','student','imalkagunawardana1@gmail.com'),('IT456','456','student','imalkagunawardana1@gmail.com'),('ADMIN789','789','admin','imalkagunawardana1@gmail.com');
 
 INSERT INTO `studentfeedback`.`student`
 (`uid`,

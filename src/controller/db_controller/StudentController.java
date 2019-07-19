@@ -35,7 +35,7 @@ public class StudentController {
         List<Student> students = new ArrayList<>();
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("select uid,student_name,national_id from student s,batch b,degree d where b.batchid=s.batchid && d.degid=s.degid && d.degid=? && b.batchid=? && year(b.intake)=? order by uid desc");
+            PreparedStatement preparedStatement = connection.prepareStatement("select u.uid,student_name,national_id,emailAddress from student s,batch b,degree d,user u where b.batchid=s.batchid && d.degid=s.degid && d.degid=? && b.batchid=? && u.uid=s.uid && year(b.intake)=? order by u.uid desc");
             preparedStatement.setObject(1, degid);
             preparedStatement.setObject(2, batchid);
             preparedStatement.setObject(3, year);
@@ -45,6 +45,7 @@ public class StudentController {
                 student.setUid(rst.getString(1));
                 student.setStudentName(rst.getString(2));
                 student.setNationalId(rst.getString(3));
+                student.setEmailAddress(rst.getString(4));
                 students.add(student);
             }
         } catch (SQLException e) {
@@ -63,6 +64,7 @@ public class StudentController {
             User user = new User();
             user.setUid(student.getUid());
             user.setPassword(student.getNationalId());
+            user.setEmailAddress(student.getEmailAddress());
             boolean addUser = new UserController().addUser(user);
             if (addUser) {
                 PreparedStatement preparedStatement = connection.prepareStatement("insert into student (uid,degid,batchid,student_name,national_id) values (?,?,?,?,?)");
@@ -96,12 +98,13 @@ public class StudentController {
     public boolean updateStudent(Student student) {
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("update student set degid=?,batchid=?,student_name=?,national_id=? where uid=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("update student set degid=?,batchid=?,student_name=?,national_id=?,emailAddress=? where uid=?");
             preparedStatement.setObject(1, student.getDegId());
             preparedStatement.setObject(2, student.getBatchId());
             preparedStatement.setObject(3, student.getStudentName());
             preparedStatement.setObject(4, student.getNationalId());
-            preparedStatement.setObject(5, student.getUid());
+            preparedStatement.setObject(5, student.getEmailAddress());
+            preparedStatement.setObject(6, student.getUid());
             if (preparedStatement.executeUpdate() > 0) {
                 return true;
             }

@@ -40,8 +40,26 @@ $('#nationalId').keyup(function () {
 })
 
 $('#emailAddress').keyup(function () {
+    if (isEmail($(this).val())) {
+        $(this).css('border-color', '');
+    } else {
+        $(this).css('border-color', 'red');
+    }
     validateSubmission();
-})
+});
+
+function validateSubmission() {
+    if ($('#regNo').val() !== '' && $('#studetName').val() !== '' && $('#nationalId').val() !== '' && $('#emailAddress').val() !== '' && isEmail($('#emailAddress').val())) {
+        $('#btnAdd').prop("disabled", false);
+    } else {
+        $('#btnAdd').prop("disabled", true);
+    }
+}
+
+function isEmail(email) {
+    var regex = /^([a-z])([a-z0-9])*([._-]([a-z0-9])+)*@+([a-z])*([._-]([a-z0-9])+)*([.]([a-z])+)+$/;
+    return regex.test(email);
+}
 
 $('#btnAdd').click(function () {
     $.ajax(
@@ -234,12 +252,4 @@ function setFieldsToExistingStudent() {
     $('#btnUpdate').prop("disabled", false);
     $('#btnDelete').prop("disabled", false);
     $('#regNo').prop("disabled", true);
-}
-
-function validateSubmission() {
-    if ($('#regNo').val() !== '' && $('#studetName').val() !== '' && $('#nationalId').val() !== '' && $('#emailAddress').val() !== '') {
-        $('#btnAdd').prop("disabled", false);
-    } else {
-        $('#btnAdd').prop("disabled", true);
-    }
 }

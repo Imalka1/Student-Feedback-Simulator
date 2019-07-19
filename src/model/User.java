@@ -3,6 +3,7 @@ package model;
 public class User {
     private String uid;
     private String password;
+    private String emailAddress;
     private String accountType;
 
     public String getUid() {
@@ -27,5 +28,13 @@ public class User {
 
     public void setAccountType(String accountType) {
         this.accountType = accountType;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
     }
 }

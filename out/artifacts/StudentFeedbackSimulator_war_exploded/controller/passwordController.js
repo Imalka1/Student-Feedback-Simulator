@@ -60,3 +60,21 @@ function isEmail(email) {
     return regex.test(email);
 }
 
+$('#btnResetPassword').click(function () {
+    $.ajax(
+        {
+            type: "post",
+            url: "http://" + window.location.hostname + ":8080/forgot_password",
+            data: {
+                password: $('#nPassword').val()
+            },
+            success: function (response) {
+                confirmationCode = JSON.parse(response);
+            },
+            error: function (err) {
+
+            }
+        }
+    );
+})
+

@@ -8,6 +8,7 @@ public class Student {
     private String studentName;
     private String nationalId;
     private String batchName;
+    private String emailAddress;
 
     public String getBatchName() {
         return batchName;
@@ -63,5 +64,13 @@ public class Student {
 
     public void setNationalId(String nationalId) {
         this.nationalId = nationalId;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
     }
 }

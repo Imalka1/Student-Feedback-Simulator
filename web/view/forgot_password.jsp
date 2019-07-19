@@ -13,10 +13,10 @@
 <div style="margin-top: 80px;margin-left: 30px;margin-right: 30px">
     <div class="row">
         <div class="col-3">
-            Email Address :
+            Student ID :
         </div>
         <div class="col-7">
-            <input class="form-control" type="email" id="emailAddress">
+            <input class="form-control" type="text" id="studentId">
         </div>
         <div class="col-2">
             <button id="btnSendEmail" class="btn" style="background-color: #ffbf05;width: 100%" disabled>Send</button>
