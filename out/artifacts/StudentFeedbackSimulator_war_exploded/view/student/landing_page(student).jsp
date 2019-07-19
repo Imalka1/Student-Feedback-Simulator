@@ -71,7 +71,9 @@
                  style="background-color: #ffb508;width: fit-content;color: #402901;padding: 20px;padding-left: 30px;padding-right: 30px;font-size: 18px;border-radius: 35px;margin-top: 80px;font-weight: bold">
                 <%
                     {
-                        Student student = new StudentController().getStudentUsername(sessionLogin.getAttribute("uid").toString());
+                        Student studentUserID = new Student();
+                        studentUserID.setUid(sessionLogin.getAttribute("uid").toString());
+                        Student student = new StudentController().getStudentUsername(studentUserID);
                         if (student != null) {
                 %>
                 Online - <%= student.getStudentName()%>

@@ -10,25 +10,24 @@ import java.sql.SQLException;
 
 public class UserController {
 
-    public User chkLogin(String username, String password) {
-        User user = null;
+    public User chkLogin(User user) {
+        User userObj = null;
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("select uid,accountType from user where uid=? && password=?");
-            preparedStatement.setObject(1, username);
-            preparedStatement.setObject(2, password);
+            PreparedStatement preparedStatement = connection.prepareStatement("select accountType from user where uid=? && password=?");
+            preparedStatement.setObject(1, user.getUid());
+            preparedStatement.setObject(2, user.getPassword());
             ResultSet rst = preparedStatement.executeQuery();
             if (rst.next()) {
-                user = new User();
-                user.setUid(rst.getString(1));
-                user.setAccountType(rst.getString(2));
+                userObj = new User();
+                userObj.setAccountType(rst.getString(1));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return user;
+        return userObj;
     }
 
     public boolean addUser(User user) {

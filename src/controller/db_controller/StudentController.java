@@ -12,23 +12,42 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentController {
-    public Student getStudentUsername(String uid) {
-        Student student = null;
+    public Student getStudentUsername(Student student) {
+        Student studentObj = null;
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("select student_name from user u,student s where u.uid=s.uid && u.uid=?");
-            preparedStatement.setObject(1, uid);
+            preparedStatement.setObject(1, student.getUid());
             ResultSet rst = preparedStatement.executeQuery();
             if (rst.next()) {
-                student = new Student();
-                student.setStudentName(rst.getString(1));
+                studentObj = new Student();
+                studentObj.setStudentName(rst.getString(1));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return student;
+        return studentObj;
+    }
+
+    public Student getStudentNic(Student student) {
+        Student studentObj = null;
+        try {
+            Connection connection = DBConnection.getDBConnection().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("select national_id from student where uid=?");
+            preparedStatement.setObject(1, student.getUid());
+            ResultSet rst = preparedStatement.executeQuery();
+            if (rst.next()) {
+                studentObj = new Student();
+                studentObj.setNationalId(rst.getString(1));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return studentObj;
     }
 
     public List<Student> getAllStudents(int degid, int batchid, int year) {
