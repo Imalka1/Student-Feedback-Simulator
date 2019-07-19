@@ -12,11 +12,14 @@
 </nav>
 <div style="margin-top: 80px;margin-left: 30px;margin-right: 30px">
     <div class="row">
+        <div class="col-12" style="font-size: 13px"><b>Note:-</b> Type your student/admin id and click on send. System will send a confirmation code to your email.</div>
+    </div>
+    <div class="row" style="margin-top: 20px">
         <div class="col-3">
-            Student ID :
+            Student/Admin ID :
         </div>
         <div class="col-7">
-            <input class="form-control" type="text" id="studentId">
+            <input class="form-control" type="text" id="uid">
         </div>
         <div class="col-2">
             <button id="btnSendEmail" class="btn" style="background-color: #ffbf05;width: 100%" disabled>Send</button>

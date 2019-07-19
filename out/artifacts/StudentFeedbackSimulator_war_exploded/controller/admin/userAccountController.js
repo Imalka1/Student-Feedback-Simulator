@@ -1,3 +1,5 @@
+//----------------------------------------------------Filter------------------------------------------------------------
+
 $('#degree').change(function () {
     loadStudents();
 })
@@ -10,26 +12,10 @@ $('#batch').change(function () {
     loadStudents();
 })
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------Validate input fields----------------------------------------------------
 
 $('#regNo').keyup(function () {
     $(this).val($(this).val().toUpperCase())
-})
-
-$('#btnClear').click(function () {
-    setTextFieldsEmpty();
-    setFieldsToNewStudent();
-})
-
-$(document).on('click', '.btnViewStudent', function () {
-    $('#regNo').val($(this).parent().children().eq(0).html())
-    $('#studetName').val($(this).parent().children().eq(1).html())
-    $('#nationalId').val($(this).parent().children().eq(2).html())
-    $('#emailAddress').val($(this).parent().children().eq(3).html())
-    setFieldsToExistingStudent();
-})
-
-$('#regNo').keyup(function () {
     validateSubmission();
 })
 
@@ -38,6 +24,7 @@ $('#studetName').keyup(function () {
 })
 
 $('#nationalId').keyup(function () {
+    $(this).val($(this).val().toUpperCase())
     validateSubmission();
 })
 
@@ -67,6 +54,8 @@ function isEmail(email) {
     var regex = /^([a-z])([a-z0-9])*([._-]([a-z0-9])+)*@+([a-z])*([._-]([a-z0-9])+)*([.]([a-z])+)+$/;
     return regex.test(email);
 }
+
+//-----------------------------------------------Add Delete Update------------------------------------------------------
 
 $('#btnAdd').click(function () {
     $.ajax(
@@ -163,7 +152,7 @@ $('#btnDelete').click(function () {
     );
 })
 
-//----------------------------------------------Students Table (Start)--------------------------------------------------
+//-------------------------------------------------Students Table-------------------------------------------------------
 
 var pageNo = 0;
 var pagesCount = 0;
@@ -238,6 +227,8 @@ function fillTheTable() {
     $('#studentsDataBody').html(tableData);
 }
 
+//--------------------------------------------------Search--------------------------------------------------------------
+
 $('#btnSearchStudent').click(function () {
     for (var i = 0; i < studentsArray.length; i++) {
         if ($('#regNo').val() === studentsArray[i].RegId) {
@@ -249,16 +240,24 @@ $('#btnSearchStudent').click(function () {
     }
 })
 
-//-----------------------------------------------Students Table (End)---------------------------------------------------
+//--------------------------------------------------Clear fields--------------------------------------------------------
 
-function setTextFieldsEmpty() {
-    $('#regNo').val('')
-    $('#studetName').val('')
-    $('#nationalId').val('')
-    $('#emailAddress').val('')
-}
+$('#btnClear').click(function () {
+    setTextFieldsEmpty();
+    setFieldsToNewStudent();
+})
 
-//----------------------------------------------------------------------------------------------------------------------
+//-------------------------------------------------Select student on table----------------------------------------------
+
+$(document).on('click', '.btnViewStudent', function () {
+    $('#regNo').val($(this).parent().children().eq(0).html())
+    $('#studetName').val($(this).parent().children().eq(1).html())
+    $('#nationalId').val($(this).parent().children().eq(2).html())
+    $('#emailAddress').val($(this).parent().children().eq(3).html())
+    setFieldsToExistingStudent();
+})
+
+//----------------------------------------------New vs existing---------------------------------------------------------
 
 var newStudent = true;
 
@@ -276,4 +275,11 @@ function setFieldsToExistingStudent() {
     $('#btnUpdate').prop("disabled", false);
     $('#btnDelete').prop("disabled", false);
     $('#regNo').prop("disabled", true);
+}
+
+function setTextFieldsEmpty() {
+    $('#regNo').val('')
+    $('#studetName').val('')
+    $('#nationalId').val('')
+    $('#emailAddress').val('')
 }

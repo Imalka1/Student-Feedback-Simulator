@@ -4,6 +4,15 @@ public class Admin {
     private int adminId;
     private String uid;
     private String adminName;
+    private String emailAddress;
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
 
     public int getAdminId() {
         return adminId;

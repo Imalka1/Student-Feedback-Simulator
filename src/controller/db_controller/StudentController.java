@@ -35,7 +35,7 @@ public class StudentController {
         List<Student> students = new ArrayList<>();
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("select uid,student_name,national_id,emailAddress from student s,batch b,degree d where b.batchid=s.batchid && d.degid=s.degid && d.degid=? && b.batchid=? && year(b.intake)=? order by stid desc");
+            PreparedStatement preparedStatement = connection.prepareStatement("select u.uid,student_name,national_id,emailAddress from student s,batch b,degree d,user u where b.batchid=s.batchid && d.degid=s.degid && d.degid=? && b.batchid=? && u.uid=s.uid && year(b.intake)=? order by stid desc");
             preparedStatement.setObject(1, degid);
             preparedStatement.setObject(2, batchid);
             preparedStatement.setObject(3, year);
@@ -64,15 +64,15 @@ public class StudentController {
             User user = new User();
             user.setUid(student.getUid());
             user.setPassword(student.getNationalId());
+            user.setEmailAddress(student.getEmailAddress());
             boolean addUser = new UserController().addUser(user);
             if (addUser) {
-                PreparedStatement preparedStatement = connection.prepareStatement("insert into student (uid,degid,batchid,student_name,national_id,emailAddress) values (?,?,?,?,?,?)");
+                PreparedStatement preparedStatement = connection.prepareStatement("insert into student (uid,degid,batchid,student_name,national_id) values (?,?,?,?,?)");
                 preparedStatement.setObject(1, student.getUid());
                 preparedStatement.setObject(2, student.getDegId());
                 preparedStatement.setObject(3, student.getBatchId());
                 preparedStatement.setObject(4, student.getStudentName());
                 preparedStatement.setObject(5, student.getNationalId());
-                preparedStatement.setObject(6, student.getEmailAddress());
                 if (preparedStatement.executeUpdate() > 0) {
                     return true;
                 } else {
@@ -96,22 +96,39 @@ public class StudentController {
     }
 
     public boolean updateStudent(Student student) {
+        Connection connection = null;
         try {
-            Connection connection = DBConnection.getDBConnection().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("update student set degid=?,batchid=?,student_name=?,national_id=?,emailAddress=? where uid=?");
-            preparedStatement.setObject(1, student.getDegId());
-            preparedStatement.setObject(2, student.getBatchId());
-            preparedStatement.setObject(3, student.getStudentName());
-            preparedStatement.setObject(4, student.getNationalId());
-            preparedStatement.setObject(5, student.getEmailAddress());
-            preparedStatement.setObject(6, student.getUid());
-            if (preparedStatement.executeUpdate() > 0) {
-                return true;
+            connection = DBConnection.getDBConnection().getConnection();
+            connection.setAutoCommit(false);
+            User user = new User();
+            user.setUid(student.getUid());
+            user.setEmailAddress(student.getEmailAddress());
+            boolean updateEmail = new UserController().updateEmail(user);
+            if (updateEmail) {
+                PreparedStatement preparedStatement = connection.prepareStatement("update student set degid=?,batchid=?,student_name=?,national_id=? where uid=?");
+                preparedStatement.setObject(1, student.getDegId());
+                preparedStatement.setObject(2, student.getBatchId());
+                preparedStatement.setObject(3, student.getStudentName());
+                preparedStatement.setObject(4, student.getNationalId());
+                preparedStatement.setObject(5, student.getUid());
+                if (preparedStatement.executeUpdate() > 0) {
+                    return true;
+                } else {
+                    connection.rollback();
+                }
+            } else {
+                connection.rollback();
             }
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                connection.setAutoCommit(true);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return false;
     }

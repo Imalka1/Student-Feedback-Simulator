@@ -1,9 +1,8 @@
-$('#emailAddress').keyup(function () {
-    if (isEmail($(this).val())) {
-        $(this).css('border-color', '');
+$('#uid').keyup(function () {
+    $(this).val($(this).val().toUpperCase())
+    if ($(this).val() !== '') {
         $('#btnSendEmail').prop("disabled", false);
     } else {
-        $(this).css('border-color', 'red');
         $('#btnSendEmail').prop("disabled", true);
     }
 });
@@ -17,7 +16,7 @@ $('#btnSendEmail').click(function () {
             type: "post",
             url: "http://" + window.location.hostname + ":8080/email_confirmation_code",
             data: {
-                email: $('#emailAddress').val()
+                uid: $('#uid').val()
             },
             success: function (response) {
                 confirmationCode = JSON.parse(response);
@@ -53,11 +52,6 @@ function checkPasswordConfirmation() {
     } else {
         $('#btnResetPassword').prop("disabled", true);
     }
-}
-
-function isEmail(email) {
-    var regex = /^([a-z])([a-z0-9])*([._-]([a-z0-9])+)*@+([a-z])*([._-]([a-z0-9])+)*([.]([a-z])+)+$/;
-    return regex.test(email);
 }
 
 $('#btnResetPassword').click(function () {

@@ -1,5 +1,8 @@
 package controller.url_controller.email;
 
+import controller.db_controller.UserController;
+import model.User;
+
 import java.io.IOException;
 import java.util.Properties;
 import java.util.Random;
@@ -25,7 +28,9 @@ public class EmailServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String to = request.getParameter("email");
+        User user = new User();
+        user.setUid(request.getParameter("uid"));
+        User emailViaUid = new UserController().getEmailViaUid(user);
         int number = new Random().nextInt(1000000);
 
         try {
@@ -43,7 +48,7 @@ public class EmailServlet extends HttpServlet {
             msg.setText(String.valueOf(number));
             msg.setSubject("Confirmation Code");
             msg.setFrom(new InternetAddress("webphpjava@gmail.com"));
-            msg.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+            msg.addRecipient(Message.RecipientType.TO, new InternetAddress(emailViaUid.getEmailAddress()));
             Transport.send(msg);
         } catch (AuthenticationFailedException ex) {
             ex.printStackTrace();

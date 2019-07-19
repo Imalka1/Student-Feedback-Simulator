@@ -128,16 +128,16 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="1" />
-          <entry key="java" value="2673" />
-          <entry key="js" value="3591" />
-          <entry key="jsp" value="2279" />
+          <entry key="java" value="2912" />
+          <entry key="js" value="3607" />
+          <entry key="jsp" value="2459" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="2673" />
-          <entry key="JSP" value="2279" />
-          <entry key="JavaScript" value="3590" />
+          <entry key="JAVA" value="2912" />
+          <entry key="JSP" value="2459" />
+          <entry key="JavaScript" value="3606" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="RegExp" value="1" />
         </counts>
@@ -145,18 +145,18 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="1" />
-          <entry key="java" value="118" />
-          <entry key="js" value="39" />
-          <entry key="jsp" value="124" />
+          <entry key="java" value="131" />
+          <entry key="js" value="42" />
+          <entry key="jsp" value="125" />
           <entry key="xml" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="1" />
-          <entry key="JAVA" value="118" />
-          <entry key="JSP" value="124" />
-          <entry key="JavaScript" value="39" />
+          <entry key="JAVA" value="131" />
+          <entry key="JSP" value="125" />
+          <entry key="JavaScript" value="42" />
           <entry key="XML" value="2" />
         </counts>
       </usages-collector>
@@ -164,11 +164,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/view/forgot_password.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="18" column="25" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
+              <folding>
+                <element signature="e#681#704#0#HTML" expanded="true" />
+                <element signature="e#727#751#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/controller/admin/userAccountController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4233">
-              <caret line="249" column="120" selection-start-line="249" selection-start-column="120" selection-end-line="249" selection-end-column="120" />
+            <state relative-caret-position="289">
+              <caret line="17" column="44" lean-forward="true" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="44" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
@@ -187,10 +200,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/url_controller/student/LoadStudents.java">
+        <entry file="file://$PROJECT_DIR$/web/controller/passwordController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="24" column="67" lean-forward="true" selection-start-line="24" selection-start-column="67" selection-end-line="24" selection-end-column="67" />
+            <state>
+              <caret column="7" selection-start-column="4" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controller/url_controller/email/EmailServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="143">
+              <caret line="32" column="69" selection-start-line="32" selection-start-column="69" selection-end-line="32" selection-end-column="69" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -201,8 +223,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/db_controller/StudentController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="43" column="48" lean-forward="true" selection-start-line="43" selection-start-column="48" selection-end-line="43" selection-end-column="48" />
+            <state>
+              <caret line="95" column="5" lean-forward="true" selection-start-line="95" selection-start-column="5" selection-end-line="95" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/controller/db_controller/UserController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="86" column="43" selection-start-line="86" selection-start-column="43" selection-end-line="86" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -257,7 +291,6 @@
         <option value="$PROJECT_DIR$/web/controller/marksController.js" />
         <option value="$PROJECT_DIR$/web/view/mark_sheet.jsp" />
         <option value="$PROJECT_DIR$/web/view/admin/landing_page.jsp" />
-        <option value="$PROJECT_DIR$/src/model/Admin.java" />
         <option value="$PROJECT_DIR$/src/controller/db_controller/AdminController.java" />
         <option value="$PROJECT_DIR$/web/controller/admin/pageController.js" />
         <option value="$PROJECT_DIR$/web/view/admin/results.jsp" />
@@ -273,18 +306,19 @@
         <option value="$PROJECT_DIR$/web/view/reset_password.jsp" />
         <option value="$PROJECT_DIR$/web/index.jsp" />
         <option value="$PROJECT_DIR$/web/view/footer.jsp" />
-        <option value="$PROJECT_DIR$/src/controller/url_controller/email/EmailServlet.java" />
         <option value="$PROJECT_DIR$/src/controller/url_controller/auth/ForgotPassword.java" />
-        <option value="$PROJECT_DIR$/web/controller/passwordController.js" />
-        <option value="$PROJECT_DIR$/web/view/forgot_password.jsp" />
         <option value="$PROJECT_DIR$/src/model/Student.java" />
         <option value="$PROJECT_DIR$/src/controller/url_controller/student/AddStudent.java" />
         <option value="$PROJECT_DIR$/src/controller/url_controller/student/LoadStudents.java" />
-        <option value="$PROJECT_DIR$/src/model/User.java" />
-        <option value="$PROJECT_DIR$/src/controller/db_controller/UserController.java" />
         <option value="$PROJECT_DIR$/src/controller/url_controller/student/UpdateStudent.java" />
-        <option value="$PROJECT_DIR$/src/controller/db_controller/StudentController.java" />
         <option value="$PROJECT_DIR$/web/controller/admin/userAccountController.js" />
+        <option value="$PROJECT_DIR$/src/model/User.java" />
+        <option value="$PROJECT_DIR$/src/model/Admin.java" />
+        <option value="$PROJECT_DIR$/web/view/forgot_password.jsp" />
+        <option value="$PROJECT_DIR$/src/controller/db_controller/StudentController.java" />
+        <option value="$PROJECT_DIR$/web/controller/passwordController.js" />
+        <option value="$PROJECT_DIR$/src/controller/url_controller/email/EmailServlet.java" />
+        <option value="$PROJECT_DIR$/src/controller/db_controller/UserController.java" />
       </list>
     </option>
   </component>
@@ -447,7 +481,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1563558583547" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1563566035232" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/javax.mail.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -612,16 +646,15 @@
       <workItem from="1562649815943" duration="23012000" />
       <workItem from="1562943880761" duration="37605000" />
       <workItem from="1563336025810" duration="17611000" />
-      <workItem from="1563545609829" duration="8748000" />
+      <workItem from="1563545609829" duration="14076000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="365508000" />
+    <option name="totallyTimeSpent" value="370836000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13489933" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -853,26 +886,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/view/admin/admin_header.jsp" />
-    <entry file="file://$PROJECT_DIR$/src/model/Admin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
-          <folding>
-            <element signature="e#175#176#0" expanded="true" />
-            <element signature="e#218#219#0" expanded="true" />
-            <element signature="e#256#257#0" expanded="true" />
-            <element signature="e#286#287#0" expanded="true" />
-            <element signature="e#312#313#0" expanded="true" />
-            <element signature="e#350#351#0" expanded="true" />
-            <element signature="e#380#381#0" expanded="true" />
-            <element signature="e#416#417#0" expanded="true" />
-            <element signature="e#448#449#0" expanded="true" />
-            <element signature="e#498#499#0" expanded="true" />
-            <element signature="e#540#541#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/db_controller/AdminController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -971,16 +984,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/url_controller/email/EmailServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="42" column="45" selection-start-line="42" selection-start-column="45" selection-end-line="42" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/url_controller/auth/ForgotPassword.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -991,72 +994,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/view/forgot_password.jsp">
+    <entry file="file://$PROJECT_DIR$/web/controller/student/marksController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="18" column="65" selection-start-line="18" selection-start-column="65" selection-end-line="18" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/controller/passwordController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="60" column="1" lean-forward="true" selection-start-line="57" selection-end-line="60" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Student.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="68" column="37" selection-start-line="68" selection-start-column="37" selection-end-line="68" selection-end-column="37" />
-          <folding>
-            <element signature="e#260#261#0" expanded="true" />
-            <element signature="e#292#293#0" expanded="true" />
-            <element signature="e#1349#1350#0" expanded="true" />
-            <element signature="e#1405#1406#0" expanded="true" />
-            <element signature="e#1453#1454#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="782">
+          <caret line="46" column="42" lean-forward="true" selection-start-line="46" selection-start-column="20" selection-end-line="46" selection-end-column="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="28" lean-forward="true" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="36" column="121" selection-start-line="36" selection-start-column="121" selection-end-line="36" selection-end-column="121" />
+        <state relative-caret-position="136">
+          <caret line="8" column="37" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#226#227#0" expanded="true" />
+            <element signature="e#282#283#0" expanded="true" />
+            <element signature="e#330#331#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/controller/student/marksController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="46" column="42" lean-forward="true" selection-start-line="46" selection-start-column="20" selection-end-line="46" selection-end-column="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/url_controller/student/AddStudent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
-          <caret line="29" column="46" lean-forward="true" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/url_controller/student/UpdateStudent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="29" column="46" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="46" />
+          <caret line="29" column="46" lean-forward="true" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1073,10 +1033,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/StudentController.java">
+    <entry file="file://$PROJECT_DIR$/web/view/forgot_password.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="43" column="48" lean-forward="true" selection-start-line="43" selection-start-column="48" selection-end-line="43" selection-end-column="48" />
+        <state relative-caret-position="102">
+          <caret line="18" column="25" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
+          <folding>
+            <element signature="e#681#704#0#HTML" expanded="true" />
+            <element signature="e#727#751#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/url_controller/student/UpdateStudent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="29" column="46" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1085,8 +1056,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/controller/admin/userAccountController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4233">
-          <caret line="249" column="120" selection-start-line="249" selection-start-column="120" selection-end-line="249" selection-end-column="120" />
+        <state relative-caret-position="289">
+          <caret line="17" column="44" lean-forward="true" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="44" />
           <folding>
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
@@ -1099,6 +1070,80 @@
             <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#4;n#tr#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/controller/passwordController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="7" selection-start-column="4" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Student.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="32" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="32" />
+          <folding>
+            <element signature="e#1314#1315#0" expanded="true" />
+            <element signature="e#1349#1350#0" expanded="true" />
+            <element signature="e#1405#1406#0" expanded="true" />
+            <element signature="e#1453#1454#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Admin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="37" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
+          <folding>
+            <element signature="e#221#222#0" expanded="true" />
+            <element signature="e#277#278#0" expanded="true" />
+            <element signature="e#325#326#0" expanded="true" />
+            <element signature="e#145#146#0" expanded="true" />
+            <element signature="e#175#176#0" expanded="true" />
+            <element signature="e#218#219#0" expanded="true" />
+            <element signature="e#256#257#0" expanded="true" />
+            <element signature="e#286#287#0" expanded="true" />
+            <element signature="e#312#313#0" expanded="true" />
+            <element signature="e#350#351#0" expanded="true" />
+            <element signature="e#380#381#0" expanded="true" />
+            <element signature="e#416#417#0" expanded="true" />
+            <element signature="e#448#449#0" expanded="true" />
+            <element signature="e#498#499#0" expanded="true" />
+            <element signature="e#540#541#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/url_controller/email/EmailServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="32" column="69" selection-start-line="32" selection-start-column="69" selection-end-line="32" selection-end-column="69" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/StudentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="95" column="5" lean-forward="true" selection-start-line="95" selection-start-column="5" selection-end-line="95" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="86" column="43" selection-start-line="86" selection-start-column="43" selection-end-line="86" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

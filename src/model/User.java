@@ -4,6 +4,15 @@ public class User {
     private String uid;
     private String password;
     private String accountType;
+    private String emailAddress;
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
 
     public String getUid() {
         return uid;

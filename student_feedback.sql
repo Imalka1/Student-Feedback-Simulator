@@ -27,6 +27,7 @@ create table user(
 uid varchar(100),
 password varchar(100),
 accountType varchar(20),
+emailAddress varchar(100),
 constraint primary key(uid)
 );	
 
@@ -37,7 +38,6 @@ degid int,
 batchid int,
 student_name varchar(100),
 national_id varchar(100),
-emailAddress varchar(100),
 constraint primary key(stid),
 constraint foreign key(uid) references user(uid) on delete cascade,
 constraint foreign key(degid) references degree(degid) on delete cascade,
@@ -48,7 +48,6 @@ create table admin(
 adminid int auto_increment,
 uid varchar(100),
 admin_name varchar(100),
-emailAddress varchar(100),
 constraint primary key(adminid),
 constraint foreign key(uid) references user(uid) on delete cascade
 );
@@ -131,26 +130,25 @@ VALUES
 INSERT INTO `studentfeedback`.`user`
 (`uid`,
 `password`,
-`accountType`)
+`accountType`,
+`emailAddress`)
 VALUES
-('IT123','123','student'),('IT456','456','student'),('ADMIN789','789','admin');
+('IT123','123','student','imalkagunawardana1@gmail.com'),('IT456','456','student','imalkagunawardana1@gmail.com'),('ADMIN789','789','admin','imalkagunawardana1@gmail.com');
 
 INSERT INTO `studentfeedback`.`student`
 (`uid`,
 `degid`,
 `batchid`,
 `student_name`,
-`national_id`,
-`emailAddress`)
+`national_id`)
 VALUES
-('IT123',1,1,'Amal Silva','951761150V','imalkagunawardana1@gmail.com'),('IT456',2,2,'Kamal Silva','961751150V','imalkagunawardana1@gmail.com');
+('IT123',1,1,'Amal Silva','951761150V'),('IT456',2,2,'Kamal Silva','961751150V');
 
 INSERT INTO `studentfeedback`.`admin`
 (`uid`,
-`admin_name`,
-`emailAddress`)
+`admin_name`)
 VALUES
-('ADMIN789','Nimal Silva','imalkagunawardana1@gmail.com');
+('ADMIN789','Nimal Silva');
 
 
 INSERT INTO `studentfeedback`.`evaluation_criteria_heading`
@@ -235,13 +233,22 @@ FROM `studentfeedback`.`evaluation_criteria`;
 
 
 SELECT `user`.`uid`,
-    `user`.`username`,
-    `user`.`password`
+    `user`.`password`,
+    `user`.`emailAddress`
 FROM `studentfeedback`.`user`;
 
 SELECT `batch`.`batchid`,
     `batch`.`intake`
 FROM `studentfeedback`.`batch`;
+
+SELECT `student`.`stid`,
+    `student`.`uid`,
+    `student`.`degid`,
+    `student`.`batchid`,
+    `student`.`student_name`,
+    `student`.`national_id`
+FROM `studentfeedback`.`student`;
+
 
 
 select f.name,d.name from user u,faculty f,degree d where f.facid=d.facid && d.degid=u.degid && u.uid='abc123';
@@ -262,6 +269,8 @@ SELECT `marks`.`uid`,
     `marks`.`sublecid`,
     `marks`.`marks`
 FROM `studentfeedback`.`marks`;
+
+select emailAddress from user where uid='IT123';
 
 
 
