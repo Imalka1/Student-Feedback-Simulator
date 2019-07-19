@@ -147,6 +147,7 @@ $('#btnDelete').click(function () {
                     loadStudents();
                     $('#response').html('<div class="alert alert-success" style="text-align: center;font-weight: bold">Student has been deleted successfully</div>');
                     setTextFieldsEmpty();
+                    setFieldsToNewStudent();
                 } else {
                     $('#response').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Failed to delete student</div>')
                 }
@@ -170,7 +171,6 @@ var studentsArray;
 
 $(window).on("load", function () {
     loadStudents();
-    $('#pageNo').html((pageNo + 1) + ' / ' + ((studentsArray.length - 1) / 10 + 1));
 });
 
 function loadStudents() {
@@ -191,7 +191,8 @@ function loadStudents() {
                 for (var i = 0; i < obj.Students.length; i++) {
                     studentsArray.push(obj.Students[i]);
                 }
-                pagesCount = (studentsArray.length - 1) / 10 + 1;
+                pagesCount = Math.ceil((studentsArray.length) / 10);
+                $('#pageNo').html((pageNo + 1) + ' / ' + pagesCount);
                 fillTheTable();
             },
             error: function () {
@@ -216,8 +217,10 @@ $('#decPageNo').click(function () {
 })
 
 function fillTheTable() {
+    var count = 0;
     var tableData = '';
     for (var i = pageNo * 10; i < studentsArray.length; i++) {
+        console.log(i)
         tableData +=
             '<tr>' +
             '<td style="text-align: center">' + studentsArray[i].RegId + '</td>' +
@@ -226,6 +229,11 @@ function fillTheTable() {
             '<td style="padding-left: 5px">' + studentsArray[i].EmailAddress + '</td>' +
             '<td class="btnViewStudent" style="text-align: center;cursor: pointer"><i class="fa fa-search"></i></td>' +
             '</tr>';
+
+        count++;
+        if (count == 10) {
+            break;
+        }
     }
     $('#studentsDataBody').html(tableData);
 }
