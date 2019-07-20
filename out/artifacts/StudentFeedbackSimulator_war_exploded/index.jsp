@@ -101,7 +101,7 @@
                     </div>
                     <div class="row" style="margin-bottom: 25px">
                         <div class="col-md-4 col-center">
-                            <input type="text" class="form-control" autofocus placeholder="Student ID"
+                            <input type="text" class="form-control" autofocus placeholder="Student / Admin ID"
                                    style="font-size: 16px"
                                    name="username">
                         </div>
@@ -128,7 +128,7 @@
                     </div>
                     <div class="row" style="margin-bottom: 30px">
                         <div class="col-12 col-center" style="text-align: center;font-size: 14px;color: #422f02">
-                            Login using your Student ID and Password
+                            Login using your Student / Admin ID and Password
                         </div>
                     </div>
                     <%
@@ -137,7 +137,7 @@
                     <div class="row">
                         <div class="col-md-4 col-center">
                             <div class="alert alert-danger" style="width: 100%;text-align: center">
-                                Incorrect Student ID or Password
+                                Incorrect Student / Admin ID or Password
                             </div>
                         </div>
                     </div>
