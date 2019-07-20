@@ -5,22 +5,14 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnection {
-    private static DBConnection dBConnection;
-    private Connection connection;
-
-    private DBConnection() throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.jdbc.Driver");
-        connection = DriverManager.getConnection("jdbc:mysql://localhost/studentfeedback", "root", "mysql");
-    }
-
-    public static DBConnection getDBConnection() throws ClassNotFoundException, SQLException {
-        if (dBConnection == null) {
-            dBConnection = new DBConnection();
+    public static Connection getConnection() {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/studentfeedback", "root", "mysql");
+            return connection;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
         }
-        return dBConnection;
-    }
-
-    public Connection getConnection() {
-        return connection;
     }
 }

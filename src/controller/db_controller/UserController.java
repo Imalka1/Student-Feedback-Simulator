@@ -13,7 +13,7 @@ public class UserController {
     public User chkLogin(User user) {
         User userObj = null;
         try {
-            Connection connection = DBConnection.getDBConnection().getConnection();
+            Connection connection = DBConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("select accountType from user where uid=? && binary(password) = binary(?)");
             preparedStatement.setObject(1, user.getUid());
             preparedStatement.setObject(2, user.getPassword());
@@ -24,15 +24,13 @@ public class UserController {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         }
         return userObj;
     }
 
     public boolean addUser(User user) {
         try {
-            Connection connection = DBConnection.getDBConnection().getConnection();
+            Connection connection = DBConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("insert into user (uid,password,accountType,emailAddress) values (?,?,?,?)");
             preparedStatement.setObject(1, user.getUid());
             preparedStatement.setObject(2, user.getPassword());
@@ -43,15 +41,13 @@ public class UserController {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         }
         return false;
     }
 
     public boolean updateEmail(User user) {
         try {
-            Connection connection = DBConnection.getDBConnection().getConnection();
+            Connection connection = DBConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("update user set emailAddress=? where uid=?");
             preparedStatement.setObject(1, user.getEmailAddress());
             preparedStatement.setObject(2, user.getUid());
@@ -60,15 +56,13 @@ public class UserController {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         }
         return false;
     }
 
     public boolean updatePassword(User user) {
         try {
-            Connection connection = DBConnection.getDBConnection().getConnection();
+            Connection connection = DBConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("update user set password=? where uid=?");
             preparedStatement.setObject(1, user.getPassword());
             preparedStatement.setObject(2, user.getUid());
@@ -77,8 +71,6 @@ public class UserController {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         }
         return false;
     }
@@ -86,7 +78,7 @@ public class UserController {
     public User getEmailViaUid(User user) {
         User userEmail = null;
         try {
-            Connection connection = DBConnection.getDBConnection().getConnection();
+            Connection connection = DBConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("select emailAddress from user where uid=?");
             preparedStatement.setObject(1, user.getUid());
             ResultSet rst = preparedStatement.executeQuery();
@@ -95,8 +87,6 @@ public class UserController {
                 userEmail.setEmailAddress(rst.getString(1));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         return userEmail;

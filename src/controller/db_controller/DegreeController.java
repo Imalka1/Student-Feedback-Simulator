@@ -12,7 +12,7 @@ public class DegreeController {
     public Degree getDegreeData(String uid) {
         Degree degree = null;
         try {
-            Connection connection = DBConnection.getDBConnection().getConnection();
+            Connection connection = DBConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("select f.name,d.name,d.degid from student s,faculty f,degree d where f.facid=d.facid && d.degid=s.degid && s.uid=?");
             preparedStatement.setObject(1, uid);
             ResultSet rst = preparedStatement.executeQuery();
@@ -24,8 +24,6 @@ public class DegreeController {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         }
         return degree;
     }
@@ -33,7 +31,7 @@ public class DegreeController {
     public Degree getDegreeName(String uid){
         Degree degree = null;
         try {
-            Connection connection = DBConnection.getDBConnection().getConnection();
+            Connection connection = DBConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("select d.name from student s,degree d where d.degid=s.degid && s.uid=?");
             preparedStatement.setObject(1, uid);
             ResultSet rst = preparedStatement.executeQuery();
@@ -43,8 +41,6 @@ public class DegreeController {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         }
         return degree;
     }
@@ -52,7 +48,7 @@ public class DegreeController {
     public List<Degree> getAllDegrees(){
         List<Degree> degrees = new ArrayList<>();
         try {
-            Connection connection = DBConnection.getDBConnection().getConnection();
+            Connection connection = DBConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("select degid,name from degree");
             ResultSet rst = preparedStatement.executeQuery();
             while (rst.next()) {
@@ -62,8 +58,6 @@ public class DegreeController {
                 degrees.add(degree);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         return degrees;

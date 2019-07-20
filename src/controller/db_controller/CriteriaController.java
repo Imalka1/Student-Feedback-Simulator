@@ -12,7 +12,7 @@ public class CriteriaController {
     public List<Criteria> getCriteriaHeadings() {
         List<Criteria> criterias = new ArrayList<>();
         try {
-            Connection connection = DBConnection.getDBConnection().getConnection();
+            Connection connection = DBConnection.getConnection();
             Statement createStatement = connection.createStatement();
             ResultSet rst = createStatement.executeQuery("select echid,text from evaluation_criteria_heading");
             while (rst.next()) {
@@ -23,8 +23,6 @@ public class CriteriaController {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         }
         return criterias;
     }
@@ -32,7 +30,7 @@ public class CriteriaController {
     public List<Criteria> getCriterias(int echid) {
         List<Criteria> criterias = new ArrayList<>();
         try {
-            Connection connection = DBConnection.getDBConnection().getConnection();
+            Connection connection = DBConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("select ecid,text from evaluation_criteria where echid=?");
             preparedStatement.setObject(1, echid);
             ResultSet rst = preparedStatement.executeQuery();
@@ -43,8 +41,6 @@ public class CriteriaController {
                 criterias.add(criteria);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         return criterias;

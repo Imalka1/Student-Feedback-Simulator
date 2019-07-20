@@ -15,7 +15,7 @@ public class BatchController {
     public Batch getYearAndMonthDiff(String uid) {
         Batch batch = new Batch();
         try {
-            Connection connection = DBConnection.getDBConnection().getConnection();
+            Connection connection = DBConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("select year(curdate())-year(b.intake),month(curdate())-month(b.intake) from student s,batch b,user u where s.batchid=b.batchid && u.uid=s.uid && s.uid=?");
             preparedStatement.setObject(1, uid);
             ResultSet rst = preparedStatement.executeQuery();
@@ -25,8 +25,6 @@ public class BatchController {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         }
         return batch;
     }
@@ -34,7 +32,7 @@ public class BatchController {
     public List<Batch> getYears() {
         List<Batch> batches = new ArrayList<>();
         try {
-            Connection connection = DBConnection.getDBConnection().getConnection();
+            Connection connection = DBConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("select distinct year(intake) from batch");
             ResultSet rst = preparedStatement.executeQuery();
             while (rst.next()) {
@@ -44,8 +42,6 @@ public class BatchController {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         }
         return batches;
     }
@@ -53,7 +49,7 @@ public class BatchController {
     public List<Batch> getAllBatches() {
         List<Batch> batches = new ArrayList<>();
         try {
-            Connection connection = DBConnection.getDBConnection().getConnection();
+            Connection connection = DBConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("select batchid,name from batch");
             ResultSet rst = preparedStatement.executeQuery();
             while (rst.next()) {
@@ -63,8 +59,6 @@ public class BatchController {
                 batches.add(batch);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         return batches;

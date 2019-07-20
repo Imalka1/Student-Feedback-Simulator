@@ -13,7 +13,7 @@ public class SemesterController {
     public Semester getSemesterName(Semester semester) {
         Semester semDTO = new Semester();
         try {
-            Connection connection = DBConnection.getDBConnection().getConnection();
+            Connection connection = DBConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("select text from semester where semid=?");
             preparedStatement.setObject(1, semester.getSemid());
             ResultSet rst = preparedStatement.executeQuery();
@@ -21,8 +21,6 @@ public class SemesterController {
                 semDTO.setSemesterName(rst.getString(1));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         return semDTO;

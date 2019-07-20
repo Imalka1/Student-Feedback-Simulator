@@ -82,13 +82,13 @@
                 <div class="col-12" style="padding: 0px" id="messageBox"></div>
             </div>
             <div class="row">
-                <div class="col-12" style="font-size: 13px"><b>Note:-</b> Type your student/admin id and click on send.
+                <div class="col-12" style="font-size: 13px"><b>Note:-</b> Type your student / admin id and click on send.
                     System will send a confirmation code to your email.
                 </div>
             </div>
             <div class="row" style="margin-top: 20px">
                 <div class="col-3">
-                    Student/Admin ID :
+                    Student / Admin ID :
                 </div>
                 <div class="col-7">
                     <input class="form-control" type="text" id="userId">

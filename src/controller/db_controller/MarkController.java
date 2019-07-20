@@ -14,7 +14,7 @@ public class MarkController {
         int count = 0;
         Connection connection = null;
         try {
-            connection = DBConnection.getDBConnection().getConnection();
+            connection = DBConnection.getConnection();
             connection.setAutoCommit(false);
             for (Mark mark : marks) {
                 PreparedStatement preparedStatement = connection.prepareStatement("insert into marks values (?,?,?,?,?)");
@@ -34,8 +34,6 @@ public class MarkController {
                 connection.rollback();
             }
         } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
             try {
