@@ -108,12 +108,12 @@
         <div class="col-5">
             (The registration number cannot be updated)
         </div>
-        <div class="col-2" style="text-align: center">
-            (Search student)
-        </div>
-        <div class="col-2" style="text-align: center">
-            (Click to clear fields)
-        </div>
+        <%--<div class="col-2" style="text-align: center">--%>
+            <%--(Search student)--%>
+        <%--</div>--%>
+        <%--<div class="col-2" style="text-align: center">--%>
+            <%--(Click to clear fields)--%>
+        <%--</div>--%>
     </div>
     <div class="row">
         <div class="col-3">
