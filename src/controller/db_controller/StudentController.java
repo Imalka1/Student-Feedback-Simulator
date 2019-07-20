@@ -46,22 +46,22 @@ public class StudentController {
         return studentObj;
     }
 
-    public List<Student> getAllStudents(int degid, int batchid, int year) {
+    public List<Student> getAllStudents(Student student) {
         List<Student> students = new ArrayList<>();
         try {
             Connection connection = DBConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("select u.uid,student_name,national_id,emailAddress from student s,batch b,degree d,user u where b.batchid=s.batchid && d.degid=s.degid && d.degid=? && b.batchid=? && u.uid=s.uid && year(b.intake)=? order by stid desc");
-            preparedStatement.setObject(1, degid);
-            preparedStatement.setObject(2, batchid);
-            preparedStatement.setObject(3, year);
+            preparedStatement.setObject(1, student.getDegId());
+            preparedStatement.setObject(2, student.getBatchId());
+            preparedStatement.setObject(3, student.getYear());
             ResultSet rst = preparedStatement.executeQuery();
             while (rst.next()) {
-                Student student = new Student();
-                student.setUid(rst.getString(1));
-                student.setStudentName(rst.getString(2));
-                student.setNationalId(rst.getString(3));
-                student.setEmailAddress(rst.getString(4));
-                students.add(student);
+                Student studentObj = new Student();
+                studentObj.setUid(rst.getString(1));
+                studentObj.setStudentName(rst.getString(2));
+                studentObj.setNationalId(rst.getString(3));
+                studentObj.setEmailAddress(rst.getString(4));
+                students.add(studentObj);
             }
         } catch (SQLException e) {
             e.printStackTrace();

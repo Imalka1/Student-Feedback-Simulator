@@ -32,7 +32,9 @@
                  style="background-color: #ffb508;width: fit-content;color: #402901;padding: 20px;padding-left: 30px;padding-right: 30px;font-size: 18px;border-radius: 35px;margin-top: 80px;font-weight: bold">
                 <%
                     {
-                        Admin admin = new AdminController().getAdminUsername(sessionLogin.getAttribute("uid").toString());
+                        Admin adminObj = new Admin();
+                        adminObj.setUid(sessionLogin.getAttribute("uid").toString());
+                        Admin admin = new AdminController().getAdminUsername(adminObj);
                         if (admin != null) {
                 %>
                 Online - <%= admin.getAdminName()%>

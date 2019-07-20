@@ -9,20 +9,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class AdminController {
-    public Admin getAdminUsername(String uid) {
-        Admin admin = null;
+    public Admin getAdminUsername(Admin admin) {
+        Admin adminUsername = null;
         try {
             Connection connection = DBConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("select admin_name from user u,admin a where u.uid=a.uid && u.uid=?");
-            preparedStatement.setObject(1, uid);
+            preparedStatement.setObject(1, admin.getUid());
             ResultSet rst = preparedStatement.executeQuery();
             if (rst.next()) {
-                admin = new Admin();
-                admin.setAdminName(rst.getString(1));
+                adminUsername = new Admin();
+                adminUsername.setAdminName(rst.getString(1));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return admin;
+        return adminUsername;
     }
 }

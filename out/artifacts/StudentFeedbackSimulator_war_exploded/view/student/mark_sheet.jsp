@@ -45,7 +45,9 @@
         <div class="col-md-8" style="border: 1px solid black;color: #747474">
             <%
                 {
-                    Degree degreeName = new DegreeController().getDegreeName(sessionLogin.getAttribute("uid").toString());
+                    Student studentObj = new Student();
+                    studentObj.setUid(sessionLogin.getAttribute("uid").toString());
+                    Degree degreeName = new DegreeController().getDegreeName(studentObj);
                     if (degreeName != null) {
             %>
             <%= degreeName.getDegreeName()%>
@@ -62,7 +64,9 @@
         <div class="col-md-8" style="border: 1px solid black;color: #747474">
             <%
                 {
-                    Batch batch = new BatchController().getYearAndMonthDiff(sessionLogin.getAttribute("uid").toString());
+                    Student studentObj = new Student();
+                    studentObj.setUid(sessionLogin.getAttribute("uid").toString());
+                    Batch batch = new BatchController().getYearAndMonthDiff(studentObj);
                     if (batch != null) {
                         Semester semester = new Semester();
                         semester.setSemid((batch.getYearDiff() * 12 + batch.getMonthDiff()) / 6 + 1);
@@ -84,7 +88,9 @@
         <div class="col-md-8" style="border: 1px solid black;color: #747474">
             <%
                 {
-                    Subject subject = new SubjectController().getSubjectNameAndCredits(subjectId);
+                    Subject subjectObj = new Subject();
+                    subjectObj.setSubjectId(subjectId);
+                    Subject subject = new SubjectController().getSubjectNameAndCredits(subjectObj);
                     if (subject != null) {
             %>
             <%= subject.getSubjectName()%> / <%= subjectId%> / <%= subject.getCredits()%> / <%= subject.getLecturerName()%>
@@ -131,7 +137,9 @@
                 </tr>
                 <%
                     {
-                        List<Criteria> criterias = new CriteriaController().getCriterias(criteriaHeadDTO.getEchid());
+                        Criteria criteriaObj = new Criteria();
+                        criteriaObj.setEchid(criteriaHeadDTO.getEchid());
+                        List<Criteria> criterias = new CriteriaController().getCriterias(criteriaObj);
                         for (Criteria criteria : criterias) {
                 %>
                 <tr id="tr<%= ++value%>" class="trMarks">

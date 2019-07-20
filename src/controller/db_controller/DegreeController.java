@@ -2,6 +2,7 @@ package controller.db_controller;
 
 import db.DBConnection;
 import model.Degree;
+import model.Student;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -9,12 +10,12 @@ import java.util.List;
 
 public class DegreeController {
 
-    public Degree getDegreeData(String uid) {
+    public Degree getDegreeData(Student student) {
         Degree degree = null;
         try {
             Connection connection = DBConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("select f.name,d.name,d.degid from student s,faculty f,degree d where f.facid=d.facid && d.degid=s.degid && s.uid=?");
-            preparedStatement.setObject(1, uid);
+            preparedStatement.setObject(1, student.getUid());
             ResultSet rst = preparedStatement.executeQuery();
             if (rst.next()) {
                 degree = new Degree();
@@ -28,12 +29,12 @@ public class DegreeController {
         return degree;
     }
 
-    public Degree getDegreeName(String uid){
+    public Degree getDegreeName(Student student){
         Degree degree = null;
         try {
             Connection connection = DBConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("select d.name from student s,degree d where d.degid=s.degid && s.uid=?");
-            preparedStatement.setObject(1, uid);
+            preparedStatement.setObject(1, student.getUid());
             ResultSet rst = preparedStatement.executeQuery();
             if (rst.next()) {
                 degree = new Degree();

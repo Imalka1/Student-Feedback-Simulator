@@ -33,7 +33,9 @@
         <div class="intro-text" style="padding-top: 200px">
             <%
                 {
-                    degree = new DegreeController().getDegreeData(sessionLogin.getAttribute("uid").toString());
+                    Student studentObj = new Student();
+                    studentObj.setUid(sessionLogin.getAttribute("uid").toString());
+                    degree = new DegreeController().getDegreeData(studentObj);
                     if (degree != null) {
             %>
             <div class="intro-lead-in"><%= degree.getFacultyName()%>
@@ -46,7 +48,9 @@
             %>
             <%
                 {
-                    Batch batch = new BatchController().getYearAndMonthDiff(sessionLogin.getAttribute("uid").toString());
+                    Student studentObj = new Student();
+                    studentObj.setUid(sessionLogin.getAttribute("uid").toString());
+                    Batch batch = new BatchController().getYearAndMonthDiff(studentObj);
                     semester = new Semester();
                     if (batch != null) {
                         semester.setSemid((batch.getYearDiff() * 12 + batch.getMonthDiff()) / 6 + 1);
@@ -92,7 +96,10 @@
                 <ul class="timeline">
                     <%
                         {
-                            List<Subject> subjects = new SubjectController().getSubjectsViaSemesterAndDegree(degree.getDegid(), semester.getSemid());
+                            Subject subjectObj = new Subject();
+                            subjectObj.setDegid(degree.getDegid());
+                            subjectObj.setSemid(semester.getSemid());
+                            List<Subject> subjects = new SubjectController().getSubjectsViaSemesterAndDegree(subjectObj);
                             for (Subject subject : subjects) {
                     %>
                     <li class="timeline-inverted subjects" style="cursor: pointer">

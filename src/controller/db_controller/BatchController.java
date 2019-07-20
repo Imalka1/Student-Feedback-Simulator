@@ -2,6 +2,7 @@ package controller.db_controller;
 
 import db.DBConnection;
 import model.Batch;
+import model.Student;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,12 +13,12 @@ import java.util.List;
 
 public class BatchController {
 
-    public Batch getYearAndMonthDiff(String uid) {
+    public Batch getYearAndMonthDiff(Student student) {
         Batch batch = new Batch();
         try {
             Connection connection = DBConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("select year(curdate())-year(b.intake),month(curdate())-month(b.intake) from student s,batch b,user u where s.batchid=b.batchid && u.uid=s.uid && s.uid=?");
-            preparedStatement.setObject(1, uid);
+            preparedStatement.setObject(1, student.getUid());
             ResultSet rst = preparedStatement.executeQuery();
             if (rst.next()) {
                 batch.setYearDiff(rst.getInt(1));

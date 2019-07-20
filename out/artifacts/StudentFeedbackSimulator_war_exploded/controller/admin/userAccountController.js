@@ -219,7 +219,6 @@ function fillTheTable() {
     var count = 0;
     var tableData = '';
     for (var i = pageNo * 10; i < studentsArray.length; i++) {
-        console.log(i)
         tableData +=
             '<tr>' +
             '<td style="text-align: center">' + studentsArray[i].RegId + '</td>' +

@@ -18,19 +18,22 @@ import java.util.List;
 public class LoadStudents extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int degree = Integer.parseInt(req.getParameter("degree").trim());
+        int degreeId = Integer.parseInt(req.getParameter("degree").trim());
         int year = Integer.parseInt(req.getParameter("year").trim());
-        int batch = Integer.parseInt(req.getParameter("batch").trim());
-//        int pageNo = Integer.parseInt(req.getParameter("page_no").trim());
-        List<Student> allStudents = new StudentController().getAllStudents(degree, batch, year);
+        int batchId = Integer.parseInt(req.getParameter("batch").trim());
+        Student student=new Student();
+        student.setDegId(degreeId);
+        student.setBatchId(batchId);
+        student.setYear(year);
+        List<Student> allStudents = new StudentController().getAllStudents(student);
         JSONObject obj = new JSONObject();
         JSONArray studentsJson = new JSONArray();
-        for (Student student : allStudents) {
+        for (Student studentObj : allStudents) {
             JSONObject studentJson = new JSONObject();
-            studentJson.put("RegId", student.getUid());
-            studentJson.put("StudentName", student.getStudentName());
-            studentJson.put("NationalId", student.getNationalId());
-            studentJson.put("EmailAddress", student.getEmailAddress());
+            studentJson.put("RegId", studentObj.getUid());
+            studentJson.put("StudentName", studentObj.getStudentName());
+            studentJson.put("NationalId", studentObj.getNationalId());
+            studentJson.put("EmailAddress", studentObj.getEmailAddress());
             studentsJson.add(studentJson);
         }
         obj.put("Students",studentsJson);
