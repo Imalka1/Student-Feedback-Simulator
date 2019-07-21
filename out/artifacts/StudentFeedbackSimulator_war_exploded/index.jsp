@@ -103,7 +103,7 @@
                         <div class="col-md-4 col-center">
                             <input type="text" class="form-control" autofocus placeholder="Student / Admin ID"
                                    style="font-size: 16px"
-                                   name="username">
+                                   name="username" id="username">
                         </div>
                     </div>
                     <div class="row" style="margin-bottom: 25px">
@@ -161,6 +161,10 @@
 <!-- Bootstrap core JavaScript -->
 <script src="/assets/js/jquery-3.2.1.min.js"></script>
 <script>
+    $('#username').keyup(function () {
+        $(this).val($(this).val().toUpperCase())
+    })
+
     $('#btnForgotPassword').click(function () {
         document.location.href = "view/forgot_password.jsp";
     })
