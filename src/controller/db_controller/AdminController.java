@@ -12,7 +12,7 @@ public class AdminController {
     public Admin getAdminUsername(Admin admin) {
         Admin adminUsername = null;
         try {
-            Connection connection = DBConnection.getConnection();
+            Connection connection = DBConnection.getDBConnection().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("select admin_name from user u,admin a where u.uid=a.uid && u.uid=?");
             preparedStatement.setObject(1, admin.getUid());
             ResultSet rst = preparedStatement.executeQuery();

@@ -15,7 +15,7 @@ public class StudentController {
     public Student getStudentUsername(Student student) {
         Student studentObj = null;
         try {
-            Connection connection = DBConnection.getConnection();
+            Connection connection = DBConnection.getDBConnection().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("select student_name from user u,student s where u.uid=s.uid && u.uid=?");
             preparedStatement.setObject(1, student.getUid());
             ResultSet rst = preparedStatement.executeQuery();
@@ -32,7 +32,7 @@ public class StudentController {
     public Student getStudentNic(Student student) {
         Student studentObj = null;
         try {
-            Connection connection = DBConnection.getConnection();
+            Connection connection = DBConnection.getDBConnection().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("select national_id from student where uid=?");
             preparedStatement.setObject(1, student.getUid());
             ResultSet rst = preparedStatement.executeQuery();
@@ -49,7 +49,7 @@ public class StudentController {
     public List<Student> getAllStudents(Student student) {
         List<Student> students = new ArrayList<>();
         try {
-            Connection connection = DBConnection.getConnection();
+            Connection connection = DBConnection.getDBConnection().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("select u.uid,student_name,national_id,emailAddress from student s,batch b,degree d,user u where b.batchid=s.batchid && d.degid=s.degid && d.degid=? && b.batchid=? && u.uid=s.uid && year(b.intake)=? order by stid desc");
             preparedStatement.setObject(1, student.getDegId());
             preparedStatement.setObject(2, student.getBatchId());
@@ -72,7 +72,7 @@ public class StudentController {
     public boolean addStudent(Student student) {
         Connection connection = null;
         try {
-            connection = DBConnection.getConnection();
+             connection = DBConnection.getDBConnection().getConnection();
             connection.setAutoCommit(false);
             User user = new User();
             user.setUid(student.getUid());
@@ -109,7 +109,7 @@ public class StudentController {
     public boolean updateStudent(Student student) {
         Connection connection = null;
         try {
-            connection = DBConnection.getConnection();
+             connection = DBConnection.getDBConnection().getConnection();
             connection.setAutoCommit(false);
             User user = new User();
             user.setUid(student.getUid());
@@ -144,7 +144,7 @@ public class StudentController {
 
     public boolean deleteStudent(Student student) {
         try {
-            Connection connection = DBConnection.getConnection();
+            Connection connection = DBConnection.getDBConnection().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("delete from user where uid=?");
             preparedStatement.setObject(1, student.getUid());
             if (preparedStatement.executeUpdate() > 0) {

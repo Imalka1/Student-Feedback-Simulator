@@ -15,7 +15,7 @@ public class SubjectController {
     public List<Subject> getSubjectsViaSemesterAndDegree(Subject subject) {
         List<Subject> subjects = new ArrayList<>();
         try {
-            Connection connection = DBConnection.getConnection();
+            Connection connection = DBConnection.getDBConnection().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("select s.subid,title,l.name,credits from subject s,lecturer l,subject_lecturer sl where l.lecid=sl.lecid && s.subid=sl.subid && degid=? && semid=? && current=true");
             preparedStatement.setObject(1, subject.getDegid());
             preparedStatement.setObject(2, subject.getSemid());
@@ -37,7 +37,7 @@ public class SubjectController {
     public Subject getSubjectNameAndCredits(Subject subject) {
         Subject subjectNameAndCredits = null;
         try {
-            Connection connection = DBConnection.getConnection();
+            Connection connection = DBConnection.getDBConnection().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("select title,credits,l.name,sublecid from subject s,lecturer l,subject_lecturer sl where l.lecid=sl.lecid && s.subid=sl.subid && s.subid=? && current=true");
             preparedStatement.setObject(1, subject.getSubjectId());
             ResultSet rst = preparedStatement.executeQuery();

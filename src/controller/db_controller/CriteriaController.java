@@ -12,7 +12,7 @@ public class CriteriaController {
     public List<Criteria> getCriteriaHeadings() {
         List<Criteria> criterias = new ArrayList<>();
         try {
-            Connection connection = DBConnection.getConnection();
+            Connection connection = DBConnection.getDBConnection().getConnection();
             Statement createStatement = connection.createStatement();
             ResultSet rst = createStatement.executeQuery("select echid,text from evaluation_criteria_heading");
             while (rst.next()) {
@@ -30,7 +30,7 @@ public class CriteriaController {
     public List<Criteria> getCriterias(Criteria criteria) {
         List<Criteria> criterias = new ArrayList<>();
         try {
-            Connection connection = DBConnection.getConnection();
+            Connection connection = DBConnection.getDBConnection().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("select ecid,text from evaluation_criteria where echid=?");
             preparedStatement.setObject(1, criteria.getEchid());
             ResultSet rst = preparedStatement.executeQuery();

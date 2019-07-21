@@ -13,7 +13,7 @@ public class UserController {
     public User chkLogin(User user) {
         User userObj = null;
         try {
-            Connection connection = DBConnection.getConnection();
+            Connection connection = DBConnection.getDBConnection().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("select accountType from user where uid=? && binary(password) = binary(?)");
             preparedStatement.setObject(1, user.getUid());
             preparedStatement.setObject(2, user.getPassword());
@@ -30,7 +30,7 @@ public class UserController {
 
     public boolean addUser(User user) {
         try {
-            Connection connection = DBConnection.getConnection();
+            Connection connection = DBConnection.getDBConnection().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("insert into user (uid,password,accountType,emailAddress) values (?,?,?,?)");
             preparedStatement.setObject(1, user.getUid());
             preparedStatement.setObject(2, user.getPassword());
@@ -47,7 +47,7 @@ public class UserController {
 
     public boolean updateEmail(User user) {
         try {
-            Connection connection = DBConnection.getConnection();
+            Connection connection = DBConnection.getDBConnection().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("update user set emailAddress=? where uid=?");
             preparedStatement.setObject(1, user.getEmailAddress());
             preparedStatement.setObject(2, user.getUid());
@@ -62,7 +62,7 @@ public class UserController {
 
     public boolean updatePassword(User user) {
         try {
-            Connection connection = DBConnection.getConnection();
+            Connection connection = DBConnection.getDBConnection().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("update user set password=? where uid=?");
             preparedStatement.setObject(1, user.getPassword());
             preparedStatement.setObject(2, user.getUid());
@@ -78,7 +78,7 @@ public class UserController {
     public User getEmailViaUid(User user) {
         User userEmail = null;
         try {
-            Connection connection = DBConnection.getConnection();
+            Connection connection = DBConnection.getDBConnection().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("select emailAddress from user where uid=?");
             preparedStatement.setObject(1, user.getUid());
             ResultSet rst = preparedStatement.executeQuery();

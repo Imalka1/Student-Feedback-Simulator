@@ -14,7 +14,7 @@ public class MarkController {
         int count = 0;
         Connection connection = null;
         try {
-            connection = DBConnection.getConnection();
+             connection = DBConnection.getDBConnection().getConnection();
             connection.setAutoCommit(false);
             for (Mark mark : marks) {
                 PreparedStatement preparedStatement = connection.prepareStatement("insert into marks values (?,?,?,?,?)");
