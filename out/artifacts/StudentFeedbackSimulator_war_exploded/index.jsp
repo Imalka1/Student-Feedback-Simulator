@@ -30,10 +30,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Agency - Start Bootstrap Theme</title>
+    <title>Student Feedback Simulator</title>
 
     <!-- Bootstrap core CSS -->
-    <%--<link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">--%>
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
     <!-- Custom fonts for this template -->
     <link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -45,9 +44,7 @@
 
     <!-- Custom styles for this template -->
     <link href="/assets/css/agency.min.css" rel="stylesheet">
-    <%--<meta name="viewport" content="width=device-width, initial-scale=1">--%>
     <link rel="stylesheet" href="/assets/font-awesome/latest/css/font-awesome.min.css">
-    <title>$Title$</title>
     <script src="/assets/js/jquery-3.2.1.min.js"></script>
     <style>
         .col-center {
@@ -105,7 +102,7 @@
                     <div class="row" style="margin-bottom: 60px">
                         <div class="col-12"
                              style="text-align: center;margin-top: 80px;font-size: 30px;color: #ffffff">
-                            Student Feedback Form
+                            Student Feedback Simulator
                         </div>
                     </div>
                     <div class="row" style="margin-bottom: 25px">
@@ -167,7 +164,6 @@
     </div>
 </div>
 
-<!-- Bootstrap core JavaScript -->
 <script>
     $('#username').keyup(function () {
         $(this).val($(this).val().toUpperCase())
