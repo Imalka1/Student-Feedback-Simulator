@@ -16,6 +16,12 @@ constraint primary key(degid),
 constraint foreign key(facid) references faculty(facid) on delete cascade
 );
 
+create table semester(
+semid int auto_increment,
+name varchar(100),
+constraint primary key(semid)
+);
+
 create table batch(
 batchid int auto_increment,
 intake date,
@@ -66,12 +72,6 @@ constraint primary key(ecid),
 constraint foreign key(echid) references evaluation_criteria_heading(echid) on delete cascade
 );
 
-create table semester(
-semid int auto_increment,
-text varchar(100),
-constraint primary key(semid)
-);
-
 create table lecturer(
 lecid varchar(100),
 name varchar(100),
@@ -120,7 +120,7 @@ INSERT INTO `studentfeedback`.`batch`
 (`intake`,
 `name`)
 VALUES
-('2019-01-05','Year 1 Semester 1'),('2020-01-05','Year 1 Semester 2');
+('2019-01-05','2019 January'),('2020-01-05','2020 January'),('2019-08-05','2019 June');
 
 INSERT INTO `studentfeedback`.`degree`
 (`facid`,`name`)
@@ -190,7 +190,7 @@ VALUES
 (6,'Module/subject was understood');
 
 INSERT INTO `studentfeedback`.`semester`
-(`text`)
+(`name`)
 VALUES
 ('Year 1 / Semester 1'),('Year 1 / Semester 2'),('Year 2 / Semester 1'),('Year 2 / Semester 2');
 

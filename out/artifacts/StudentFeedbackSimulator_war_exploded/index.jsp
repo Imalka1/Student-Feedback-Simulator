@@ -3,12 +3,21 @@
 <%
     HttpSession sessionLogin = request.getSession(false);
     if (sessionLogin != null) {
-        if (sessionLogin.getAttribute("login") != null) {
-            response.sendRedirect("landing_page(student).jsp");
+        if (sessionLogin.getAttribute("accountType") != null) {
+//            response.sendRedirect("landing_page(student).jsp");
+            if (sessionLogin.getAttribute("accountType").equals("admin")) {
+%>
+<jsp:forward page="view/admin/landing_page(admin).jsp"/>
+<%
+} else {
+%>
+<jsp:forward page="view/student/landing_page(student).jsp"/>
+<%
+            }
         }
     }
 
-    String error = "";
+    String error = "abc";
     if (request.getParameter("error") != null) {
         error = request.getParameter("error");
     }
@@ -94,7 +103,7 @@
             <div class="col-12">
                 <form action="/login" method="post">
                     <div class="row" style="margin-bottom: 60px">
-                        <div class="col-12 col-center"
+                        <div class="col-12"
                              style="text-align: center;margin-top: 80px;font-size: 30px;color: #ffffff">
                             Student Feedback Form
                         </div>
@@ -132,7 +141,7 @@
                         </div>
                     </div>
                     <%
-                        if (error.equals("error")) {
+                        if (error.equals("errorLogin")) {
                     %>
                     <div class="row">
                         <div class="col-md-4 col-center">
@@ -159,7 +168,6 @@
 </div>
 
 <!-- Bootstrap core JavaScript -->
-<script src="/assets/js/jquery-3.2.1.min.js"></script>
 <script>
     $('#username').keyup(function () {
         $(this).val($(this).val().toUpperCase())

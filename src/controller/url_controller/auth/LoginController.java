@@ -24,7 +24,6 @@ public class LoginController extends HttpServlet {
         User user = new UserController().chkLogin(userObj);
         if (user != null) {
             sessionLogin.setAttribute("uid", uid);
-            sessionLogin.setAttribute("accountType", user.getAccountType());
 
             if (user.getAccountType().equals("student")) {
                 Student student = new Student();
@@ -33,18 +32,20 @@ public class LoginController extends HttpServlet {
                 if (password.equals(studentNic.getNationalId())) {
                     resp.sendRedirect("/view/reset_password.jsp");
                 } else {
+                    sessionLogin.setAttribute("accountType", user.getAccountType());
                     resp.sendRedirect("/view/student/landing_page(student).jsp");
                 }
             } else if (user.getAccountType().equals("admin")) {
                 if (password.equals("admin")) {
                     resp.sendRedirect("/view/reset_password.jsp");
                 } else {
+                    sessionLogin.setAttribute("accountType", user.getAccountType());
                     resp.sendRedirect("/view/admin/landing_page(admin).jsp");
                 }
             }
 
         } else {
-            resp.sendRedirect("/index.jsp?error=error");
+            resp.sendRedirect("/index.jsp?error=errorLogin");
         }
     }
 }

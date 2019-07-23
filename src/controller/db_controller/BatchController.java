@@ -2,6 +2,7 @@ package controller.db_controller;
 
 import db.DBConnection;
 import model.Batch;
+import model.Semester;
 import model.Student;
 
 import java.sql.Connection;
@@ -30,24 +31,7 @@ public class BatchController {
         return batch;
     }
 
-    public List<Batch> getYears() {
-        List<Batch> batches = new ArrayList<>();
-        try {
-            Connection connection = DBConnection.getDBConnection().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("select distinct year(intake) from batch");
-            ResultSet rst = preparedStatement.executeQuery();
-            while (rst.next()) {
-                Batch batch = new Batch();
-                batch.setYear(rst.getInt(1));
-                batches.add(batch);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return batches;
-    }
-
-    public List<Batch> getAllBatches() {
+    public List<Batch> getIntakes() {
         List<Batch> batches = new ArrayList<>();
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();
@@ -63,5 +47,22 @@ public class BatchController {
             e.printStackTrace();
         }
         return batches;
+    }
+
+    public Batch getBatchNameViaUid(Student student) {
+        Batch batch = null;
+        try {
+            Connection connection = DBConnection.getDBConnection().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("select name from batch b,student s where b.batchid=s.batchid && uid=?");
+            preparedStatement.setObject(1, student.getUid());
+            ResultSet rst = preparedStatement.executeQuery();
+            if (rst.next()) {
+                batch = new Batch();
+                batch.setBatchName(rst.getString(1));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return batch;
     }
 }

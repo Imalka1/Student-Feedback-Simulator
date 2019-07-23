@@ -4,13 +4,13 @@ $('#degree').change(function () {
     loadStudents();
 })
 
-$('#year').change(function () {
-    loadStudents();
-})
-
 $('#batch').change(function () {
     loadStudents();
 })
+
+// $('#batch').change(function () {
+//     loadStudents();
+// })
 
 //---------------------------------------------Validate input fields----------------------------------------------------
 
@@ -74,7 +74,6 @@ $('#btnAdd').click(function () {
             url: window.location.origin + "/add_student",
             data: {
                 degree: $('#degree').val(),
-                year: $('#year').val(),
                 batch: $('#batch').val(),
                 regNo: $('#regNo').val(),
                 studetName: $('#studetName').val(),
@@ -107,7 +106,6 @@ $('#btnUpdate').click(function () {
             url: window.location.origin + "/update_student",
             data: {
                 degree: $('#degree').val(),
-                year: $('#year').val(),
                 batch: $('#batch').val(),
                 regNo: $('#regNo').val(),
                 studetName: $('#studetName').val(),
@@ -180,7 +178,6 @@ function loadStudents() {
             url: window.location.origin + "/load_students",
             data: {
                 degree: $('#degree').val(),
-                year: $('#year').val(),
                 batch: $('#batch').val()
             },
             success: function (response) {

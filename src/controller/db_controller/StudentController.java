@@ -50,10 +50,9 @@ public class StudentController {
         List<Student> students = new ArrayList<>();
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("select u.uid,student_name,national_id,emailAddress from student s,batch b,degree d,user u where b.batchid=s.batchid && d.degid=s.degid && d.degid=? && b.batchid=? && u.uid=s.uid && year(b.intake)=? order by stid desc");
+            PreparedStatement preparedStatement = connection.prepareStatement("select u.uid,student_name,national_id,emailAddress from student s,batch b,degree d,user u where b.batchid=s.batchid && d.degid=s.degid && u.uid=s.uid && d.degid=? && b.batchid=? order by stid desc");
             preparedStatement.setObject(1, student.getDegId());
             preparedStatement.setObject(2, student.getBatchId());
-            preparedStatement.setObject(3, student.getYear());
             ResultSet rst = preparedStatement.executeQuery();
             while (rst.next()) {
                 Student studentObj = new Student();

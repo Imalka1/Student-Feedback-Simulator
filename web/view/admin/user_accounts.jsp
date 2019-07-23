@@ -33,25 +33,25 @@
     </div>
     <div class="row" style="margin-top: 20px;text-align: center;font-size: 20px">
         <div class="col-2">
-            Year
+            Intake
         </div>
-        <div class="col-8">
+        <div class="col-10">
             Degree
         </div>
-        <div class="col-2">
-            Batch
-        </div>
+        <%--<div class="col-2">--%>
+            <%--Batch--%>
+        <%--</div>--%>
     </div>
 
     <div class="row">
         <div class="col-2">
-            <select class="form-control" id="year">
+            <select class="form-control" id="batch">
                 <%
                     {
-                        List<Batch> years = new BatchController().getYears();
+                        List<Batch> years = new BatchController().getIntakes();
                         for (Batch batch : years) {
                 %>
-                <option value="<%= batch.getYear()%>"><%= batch.getYear()%>
+                <option value="<%= batch.getBatchid()%>"><%= batch.getBatchName()%>
                 </option>
                 <%
                         }
@@ -59,7 +59,7 @@
                 %>
             </select>
         </div>
-        <div class="col-8">
+        <div class="col-10">
             <select class="form-control" id="degree">
                 <%
                     {
@@ -74,21 +74,21 @@
                 %>
             </select>
         </div>
-        <div class="col-2">
-            <select class="form-control" id="batch">
-                <%
-                    {
-                        List<Batch> allBatches = new BatchController().getAllBatches();
-                        for (Batch batch : allBatches) {
-                %>
-                <option value="<%= batch.getBatchid()%>"><%= batch.getBatchName()%>
-                </option>
-                <%
-                        }
-                    }
-                %>
-            </select>
-        </div>
+        <%--<div class="col-2">--%>
+            <%--<select class="form-control" id="batch">--%>
+                <%--<%--%>
+                    <%--{--%>
+                        <%--List<Semester> allSemesters = new SemesterController().getAllSemesters();--%>
+                        <%--for (Semester semester : allSemesters) {--%>
+                <%--%>--%>
+                <%--<option value="<%= semester.getSemid()%>"><%= semester.getSemesterName()%>--%>
+                <%--</option>--%>
+                <%--<%--%>
+                        <%--}--%>
+                    <%--}--%>
+                <%--%>--%>
+            <%--</select>--%>
+        <%--</div>--%>
         <%--<div class="col-2">--%>
         <%--<div>--%>
         <%--<button type="submit" id="btnSearch" class="btn" style="background-color: #ffbf05;width: 100%">Search</button>--%>

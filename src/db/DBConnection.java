@@ -10,7 +10,6 @@ public class DBConnection {
     private Connection connection;
 
     private DBConnection() {
-
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost/studentfeedback", "root", "mysql");

@@ -53,11 +53,20 @@
                     Batch batch = new BatchController().getYearAndMonthDiff(studentObj);
                     semester = new Semester();
                     if (batch != null) {
-                        semester.setSemid((batch.getYearDiff() * 12 + batch.getMonthDiff()) / 6 + 1);
+                        if (batch.getYearDiff() < 0 || batch.getMonthDiff() < 0) {
+                            semester.setSemid(0);
+                        } else {
+                            semester.setSemid((batch.getYearDiff() * 12 + batch.getMonthDiff()) / 6 + 1);
+                        }
                         Semester semesterName = new SemesterController().getSemesterName(semester);
                         if (semesterName != null) {
             %>
-            <div class="intro-lead-in" style="padding-top: 40px;color: #FFB508"><%= semesterName.getSemesterName()%>
+            <div class="intro-lead-in" style="padding-top: 40px;color: #FFB508"><%= new BatchController().getBatchNameViaUid(studentObj).getBatchName()%> (<%= semesterName.getSemesterName()%>)
+            </div>
+            <%
+            } else {
+            %>
+            <div class="intro-lead-in" style="padding-top: 40px;color: #FFB508">Not yet
             </div>
             <%
                         }

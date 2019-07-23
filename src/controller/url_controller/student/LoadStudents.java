@@ -19,12 +19,10 @@ public class LoadStudents extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int degreeId = Integer.parseInt(req.getParameter("degree").trim());
-        int year = Integer.parseInt(req.getParameter("year").trim());
         int batchId = Integer.parseInt(req.getParameter("batch").trim());
         Student student=new Student();
         student.setDegId(degreeId);
         student.setBatchId(batchId);
-        student.setYear(year);
         List<Student> allStudents = new StudentController().getAllStudents(student);
         JSONObject obj = new JSONObject();
         JSONArray studentsJson = new JSONArray();
