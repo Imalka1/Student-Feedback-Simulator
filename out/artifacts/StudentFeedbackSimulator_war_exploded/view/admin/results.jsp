@@ -5,6 +5,8 @@
 <%@ page import="model.Degree" %>
 <%@ page import="controller.db_controller.SemesterController" %>
 <%@ page import="model.Semester" %>
+<%@ page import="controller.db_controller.FacultyController" %>
+<%@ page import="model.Faculty" %>
 
 <jsp:include page="../header.jsp"/>
 <%
@@ -41,10 +43,10 @@
 
 <div style="margin-top: 80px;margin-left: 30px;margin-right: 30px">
     <div class="row" style="margin-top: 20px;text-align: center;font-size: 20px">
-        <div class="col-2">
-            Intake
+        <div class="col-3">
+            Faculty
         </div>
-        <div class="col-8">
+        <div class="col-7">
             Degree
         </div>
         <div class="col-2">
@@ -52,14 +54,14 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-2">
-            <select class="form-control" id="batch">
+        <div class="col-3">
+            <select class="form-control" id="faculty">
                 <%
                     {
-                        List<Batch> years = new BatchController().getIntakes();
-                        for (Batch batch : years) {
+                        List<Faculty> allFaculties = new FacultyController().getAllFaculties();
+                        for (Faculty faculty : allFaculties) {
                 %>
-                <option value="<%= batch.getBatchid()%>"><%= batch.getBatchName()%>
+                <option value="<%= faculty.getFacid()%>"><%= faculty.getFacultyName()%>
                 </option>
                 <%
                         }
@@ -67,19 +69,19 @@
                 %>
             </select>
         </div>
-        <div class="col-8">
+        <div class="col-7">
             <select class="form-control" id="degree">
-                <%
-                    {
-                        List<Degree> allDegrees = new DegreeController().getAllDegrees();
-                        for (Degree degree : allDegrees) {
-                %>
-                <option value="<%= degree.getDegid()%>"><%= degree.getDegreeName()%>
-                </option>
-                <%
-                        }
-                    }
-                %>
+                <%--<%--%>
+                    <%--{--%>
+                        <%--List<Degree> allDegrees = new DegreeController().getAllDegrees();--%>
+                        <%--for (Degree degree : allDegrees) {--%>
+                <%--%>--%>
+                <%--<option value="<%= degree.getDegid()%>"><%= degree.getDegreeName()%>--%>
+                <%--</option>--%>
+                <%--<%--%>
+                        <%--}--%>
+                    <%--}--%>
+                <%--%>--%>
             </select>
         </div>
         <div class="col-2">
@@ -127,4 +129,6 @@
 
 </div>
 </div>
+
+<script src="/controller/admin/resultsController.js"></script>
 <jsp:include page="../footer.jsp"/>

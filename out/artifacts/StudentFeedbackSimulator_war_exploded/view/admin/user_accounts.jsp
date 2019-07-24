@@ -42,18 +42,48 @@
         </div>
     </div>
     <div class="row" style="margin-top: 20px;text-align: center;font-size: 20px">
+        <div class="col-3">
+            Faculty
+        </div>
+        <div class="col-7">
+            Degree
+        </div>
         <div class="col-2">
             Intake
         </div>
-        <div class="col-10">
-            Degree
-        </div>
-        <%--<div class="col-2">--%>
-            <%--Batch--%>
-        <%--</div>--%>
     </div>
 
     <div class="row">
+        <div class="col-3">
+            <select class="form-control" id="faculty">
+                <%
+                    {
+                        List<Faculty> allFaculties = new FacultyController().getAllFaculties();
+                        for (Faculty faculty : allFaculties) {
+                %>
+                <option value="<%= faculty.getFacid()%>"><%= faculty.getFacultyName()%>
+                </option>
+                <%
+                        }
+                    }
+                %>
+            </select>
+        </div>
+        <div class="col-7">
+            <select class="form-control" id="degree">
+                <%--<%--%>
+                    <%--{--%>
+                        <%--List<Degree> allDegrees = new DegreeController().getAllDegrees();--%>
+                        <%--for (Degree degree : allDegrees) {--%>
+                <%--%>--%>
+                <%--<option value="<%= degree.getDegid()%>"><%= degree.getDegreeName()%>--%>
+                <%--</option>--%>
+                <%--<%--%>
+                        <%--}--%>
+                    <%--}--%>
+                <%--%>--%>
+            </select>
+        </div>
         <div class="col-2">
             <select class="form-control" id="batch">
                 <%
@@ -62,21 +92,6 @@
                         for (Batch batch : years) {
                 %>
                 <option value="<%= batch.getBatchid()%>"><%= batch.getBatchName()%>
-                </option>
-                <%
-                        }
-                    }
-                %>
-            </select>
-        </div>
-        <div class="col-10">
-            <select class="form-control" id="degree">
-                <%
-                    {
-                        List<Degree> allDegrees = new DegreeController().getAllDegrees();
-                        for (Degree degree : allDegrees) {
-                %>
-                <option value="<%= degree.getDegid()%>"><%= degree.getDegreeName()%>
                 </option>
                 <%
                         }

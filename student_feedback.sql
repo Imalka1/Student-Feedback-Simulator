@@ -249,6 +249,14 @@ SELECT `student`.`stid`,
     `student`.`national_id`
 FROM `studentfeedback`.`student`;
 
+SELECT `degree`.`degid`,
+    `degree`.`facid`,
+    `degree`.`name`
+FROM `studentfeedback`.`degree`;
+
+SELECT `faculty`.`facid`,
+    `faculty`.`name`
+FROM `studentfeedback`.`faculty`;
 
 
 select f.name,d.name from user u,faculty f,degree d where f.facid=d.facid && d.degid=u.degid && u.uid='abc123';
