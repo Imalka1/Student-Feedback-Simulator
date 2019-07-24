@@ -20,12 +20,14 @@ public class UpdateStudent extends HttpServlet {
         String regNo = req.getParameter("regNo").trim();
         String studetName = req.getParameter("studetName").trim();
         String nationalId = req.getParameter("nationalId").trim();
+        String emailAddress = req.getParameter("emailAddress").trim();
         Student student = new Student();
         student.setUid(regNo);
         student.setStudentName(studetName);
         student.setNationalId(nationalId);
         student.setDegId(degree);
         student.setBatchId(batch);
+        student.setEmailAddress(emailAddress);
 
         PrintWriter writer = resp.getWriter();
         if (new StudentController().updateStudent(student)) {

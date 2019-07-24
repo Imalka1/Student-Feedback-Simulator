@@ -5,9 +5,19 @@ public class Student {
     private String uid;
     private int degId;
     private int batchId;
+    private int year;
     private String studentName;
     private String nationalId;
     private String batchName;
+    private String emailAddress;
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
 
     public String getBatchName() {
         return batchName;
@@ -63,5 +73,13 @@ public class Student {
 
     public void setNationalId(String nationalId) {
         this.nationalId = nationalId;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
     }
 }

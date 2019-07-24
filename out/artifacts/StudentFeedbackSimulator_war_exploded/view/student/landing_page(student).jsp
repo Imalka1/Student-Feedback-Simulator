@@ -2,48 +2,30 @@
 <%@ page import="model.*" %>
 <%@ page import="java.util.List" %>
 
-<jsp:include page="header.jsp"/>
+<jsp:include page="../header.jsp"/>
 <%
+    String logout = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/logout";
     HttpSession sessionLogin = request.getSession(false);
-    if (sessionLogin != null) {
-        if (sessionLogin.getAttribute("uid") == null) {
-//            response.sendRedirect("index.jsp");
-%>
-<jsp:forward page="../index.jsp"/>
-<%
-        }
-    }
+
     Degree degree;
     Semester semester;
 %>
 
-<%--<body id="page-top">--%>
-
-<%--<!-- Navigation -->--%>
-<%--<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">--%>
-    <%--<div class="container">--%>
-        <%--<a class="navbar-brand js-scroll-trigger">Student Feedback Form</a>--%>
-        <%--<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"--%>
-                <%--data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"--%>
-                <%--aria-label="Toggle navigation">--%>
-            <%--Menu--%>
-            <%--<i class="fas fa-bars"></i>--%>
-        <%--</button>--%>
-        <%--<div class="collapse navbar-collapse" id="navbarResponsive">--%>
-            <%--<ul class="navbar-nav text-uppercase ml-auto">--%>
-                <%--<form action="logout" method="post">--%>
-                    <%--<li class="nav-item">--%>
-                        <%--<a id="btnLogout" class="js-scroll-trigger" href="<%= logout%>"--%>
-                           <%--style="cursor: pointer;font-family: Montserrat,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';text-decoration: none;color: white">--%>
-                            <%--Logout--%>
-                            <%--&lt;%&ndash;<i class="fa fa-sign-out" style="margin-left: 20px"></i>&ndash;%&gt;--%>
-                        <%--</a>--%>
-                    <%--</li>--%>
-                <%--</form>--%>
-            <%--</ul>--%>
-        <%--</div>--%>
-    <%--</div>--%>
-<%--</nav>--%>
+<div class="collapse navbar-collapse" id="navbarResponsive">
+    <ul class="navbar-nav text-uppercase ml-auto">
+        <form action="logout" method="post">
+            <li class="nav-item">
+                <a id="btnLogout" class="js-scroll-trigger" href="<%= logout%>"
+                   style="cursor: pointer;font-family: Montserrat,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';text-decoration: none;color: white">
+                    Logout
+                    <%--<i class="fa fa-sign-out" style="margin-left: 20px"></i>--%>
+                </a>
+            </li>
+        </form>
+    </ul>
+</div>
+</div>
+</nav>
 
 <!-- Header -->
 <header class="masthead">
@@ -51,7 +33,9 @@
         <div class="intro-text" style="padding-top: 200px">
             <%
                 {
-                    degree = new DegreeController().getDegreeData(sessionLogin.getAttribute("uid").toString());
+                    Student studentObj = new Student();
+                    studentObj.setUid(sessionLogin.getAttribute("uid").toString());
+                    degree = new DegreeController().getDegreeData(studentObj);
                     if (degree != null) {
             %>
             <div class="intro-lead-in"><%= degree.getFacultyName()%>
@@ -64,14 +48,25 @@
             %>
             <%
                 {
-                    Batch batch = new BatchController().getYearAndMonthDiff(sessionLogin.getAttribute("uid").toString());
+                    Student studentObj = new Student();
+                    studentObj.setUid(sessionLogin.getAttribute("uid").toString());
+                    Batch batch = new BatchController().getYearAndMonthDiff(studentObj);
                     semester = new Semester();
                     if (batch != null) {
-                        semester.setSemid((batch.getYearDiff() * 12 + batch.getMonthDiff()) / 6 + 1);
+                        if (batch.getYearDiff() < 0 || batch.getMonthDiff() < 0) {
+                            semester.setSemid(0);
+                        } else {
+                            semester.setSemid((batch.getYearDiff() * 12 + batch.getMonthDiff()) / 6 + 1);
+                        }
                         Semester semesterName = new SemesterController().getSemesterName(semester);
                         if (semesterName != null) {
             %>
-            <div class="intro-lead-in" style="padding-top: 40px;color: #FFB508"><%= semesterName.getSemesterName()%>
+            <div class="intro-lead-in" style="padding-top: 40px;color: #FFB508"><%= new BatchController().getBatchNameViaUid(studentObj).getBatchName()%> (<%= semesterName.getSemesterName()%>)
+            </div>
+            <%
+            } else {
+            %>
+            <div class="intro-lead-in" style="padding-top: 40px;color: #FFB508">Not yet
             </div>
             <%
                         }
@@ -82,7 +77,9 @@
                  style="background-color: #ffb508;width: fit-content;color: #402901;padding: 20px;padding-left: 30px;padding-right: 30px;font-size: 18px;border-radius: 35px;margin-top: 80px;font-weight: bold">
                 <%
                     {
-                        Student student = new StudentController().getStudentUsername(sessionLogin.getAttribute("uid").toString());
+                        Student studentUserID = new Student();
+                        studentUserID.setUid(sessionLogin.getAttribute("uid").toString());
+                        Student student = new StudentController().getStudentUsername(studentUserID);
                         if (student != null) {
                 %>
                 Online - <%= student.getStudentName()%>
@@ -108,7 +105,10 @@
                 <ul class="timeline">
                     <%
                         {
-                            List<Subject> subjects = new SubjectController().getSubjectsViaSemesterAndDegree(degree.getDegid(), semester.getSemid());
+                            Subject subjectObj = new Subject();
+                            subjectObj.setDegid(degree.getDegid());
+                            subjectObj.setSemid(semester.getSemid());
+                            List<Subject> subjects = new SubjectController().getSubjectsViaSemesterAndDegree(subjectObj);
                             for (Subject subject : subjects) {
                     %>
                     <li class="timeline-inverted subjects" style="cursor: pointer">
@@ -144,5 +144,7 @@
         </div>
     </div>
 </section>
-<jsp:include page="footer.jsp"/>
+
+<script src="/controller/student/landingPage(student)Controller.js"></script>
+<jsp:include page="../footer.jsp"/>
 <!-- Footer -->

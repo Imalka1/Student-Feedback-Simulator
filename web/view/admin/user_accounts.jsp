@@ -2,30 +2,28 @@
 <%@ page import="model.*" %>
 <%@ page import="java.util.List" %>
 
-<jsp:include page="admin_header.jsp"/>
+<jsp:include page="../header.jsp"/>
 <%
-    HttpSession sessionLogin = request.getSession(false);
-    if (sessionLogin != null) {
-        if (sessionLogin.getAttribute("uid") == null) {
-//            response.sendRedirect("index.jsp");
+    String logout = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/logout";
 %>
-<jsp:forward page="../../index.jsp"/>
-<%
-        }
-    }
-%>
-<%--<style>--%>
-    <%--@media (min-width: 992px) {--%>
-        <%--#mainNav {--%>
-            <%--padding-top: 0px;--%>
-            <%--padding-bottom: 0px;--%>
-        <%--}--%>
-    <%--}--%>
-
-    <%--.padding_5_txt {--%>
-        <%--padding-left: 5px;--%>
-    <%--}--%>
-<%--</style>--%>
+<div class="navbar-collapse" id="navbarResponsive">
+    <ul class="navbar-nav text-uppercase ml-auto">
+        <li class="nav-item" style="margin-right: 50px">
+            <a class="js-scroll-trigger" style="cursor: pointer;font-family: Montserrat,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';text-decoration: none;color: white" href="landing_page(admin).jsp">Back</a>
+        </li>
+        <form action="logout" method="post">
+            <li class="nav-item">
+                <a id="btnLogout" class="js-scroll-trigger" href="<%= logout%>"
+                   style="cursor: pointer;font-family: Montserrat,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';text-decoration: none;color: white">
+                    Logout
+                    <%--<i class="fa fa-sign-out" style="margin-left: 20px"></i>--%>
+                </a>
+            </li>
+        </form>
+    </ul>
+</div>
+</div>
+</nav>
 
 <div style="margin-top: 80px;margin-left: 30px;margin-right: 30px">
     <div class="row">
@@ -34,26 +32,26 @@
         </div>
     </div>
     <div class="row" style="margin-top: 20px;text-align: center;font-size: 20px">
-        <div class="col-1">
-            Year
+        <div class="col-2">
+            Intake
         </div>
-        <div class="col-9">
+        <div class="col-10">
             Degree
         </div>
-        <div class="col-2">
-            Batch
-        </div>
+        <%--<div class="col-2">--%>
+            <%--Batch--%>
+        <%--</div>--%>
     </div>
 
     <div class="row">
-        <div class="col-1">
-            <select class="form-control" id="year">
+        <div class="col-2">
+            <select class="form-control" id="batch">
                 <%
                     {
-                        List<Batch> years = new BatchController().getYears();
+                        List<Batch> years = new BatchController().getIntakes();
                         for (Batch batch : years) {
                 %>
-                <option value="<%= batch.getYear()%>"><%= batch.getYear()%>
+                <option value="<%= batch.getBatchid()%>"><%= batch.getBatchName()%>
                 </option>
                 <%
                         }
@@ -61,7 +59,7 @@
                 %>
             </select>
         </div>
-        <div class="col-9">
+        <div class="col-10">
             <select class="form-control" id="degree">
                 <%
                     {
@@ -76,21 +74,21 @@
                 %>
             </select>
         </div>
-        <div class="col-2">
-            <select class="form-control" id="batch">
-                <%
-                    {
-                        List<Batch> allBatches = new BatchController().getAllBatches();
-                        for (Batch batch : allBatches) {
-                %>
-                <option value="<%= batch.getBatchid()%>"><%= batch.getBatchName()%>
-                </option>
-                <%
-                        }
-                    }
-                %>
-            </select>
-        </div>
+        <%--<div class="col-2">--%>
+            <%--<select class="form-control" id="batch">--%>
+                <%--<%--%>
+                    <%--{--%>
+                        <%--List<Semester> allSemesters = new SemesterController().getAllSemesters();--%>
+                        <%--for (Semester semester : allSemesters) {--%>
+                <%--%>--%>
+                <%--<option value="<%= semester.getSemid()%>"><%= semester.getSemesterName()%>--%>
+                <%--</option>--%>
+                <%--<%--%>
+                        <%--}--%>
+                    <%--}--%>
+                <%--%>--%>
+            <%--</select>--%>
+        <%--</div>--%>
         <%--<div class="col-2">--%>
         <%--<div>--%>
         <%--<button type="submit" id="btnSearch" class="btn" style="background-color: #ffbf05;width: 100%">Search</button>--%>
@@ -107,19 +105,28 @@
     </div>
     <div class="row" style="margin-top: 50px;font-size: 12px">
         <div class="col-3"></div>
-        <div class="col-9">
+        <div class="col-5">
             (The registration number cannot be updated)
         </div>
+        <%--<div class="col-2" style="text-align: center">--%>
+            <%--(Search student)--%>
+        <%--</div>--%>
+        <%--<div class="col-2" style="text-align: center">--%>
+            <%--(Click to clear fields)--%>
+        <%--</div>--%>
     </div>
     <div class="row">
         <div class="col-3">
             Registration Number :
         </div>
-        <div class="col-7">
+        <div class="col-5">
             <input class="form-control" type="text" id="regNo">
         </div>
         <div class="col-2">
-            <button id="btnNewStudent" class="btn" style="background-color: #ffbf05;width: 100%">Click for new student</button>
+            <button id="btnSearchStudent" class="btn" style="background-color: #ffbf05;width: 100%">Search student</button>
+        </div>
+        <div class="col-2">
+            <button id="btnClear" class="btn" style="background-color: #ffbf05;width: 100%">Clear</button>
         </div>
     </div>
     <div class="row" style="margin-top: 20px">
@@ -136,6 +143,14 @@
         </div>
         <div class="col-9">
             <input class="form-control" type="text" id="nationalId">
+        </div>
+    </div>
+    <div class="row" style="margin-top: 20px">
+        <div class="col-3">
+            Email Address :
+        </div>
+        <div class="col-9">
+            <input class="form-control" type="email" id="emailAddress">
         </div>
     </div>
     <div class="row" style="margin-top: 50px">
@@ -167,9 +182,10 @@
         <div class="col-12" style="padding: 0px">
             <table border="1px" style="width: 100%">
                 <tr>
-                    <th width="20%" style="text-align: center">Registration Number</th>
-                    <th width="60%" style="text-align: center">Student Name</th>
-                    <th width="15%" style="text-align: center">National ID</th>
+                    <th width="15%" style="text-align: center">Registration Number</th>
+                    <th width="40%" style="text-align: center">Student Name</th>
+                    <th width="10%" style="text-align: center">National ID</th>
+                    <th width="30%" style="text-align: center">Email Address</th>
                     <th width="5%" style="text-align: center">View</th>
                 </tr>
                 <tbody id="studentsDataBody">
@@ -185,4 +201,6 @@
 </div>
 </div>
 <%--</div>--%>
+
+<script src="/controller/admin/userAccountController.js"></script>
 <jsp:include page="../footer.jsp"/>

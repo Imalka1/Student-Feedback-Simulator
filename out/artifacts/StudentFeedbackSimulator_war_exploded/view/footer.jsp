@@ -1,4 +1,4 @@
-<div class="container row1 footer">
+<div class="container footer">
     <div class="row">
         <div class="col-12">
             <hr style="margin-bottom: 10px">
@@ -8,7 +8,7 @@
 </div>
 
 <!-- Bootstrap core JavaScript -->
-<script src="/assets/js/jquery-3.2.1.min.js"></script>
+
 <%--<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>--%>
 
 <!-- Plugin JavaScript -->
@@ -20,9 +20,11 @@
 
 <!-- Custom scripts for this template -->
 <%--<script src="/assets/js/agency.min.js"></script>--%>
-<script src="/controller/marksController.js"></script>
-<script src="/controller/subjectsController.js"></script>
-<script src="/controller/admin/userAccountController.js"></script>
+
+
+
+
+
 </body>
 
 </html>

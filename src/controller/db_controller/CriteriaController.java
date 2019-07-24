@@ -23,28 +23,24 @@ public class CriteriaController {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         }
         return criterias;
     }
 
-    public List<Criteria> getCriterias(int echid) {
+    public List<Criteria> getCriterias(Criteria criteria) {
         List<Criteria> criterias = new ArrayList<>();
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("select ecid,text from evaluation_criteria where echid=?");
-            preparedStatement.setObject(1, echid);
+            preparedStatement.setObject(1, criteria.getEchid());
             ResultSet rst = preparedStatement.executeQuery();
             while (rst.next()) {
-                Criteria criteria = new Criteria();
-                criteria.setEcid(rst.getInt(1));
-                criteria.setCriteriaName(rst.getString(2));
-                criterias.add(criteria);
+                Criteria criteriaObj = new Criteria();
+                criteriaObj.setEcid(rst.getInt(1));
+                criteriaObj.setCriteriaName(rst.getString(2));
+                criterias.add(criteriaObj);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         return criterias;

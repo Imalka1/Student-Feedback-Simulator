@@ -1,26 +1,6 @@
-var page_no = 0;
-$(window).on("load", function () {
-    $('#pageNo').html(page_no + 1);
-    loadStudents();
-});
-
-$('#incPageNo').click(function () {
-    $('#pageNo').html(++page_no + 1);
-    loadStudents();
-})
-
-$('#decPageNo').click(function () {
-    if (page_no > 0) {
-        $('#pageNo').html(--page_no + 1);
-        loadStudents();
-    }
-})
+//----------------------------------------------------Filter------------------------------------------------------------
 
 $('#degree').change(function () {
-    loadStudents();
-})
-
-$('#year').change(function () {
     loadStudents();
 })
 
@@ -28,23 +8,14 @@ $('#batch').change(function () {
     loadStudents();
 })
 
+// $('#batch').change(function () {
+//     loadStudents();
+// })
+
+//---------------------------------------------Validate input fields----------------------------------------------------
+
 $('#regNo').keyup(function () {
     $(this).val($(this).val().toUpperCase())
-})
-
-$('#btnNewStudent').click(function () {
-    setTextFieldsEmpty();
-    setFieldsToNewStudent();
-})
-
-$(document).on('click', '.btnViewStudent', function () {
-    $('#regNo').val($(this).parent().children().eq(0).html())
-    $('#studetName').val($(this).parent().children().eq(1).html())
-    $('#nationalId').val($(this).parent().children().eq(2).html())
-    setFieldsToExistingStudent();
-})
-
-$('#regNo').keyup(function () {
     validateSubmission();
 })
 
@@ -53,8 +24,48 @@ $('#studetName').keyup(function () {
 })
 
 $('#nationalId').keyup(function () {
+    $(this).val($(this).val().toUpperCase())
+    if (isNationalId($(this).val())) {
+        $(this).css('border-color', '');
+    } else {
+        $(this).css('border-color', 'red');
+    }
     validateSubmission();
 })
+
+$('#emailAddress').keyup(function () {
+    if (isEmail($(this).val())) {
+        $(this).css('border-color', '');
+    } else {
+        $(this).css('border-color', 'red');
+    }
+    validateSubmission();
+});
+
+function validateSubmission() {
+    if (newStudent && $('#regNo').val() !== '' && $('#studetName').val() !== '' && $('#nationalId').val() !== '' && $('#emailAddress').val() !== '' && isEmail($('#emailAddress').val()) && isNationalId($('#nationalId').val())) {
+        $('#btnAdd').prop("disabled", false);
+        $('#btnUpdate').prop("disabled", true);
+    } else if (!newStudent && $('#regNo').val() !== '' && $('#studetName').val() !== '' && $('#nationalId').val() !== '' && $('#emailAddress').val() !== '' && isEmail($('#emailAddress').val()) && isNationalId($('#nationalId').val())) {
+        $('#btnAdd').prop("disabled", true);
+        $('#btnUpdate').prop("disabled", false);
+    } else {
+        $('#btnAdd').prop("disabled", true);
+        $('#btnUpdate').prop("disabled", true);
+    }
+}
+
+function isNationalId(nationalId) {
+    var regex = /^([0-9]{9}V{1})*([0-9]{11}V{1})*$/;
+    return regex.test(nationalId);
+}
+
+function isEmail(email) {
+    var regex = /^([a-z])([a-z0-9])*([._-]([a-z0-9])+)*@+([a-z])*([._-]([a-z0-9])+)*([.]([a-z])+)+$/;
+    return regex.test(email);
+}
+
+//-----------------------------------------------Add Delete Update------------------------------------------------------
 
 $('#btnAdd').click(function () {
     $.ajax(
@@ -63,11 +74,11 @@ $('#btnAdd').click(function () {
             url: window.location.origin + "/add_student",
             data: {
                 degree: $('#degree').val(),
-                year: $('#year').val(),
                 batch: $('#batch').val(),
                 regNo: $('#regNo').val(),
                 studetName: $('#studetName').val(),
-                nationalId: $('#nationalId').val()
+                nationalId: $('#nationalId').val(),
+                emailAddress: $('#emailAddress').val()
             },
             success: function (response) {
                 if (JSON.parse(response) == true) {
@@ -76,6 +87,7 @@ $('#btnAdd').click(function () {
                 } else {
                     $('#response').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Failed to add student</div>')
                 }
+                window.scrollTo(0, 0);
                 setTimeout(function () {
                     $('#response').html('');
                 }, 3000);
@@ -94,11 +106,11 @@ $('#btnUpdate').click(function () {
             url: window.location.origin + "/update_student",
             data: {
                 degree: $('#degree').val(),
-                year: $('#year').val(),
                 batch: $('#batch').val(),
                 regNo: $('#regNo').val(),
                 studetName: $('#studetName').val(),
-                nationalId: $('#nationalId').val()
+                nationalId: $('#nationalId').val(),
+                emailAddress: $('#emailAddress').val()
             },
             success: function (response) {
                 if (JSON.parse(response) == true) {
@@ -107,6 +119,7 @@ $('#btnUpdate').click(function () {
                 } else {
                     $('#response').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Failed to update student</div>')
                 }
+                window.scrollTo(0, 0);
                 setTimeout(function () {
                     $('#response').html('');
                 }, 3000);
@@ -131,12 +144,14 @@ $('#btnDelete').click(function () {
                     loadStudents();
                     $('#response').html('<div class="alert alert-success" style="text-align: center;font-weight: bold">Student has been deleted successfully</div>');
                     setTextFieldsEmpty();
+                    setFieldsToNewStudent();
                 } else {
                     $('#response').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Failed to delete student</div>')
                 }
+                window.scrollTo(0, 0);
                 setTimeout(function () {
                     $('#response').html('');
-                }, 3000);
+                }, 4000);
             },
             error: function () {
 
@@ -145,35 +160,36 @@ $('#btnDelete').click(function () {
     );
 })
 
+//-------------------------------------------------Students Table-------------------------------------------------------
+
+var pageNo = 0;
+var pagesCount = 0;
+var studentsArray;
+
+$(window).on("load", function () {
+    loadStudents();
+});
+
 function loadStudents() {
     $.ajax(
         {
+            async: false,
             type: "post",
             url: window.location.origin + "/load_students",
             data: {
                 degree: $('#degree').val(),
-                year: $('#year').val(),
-                batch: $('#batch').val(),
-                page_no: page_no * 10
+                batch: $('#batch').val()
             },
             success: function (response) {
                 var obj = JSON.parse(response);
-                var tableData = '';
-                console.log(obj)
+                // console.log(obj.Students)
+                studentsArray = Array();
                 for (var i = 0; i < obj.Students.length; i++) {
-                    tableData += '' +
-                        '<tr>\n' +
-                        '                    <td style="text-align: center">' + obj.Students[i].RegId +
-                        '                    </td>\n' +
-                        '                    <td style="padding-left: 5px">' + obj.Students[i].StudentName +
-                        '                    </td>\n' +
-                        '                    <td style="text-align: center">' + obj.Students[i].NationalId +
-                        '                    </td>\n' +
-                        '                    <td class="btnViewStudent" style="text-align: center;cursor: pointer"><i class="fa fa-search"></i>\n' +
-                        '                    </td>\n' +
-                        '                </tr>'
+                    studentsArray.push(obj.Students[i]);
                 }
-                $('#studentsDataBody').html(tableData);
+                pagesCount = Math.ceil((studentsArray.length) / 10);
+                $('#pageNo').html((pageNo + 1) + ' / ' + pagesCount);
+                fillTheTable();
             },
             error: function () {
 
@@ -182,13 +198,77 @@ function loadStudents() {
     );
 }
 
-function setTextFieldsEmpty() {
-    $('#regNo').val('')
-    $('#studetName').val('')
-    $('#nationalId').val('')
+$('#incPageNo').click(function () {
+    if (pageNo + 1 < pagesCount) {
+        $('#pageNo').html((++pageNo + 1) + ' / ' + pagesCount);
+        fillTheTable();
+    }
+})
+
+$('#decPageNo').click(function () {
+    if (pageNo > 0) {
+        $('#pageNo').html((--pageNo + 1) + ' / ' + pagesCount);
+        fillTheTable();
+    }
+})
+
+function fillTheTable() {
+    var count = 0;
+    var tableData = '';
+    for (var i = pageNo * 10; i < studentsArray.length; i++) {
+        tableData +=
+            '<tr>' +
+            '<td style="text-align: center">' + studentsArray[i].RegId + '</td>' +
+            '<td style="padding-left: 5px">' + studentsArray[i].StudentName + '</td>' +
+            '<td style="text-align: center">' + studentsArray[i].NationalId + '</td>' +
+            '<td style="padding-left: 5px">' + studentsArray[i].EmailAddress + '</td>' +
+            '<td class="btnViewStudent" style="text-align: center;cursor: pointer"><i class="fa fa-search"></i></td>' +
+            '</tr>';
+
+        count++;
+        if (count == 10) {
+            break;
+        }
+    }
+    $('#studentsDataBody').html(tableData);
 }
 
+//--------------------------------------------------Search--------------------------------------------------------------
+
+$('#btnSearchStudent').click(function () {
+    for (var i = 0; i < studentsArray.length; i++) {
+        if ($('#regNo').val() === studentsArray[i].RegId) {
+            $('#studetName').val(studentsArray[i].StudentName)
+            $('#emailAddress').val(studentsArray[i].EmailAddress)
+            $('#nationalId').val(studentsArray[i].NationalId)
+            setFieldsToExistingStudent();
+        }
+    }
+})
+
+//--------------------------------------------------Clear fields--------------------------------------------------------
+
+$('#btnClear').click(function () {
+    setTextFieldsEmpty();
+    setFieldsToNewStudent();
+})
+
+//-------------------------------------------------Select student on table----------------------------------------------
+
+$(document).on('click', '.btnViewStudent', function () {
+    $('#regNo').val($(this).parent().children().eq(0).html())
+    $('#studetName').val($(this).parent().children().eq(1).html())
+    $('#nationalId').val($(this).parent().children().eq(2).html())
+    $('#emailAddress').val($(this).parent().children().eq(3).html())
+    setFieldsToExistingStudent();
+})
+
+//----------------------------------------------New vs existing---------------------------------------------------------
+
+var newStudent = true;
+
 function setFieldsToNewStudent() {
+    newStudent = true;
     $('#btnAdd').prop("disabled", true);
     $('#btnUpdate').prop("disabled", true);
     $('#btnDelete').prop("disabled", true);
@@ -196,16 +276,16 @@ function setFieldsToNewStudent() {
 }
 
 function setFieldsToExistingStudent() {
+    newStudent = false;
     $('#btnAdd').prop("disabled", true);
     $('#btnUpdate').prop("disabled", false);
     $('#btnDelete').prop("disabled", false);
     $('#regNo').prop("disabled", true);
 }
 
-function validateSubmission() {
-    if ($('#regNo').val() !== '' && $('#studetName').val() !== '' && $('#nationalId').val() != '') {
-        $('#btnAdd').prop("disabled", false);
-    } else {
-        $('#btnAdd').prop("disabled", true);
-    }
+function setTextFieldsEmpty() {
+    $('#regNo').val('')
+    $('#studetName').val('')
+    $('#nationalId').val('')
+    $('#emailAddress').val('')
 }

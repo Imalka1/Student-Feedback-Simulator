@@ -16,6 +16,12 @@ constraint primary key(degid),
 constraint foreign key(facid) references faculty(facid) on delete cascade
 );
 
+create table semester(
+semid int auto_increment,
+name varchar(100),
+constraint primary key(semid)
+);
+
 create table batch(
 batchid int auto_increment,
 intake date,
@@ -27,6 +33,7 @@ create table user(
 uid varchar(100),
 password varchar(100),
 accountType varchar(20),
+emailAddress varchar(100),
 constraint primary key(uid)
 );	
 
@@ -65,12 +72,6 @@ constraint primary key(ecid),
 constraint foreign key(echid) references evaluation_criteria_heading(echid) on delete cascade
 );
 
-create table semester(
-semid int auto_increment,
-text varchar(100),
-constraint primary key(semid)
-);
-
 create table lecturer(
 lecid varchar(100),
 name varchar(100),
@@ -99,11 +100,13 @@ constraint foreign key(lecid) references lecturer(lecid) on delete cascade
 );
 
 create table marks(
+uid varchar(100),
 ecid int,
 dateOfSubmitted date,
 sublecid int,
 marks int,
-constraint primary key(ecid,dateOfSubmitted,sublecid),
+constraint primary key(uid,ecid,dateOfSubmitted,sublecid),
+constraint foreign key(uid) references user(uid) on delete cascade,
 constraint foreign key(sublecid) references subject_lecturer(sublecid) on delete cascade,
 constraint foreign key(ecid) references evaluation_criteria(ecid) on delete cascade
 );
@@ -117,7 +120,7 @@ INSERT INTO `studentfeedback`.`batch`
 (`intake`,
 `name`)
 VALUES
-('2019-01-05','Year 1 Semester 1'),('2020-01-05','Year 1 Semester 2');
+('2019-01-05','2019 January'),('2020-01-05','2020 January'),('2019-08-05','2019 June');
 
 INSERT INTO `studentfeedback`.`degree`
 (`facid`,`name`)
@@ -127,9 +130,10 @@ VALUES
 INSERT INTO `studentfeedback`.`user`
 (`uid`,
 `password`,
-`accountType`)
+`accountType`,
+`emailAddress`)
 VALUES
-('IT123','123','student'),('IT456','456','student'),('ADMIN789','789','admin');
+('IT123','123','student','imalkagunawardana1@gmail.com'),('IT456','456','student','imalkagunawardana1@gmail.com'),('ADMIN789','789','admin','imalkagunawardana1@gmail.com');
 
 INSERT INTO `studentfeedback`.`student`
 (`uid`,
@@ -186,7 +190,7 @@ VALUES
 (6,'Module/subject was understood');
 
 INSERT INTO `studentfeedback`.`semester`
-(`text`)
+(`name`)
 VALUES
 ('Year 1 / Semester 1'),('Year 1 / Semester 2'),('Year 2 / Semester 1'),('Year 2 / Semester 2');
 
@@ -229,13 +233,22 @@ FROM `studentfeedback`.`evaluation_criteria`;
 
 
 SELECT `user`.`uid`,
-    `user`.`username`,
-    `user`.`password`
+    `user`.`password`,
+    `user`.`emailAddress`
 FROM `studentfeedback`.`user`;
 
 SELECT `batch`.`batchid`,
     `batch`.`intake`
 FROM `studentfeedback`.`batch`;
+
+SELECT `student`.`stid`,
+    `student`.`uid`,
+    `student`.`degid`,
+    `student`.`batchid`,
+    `student`.`student_name`,
+    `student`.`national_id`
+FROM `studentfeedback`.`student`;
+
 
 
 select f.name,d.name from user u,faculty f,degree d where f.facid=d.facid && d.degid=u.degid && u.uid='abc123';
@@ -248,13 +261,17 @@ select text from semester where semid=2;
 
 select distinct year(intake) from batch;
 
-select uid,student_name,national_id,b.name from student s,batch b,degree d where b.batchid=s.batchid && d.degid=s.degid && d.degid=1 && b.batchid=1 && year(b.intake)='2019' order by uid asc limit 0,20;
+select uid,student_name,national_id,b.name from student s,batch b,degree d where b.batchid=s.batchid && d.degid=s.degid && d.degid=1 && b.batchid=1 && year(b.intake)='2019' order by uid desc;
 
-SELECT 
+SELECT `marks`.`uid`,
     `marks`.`ecid`,
     `marks`.`dateOfSubmitted`,
     `marks`.`sublecid`,
     `marks`.`marks`
 FROM `studentfeedback`.`marks`;
 
+select emailAddress from user where uid='IT123';
 
+select accountType from user where password='951761150V' COLLATE latin1_general_cs;
+
+select accountType from user where BINARY(password) = BINARY('951761151V');

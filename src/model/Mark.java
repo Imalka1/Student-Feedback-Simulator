@@ -1,6 +1,7 @@
 package model;
 
 public class Mark {
+    private String uid;
     private int ecid;
     private String dateOfSubmitted;
     private int sublecid;
@@ -12,6 +13,14 @@ public class Mark {
 
     public void setMarks(int marks) {
         this.marks = marks;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public int getEcid() {
