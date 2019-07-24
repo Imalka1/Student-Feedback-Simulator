@@ -15,7 +15,7 @@
                style="cursor: pointer;font-family: Montserrat,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';text-decoration: none;color: white">
                 <span>Menu</span><i class="fa fa-caret-down" style="margin-left: 5px"></i>
             </a>
-            <div class="dropdown-content" style="border-top: 14px solid rgba(0,0,0,0)">
+            <div class="dropdown-content" style="padding-top: 14px">
                 <a href="landing_page(admin).jsp">Home</a>
                 <a href="user_accounts.jsp">User Accounts</a>
                 <a href="#">Subjetcs</a>
