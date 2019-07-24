@@ -72,12 +72,12 @@
             flex: 0 1;
         }
 
-        @media (min-width: 992px) {
-            #mainNav {
-                padding-top: 0px;
-                padding-bottom: 0px;
-            }
-        }
+        /*@media (min-width: 992px) {*/
+            /*#mainNav {*/
+                /*padding-top: 0px;*/
+                /*padding-bottom: 0px;*/
+            /*}*/
+        /*}*/
     </style>
 </head>
 <style>
