@@ -94,7 +94,7 @@
                         </div>
                         <div class="timeline-panel" style="padding-top: 50px">
                             <div class="timeline-heading">
-                                <h4 class="subheading">Results
+                                <h4 class="subheading">Results Portal
                                 </h4>
                             </div>
                             <div class="timeline-body">
