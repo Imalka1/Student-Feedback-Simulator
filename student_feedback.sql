@@ -120,7 +120,7 @@ INSERT INTO `studentfeedback`.`batch`
 (`intake`,
 `name`)
 VALUES
-('2019-01-05','2019 January'),('2020-01-05','2020 January'),('2019-08-05','2019 June');
+('2019-01-05','2019 January'),('2020-01-05','2020 January'),('2019-06-05','2019 June');
 
 INSERT INTO `studentfeedback`.`degree`
 (`facid`,`name`)
