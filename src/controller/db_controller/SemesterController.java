@@ -30,21 +30,21 @@ public class SemesterController {
         return semDTO;
     }
 
-//    public List<Semester> getAllSemesters() {
-//        List<Semester> semesters = new ArrayList<>();
-//        try {
-//            Connection connection = DBConnection.getDBConnection().getConnection();
-//            PreparedStatement preparedStatement = connection.prepareStatement("select semid,text from semester");
-//            ResultSet rst = preparedStatement.executeQuery();
-//            while (rst.next()) {
-//                Semester semester = new Semester();
-//                semester.setSemid(rst.getInt(1));
-//                semester.setSemesterName(rst.getString(2));
-//                semesters.add(semester);
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        return semesters;
-//    }
+    public List<Semester> getAllSemesters() {
+        List<Semester> semesters = new ArrayList<>();
+        try {
+            Connection connection = DBConnection.getDBConnection().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("select semid,name from semester");
+            ResultSet rst = preparedStatement.executeQuery();
+            while (rst.next()) {
+                Semester semester = new Semester();
+                semester.setSemid(rst.getInt(1));
+                semester.setSemesterName(rst.getString(2));
+                semesters.add(semester);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return semesters;
+    }
 }
