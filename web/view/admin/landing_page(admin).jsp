@@ -8,8 +8,52 @@
     HttpSession sessionLogin = request.getSession(false);
 %>
 
+<style>
+    .dropdown-content {
+        display: none;
+        position: absolute;
+
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        /*float: none;*/
+        background-color: #f9f9f9;
+        color: black;
+        padding: 5px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #ddd;
+    }
+
+    .nav-item:hover .dropdown-content {
+        display: block;
+    }
+
+    /*.dropdown:hover .dropbtn {*/
+        /*background-color: #3e8e41;*/
+    /*}*/
+</style>
+
 <div class="collapse navbar-collapse" id="navbarResponsive">
     <ul class="navbar-nav text-uppercase ml-auto">
+        <li class="nav-item" style="margin-right: 50px">
+            <a class="js-scroll-trigger"
+               style="cursor: pointer;font-family: Montserrat,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';text-decoration: none;color: white">
+                <span>Menu</span><i class="fa fa-caret-down" style="margin-left: 5px"></i>
+            </a>
+            <div class="dropdown-content" style="border-top: 12px solid rgba(0,0,0,0)">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+            </div>
+        </li>
         <form action="logout" method="post">
             <li class="nav-item">
                 <a id="btnLogout" class="js-scroll-trigger" href="<%= logout%>"
@@ -86,6 +130,22 @@
                             </div>
                             <div class="timeline-body">
                                 <p class="text-muted">View Results
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="timeline-inverted" style="cursor: pointer" id="manageData">
+                        <div class="timeline-image">
+                            <img class="rounded-circle img-fluid" alt="">
+                        </div>
+                        <div class="timeline-panel" style="padding-top: 50px">
+                            <div class="timeline-heading">
+                                <h4 class="subheading">Manage Data
+                                </h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p class="text-muted">Manage Subjects, Lecturers, Semesters
                                 </p>
                             </div>
                         </div>
