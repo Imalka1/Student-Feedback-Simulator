@@ -43,7 +43,7 @@
                 <a href="#">Subjetcs</a>
                 <a href="#">Lecturers</a>
                 <a href="#">Semesters</a>
-                <a href="#">Evaluation Criteria</a>
+                <a href="#">Evaluation Criterias</a>
             </div>
         </li>
         <form action="logout" method="post">

@@ -1,6 +1,7 @@
 package controller.db_controller;
 
 import db.DBConnection;
+import model.Degree;
 import model.Subject;
 
 import java.sql.Connection;
@@ -52,5 +53,25 @@ public class SubjectController {
             e.printStackTrace();
         }
         return subjectNameAndCredits;
+    }
+
+    public List<Subject> getAllSubjectsViaDegreeAndSemester(Subject subject){
+        List<Subject> subjects = new ArrayList<>();
+        try {
+            Connection connection = DBConnection.getDBConnection().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("select subid,title from subject where degid=? && semid=?");
+            preparedStatement.setObject(1, subject.getDegid());
+            preparedStatement.setObject(2, subject.getSemid());
+            ResultSet rst = preparedStatement.executeQuery();
+            while (rst.next()) {
+                Subject subjectObj = new Subject();
+                subjectObj.setSubjectId(rst.getString(1));
+                subjectObj.setSubjectName(rst.getString(2));
+                subjects.add(subjectObj);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return subjects;
     }
 }

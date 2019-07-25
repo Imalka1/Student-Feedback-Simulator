@@ -11,7 +11,7 @@
 <jsp:include page="header(admin).jsp"/>
 
 <div style="margin-top: 80px;margin-left: 30px;margin-right: 30px">
-    <div class="row" style="margin-top: 20px;text-align: center;font-size: 20px">
+    <div class="row" style="margin-top: 20px;text-align: center;font-size: 19px">
         <div class="col-3">
             Faculty
         </div>
@@ -72,22 +72,22 @@
 
     <hr style="margin-top: 30px;margin-bottom: 30px;background-color: #b0b0b0">
 
-    <div class="row" style="margin-top: 20px;text-align: center;font-size: 20px">
-        <div class="col-6">
-            Lecturer
-        </div>
+    <div class="row" style="margin-top: 20px;text-align: center;font-size: 19px">
         <div class="col-6">
             Subject
+        </div>
+        <div class="col-6">
+            Lecturer
         </div>
     </div>
     <div class="row">
         <div class="col-6">
-            <select class="form-control" id="">
+            <select class="form-control" id="subjects">
                 <%--<option value=""></option>--%>
             </select>
         </div>
         <div class="col-6">
-            <select class="form-control" id="">
+            <select class="form-control" id="lecturers">
                 <%--<option value=""></option>--%>
             </select>
         </div>

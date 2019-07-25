@@ -10,7 +10,7 @@
 
         </div>
     </div>
-    <div class="row" style="margin-top: 20px;text-align: center;font-size: 20px">
+    <div class="row" style="margin-top: 20px;text-align: center;font-size: 19px">
         <div class="col-3">
             Faculty
         </div>
