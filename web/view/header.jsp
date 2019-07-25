@@ -58,32 +58,6 @@
             flex: 0 1;
         }
 
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-
-        .dropdown-content a {
-            background-color: #f9f9f9;
-            color: black;
-            padding: 10px 16px;
-            text-decoration: none;
-            display: block;
-            text-align: left;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #ddd;
-        }
-
-        .nav-item:hover .dropdown-content {
-            display: block;
-        }
-
-
         @media (min-width: 992px) {
             #mainNav {
                 padding-top: 0px;

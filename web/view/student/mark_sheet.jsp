@@ -59,7 +59,7 @@
     </div>
     <div class="row">
         <div class="col-md-4" style="border: 1px solid black">
-            Year and semester
+            Year and Semester
         </div>
         <div class="col-md-8" style="border: 1px solid black;color: #747474">
             <%
@@ -83,7 +83,7 @@
     </div>
     <div class="row">
         <div class="col-md-4" style="border: 1px solid black">
-            Course Unit Title / Code / Number of credits / Lecturer
+            Course Unit Title / Code / Number of Credits / Lecturer
         </div>
         <div class="col-md-8" style="border: 1px solid black;color: #747474">
             <%
