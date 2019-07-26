@@ -130,7 +130,7 @@
         <counts>
           <entry key="dummy" value="6" />
           <entry key="java" value="4640" />
-          <entry key="js" value="4339" />
+          <entry key="js" value="4365" />
           <entry key="jsp" value="3867" />
         </counts>
       </usages-collector>
@@ -138,7 +138,7 @@
         <counts>
           <entry key="JAVA" value="4634" />
           <entry key="JSP" value="3867" />
-          <entry key="JavaScript" value="4338" />
+          <entry key="JavaScript" value="4364" />
           <entry key="PLAIN_TEXT" value="6" />
           <entry key="RegExp" value="1" />
           <entry key="SQL" value="6" />
@@ -170,11 +170,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/controller/admin/resultsController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="49" column="19" selection-start-line="49" selection-start-column="19" selection-end-line="49" selection-end-column="19" />
+            <state relative-caret-position="255">
+              <caret line="150" column="162" selection-start-line="150" selection-start-column="162" selection-end-line="150" selection-end-column="162" />
               <folding>
                 <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
@@ -233,7 +233,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/db_controller/SubjectController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="98">
@@ -336,9 +336,9 @@
         <option value="$PROJECT_DIR$/web/view/student/mark_sheet.jsp" />
         <option value="$PROJECT_DIR$/src/controller/db_controller/MarkController.java" />
         <option value="$PROJECT_DIR$/web/view/admin/results.jsp" />
-        <option value="$PROJECT_DIR$/web/controller/admin/resultsController.js" />
         <option value="$PROJECT_DIR$/src/controller/url_controller/admin/LoadSubjects.java" />
         <option value="$PROJECT_DIR$/src/controller/db_controller/SubjectController.java" />
+        <option value="$PROJECT_DIR$/web/controller/admin/resultsController.js" />
       </list>
     </option>
   </component>
@@ -495,7 +495,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1564152789519" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1564153902265" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/javax.mail.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -663,16 +663,15 @@
       <workItem from="1563545609829" duration="69039000" />
       <workItem from="1563872615376" duration="11602000" />
       <workItem from="1563954617403" duration="15463000" />
-      <workItem from="1564058295811" duration="23359000" />
+      <workItem from="1564058295811" duration="24296000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="476223000" />
+    <option name="totallyTimeSpent" value="477160000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1409396" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -1148,10 +1147,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/SubjectController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="20" column="178" lean-forward="true" selection-start-line="20" selection-start-column="178" selection-end-line="20" selection-end-column="178" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web/controller/admin/resultsController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="49" column="19" selection-start-line="49" selection-start-column="19" selection-end-line="49" selection-end-column="19" />
+        <state relative-caret-position="255">
+          <caret line="150" column="162" selection-start-line="150" selection-start-column="162" selection-end-line="150" selection-end-column="162" />
           <folding>
             <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
@@ -1160,13 +1166,6 @@
             <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/SubjectController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="20" column="178" lean-forward="true" selection-start-line="20" selection-start-column="178" selection-end-line="20" selection-end-column="178" />
         </state>
       </provider>
     </entry>

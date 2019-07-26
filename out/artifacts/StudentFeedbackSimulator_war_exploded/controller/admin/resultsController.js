@@ -148,7 +148,7 @@ function loadMarks() {
                     if (parseInt(obj.Marks[i].StudentsCount) == 0) {
                         tableData += '<td style="text-align: center">0</td></tr>';
                     } else {
-                        tableData += '<td style="text-align: center">' + parseInt(obj.Marks[i].Marks) / parseInt(obj.Marks[i].StudentsCount) + '</td></tr>';
+                        tableData += '<td style="text-align: center">' + parseFloat(parseInt(obj.Marks[i].Marks) / parseInt(obj.Marks[i].StudentsCount)).toFixed(2) + '</td></tr>';
                     }
                 }
                 $('#marksBody').html(tableData);
