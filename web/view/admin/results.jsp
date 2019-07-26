@@ -12,18 +12,18 @@
 
 <div style="margin-top: 75px;margin-left: 30px;margin-right: 30px">
     <div class="row" style="text-align: center;font-size: 19px">
-        <div class="col-3">
+        <div class="col-6">
             Faculty
         </div>
-        <div class="col-7">
-            Degree
-        </div>
-        <div class="col-2">
+        <%--<div class="col-7">--%>
+            <%--Degree--%>
+        <%--</div>--%>
+        <div class="col-6">
             Semester
         </div>
     </div>
     <div class="row">
-        <div class="col-3">
+        <div class="col-6">
             <select class="form-control" id="faculty">
                 <%
                     {
@@ -38,22 +38,22 @@
                 %>
             </select>
         </div>
-        <div class="col-7">
-            <select class="form-control" id="degree">
-                <%--<%--%>
-                <%--{--%>
-                <%--List<Degree> allDegrees = new DegreeController().getAllDegrees();--%>
-                <%--for (Degree degree : allDegrees) {--%>
-                <%--%>--%>
-                <%--<option value="<%= degree.getDegid()%>"><%= degree.getDegreeName()%>--%>
-                <%--</option>--%>
-                <%--<%--%>
-                <%--}--%>
-                <%--}--%>
-                <%--%>--%>
-            </select>
-        </div>
-        <div class="col-2">
+        <%--<div class="col-7">--%>
+            <%--<select class="form-control" id="degree">--%>
+                <%--&lt;%&ndash;&lt;%&ndash;%>--%>
+                <%--&lt;%&ndash;{&ndash;%&gt;--%>
+                <%--&lt;%&ndash;List<Degree> allDegrees = new DegreeController().getAllDegrees();&ndash;%&gt;--%>
+                <%--&lt;%&ndash;for (Degree degree : allDegrees) {&ndash;%&gt;--%>
+                <%--&lt;%&ndash;%>&ndash;%&gt;--%>
+                <%--&lt;%&ndash;<option value="<%= degree.getDegid()%>"><%= degree.getDegreeName()%>&ndash;%&gt;--%>
+                <%--&lt;%&ndash;</option>&ndash;%&gt;--%>
+                <%--&lt;%&ndash;&lt;%&ndash;%>--%>
+                <%--&lt;%&ndash;}&ndash;%&gt;--%>
+                <%--&lt;%&ndash;}&ndash;%&gt;--%>
+                <%--&lt;%&ndash;%>&ndash;%&gt;--%>
+            <%--</select>--%>
+        <%--</div>--%>
+        <div class="col-6">
             <select class="form-control" id="semester">
                 <%
                     {

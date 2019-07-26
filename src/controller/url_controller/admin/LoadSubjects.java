@@ -1,6 +1,7 @@
 package controller.url_controller.admin;
 
 import controller.db_controller.SubjectController;
+import model.Semester;
 import model.Subject;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -18,10 +19,9 @@ import java.util.List;
 public class LoadSubjects extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Subject subject = new Subject();
-        subject.setDegid(Integer.parseInt(req.getParameter("degreeId")));
-        subject.setSemid(Integer.parseInt(req.getParameter("semesterId")));
-        List<Subject> allSubjectsViaDegree = new SubjectController().getAllSubjectsViaDegreeAndSemester(subject);
+        Semester semester = new Semester();
+        semester.setSemid(Integer.parseInt(req.getParameter("semesterId")));
+        List<Subject> allSubjectsViaDegree = new SubjectController().getAllSubjectsViaDegreeAndSemester(semester);
         JSONObject obj = new JSONObject();
         JSONArray subjectsJson = new JSONArray();
         for (Subject subjectObj : allSubjectsViaDegree) {

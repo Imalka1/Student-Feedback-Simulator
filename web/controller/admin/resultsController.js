@@ -1,41 +1,41 @@
 //---------------------------------------------------Initial Load-------------------------------------------------------
 $(window).on("load", function () {
-    loadDegrees();
+    loadSubjects();
 });
 
 //----------------------------------------------------Load Degree Programmes------------------------------------------------------------
 $('#faculty').change(function () {
-    loadDegrees();
-})
-
-function loadDegrees() {
-    $.ajax(
-        {
-            // async: false,
-            type: "post",
-            url: window.location.origin + "/load_degrees",
-            data: {
-                facultyId: $('#faculty').val()
-            },
-            success: function (response) {
-                var degrees = '';
-                var obj = JSON.parse(response);
-                for (var i = 0; i < obj.Degrees.length; i++) {
-                    degrees += '<option value="' + obj.Degrees[i].DegId + '">' + obj.Degrees[i].DegreeName + '</option>';
-                }
-                $('#degree').html(degrees);
-                loadSubjects();
-            },
-            error: function () {
-
-            }
-        }
-    );
-}
-
-$('#degree').change(function () {
     loadSubjects();
 })
+
+// function loadDegrees() {
+//     $.ajax(
+//         {
+//             // async: false,
+//             type: "post",
+//             url: window.location.origin + "/load_degrees",
+//             data: {
+//                 facultyId: $('#faculty').val()
+//             },
+//             success: function (response) {
+//                 var degrees = '';
+//                 var obj = JSON.parse(response);
+//                 for (var i = 0; i < obj.Degrees.length; i++) {
+//                     degrees += '<option value="' + obj.Degrees[i].DegId + '">' + obj.Degrees[i].DegreeName + '</option>';
+//                 }
+//                 $('#degree').html(degrees);
+//                 loadSubjects();
+//             },
+//             error: function () {
+//
+//             }
+//         }
+//     );
+// }
+
+// $('#degree').change(function () {
+//     loadSubjects();
+// })
 
 $('#semester').change(function () {
     loadSubjects();
@@ -48,7 +48,6 @@ function loadSubjects() {
             type: "post",
             url: window.location.origin + "/load_subjects",
             data: {
-                degreeId: $('#degree').val(),
                 semesterId: $('#semester').val()
             },
             success: function (response) {
@@ -56,7 +55,7 @@ function loadSubjects() {
                 var subjects = '';
                 var obj = JSON.parse(response);
                 for (var i = 0; i < obj.Subjects.length; i++) {
-                    subjects += '<option value="' + obj.Subjects[i].SubjectId + '">' + obj.Subjects[i].SubjectName + '</option>';
+                    subjects += '<option value="' + obj.Subjects[i].SubjectId + '">(' + obj.Subjects[i].SubjectId + ') - ' + obj.Subjects[i].SubjectName + '</option>';
                 }
                 $('#subjects').html(subjects);
                 loadLecturers();

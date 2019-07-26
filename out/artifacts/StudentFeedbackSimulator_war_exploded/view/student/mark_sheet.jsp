@@ -16,7 +16,9 @@
 <div class="collapse navbar-collapse" id="navbarResponsive">
     <ul class="navbar-nav text-uppercase ml-auto">
         <li class="nav-item" style="margin-right: 50px">
-            <a class="js-scroll-trigger" style="cursor: pointer;font-family: Montserrat,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';text-decoration: none;color: white" href="landing_page(student).jsp">Back</a>
+            <a class="js-scroll-trigger"
+               style="cursor: pointer;font-family: Montserrat,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';text-decoration: none;color: white"
+               href="landing_page(student).jsp">Back</a>
         </li>
         <form action="logout" method="post">
             <li class="nav-item">
@@ -93,7 +95,8 @@
                     Subject subject = new SubjectController().getSubjectNameAndCredits(subjectObj);
                     if (subject != null) {
             %>
-            <%= subject.getSubjectName()%> / <%= subjectId%> / <%= subject.getCredits()%> / <%= subject.getLecturerName()%>
+            <%= subject.getSubjectName()%> / <%= subjectId%> / <%= subject.getCredits()%>
+            / <%= subject.getLecturerName()%>
             <input type="hidden" id="sublecid" value="<%= subject.getSublecId()%>">
             <%
                     }

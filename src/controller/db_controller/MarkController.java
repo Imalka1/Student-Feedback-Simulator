@@ -50,11 +50,10 @@ public class MarkController {
         List<Mark> marks = new ArrayList<>();
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(
+            PreparedStatement preparedStatement = connection.prepareStatement("" +
                     "select text,sum(marks),count(marks) " +
                     "from evaluation_criteria " +
-                    "left join marks on evaluation_criteria.ecid=marks.ecid && " +
-                    "dateOfSubmission=? && " +
+                    "left join marks on evaluation_criteria.ecid=marks.ecid && dateOfSubmission=? && " +
                     "sublecid=(select sublecid from subject_lecturer where lecid=? && subid=?) " +
                     "group by evaluation_criteria.ecid asc");
             preparedStatement.setObject(1, mark.getDateOfSubmission());

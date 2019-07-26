@@ -80,13 +80,20 @@ constraint primary key(lecid)
 
 create table subject(
 subid varchar(100),
-degid int,
 semid int,
 title varchar(100),
 credits int,
 constraint primary key(subid),
-constraint foreign key(degid) references degree(degid) on delete cascade,
 constraint foreign key(semid) references semester(semid) on delete cascade
+);
+
+create table subject_degree(
+subdegid int auto_increment,
+degid int,
+subid varchar(100),
+constraint primary key(subdegid),
+constraint foreign key(degid) references degree(degid) on delete cascade,
+constraint foreign key(subid) references subject(subid) on delete cascade
 );
 
 create table subject_lecturer(
@@ -114,7 +121,7 @@ constraint foreign key(ecid) references evaluation_criteria(ecid) on delete casc
 INSERT INTO `studentfeedback`.`faculty`
 (`name`)
 VALUES
-('Department of Computer Science');
+('Faculty of Computing');
 
 INSERT INTO `studentfeedback`.`batch`
 (`intake`,
@@ -202,25 +209,31 @@ VALUES
 
 INSERT INTO `studentfeedback`.`subject`
 (`subid`,
-`degid`,
 `semid`,
 `title`,
 `credits`)
 VALUES
-('CSC 101',1,1,'Progamming',3),('CSC 102',1,1,'Database Management System',2),
-('CSC 201',1,2,'Progamming - 2',3),('CSC 202',1,2,'Database Management System - 2',2),
-('CSC 301',1,3,'Progamming - 3',3),('CSC 302',1,3,'Database Management System - 3',2),
-('IS 101',2,1,'Progamming',3),('IS 102',2,1,'Web Development',2),
-('IS 201',2,2,'Progamming - 2',3),('IS 202',2,2,'Web Development - 2',2),
-('IS 301',2,3,'Progamming - 3',3),('IS 302',2,3,'Web Development - 3',2);
+('IT 101',1,'Progamming',3),('IT 102',1,'Database Management System',2),
+('IT 201',2,'Progamming - 2',3),('IT 202',2,'Database Management System - 2',2),
+('IT 301',3,'Progamming - 3',3),('IT 302',3,'Database Management System - 3',2),
+('IS 103',1,'Web Development',2),
+('IS 203',2,'Web Development - 2',2),
+('IS 303',3,'Web Development - 3',2);
+
+INSERT INTO `studentfeedback`.`subject_degree`
+(`subid`,
+`degid`)
+VALUES
+('IT 101',1),('IT 101',2),('IT 201',1),('IT 202',1),('IT 201',2),('IT 302',1),
+('IS 103',2),('IS 203',2),('IS 303',2);
 
 INSERT INTO `studentfeedback`.`subject_lecturer`
 (`subid`,
 `lecid`,
 `current`)
 VALUES
-('CSC 101','L001',true),('CSC 102','L002',true),('CSC 201','L001',true),('CSC 202','L002',true),('CSC 301','L001',true),('CSC 302','L002',true),
-('IS 101','L001',true),('IS 102','L002',true),('IS 201','L001',true),('IS 202','L002',true),('IS 301','L001',true),('IS 302','L002',true);
+('IT 101','L001',true),('IT 102','L002',true),('IT 201','L001',true),('IT 202','L002',true),('IT 301','L001',true),('IT 302','L002',true),
+('IS 103','L001',true),('IS 203','L002',true),('IS 303','L001',true);
 
 SELECT `evaluation_criteria_heading`.`echid`,
     `evaluation_criteria_heading`.`text`
@@ -293,4 +306,14 @@ select accountType from user where BINARY(password) = BINARY('951761151V');
 
 select text,(select sum(marks) from marks m,evaluation_criteria ec where m.ecid=ec.ecid && lecid='L001' && subid='CSC 201' && text=text),(select count(m.ecid) from marks m,evaluation_criteria ec where m.ecid=ec.ecid && lecid='L001' && subid='CSC 201') from subject_lecturer sl,marks m,evaluation_criteria ec where sl.sublecid=m.sublecid && ec.ecid=m.ecid && lecid='L001' && subid='CSC 201';
 
-select text,sum(marks),count(marks) from subject_lecturer sl,marks m,evaluation_criteria ec where sl.sublecid=m.sublecid && ec.ecid=m.ecid && lecid='L001' && subid='CSC 201' group by 1;
+select text,sum(marks),count(marks) from subject_lecturer sl,marks m,evaluation_criteria ec where sl.sublecid=m.sublecid && ec.ecid=m.ecid && lecid='L001' && subid='CSC 201' && dateOfSubmission='2019-07-26' group by 1;
+
+select text,sum(marks),count(marks) from evaluation_criteria 
+left join marks on evaluation_criteria.ecid=marks.ecid
+inner join subject_lecturer on subject_lecturer.sublecid=marks.sublecid && lecid='L001' && subid='CSC 201' && dateOfSubmission='2019-07-26' group by evaluation_criteria.ecid asc;
+
+select text,sum(marks),count(marks) from evaluation_criteria 
+left join marks on evaluation_criteria.ecid=marks.ecid && dateOfSubmission='2019-07-26' && sublecid=(select sublecid from subject_lecturer where lecid='L001' && subid='CSC 201') group by evaluation_criteria.ecid asc;
+
+select text,marks from evaluation_criteria 
+left join marks on evaluation_criteria.ecid=marks.ecid;
