@@ -89,6 +89,66 @@ function loadLecturers() {
                     lecturers += '<option value="' + obj.Lecturers[i].LecturerId + '">' + obj.Lecturers[i].LecturerName + '</option>';
                 }
                 $('#lecturers').html(lecturers);
+                loadDates();
+            },
+            error: function () {
+
+            }
+        }
+    );
+}
+
+function loadDates() {
+    $.ajax(
+        {
+            // async: false,
+            type: "post",
+            url: window.location.origin + "/load_dates",
+            data: {
+                subjectId: $('#subjects').val(),
+                lecturerId: $('#lecturers').val()
+            },
+            success: function (response) {
+                var dates = '';
+                var obj = JSON.parse(response);
+                for (var i = 0; i < obj.Dates.length; i++) {
+                    dates += '<option value="' + obj.Dates[i].DateOfSubmission + '">' + obj.Dates[i].DateOfSubmission + '</option>';
+                }
+                $('#dates').html(dates);
+                loadMarks();
+            },
+            error: function () {
+
+            }
+        }
+    );
+}
+
+function loadMarks() {
+    $.ajax(
+        {
+            // async: false,
+            type: "post",
+            url: window.location.origin + "/load_marks",
+            data: {
+                subjectId: $('#subjects').val(),
+                lecturerId: $('#lecturers').val(),
+                dateOfSubmission: $('#dates').val()
+            },
+            success: function (response) {
+                var count = 0;
+                var tableData = '';
+                var obj = JSON.parse(response);
+                for (var i = 0; i < obj.Marks.length; i++) {
+                    tableData +=
+                        '<tr>' +
+                        '<td style="padding-right: 5px;text-align: right;font-weight: bold">' + ++count + '</td>' +
+                        '<td style="padding-left: 5px">' + obj.Marks[i].EvaluationCriteria + '</td>' +
+                        '<td style="text-align: center">' + obj.Marks[i].Marks + '</td>' +
+                        '<td style="text-align: center">' + obj.Marks[i].StudentsCount + '</td>' +
+                        '</tr>';
+                }
+                $('#marksBody').html(tableData);
             },
             error: function () {
 

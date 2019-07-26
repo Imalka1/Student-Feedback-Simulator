@@ -10,8 +10,8 @@
 
 <jsp:include page="header(admin).jsp"/>
 
-<div style="margin-top: 80px;margin-left: 30px;margin-right: 30px">
-    <div class="row" style="margin-top: 20px;text-align: center;font-size: 19px">
+<div style="margin-top: 75px;margin-left: 30px;margin-right: 30px">
+    <div class="row" style="text-align: center;font-size: 19px">
         <div class="col-3">
             Faculty
         </div>
@@ -41,15 +41,15 @@
         <div class="col-7">
             <select class="form-control" id="degree">
                 <%--<%--%>
-                    <%--{--%>
-                        <%--List<Degree> allDegrees = new DegreeController().getAllDegrees();--%>
-                        <%--for (Degree degree : allDegrees) {--%>
+                <%--{--%>
+                <%--List<Degree> allDegrees = new DegreeController().getAllDegrees();--%>
+                <%--for (Degree degree : allDegrees) {--%>
                 <%--%>--%>
                 <%--<option value="<%= degree.getDegid()%>"><%= degree.getDegreeName()%>--%>
                 <%--</option>--%>
                 <%--<%--%>
-                        <%--}--%>
-                    <%--}--%>
+                <%--}--%>
+                <%--}--%>
                 <%--%>--%>
             </select>
         </div>
@@ -70,9 +70,9 @@
         </div>
     </div>
 
-    <hr style="margin-top: 30px;margin-bottom: 30px;background-color: #b0b0b0">
+    <hr style="margin-top: 30px;margin-bottom: 20px;background-color: #b0b0b0">
 
-    <div class="row" style="margin-top: 20px;text-align: center;font-size: 19px">
+    <div class="row" style="text-align: center;font-size: 19px">
         <div class="col-6">
             Subject
         </div>
@@ -95,7 +95,33 @@
 
     <hr style="margin-top: 30px;margin-bottom: 30px;background-color: #b0b0b0">
 
-
+    <div class="row">
+        <div class="col-12" style="font-size: 32px;text-align: center">
+            Results
+        </div>
+    </div>
+    <div class="row" style="margin-top:10px;font-size: 19px">
+        <div class="col-1">
+            Date :
+        </div>
+        <div class="col-3">
+            <select class="form-control" id="dates"></select>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 50px;margin-top: 20px">
+        <div class="col-12" style="padding: 0px">
+            <table border="1px" style="width: 100%">
+                <tr>
+                    <th width="5%"></th>
+                    <th width="55%" style="text-align: center">Evaluation Criteria</th>
+                    <th width="20%" style="text-align: center">Marks</th>
+                    <th width="20%" style="text-align: center">Students Count<br>(Marks Submitted)</th>
+                </tr>
+                <tbody id="marksBody">
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 </div>
 

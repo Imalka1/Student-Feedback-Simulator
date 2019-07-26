@@ -102,10 +102,10 @@ constraint foreign key(lecid) references lecturer(lecid) on delete cascade
 create table marks(
 uid varchar(100),
 ecid int,
-dateOfSubmitted date,
+dateOfSubmission date,
 sublecid int,
 marks int,
-constraint primary key(uid,ecid,dateOfSubmitted,sublecid),
+constraint primary key(uid,ecid,dateOfSubmission,sublecid),
 constraint foreign key(uid) references user(uid) on delete cascade,
 constraint foreign key(sublecid) references subject_lecturer(sublecid) on delete cascade,
 constraint foreign key(ecid) references evaluation_criteria(ecid) on delete cascade
@@ -273,13 +273,24 @@ select uid,student_name,national_id,b.name from student s,batch b,degree d where
 
 SELECT `marks`.`uid`,
     `marks`.`ecid`,
-    `marks`.`dateOfSubmitted`,
+    `marks`.`dateOfSubmission`,
     `marks`.`sublecid`,
     `marks`.`marks`
 FROM `studentfeedback`.`marks`;
+
+SELECT `subject_lecturer`.`sublecid`,
+    `subject_lecturer`.`subid`,
+    `subject_lecturer`.`lecid`,
+    `subject_lecturer`.`current`
+FROM `studentfeedback`.`subject_lecturer`;
+
 
 select emailAddress from user where uid='IT123';
 
 select accountType from user where password='951761150V' COLLATE latin1_general_cs;
 
 select accountType from user where BINARY(password) = BINARY('951761151V');
+
+select text,(select sum(marks) from marks m,evaluation_criteria ec where m.ecid=ec.ecid && lecid='L001' && subid='CSC 201' && text=text),(select count(m.ecid) from marks m,evaluation_criteria ec where m.ecid=ec.ecid && lecid='L001' && subid='CSC 201') from subject_lecturer sl,marks m,evaluation_criteria ec where sl.sublecid=m.sublecid && ec.ecid=m.ecid && lecid='L001' && subid='CSC 201';
+
+select text,sum(marks),count(marks) from subject_lecturer sl,marks m,evaluation_criteria ec where sl.sublecid=m.sublecid && ec.ecid=m.ecid && lecid='L001' && subid='CSC 201' group by 1;
