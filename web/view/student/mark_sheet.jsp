@@ -68,16 +68,11 @@
                 {
                     Student studentObj = new Student();
                     studentObj.setUid(sessionLogin.getAttribute("uid").toString());
-                    Batch batch = new BatchController().getYearAndMonthDiff(studentObj);
-                    if (batch != null) {
-                        Semester semester = new Semester();
-                        semester.setSemid((batch.getYearDiff() * 12 + batch.getMonthDiff()) / 6 + 1);
-                        Semester semesterName = new SemesterController().getSemesterName(semester);
-                        if (semesterName != null) {
+                    Semester semesterNameViaUid = new SemesterController().getSemesterNameViaUid(studentObj);
+                    if (semesterNameViaUid != null) {
             %>
-            <%= semesterName.getSemesterName()%>
+            <%= semesterNameViaUid.getSemesterName()%>
             <%
-                        }
                     }
                 }
             %>

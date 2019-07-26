@@ -3,6 +3,7 @@ package controller.db_controller;
 import db.DBConnection;
 import model.Batch;
 import model.Semester;
+import model.Student;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,12 +14,12 @@ import java.util.List;
 
 public class SemesterController {
 
-    public Semester getSemesterName(Semester semester) {
+    public Semester getSemesterNameViaUid(Student student) {
         Semester semDTO = null;
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("select name from semester where semid=?");
-            preparedStatement.setObject(1, semester.getSemid());
+            PreparedStatement preparedStatement = connection.prepareStatement("select sem.name from semester sem,student s where s.semid=sem.semid && uid=?");
+            preparedStatement.setObject(1, student.getUid());
             ResultSet rst = preparedStatement.executeQuery();
             if (rst.next()) {
                 semDTO = new Semester();
