@@ -3,9 +3,45 @@ package model;
 public class Mark {
     private String uid;
     private int ecid;
-    private String dateOfSubmitted;
+    private String criteria;
+    private String dateOfSubmission;
     private int sublecid;
     private int marks;
+    private String subid;
+    private String lecid;
+    private int studentsCount;
+
+    public int getStudentsCount() {
+        return studentsCount;
+    }
+
+    public void setStudentsCount(int studentsCount) {
+        this.studentsCount = studentsCount;
+    }
+
+    public String getCriteria() {
+        return criteria;
+    }
+
+    public void setCriteria(String criteria) {
+        this.criteria = criteria;
+    }
+
+    public String getSubid() {
+        return subid;
+    }
+
+    public void setSubid(String subid) {
+        this.subid = subid;
+    }
+
+    public String getLecid() {
+        return lecid;
+    }
+
+    public void setLecid(String lecid) {
+        this.lecid = lecid;
+    }
 
     public int getMarks() {
         return marks;
@@ -31,12 +67,12 @@ public class Mark {
         this.ecid = ecid;
     }
 
-    public String getDateOfSubmitted() {
-        return dateOfSubmitted;
+    public String getDateOfSubmission() {
+        return dateOfSubmission;
     }
 
-    public void setDateOfSubmitted(String dateOfSubmitted) {
-        this.dateOfSubmitted = dateOfSubmitted;
+    public void setDateOfSubmission(String dateOfSubmission) {
+        this.dateOfSubmission = dateOfSubmission;
     }
 
     public int getSublecid() {

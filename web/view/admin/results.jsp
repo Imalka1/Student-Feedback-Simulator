@@ -1,23 +1,130 @@
-<jsp:include page="../header.jsp"/>
-<%
-    String logout = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/logout";
-%>
-<div class="navbar-collapse" id="navbarResponsive">
-    <ul class="navbar-nav text-uppercase ml-auto">
-        <li class="nav-item" style="margin-right: 50px">
-            <a class="js-scroll-trigger" style="cursor: pointer;font-family: Montserrat,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';text-decoration: none;color: white" href="landing_page(admin).jsp">Back</a>
-        </li>
-        <form action="logout" method="post">
-            <li class="nav-item">
-                <a id="btnLogout" class="js-scroll-trigger" href="<%= logout%>"
-                   style="cursor: pointer;font-family: Montserrat,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';text-decoration: none;color: white">
-                    Logout
-                    <%--<i class="fa fa-sign-out" style="margin-left: 20px"></i>--%>
-                </a>
-            </li>
-        </form>
-    </ul>
+<%@ page import="controller.db_controller.BatchController" %>
+<%@ page import="model.Batch" %>
+<%@ page import="java.util.List" %>
+<%@ page import="controller.db_controller.DegreeController" %>
+<%@ page import="model.Degree" %>
+<%@ page import="controller.db_controller.SemesterController" %>
+<%@ page import="model.Semester" %>
+<%@ page import="controller.db_controller.FacultyController" %>
+<%@ page import="model.Faculty" %>
+
+<jsp:include page="header(admin).jsp"/>
+
+<div style="margin-top: 75px;margin-left: 30px;margin-right: 30px">
+    <div class="row" style="text-align: center;font-size: 19px">
+        <div class="col-6">
+            Faculty
+        </div>
+        <%--<div class="col-7">--%>
+            <%--Degree--%>
+        <%--</div>--%>
+        <div class="col-6">
+            Semester
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <select class="form-control" id="faculty">
+                <%
+                    {
+                        List<Faculty> allFaculties = new FacultyController().getAllFaculties();
+                        for (Faculty faculty : allFaculties) {
+                %>
+                <option value="<%= faculty.getFacid()%>"><%= faculty.getFacultyName()%>
+                </option>
+                <%
+                        }
+                    }
+                %>
+            </select>
+        </div>
+        <%--<div class="col-7">--%>
+            <%--<select class="form-control" id="degree">--%>
+                <%--&lt;%&ndash;&lt;%&ndash;%>--%>
+                <%--&lt;%&ndash;{&ndash;%&gt;--%>
+                <%--&lt;%&ndash;List<Degree> allDegrees = new DegreeController().getAllDegrees();&ndash;%&gt;--%>
+                <%--&lt;%&ndash;for (Degree degree : allDegrees) {&ndash;%&gt;--%>
+                <%--&lt;%&ndash;%>&ndash;%&gt;--%>
+                <%--&lt;%&ndash;<option value="<%= degree.getDegid()%>"><%= degree.getDegreeName()%>&ndash;%&gt;--%>
+                <%--&lt;%&ndash;</option>&ndash;%&gt;--%>
+                <%--&lt;%&ndash;&lt;%&ndash;%>--%>
+                <%--&lt;%&ndash;}&ndash;%&gt;--%>
+                <%--&lt;%&ndash;}&ndash;%&gt;--%>
+                <%--&lt;%&ndash;%>&ndash;%&gt;--%>
+            <%--</select>--%>
+        <%--</div>--%>
+        <div class="col-6">
+            <select class="form-control" id="semester">
+                <%
+                    {
+                        List<Semester> allSemesters = new SemesterController().getAllSemesters();
+                        for (Semester semester : allSemesters) {
+                %>
+                <option value="<%= semester.getSemid()%>"><%= semester.getSemesterName()%>
+                </option>
+                <%
+                        }
+                    }
+                %>
+            </select>
+        </div>
+    </div>
+
+    <hr style="margin-top: 30px;margin-bottom: 20px;background-color: #b0b0b0">
+
+    <div class="row" style="text-align: center;font-size: 19px">
+        <div class="col-6">
+            Subject
+        </div>
+        <div class="col-6">
+            Lecturer
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <select class="form-control" id="subjects">
+                <%--<option value=""></option>--%>
+            </select>
+        </div>
+        <div class="col-6">
+            <select class="form-control" id="lecturers">
+                <%--<option value=""></option>--%>
+            </select>
+        </div>
+    </div>
+
+    <hr style="margin-top: 30px;margin-bottom: 30px;background-color: #b0b0b0">
+
+    <div class="row">
+        <div class="col-12" style="font-size: 32px;text-align: center">
+            Results
+        </div>
+    </div>
+    <div class="row" style="margin-top:10px;font-size: 19px">
+        <div class="col-1">
+            Date :
+        </div>
+        <div class="col-3">
+            <select class="form-control" id="dates"></select>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 50px;margin-top: 20px">
+        <div class="col-12" style="padding: 0px">
+            <table border="1px" style="width: 100%">
+                <tr>
+                    <th width="5%"></th>
+                    <th width="50%" style="text-align: center">Evaluation Criteria</th>
+                    <th width="15%" style="text-align: center">Marks</th>
+                    <th width="15%" style="text-align: center">Students Count<br>(Marks Submitted)</th>
+                    <th width="15%" style="text-align: center">Average Mark</th>
+                </tr>
+                <tbody id="marksBody">
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 </div>
-</nav>
+
+<script src="/controller/admin/resultsController.js"></script>
 <jsp:include page="../footer.jsp"/>

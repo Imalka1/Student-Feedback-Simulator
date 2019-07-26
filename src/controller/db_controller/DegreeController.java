@@ -2,6 +2,7 @@ package controller.db_controller;
 
 import db.DBConnection;
 import model.Degree;
+import model.Faculty;
 import model.Student;
 
 import java.sql.*;
@@ -46,11 +47,12 @@ public class DegreeController {
         return degree;
     }
 
-    public List<Degree> getAllDegrees(){
+    public List<Degree> getAllDegreesViaFaculty(Faculty faculty){
         List<Degree> degrees = new ArrayList<>();
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("select degid,name from degree");
+            PreparedStatement preparedStatement = connection.prepareStatement("select degid,name from degree where facid=?");
+            preparedStatement.setObject(1, faculty.getFacid());
             ResultSet rst = preparedStatement.executeQuery();
             while (rst.next()) {
                 Degree degree = new Degree();

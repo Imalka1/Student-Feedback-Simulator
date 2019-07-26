@@ -144,6 +144,7 @@
         </div>
     </div>
 </section>
+</div>
 
 <script src="/controller/student/landingPage(student)Controller.js"></script>
 <jsp:include page="../footer.jsp"/>

@@ -9,7 +9,6 @@
     <title>Agency - Start Bootstrap Theme</title>
 
     <!-- Bootstrap core CSS -->
-    <%--<link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">--%>
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
     <!-- Custom fonts for this template -->
     <link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -21,9 +20,7 @@
 
     <!-- Custom styles for this template -->
     <link href="/assets/css/agency.min.css" rel="stylesheet">
-    <%--<meta name="viewport" content="width=device-width, initial-scale=1">--%>
     <link rel="stylesheet" href="/assets/font-awesome/latest/css/font-awesome.min.css">
-    <title>$Title$</title>
     <script src="/assets/js/jquery-3.2.1.min.js"></script>
     <style>
         .col-center {
@@ -65,7 +62,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav"
              style="background-color: rgba(35,35,35,0.81)">
             <div class="container">
-                <a class="navbar-brand js-scroll-trigger">Student Feedback Form</a>
+                <a class="navbar-brand js-scroll-trigger">Student Feedback Simulator</a>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ml-auto">
                         <li class="nav-item">
@@ -82,7 +79,8 @@
                 <div class="col-12" style="padding: 0px" id="messageBox"></div>
             </div>
             <div class="row">
-                <div class="col-12" style="font-size: 13px"><b>Note:-</b> Type your student / admin id and click on send.
+                <div class="col-12" style="font-size: 13px"><b>Note:-</b> Type your student / admin id and click on
+                    send.
                     System will send a confirmation code to your email.
                 </div>
             </div>

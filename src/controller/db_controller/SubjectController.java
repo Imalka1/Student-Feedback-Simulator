@@ -1,6 +1,8 @@
 package controller.db_controller;
 
 import db.DBConnection;
+import model.Degree;
+import model.Semester;
 import model.Subject;
 
 import java.sql.Connection;
@@ -16,7 +18,7 @@ public class SubjectController {
         List<Subject> subjects = new ArrayList<>();
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("select s.subid,title,l.name,credits from subject s,lecturer l,subject_lecturer sl where l.lecid=sl.lecid && s.subid=sl.subid && degid=? && semid=? && current=true");
+            PreparedStatement preparedStatement = connection.prepareStatement("select s.subid,title,l.name,credits from subject s,lecturer l,subject_lecturer sl,subject_degree sd where l.lecid=sl.lecid && s.subid=sl.subid && s.subid=sd.subid && degid=? && semid=? && current=true");
             preparedStatement.setObject(1, subject.getDegid());
             preparedStatement.setObject(2, subject.getSemid());
             ResultSet rst = preparedStatement.executeQuery();
@@ -52,5 +54,24 @@ public class SubjectController {
             e.printStackTrace();
         }
         return subjectNameAndCredits;
+    }
+
+    public List<Subject> getAllSubjectsViaDegreeAndSemester(Semester semester){
+        List<Subject> subjects = new ArrayList<>();
+        try {
+            Connection connection = DBConnection.getDBConnection().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("select subid,title from subject where semid=?");
+            preparedStatement.setObject(1, semester.getSemid());
+            ResultSet rst = preparedStatement.executeQuery();
+            while (rst.next()) {
+                Subject subjectObj = new Subject();
+                subjectObj.setSubjectId(rst.getString(1));
+                subjectObj.setSubjectName(rst.getString(2));
+                subjects.add(subjectObj);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return subjects;
     }
 }

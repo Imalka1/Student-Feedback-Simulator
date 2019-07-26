@@ -93,19 +93,18 @@
         /*background-color: #D49E00;*/
     }
 </style>
-<body class="container-fluid">
+<body id="page-top">
 <div class="box">
     <div class="row1 content">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style="background-color: rgba(35,35,35,0.81)">
+            <div class="container">
+                <a class="navbar-brand js-scroll-trigger">Student Feedback Simulator</a>
+            </div>
+        </nav>
         <div class="row">
             <div class="col-12">
                 <form action="/login" method="post">
-                    <div class="row" style="margin-bottom: 60px">
-                        <div class="col-12"
-                             style="text-align: center;margin-top: 80px;font-size: 30px;color: #ffffff">
-                            Student Feedback Simulator
-                        </div>
-                    </div>
-                    <div class="row" style="margin-bottom: 25px">
+                    <div class="row" style="margin-top:150px;margin-bottom: 25px">
                         <div class="col-md-4 col-center">
                             <input type="text" class="form-control" autofocus placeholder="Student / Admin ID"
                                    style="font-size: 16px"

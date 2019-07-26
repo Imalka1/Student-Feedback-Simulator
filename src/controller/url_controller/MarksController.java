@@ -32,7 +32,7 @@ public class MarksController extends HttpServlet {
             mark.setSublecid(Integer.parseInt(req.getParameter("sublecid")));
             mark.setEcid(Integer.parseInt(jsonObjectIds.get(i).toString()));
             mark.setMarks(Integer.parseInt(jsonObjectMarks.get(i).toString()));
-            mark.setDateOfSubmitted(dateOfSubmission);
+            mark.setDateOfSubmission(dateOfSubmission);
             marks.add(mark);
         }
         if (new MarkController().addMarks(marks)) {
