@@ -145,8 +145,12 @@ function loadMarks() {
                         '<td style="padding-right: 5px;text-align: right;font-weight: bold">' + ++count + '</td>' +
                         '<td style="padding-left: 5px">' + obj.Marks[i].EvaluationCriteria + '</td>' +
                         '<td style="text-align: center">' + obj.Marks[i].Marks + '</td>' +
-                        '<td style="text-align: center">' + obj.Marks[i].StudentsCount + '</td>' +
-                        '</tr>';
+                        '<td style="text-align: center">' + obj.Marks[i].StudentsCount + '</td>';
+                    if (parseInt(obj.Marks[i].StudentsCount) == 0) {
+                        tableData += '<td style="text-align: center">0</td></tr>';
+                    } else {
+                        tableData += '<td style="text-align: center">' + parseInt(obj.Marks[i].Marks) / parseInt(obj.Marks[i].StudentsCount) + '</td></tr>';
+                    }
                 }
                 $('#marksBody').html(tableData);
             },

@@ -113,9 +113,10 @@
             <table border="1px" style="width: 100%">
                 <tr>
                     <th width="5%"></th>
-                    <th width="55%" style="text-align: center">Evaluation Criteria</th>
-                    <th width="20%" style="text-align: center">Marks</th>
-                    <th width="20%" style="text-align: center">Students Count<br>(Marks Submitted)</th>
+                    <th width="50%" style="text-align: center">Evaluation Criteria</th>
+                    <th width="15%" style="text-align: center">Marks</th>
+                    <th width="15%" style="text-align: center">Students Count<br>(Marks Submitted)</th>
+                    <th width="15%" style="text-align: center">Average Mark</th>
                 </tr>
                 <tbody id="marksBody">
                 </tbody>

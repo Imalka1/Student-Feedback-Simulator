@@ -50,7 +50,7 @@ public class MarkController {
         List<Mark> marks = new ArrayList<>();
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("" +
+            PreparedStatement preparedStatement = connection.prepareStatement(
                     "select text,sum(marks),count(marks) " +
                     "from evaluation_criteria " +
                     "left join marks on evaluation_criteria.ecid=marks.ecid && " +
