@@ -5,11 +5,47 @@ public class Student {
     private String uid;
     private int degId;
     private int batchId;
+    private int semesterId;
     private int year;
-    private String studentName;
     private String nationalId;
     private String batchName;
+    private String studentName;
+    private String semesterName;
+    private String facultyName;
+    private String degreeName;
     private String emailAddress;
+
+    public String getFacultyName() {
+        return facultyName;
+    }
+
+    public void setFacultyName(String facultyName) {
+        this.facultyName = facultyName;
+    }
+
+    public String getDegreeName() {
+        return degreeName;
+    }
+
+    public void setDegreeName(String degreeName) {
+        this.degreeName = degreeName;
+    }
+
+    public String getSemesterName() {
+        return semesterName;
+    }
+
+    public void setSemesterName(String semesterName) {
+        this.semesterName = semesterName;
+    }
+
+    public int getSemesterId() {
+        return semesterId;
+    }
+
+    public void setSemesterId(int semesterId) {
+        this.semesterId = semesterId;
+    }
 
     public int getYear() {
         return year;

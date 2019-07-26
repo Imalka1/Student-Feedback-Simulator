@@ -7,8 +7,9 @@
     String logout = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/logout";
     HttpSession sessionLogin = request.getSession(false);
 
-    Degree degree;
-    Semester semester;
+    Student studentUserID = new Student();
+    studentUserID.setUid(sessionLogin.getAttribute("uid").toString());
+    Student student = new StudentController().getStudentLandingPageData(studentUserID);
 %>
 
 <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -33,14 +34,11 @@
         <div class="intro-text" style="padding-top: 200px">
             <%
                 {
-                    Student studentObj = new Student();
-                    studentObj.setUid(sessionLogin.getAttribute("uid").toString());
-                    degree = new DegreeController().getDegreeData(studentObj);
-                    if (degree != null) {
+                    if (student != null) {
             %>
-            <div class="intro-lead-in"><%= degree.getFacultyName()%>
+            <div class="intro-lead-in"><%= student.getFacultyName()%>
             </div>
-            <div class="intro-lead-in"><%= degree.getDegreeName()%>
+            <div class="intro-lead-in"><%= student.getDegreeName()%>
             </div>
             <%
                     }
@@ -48,28 +46,11 @@
             %>
             <%
                 {
-                    Student studentObj = new Student();
-                    studentObj.setUid(sessionLogin.getAttribute("uid").toString());
-                    Batch batch = new BatchController().getYearAndMonthDiff(studentObj);
-                    semester = new Semester();
-                    if (batch != null) {
-                        if (batch.getYearDiff() < 0 || batch.getMonthDiff() < 0) {
-                            semester.setSemid(0);
-                        } else {
-                            semester.setSemid((batch.getYearDiff() * 12 + batch.getMonthDiff()) / 6 + 1);
-                        }
-                        Semester semesterName = new SemesterController().getSemesterName(semester);
-                        if (semesterName != null) {
+                    if (student != null) {
             %>
-            <div class="intro-lead-in" style="padding-top: 40px;color: #FFB508"><%= new BatchController().getBatchNameViaUid(studentObj).getBatchName()%> (<%= semesterName.getSemesterName()%>)
+            <div class="intro-lead-in" style="padding-top: 40px;color: #FFB508"><%= student.getBatchName()%> (<%= student.getSemesterName()%>)
             </div>
             <%
-            } else {
-            %>
-            <div class="intro-lead-in" style="padding-top: 40px;color: #FFB508">Not yet
-            </div>
-            <%
-                        }
                     }
                 }
             %>
@@ -77,9 +58,6 @@
                  style="background-color: #ffb508;width: fit-content;color: #402901;padding: 20px;padding-left: 30px;padding-right: 30px;font-size: 18px;border-radius: 35px;margin-top: 80px;font-weight: bold">
                 <%
                     {
-                        Student studentUserID = new Student();
-                        studentUserID.setUid(sessionLogin.getAttribute("uid").toString());
-                        Student student = new StudentController().getStudentUsername(studentUserID);
                         if (student != null) {
                 %>
                 Online - <%= student.getStudentName()%>
@@ -106,8 +84,8 @@
                     <%
                         {
                             Subject subjectObj = new Subject();
-                            subjectObj.setDegid(degree.getDegid());
-                            subjectObj.setSemid(semester.getSemid());
+                            subjectObj.setDegid(student.getDegId());
+                            subjectObj.setSemid(student.getSemesterId());
                             List<Subject> subjects = new SubjectController().getSubjectsViaSemesterAndDegree(subjectObj);
                             for (Subject subject : subjects) {
                     %>

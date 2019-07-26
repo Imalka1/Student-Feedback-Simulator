@@ -4,6 +4,31 @@ $(window).on("load", function () {
     loadStudents();
 });
 
+//--------------------------------------------------Change semester for all students------------------------------------
+$('#btnChangeSem').click(function () {
+    var optionVal = parseInt($('#semester').val());
+    $('#semester option[value=' + ++optionVal + ']').attr('selected','selected');
+
+    $.ajax(
+        {
+            async: false,
+            type: "post",
+            url: window.location.origin + "/change_semester",
+            data: {
+                semesterId: $('#semester').val()
+            },
+            success: function (response) {
+                if (JSON.parse(response) == true) {
+                    loadStudents();
+                }
+            },
+            error: function () {
+
+            }
+        }
+    );
+})
+
 //----------------------------------------------------Filter------------------------------------------------------------
 $('#faculty').change(function () {
     loadDegrees();
@@ -15,6 +40,10 @@ $('#degree').change(function () {
 })
 
 $('#batch').change(function () {
+    loadStudents();
+})
+
+$('#semester').change(function () {
     loadStudents();
 })
 
@@ -104,8 +133,9 @@ $('#btnAdd').click(function () {
             type: "post",
             url: window.location.origin + "/add_student",
             data: {
-                degree: $('#degree').val(),
-                batch: $('#batch').val(),
+                degreeId: $('#degree').val(),
+                batchId: $('#batch').val(),
+                semesterId: $('#semester').val(),
                 regNo: $('#regNo').val(),
                 studetName: $('#studetName').val(),
                 nationalId: $('#nationalId').val(),
@@ -136,8 +166,9 @@ $('#btnUpdate').click(function () {
             type: "post",
             url: window.location.origin + "/update_student",
             data: {
-                degree: $('#degree').val(),
-                batch: $('#batch').val(),
+                degreeId: $('#degree').val(),
+                batchId: $('#batch').val(),
+                semesterId: $('#semester').val(),
                 regNo: $('#regNo').val(),
                 studetName: $('#studetName').val(),
                 nationalId: $('#nationalId').val(),
@@ -204,8 +235,9 @@ function loadStudents() {
             type: "post",
             url: window.location.origin + "/load_students",
             data: {
-                degree: $('#degree').val(),
-                batch: $('#batch').val()
+                degreeId: $('#degree').val(),
+                batchId: $('#batch').val(),
+                semesterId: $('#semester').val()
             },
             success: function (response) {
                 var obj = JSON.parse(response);

@@ -14,23 +14,6 @@ import java.util.List;
 
 public class BatchController {
 
-    public Batch getYearAndMonthDiff(Student student) {
-        Batch batch = new Batch();
-        try {
-            Connection connection = DBConnection.getDBConnection().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("select year(curdate())-year(b.intake),month(curdate())-month(b.intake) from student s,batch b,user u where s.batchid=b.batchid && u.uid=s.uid && s.uid=?");
-            preparedStatement.setObject(1, student.getUid());
-            ResultSet rst = preparedStatement.executeQuery();
-            if (rst.next()) {
-                batch.setYearDiff(rst.getInt(1));
-                batch.setMonthDiff(rst.getInt(2));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return batch;
-    }
-
     public List<Batch> getIntakes() {
         List<Batch> batches = new ArrayList<>();
         try {
@@ -47,22 +30,5 @@ public class BatchController {
             e.printStackTrace();
         }
         return batches;
-    }
-
-    public Batch getBatchNameViaUid(Student student) {
-        Batch batch = null;
-        try {
-            Connection connection = DBConnection.getDBConnection().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("select name from batch b,student s where b.batchid=s.batchid && uid=?");
-            preparedStatement.setObject(1, student.getUid());
-            ResultSet rst = preparedStatement.executeQuery();
-            if (rst.next()) {
-                batch = new Batch();
-                batch.setBatchName(rst.getString(1));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return batch;
     }
 }

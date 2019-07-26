@@ -91,23 +91,4 @@ public class UserController {
         }
         return userEmail;
     }
-
-//    public static User getAdminUsername(String uid) {
-//        User userDTO = null;
-//        try {
-//            Connection connection = DBConnection.getDBConnection().getConnection();
-//            PreparedStatement preparedStatement = connection.prepareStatement("select admin_name from user u,admin a where u.uid=a.uid && u.uid=?");
-//            preparedStatement.setObject(1, uid);
-//            ResultSet rst = preparedStatement.executeQuery();
-//            if (rst.next()) {
-//                userDTO = new User();
-//                userDTO.setUsername(rst.getString(1));
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        } catch (ClassNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//        return userDTO;
-//    }
 }

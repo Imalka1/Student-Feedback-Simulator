@@ -15,8 +15,9 @@ import java.io.PrintWriter;
 public class AddStudent extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int degree = Integer.parseInt(req.getParameter("degree").trim());
-        int batch = Integer.parseInt(req.getParameter("batch").trim());
+        int degreeId = Integer.parseInt(req.getParameter("degreeId").trim());
+        int batchId = Integer.parseInt(req.getParameter("batchId").trim());
+        int semesterId = Integer.parseInt(req.getParameter("semesterId").trim());
         String regNo = req.getParameter("regNo").trim();
         String studetName = req.getParameter("studetName").trim();
         String nationalId = req.getParameter("nationalId").trim();
@@ -25,8 +26,9 @@ public class AddStudent extends HttpServlet {
         student.setUid(regNo);
         student.setStudentName(studetName);
         student.setNationalId(nationalId);
-        student.setDegId(degree);
-        student.setBatchId(batch);
+        student.setDegId(degreeId);
+        student.setBatchId(batchId);
+        student.setSemesterId(semesterId);
         student.setEmailAddress(emailAddress);
 
         PrintWriter writer = resp.getWriter();

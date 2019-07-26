@@ -18,11 +18,13 @@ import java.util.List;
 public class LoadStudents extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int degreeId = Integer.parseInt(req.getParameter("degree").trim());
-        int batchId = Integer.parseInt(req.getParameter("batch").trim());
+        int degreeId = Integer.parseInt(req.getParameter("degreeId").trim());
+        int batchId = Integer.parseInt(req.getParameter("batchId").trim());
+        int semesterId = Integer.parseInt(req.getParameter("semesterId").trim());
         Student student=new Student();
         student.setDegId(degreeId);
         student.setBatchId(batchId);
+        student.setSemesterId(semesterId);
         List<Student> allStudents = new StudentController().getAllStudents(student);
         JSONObject obj = new JSONObject();
         JSONArray studentsJson = new JSONArray();

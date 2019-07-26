@@ -42,12 +42,14 @@ stid int auto_increment,
 uid varchar(100),
 degid int,
 batchid int,
+semid int,
 student_name varchar(100),
 national_id varchar(100),
 constraint primary key(stid),
 constraint foreign key(uid) references user(uid) on delete cascade,
 constraint foreign key(degid) references degree(degid) on delete cascade,
-constraint foreign key(batchid) references batch(batchid) on delete cascade
+constraint foreign key(batchid) references batch(batchid) on delete cascade,
+constraint foreign key(semid) references semester(semid) on delete cascade
 );
 
 create table admin(
@@ -142,14 +144,20 @@ INSERT INTO `studentfeedback`.`user`
 VALUES
 ('IT123','123','student','imalkagunawardana1@gmail.com'),('IT456','456','student','imalkagunawardana1@gmail.com'),('ADMIN789','789','admin','imalkagunawardana1@gmail.com');
 
+INSERT INTO `studentfeedback`.`semester`
+(`name`)
+VALUES
+('Year 1 / Semester 1'),('Year 1 / Semester 2'),('Year 2 / Semester 1'),('Year 2 / Semester 2');
+
 INSERT INTO `studentfeedback`.`student`
 (`uid`,
 `degid`,
 `batchid`,
+`semid`,
 `student_name`,
 `national_id`)
 VALUES
-('IT123',1,1,'Amal Silva','951761150V'),('IT456',2,2,'Kamal Silva','961751150V');
+('IT123',1,1,1,'Amal Silva','951761150V'),('IT456',2,2,1,'Kamal Silva','961751150V');
 
 INSERT INTO `studentfeedback`.`admin`
 (`uid`,
@@ -195,11 +203,6 @@ VALUES
 (6,'Lecture was good'),
 (6,'Course content'),
 (6,'Module/subject was understood');
-
-INSERT INTO `studentfeedback`.`semester`
-(`name`)
-VALUES
-('Year 1 / Semester 1'),('Year 1 / Semester 2'),('Year 2 / Semester 1'),('Year 2 / Semester 2');
 
 INSERT INTO `studentfeedback`.`lecturer`
 (`lecid`,
@@ -317,3 +320,7 @@ left join marks on evaluation_criteria.ecid=marks.ecid && dateOfSubmission='2019
 
 select text,marks from evaluation_criteria 
 left join marks on evaluation_criteria.ecid=marks.ecid;
+
+select year(curdate())-year('2015-09-21'),month(curdate())-month('2015-09-21');
+
+SELECT DATEDIFF(curdate(),'2018-09-21');
