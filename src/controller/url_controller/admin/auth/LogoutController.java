@@ -1,4 +1,4 @@
-package controller.url_controller.auth;
+package controller.url_controller.admin.auth;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

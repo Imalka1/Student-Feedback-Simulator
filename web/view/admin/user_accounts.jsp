@@ -104,12 +104,6 @@
         <div class="col-5">
             (The registration number cannot be updated)
         </div>
-        <%--<div class="col-2" style="text-align: center">--%>
-        <%--(Search student)--%>
-        <%--</div>--%>
-        <%--<div class="col-2" style="text-align: center">--%>
-        <%--(Click to clear fields)--%>
-        <%--</div>--%>
     </div>
     <div class="row">
         <div class="col-3">
@@ -153,7 +147,7 @@
     <div class="row" style="margin-top: 50px">
         <div class="col-4">
             <div class="col-center" style="width: fit-content;margin: auto">
-                <button id="btnAdd" class="btn" style="background-color: #ffbf05;margin-bottom: 50px" disabled>Submit
+                <button id="btnAdd" class="btn" style="background-color: #ffbf05;margin-bottom: 50px">Submit
                 </button>
             </div>
         </div>
@@ -194,12 +188,6 @@
                 </tbody>
             </table>
         </div>
-    </div>
-    <div class="row" style="margin-bottom: 50px">
-        <div class="col-4"><i class="fa fa-arrow-circle-left fa-3x" style="float: right;margin-right: 30px"
-                              id="decPageNo"></i></div>
-        <div class="col-4" style="text-align: center;font-size: 30px;font-weight: bold" id="pageNo"></div>
-        <div class="col-4"><i class="fa fa-arrow-circle-right fa-3x" style="margin-left: 30px" id="incPageNo"></i></div>
     </div>
 </div>
 </div>

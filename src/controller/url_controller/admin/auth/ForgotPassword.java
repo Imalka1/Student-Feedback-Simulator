@@ -1,4 +1,4 @@
-package controller.url_controller.auth;
+package controller.url_controller.admin.auth;
 
 import controller.db_controller.UserController;
 import model.User;
