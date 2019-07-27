@@ -15,7 +15,9 @@ $('#btnChangeSem').click(function () {
             type: "post",
             url: window.location.origin + "/change_semester",
             data: {
-                semesterId: $('#semester').val()
+                semesterId: $('#semester').val(),
+                facultyId: $('#faculty').val(),
+                batchId: $('#batch').val()
             },
             success: function (response) {
                 if (JSON.parse(response) == true) {

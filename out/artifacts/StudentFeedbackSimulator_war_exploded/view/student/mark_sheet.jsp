@@ -129,7 +129,7 @@
                         for (Criteria criteriaHeadDTO : criteriaHeadings) {
                 %>
                 <tr>
-                    <td colspan="7" class=""
+                    <td colspan="7" class="padding_5_txt"
                         style="font-weight: 600"><%= criteriaHeadDTO.getCriteriaHeadingName()%>
                     </td>
                 </tr>

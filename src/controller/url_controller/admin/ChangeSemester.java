@@ -16,8 +16,12 @@ public class ChangeSemester extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int semesterId = Integer.parseInt(req.getParameter("semesterId").trim());
+        int facultyId = Integer.parseInt(req.getParameter("facultyId").trim());
+        int batchId = Integer.parseInt(req.getParameter("batchId").trim());
         Student student = new Student();
         student.setSemesterId(semesterId);
+        student.setFacultyId(facultyId);
+        student.setBatchId(batchId);
 
         PrintWriter writer = resp.getWriter();
         if (new StudentController().changeSemester(student)) {

@@ -153,9 +153,11 @@ public class StudentController {
     public boolean changeSemester(Student student) {
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("update student set semid=? where semid=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("update student s,degree d set semid=? where semid=? && d.degid=s.degid && facid=? && batchid=?");
             preparedStatement.setObject(1, student.getSemesterId());
             preparedStatement.setObject(2, student.getSemesterId() - 1);
+            preparedStatement.setObject(3, student.getFacultyId());
+            preparedStatement.setObject(4, student.getBatchId());
             if (preparedStatement.executeUpdate() > 0) {
                 return true;
             }

@@ -5,6 +5,7 @@ public class Student {
     private String uid;
     private int degId;
     private int batchId;
+    private int facultyId;
     private int semesterId;
     private int year;
     private String nationalId;
@@ -14,6 +15,14 @@ public class Student {
     private String facultyName;
     private String degreeName;
     private String emailAddress;
+
+    public int getFacultyId() {
+        return facultyId;
+    }
+
+    public void setFacultyId(int facultyId) {
+        this.facultyId = facultyId;
+    }
 
     public String getFacultyName() {
         return facultyName;
