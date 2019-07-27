@@ -2,7 +2,6 @@
     HttpSession sessionLogin = request.getSession(false);
     if (sessionLogin != null) {
         if (sessionLogin.getAttribute("uid") == null) {
-//            response.sendRedirect("index.jsp");
 %>
 <jsp:forward page="../index.jsp"/>
 <%
@@ -58,11 +57,9 @@
             flex: 0 1;
         }
 
-        @media (min-width: 992px) {
-            #mainNav {
-                padding-top: 0px;
-                padding-bottom: 0px;
-            }
+        #mainNav {
+            padding-top: 0px;
+            padding-bottom: 0px;
         }
     </style>
 </head>

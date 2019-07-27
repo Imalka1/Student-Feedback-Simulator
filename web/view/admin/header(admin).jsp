@@ -51,7 +51,6 @@
                 <a id="btnLogout" class="js-scroll-trigger" href="<%= logout%>"
                    style="cursor: pointer;font-family: Montserrat,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';text-decoration: none;color: white">
                     Logout
-                    <%--<i class="fa fa-sign-out" style="margin-left: 20px"></i>--%>
                 </a>
             </li>
         </form>

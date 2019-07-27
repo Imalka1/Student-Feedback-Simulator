@@ -4,7 +4,6 @@
     HttpSession sessionLogin = request.getSession(false);
     if (sessionLogin != null) {
         if (sessionLogin.getAttribute("accountType") != null) {
-//            response.sendRedirect("landing_page(student).jsp");
             if (sessionLogin.getAttribute("accountType").equals("admin")) {
 %>
 <jsp:forward page="view/admin/landing_page(admin).jsp"/>
@@ -72,11 +71,9 @@
             flex: 0 1;
         }
 
-        @media (min-width: 992px) {
-            #mainNav {
-                padding-top: 0px;
-                padding-bottom: 0px;
-            }
+        #mainNav {
+            padding-top: 0px;
+            padding-bottom: 0px;
         }
     </style>
 </head>
@@ -85,12 +82,10 @@
         background-image: url("/assets/img/image.jpg");
         background-size: cover;
         background-repeat: no-repeat;
-        /*background-position: center center;*/
         background-attachment: fixed;
         position: relative;
         min-height: 500px;
         overflow-y: scroll;
-        /*background-color: #D49E00;*/
     }
 </style>
 <body id="page-top">
