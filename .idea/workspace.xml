@@ -132,15 +132,15 @@
         <counts>
           <entry key="dummy" value="6" />
           <entry key="java" value="5243" />
-          <entry key="js" value="4845" />
-          <entry key="jsp" value="4106" />
+          <entry key="js" value="6256" />
+          <entry key="jsp" value="4109" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="5237" />
-          <entry key="JSP" value="4106" />
-          <entry key="JavaScript" value="4844" />
+          <entry key="JSP" value="4109" />
+          <entry key="JavaScript" value="6255" />
           <entry key="PLAIN_TEXT" value="6" />
           <entry key="RegExp" value="1" />
           <entry key="SQL" value="6" />
@@ -150,10 +150,10 @@
         <counts>
           <entry key="css" value="1" />
           <entry key="html" value="1" />
-          <entry key="java" value="286" />
+          <entry key="java" value="298" />
           <entry key="jpg" value="1" />
-          <entry key="js" value="64" />
-          <entry key="jsp" value="221" />
+          <entry key="js" value="72" />
+          <entry key="jsp" value="224" />
           <entry key="xml" value="2" />
         </counts>
       </usages-collector>
@@ -162,9 +162,9 @@
           <entry key="CSS" value="1" />
           <entry key="HTML" value="1" />
           <entry key="Image" value="1" />
-          <entry key="JAVA" value="286" />
-          <entry key="JSP" value="221" />
-          <entry key="JavaScript" value="64" />
+          <entry key="JAVA" value="298" />
+          <entry key="JSP" value="224" />
+          <entry key="JavaScript" value="72" />
           <entry key="XML" value="2" />
         </counts>
       </usages-collector>
@@ -173,41 +173,95 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/view/admin/user_accounts.jsp">
+        <entry file="file://$PROJECT_DIR$/src/controller/db_controller/StudentController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-221">
-              <caret line="149" column="101" selection-start-line="149" selection-start-column="101" selection-end-line="149" selection-end-column="101" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web/controller/admin/userAccountController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2737">
-              <caret line="161" column="44" selection-start-line="161" selection-start-column="44" selection-end-line="161" selection-end-column="44" />
+            <state relative-caret-position="2635">
+              <caret line="155" column="149" selection-start-line="155" selection-start-column="149" selection-end-line="155" selection-end-column="149" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#4;n#tr#0;n#!!top" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/url_controller/admin/auth/LoginController.java">
+        <entry file="file://$PROJECT_DIR$/src/controller/db_controller/SubjectController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="23" column="59" lean-forward="true" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="59" />
+            <state relative-caret-position="-638">
+              <caret line="20" column="178" selection-start-line="20" selection-start-column="178" selection-end-line="20" selection-end-column="178" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controller/db_controller/SubjectLecturerController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="76">
+              <caret line="39" column="111" selection-start-line="39" selection-start-column="111" selection-end-line="39" selection-end-column="111" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controller/db_controller/UserController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1462">
+              <caret line="92" column="5" selection-start-line="92" selection-start-column="5" selection-end-line="92" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/controller/student/marksController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-281">
+              <caret line="25" column="41" lean-forward="true" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="41" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/controller/forgotPasswordController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="243">
+              <caret line="64" selection-start-line="64" selection-end-line="64" selection-end-column="120" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/controller/resetPasswordController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="243">
+              <caret line="18" column="120" selection-start-line="18" selection-start-column="120" selection-end-line="18" selection-end-column="120" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controller/db_controller/FacultyController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" column="109" selection-start-line="18" selection-start-column="109" selection-end-line="18" selection-end-column="109" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -215,8 +269,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/db_controller/MarkController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="57" column="61" lean-forward="true" selection-start-line="57" selection-start-column="61" selection-end-line="57" selection-end-column="61" />
+            <state relative-caret-position="124">
+              <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controller/db_controller/SemesterController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -246,11 +309,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/controller/url_controller/email/EmailServlet.java" />
-        <option value="$PROJECT_DIR$/src/controller/url_controller/auth/ForgotPassword.java" />
-        <option value="$PROJECT_DIR$/web/controller/passwordController.js" />
         <option value="$PROJECT_DIR$/web/view/admin/user_accounts(students).jsp" />
-        <option value="$PROJECT_DIR$/web/controller/resetPasswordController.js" />
         <option value="$PROJECT_DIR$/web/view/reset_password.jsp" />
         <option value="$PROJECT_DIR$/src/controller/db_controller/AdminController.java" />
         <option value="$PROJECT_DIR$/src/controller/db_controller/CriteriaController.java" />
@@ -267,7 +326,6 @@
         <option value="$PROJECT_DIR$/src/controller/url_controller/admin/LoadFaculties.java" />
         <option value="$PROJECT_DIR$/src/controller/url_controller/admin/LoadDegrees.java" />
         <option value="$PROJECT_DIR$/web/index.jsp" />
-        <option value="$PROJECT_DIR$/web/view/admin/landing_page(admin).jsp" />
         <option value="$PROJECT_DIR$/web/view/header.jsp" />
         <option value="$PROJECT_DIR$/web/view/admin/header(admin).jsp" />
         <option value="$PROJECT_DIR$/src/controller/url_controller/admin/LoadLecturers.java" />
@@ -281,22 +339,27 @@
         <option value="$PROJECT_DIR$/web/view/admin/results.jsp" />
         <option value="$PROJECT_DIR$/src/controller/url_controller/admin/LoadSubjects.java" />
         <option value="$PROJECT_DIR$/src/controller/db_controller/SubjectController.java" />
-        <option value="$PROJECT_DIR$/web/controller/admin/resultsController.js" />
         <option value="$PROJECT_DIR$/src/controller/url_controller/student/AddStudent.java" />
         <option value="$PROJECT_DIR$/src/controller/url_controller/student/UpdateStudent.java" />
         <option value="$PROJECT_DIR$/src/controller/url_controller/admin/LoadStudents.java" />
         <option value="$PROJECT_DIR$/web/view/student/landing_page(student).jsp" />
         <option value="$PROJECT_DIR$/src/controller/db_controller/BatchController.java" />
-        <option value="$PROJECT_DIR$/src/controller/db_controller/DegreeController.java" />
         <option value="$PROJECT_DIR$/src/controller/db_controller/UserController.java" />
-        <option value="$PROJECT_DIR$/src/controller/db_controller/SemesterController.java" />
-        <option value="$PROJECT_DIR$/web/view/student/mark_sheet.jsp" />
         <option value="$PROJECT_DIR$/src/model/Student.java" />
         <option value="$PROJECT_DIR$/src/controller/url_controller/admin/ChangeSemester.java" />
         <option value="$PROJECT_DIR$/src/controller/db_controller/StudentController.java" />
         <option value="$PROJECT_DIR$/src/controller/url_controller/admin/auth/LoginController.java" />
         <option value="$PROJECT_DIR$/web/view/admin/user_accounts.jsp" />
         <option value="$PROJECT_DIR$/web/controller/admin/userAccountController.js" />
+        <option value="$PROJECT_DIR$/web/view/admin/landing_page(admin).jsp" />
+        <option value="$PROJECT_DIR$/web/controller/admin/landingPage(admin)Controller.js" />
+        <option value="$PROJECT_DIR$/web/controller/admin/resultsController.js" />
+        <option value="$PROJECT_DIR$/web/controller/student/marksController.js" />
+        <option value="$PROJECT_DIR$/web/view/student/mark_sheet.jsp" />
+        <option value="$PROJECT_DIR$/src/controller/db_controller/DegreeController.java" />
+        <option value="$PROJECT_DIR$/src/controller/db_controller/SemesterController.java" />
+        <option value="$PROJECT_DIR$/web/controller/forgotPasswordController.js" />
+        <option value="$PROJECT_DIR$/web/controller/resetPasswordController.js" />
       </list>
     </option>
   </component>
@@ -461,7 +524,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1564246945943" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1564250746433" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/javax.mail.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -631,12 +694,12 @@
       <workItem from="1563954617403" duration="15463000" />
       <workItem from="1564058295811" duration="25498000" />
       <workItem from="1564158386057" duration="10204000" />
-      <workItem from="1564206122851" duration="9153000" />
+      <workItem from="1564206122851" duration="12942000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="497719000" />
+    <option name="totallyTimeSpent" value="501508000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -681,24 +744,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/controller/forgotPasswordController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="44" lean-forward="true" selection-end-line="1" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/db/DBConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="18" column="32" lean-forward="true" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/img/image.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.html" />
     <entry file="file://$PROJECT_DIR$/src/controller/url_controller/student/DeleteStudent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="177">
@@ -735,13 +780,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/controller/admin/landingPage(admin)Controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="47" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="47" />
         </state>
       </provider>
     </entry>
@@ -789,13 +827,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/view/admin/landing_page(admin).jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" selection-start-line="4" selection-end-line="7" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/view/header.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -814,6 +845,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="311">
           <caret line="30" column="71" selection-start-line="30" selection-start-column="71" selection-end-line="30" selection-end-column="71" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -842,6 +876,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
           <caret line="34" column="43" lean-forward="true" selection-start-line="21" selection-start-column="8" selection-end-line="34" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -866,6 +903,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="23" column="87" selection-start-line="23" selection-start-column="87" selection-end-line="23" selection-end-column="87" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -896,13 +936,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/controller/admin/resultsController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="150" column="162" selection-start-line="150" selection-start-column="162" selection-end-line="150" selection-end-column="162" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/url_controller/admin/LoadStudents.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="249">
@@ -920,113 +953,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/AdminController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="20" column="57" lean-forward="true" selection-start-line="20" selection-start-column="57" selection-end-line="20" selection-end-column="57" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/BatchController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/CriteriaController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="32" column="83" selection-start-line="32" selection-start-column="83" selection-end-line="32" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/DegreeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/FacultyController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="109" selection-start-line="18" selection-start-column="109" selection-end-line="18" selection-end-column="109" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/SubjectController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-638">
-          <caret line="20" column="178" selection-start-line="20" selection-start-column="178" selection-end-line="20" selection-end-column="178" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/SubjectLecturerController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="111" selection-start-line="39" selection-start-column="111" selection-end-line="39" selection-end-column="111" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="92" column="5" selection-start-line="92" selection-start-column="5" selection-end-line="92" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/controller/student/marksController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-26" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/SemesterController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="22" column="61" lean-forward="true" selection-start-line="22" selection-start-column="61" selection-end-line="22" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/view/student/mark_sheet.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="46" column="37" lean-forward="true" selection-start-line="46" selection-start-column="37" selection-end-line="46" selection-end-column="37" />
-          <folding>
-            <element signature="e#1712#1774#0#HTML" expanded="true" />
-            <element signature="e#2048#2079#0#HTML" expanded="true" />
-            <element signature="e#2155#2201#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/view/student/landing_page(student).jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-323">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/url_controller/admin/ChangeSemester.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="26" column="46" selection-start-line="26" selection-start-column="46" selection-end-line="26" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/StudentController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2482">
-          <caret line="155" column="149" selection-start-line="155" selection-start-column="149" selection-end-line="155" selection-end-column="149" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1067,24 +997,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/MarkController.java">
+    <entry file="file://$PROJECT_DIR$/web/view/admin/user_accounts.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="57" column="61" lean-forward="true" selection-start-line="57" selection-start-column="61" selection-end-line="57" selection-end-column="61" />
+        <state relative-caret-position="-97">
+          <caret line="149" column="101" selection-start-line="149" selection-start-column="101" selection-end-line="149" selection-end-column="101" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/view/admin/user_accounts.jsp">
+    <entry file="file://$PROJECT_DIR$/web/view/admin/landing_page(admin).jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-221">
-          <caret line="149" column="101" selection-start-line="149" selection-start-column="101" selection-end-line="149" selection-end-column="101" />
+        <state relative-caret-position="-131">
+          <caret line="42" column="37" selection-start-line="42" selection-start-column="37" selection-end-line="42" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/controller/admin/landingPage(admin)Controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="2" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/controller/admin/resultsController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-284">
+          <caret line="102" column="120" selection-start-line="102" selection-start-column="120" selection-end-line="102" selection-end-column="120" />
+          <folding>
+            <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/controller/admin/userAccountController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2737">
-          <caret line="161" column="44" selection-start-line="161" selection-start-column="44" selection-end-line="161" selection-end-column="44" />
+        <state relative-caret-position="-4109">
+          <caret line="9" column="2" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
           <folding>
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
@@ -1097,6 +1049,153 @@
             <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#4;n#tr#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/controller/student/landingPage(student)Controller.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/view/student/landing_page(student).jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="50" column="141" selection-start-line="50" selection-start-column="110" selection-end-line="50" selection-end-column="141" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/AdminController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="20" column="57" lean-forward="true" selection-start-line="20" selection-start-column="57" selection-end-line="20" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/BatchController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/CriteriaController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="32" column="83" selection-start-line="32" selection-start-column="83" selection-end-line="32" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/view/student/mark_sheet.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-935">
+          <caret line="29" column="26" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/DegreeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/FacultyController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="109" selection-start-line="18" selection-start-column="109" selection-end-line="18" selection-end-column="109" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/MarkController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/SemesterController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/StudentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2635">
+          <caret line="155" column="149" selection-start-line="155" selection-start-column="149" selection-end-line="155" selection-end-column="149" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/SubjectController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-638">
+          <caret line="20" column="178" selection-start-line="20" selection-start-column="178" selection-end-line="20" selection-end-column="178" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/SubjectLecturerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="39" column="111" selection-start-line="39" selection-start-column="111" selection-end-line="39" selection-end-column="111" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1462">
+          <caret line="92" column="5" selection-start-line="92" selection-start-column="5" selection-end-line="92" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/controller/student/marksController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-281">
+          <caret line="25" column="41" lean-forward="true" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="41" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/url_controller/email/EmailServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="54" column="30" lean-forward="true" selection-start-line="54" selection-start-column="30" selection-end-line="54" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/controller/forgotPasswordController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="64" selection-start-line="64" selection-end-line="64" selection-end-column="120" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/controller/resetPasswordController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="18" column="120" selection-start-line="18" selection-start-column="120" selection-end-line="18" selection-end-column="120" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

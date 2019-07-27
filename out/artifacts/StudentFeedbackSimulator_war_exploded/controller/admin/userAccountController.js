@@ -1,10 +1,16 @@
 //---------------------------------------------------Initial Load-------------------------------------------------------
+
 $(window).on("load", function () {
     loadDegrees();
     loadStudents();
 });
 
+$('#regNo').keyup(function () {
+    $(this).val($(this).val().toUpperCase())
+})
+
 //--------------------------------------------------Change semester for all students------------------------------------
+
 $('#btnChangeSem').click(function () {
     var optionVal = parseInt($('#semester').val());
     $('#semester option[value=' + ++optionVal + ']').attr('selected', 'selected');
@@ -32,9 +38,6 @@ $('#btnChangeSem').click(function () {
 })
 
 //----------------------------------------------------Filter------------------------------------------------------------
-$('#regNo').keyup(function () {
-    $(this).val($(this).val().toUpperCase())
-})
 
 $('#faculty').change(function () {
     loadDegrees();
@@ -52,6 +55,8 @@ $('#batch').change(function () {
 $('#semester').change(function () {
     loadStudents();
 })
+
+//------------------------------------------------Load degrees----------------------------------------------------------
 
 function loadDegrees() {
     $.ajax(
@@ -175,6 +180,19 @@ $('#btnDelete').click(function () {
     );
 })
 
+//--------------------------------------------------Search--------------------------------------------------------------
+
+$('#btnSearchStudent').click(function () {
+    for (var i = 0; i < students.length; i++) {
+        if ($('#regNo').val() === students[i].RegId) {
+            $('#studetName').val(students[i].StudentName)
+            $('#emailAddress').val(students[i].EmailAddress)
+            $('#nationalId').val(students[i].NationalId)
+            setFieldsToExistingStudent();
+        }
+    }
+})
+
 //-------------------------------------------------Students Table-------------------------------------------------------
 var students = Array();
 
@@ -212,18 +230,31 @@ function loadStudents() {
     $('#studentsDataBody').html(tableData);
 }
 
-//--------------------------------------------------Search--------------------------------------------------------------
+//-------------------------------------------------Select student on table----------------------------------------------
 
-$('#btnSearchStudent').click(function () {
-    for (var i = 0; i < students.length; i++) {
-        if ($('#regNo').val() === students[i].RegId) {
-            $('#studetName').val(students[i].StudentName)
-            $('#emailAddress').val(students[i].EmailAddress)
-            $('#nationalId').val(students[i].NationalId)
-            setFieldsToExistingStudent();
-        }
-    }
+$(document).on('click', '.btnViewStudent', function () {
+    $('#regNo').val($(this).parent().children().eq(0).html())
+    $('#studetName').val($(this).parent().children().eq(1).html())
+    $('#nationalId').val($(this).parent().children().eq(2).html())
+    $('#emailAddress').val($(this).parent().children().eq(3).html())
+    setFieldsToExistingStudent();
 })
+
+//---------------------------------------------New vs existing----------------------------------------------------------
+
+function setFieldsToExistingStudent() {
+    $('#btnAdd').prop("disabled", true);
+    $('#btnUpdate').prop("disabled", false);
+    $('#btnDelete').prop("disabled", false);
+    $('#regNo').prop("disabled", true);
+}
+
+function setFieldsToNewStudent() {
+    $('#btnAdd').prop("disabled", false);
+    $('#btnUpdate').prop("disabled", true);
+    $('#btnDelete').prop("disabled", true);
+    $('#regNo').prop("disabled", false);
+}
 
 //--------------------------------------------------Clear fields--------------------------------------------------------
 
@@ -238,29 +269,4 @@ function setTextFieldsEmpty() {
     $('#nationalId').val('')
     $('#emailAddress').val('')
     setFieldsToNewStudent();
-}
-
-//-------------------------------------------------Select student on table----------------------------------------------
-
-$(document).on('click', '.btnViewStudent', function () {
-    $('#regNo').val($(this).parent().children().eq(0).html())
-    $('#studetName').val($(this).parent().children().eq(1).html())
-    $('#nationalId').val($(this).parent().children().eq(2).html())
-    $('#emailAddress').val($(this).parent().children().eq(3).html())
-    setFieldsToExistingStudent();
-})
-
-//---------------------------------------------New vs existing----------------------------------------------------------
-function setFieldsToExistingStudent() {
-    $('#btnAdd').prop("disabled", true);
-    $('#btnUpdate').prop("disabled", false);
-    $('#btnDelete').prop("disabled", false);
-    $('#regNo').prop("disabled", true);
-}
-
-function setFieldsToNewStudent() {
-    $('#btnAdd').prop("disabled", false);
-    $('#btnUpdate').prop("disabled", true);
-    $('#btnDelete').prop("disabled", true);
-    $('#regNo').prop("disabled", false);
 }

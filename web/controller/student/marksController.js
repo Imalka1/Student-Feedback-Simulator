@@ -1,5 +1,6 @@
+//----------------------------------------------Select marks------------------------------------------------------------
+
 $('.tdMark').click(function () {
-    // console.log($(this).parent())
     if ($(this).css("background-color") == "rgb(48, 118, 29)") {
         $(this).css('background-color', "rgba(0, 0, 0, 0)");
         $(this).css('color', 'black');
@@ -11,13 +12,13 @@ $('.tdMark').click(function () {
     }
 });
 
+//--------------------------------------------Submit marks--------------------------------------------------------------
+
 $('#btnSubmit').click(function () {
     var marks = Array();
     var ecids = Array();
     for (var i = 0; i < $('td.tdMark').length; i++) {
         if ($('td.tdMark').eq(i).css("background-color") == "rgb(48, 118, 29)") {
-            // ecids += $('td.tdMark').eq(i).parent().children().eq(1).children('input').val() + ","
-            // marks += $('td.tdMark').eq(i).text() + ","
             ecids.push($('td.tdMark').eq(i).parent().children().eq(1).children('input').val());
             marks.push($('td.tdMark').eq(i).text());
         }

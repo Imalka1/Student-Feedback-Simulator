@@ -1,3 +1,5 @@
+//------------------------------------------Check password confirmation-------------------------------------------------
+
 $('#nPassword').keyup(function () {
     checkPasswordConfirmation();
 });
@@ -7,12 +9,14 @@ $('#cPassword').keyup(function () {
 });
 
 function checkPasswordConfirmation() {
-    if ($('#nPassword').val() === $('#cPassword').val()) {
+    if ($('#nPassword').val() !== '' && $('#cPassword').val() !== '' && $('#nPassword').val() === $('#cPassword').val()) {
         $('#btnResetPassword').prop("disabled", false);
     } else {
         $('#btnResetPassword').prop("disabled", true);
     }
 }
+
+//--------------------------------------------Reset password------------------------------------------------------------
 
 $('#btnResetPassword').click(function () {
     $.ajax(

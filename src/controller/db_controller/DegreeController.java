@@ -11,23 +11,6 @@ import java.util.List;
 
 public class DegreeController {
 
-    public Degree getDegreeName(Student student){
-        Degree degree = null;
-        try {
-            Connection connection = DBConnection.getDBConnection().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("select d.name from student s,degree d where d.degid=s.degid && s.uid=?");
-            preparedStatement.setObject(1, student.getUid());
-            ResultSet rst = preparedStatement.executeQuery();
-            if (rst.next()) {
-                degree = new Degree();
-                degree.setDegreeName(rst.getString(1));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return degree;
-    }
-
     public List<Degree> getAllDegreesViaFaculty(Faculty faculty){
         List<Degree> degrees = new ArrayList<>();
         try {

@@ -1,41 +1,14 @@
 //---------------------------------------------------Initial Load-------------------------------------------------------
+
 $(window).on("load", function () {
     loadSubjects();
 });
 
-//----------------------------------------------------Load Degree Programmes------------------------------------------------------------
+//-----------------------------------------------------Load subjects----------------------------------------------------
+
 $('#faculty').change(function () {
     loadSubjects();
 })
-
-// function loadDegrees() {
-//     $.ajax(
-//         {
-//             // async: false,
-//             type: "post",
-//             url: window.location.origin + "/load_degrees",
-//             data: {
-//                 facultyId: $('#faculty').val()
-//             },
-//             success: function (response) {
-//                 var degrees = '';
-//                 var obj = JSON.parse(response);
-//                 for (var i = 0; i < obj.Degrees.length; i++) {
-//                     degrees += '<option value="' + obj.Degrees[i].DegId + '">' + obj.Degrees[i].DegreeName + '</option>';
-//                 }
-//                 $('#degree').html(degrees);
-//                 loadSubjects();
-//             },
-//             error: function () {
-//
-//             }
-//         }
-//     );
-// }
-
-// $('#degree').change(function () {
-//     loadSubjects();
-// })
 
 $('#semester').change(function () {
     loadSubjects();
@@ -67,6 +40,8 @@ function loadSubjects() {
     );
 }
 
+//----------------------------------------------------Load lecturers----------------------------------------------------
+
 $('#subjects').change(function () {
     loadLecturers();
 })
@@ -97,6 +72,8 @@ function loadLecturers() {
     );
 }
 
+//-------------------------------------------------Load dates-----------------------------------------------------------
+
 function loadDates() {
     $.ajax(
         {
@@ -122,6 +99,8 @@ function loadDates() {
         }
     );
 }
+
+//-------------------------------------------------Load marks-----------------------------------------------------------
 
 function loadMarks() {
     $.ajax(

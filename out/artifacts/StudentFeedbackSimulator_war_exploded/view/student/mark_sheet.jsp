@@ -10,6 +10,9 @@
     String subjectId = request.getParameter("subjectId");
     HttpSession sessionLogin = request.getSession(false);
 
+    Student studentUserID = new Student();
+    studentUserID.setUid(sessionLogin.getAttribute("uid").toString());
+    Student student = new StudentController().getStudentLandingPageData(studentUserID);
     String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
 %>
 
@@ -25,7 +28,6 @@
                 <a id="btnLogout" class="js-scroll-trigger" href="<%= logout%>"
                    style="cursor: pointer;font-family: Montserrat,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';text-decoration: none;color: white">
                     Logout
-                    <%--<i class="fa fa-sign-out" style="margin-left: 20px"></i>--%>
                 </a>
             </li>
         </form>
@@ -45,18 +47,7 @@
             Degree Programme
         </div>
         <div class="col-md-8" style="border: 1px solid black;color: #747474">
-            <%
-                {
-                    Student studentObj = new Student();
-                    studentObj.setUid(sessionLogin.getAttribute("uid").toString());
-                    Degree degreeName = new DegreeController().getDegreeName(studentObj);
-                    if (degreeName != null) {
-            %>
-            <%= degreeName.getDegreeName()%>
-            <%
-                    }
-                }
-            %>
+            <%= student.getDegreeName()%>
         </div>
     </div>
     <div class="row">
@@ -64,18 +55,7 @@
             Year and Semester
         </div>
         <div class="col-md-8" style="border: 1px solid black;color: #747474">
-            <%
-                {
-                    Student studentObj = new Student();
-                    studentObj.setUid(sessionLogin.getAttribute("uid").toString());
-                    Semester semesterNameViaUid = new SemesterController().getSemesterNameViaUid(studentObj);
-                    if (semesterNameViaUid != null) {
-            %>
-            <%= semesterNameViaUid.getSemesterName()%>
-            <%
-                    }
-                }
-            %>
+            <%= student.getSemesterName()%>
         </div>
     </div>
     <div class="row">
@@ -90,8 +70,7 @@
                     Subject subject = new SubjectController().getSubjectNameAndCredits(subjectObj);
                     if (subject != null) {
             %>
-            <%= subject.getSubjectName()%> / <%= subjectId%> / <%= subject.getCredits()%>
-            / <%= subject.getLecturerName()%>
+            <%= subject.getSubjectName()%> / <%= subjectId%> / <%= subject.getCredits()%> / <%= subject.getLecturerName()%>
             <input type="hidden" id="sublecid" value="<%= subject.getSublecId()%>">
             <%
                     }

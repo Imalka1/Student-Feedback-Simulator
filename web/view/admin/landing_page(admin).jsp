@@ -42,22 +42,6 @@
             <div class="col-lg-12" style="padding: 0px">
                 <ul class="timeline">
 
-                    <%--<li class="timeline-inverted" style="cursor: pointer" id="studentAccountsPage">--%>
-                    <%--<div class="timeline-image">--%>
-                    <%--<img class="rounded-circle img-fluid" alt="">--%>
-                    <%--</div>--%>
-                    <%--<div class="timeline-panel" style="padding-top: 50px">--%>
-                    <%--<div class="timeline-heading">--%>
-                    <%--<h4 class="subheading">User Accounts (Students)--%>
-                    <%--</h4>--%>
-                    <%--</div>--%>
-                    <%--<div class="timeline-body">--%>
-                    <%--<p class="text-muted">Manage Student Accounts--%>
-                    <%--</p>--%>
-                    <%--</div>--%>
-                    <%--</div>--%>
-                    <%--</li>--%>
-
                     <li class="timeline-inverted" style="cursor: pointer" id="resultsPage">
                         <div class="timeline-image">
                             <img class="rounded-circle img-fluid" alt="">
