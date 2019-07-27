@@ -12,12 +12,11 @@ $('#regNo').keyup(function () {
 //--------------------------------------------------Change semester for all students------------------------------------
 
 $('#btnChangeSem').click(function () {
-    var optionVal = parseInt($('#semester').val());
-    $('#semester option[value=' + ++optionVal + ']').attr('selected', 'selected');
+    var optionVal = parseInt($('#semester').val()) + 1;
+    $("#semester").val(optionVal).attr("selected","selected");
 
     $.ajax(
         {
-            async: false,
             type: "post",
             url: window.location.origin + "/change_semester",
             data: {
@@ -61,7 +60,6 @@ $('#semester').change(function () {
 function loadDegrees() {
     $.ajax(
         {
-            async: false,
             type: "post",
             url: window.location.origin + "/load_degrees",
             data: {
@@ -197,7 +195,7 @@ $('#btnSearchStudent').click(function () {
 var students = Array();
 
 function loadStudents() {
-    var tableData='';
+    var tableData = '';
     $.ajax(
         {
             async: false,
@@ -212,7 +210,7 @@ function loadStudents() {
                 students = JSON.parse(response).Students;
                 // console.log(obj.Students)
                 for (var i = 0; i < students.length; i++) {
-                    tableData = '' +
+                    tableData += '' +
                         '<tr>' +
                         '<td style="text-align: center">' + students[i].RegId + '</td>' +
                         '<td style="padding-left: 5px">' + students[i].StudentName + '</td>' +

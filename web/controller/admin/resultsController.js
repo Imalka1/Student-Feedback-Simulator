@@ -49,7 +49,6 @@ $('#subjects').change(function () {
 function loadLecturers() {
     $.ajax(
         {
-            // async: false,
             type: "post",
             url: window.location.origin + "/load_lecturers",
             data: {
@@ -77,7 +76,6 @@ function loadLecturers() {
 function loadDates() {
     $.ajax(
         {
-            // async: false,
             type: "post",
             url: window.location.origin + "/load_dates",
             data: {
@@ -105,7 +103,6 @@ function loadDates() {
 function loadMarks() {
     $.ajax(
         {
-            // async: false,
             type: "post",
             url: window.location.origin + "/load_marks",
             data: {
