@@ -100,6 +100,10 @@ function loadDates() {
 
 //-------------------------------------------------Load marks-----------------------------------------------------------
 
+$('#dates').change(function () {
+    loadMarks();
+})
+
 function loadMarks() {
     $.ajax(
         {
