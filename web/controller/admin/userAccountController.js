@@ -2,10 +2,13 @@
 
 $(window).on("load", function () {
     loadDegrees();
-    loadStudents();
 });
 
 $('#regNo').keyup(function () {
+    $(this).val($(this).val().toUpperCase())
+})
+
+$('#nationalId').keyup(function () {
     $(this).val($(this).val().toUpperCase())
 })
 
@@ -73,6 +76,7 @@ function loadDegrees() {
                     degrees += '<option value="' + obj.Degrees[i].DegId + '">' + obj.Degrees[i].DegreeName + '</option>';
                 }
                 $('#degree').html(degrees);
+                loadStudents();
             },
             error: function () {
 

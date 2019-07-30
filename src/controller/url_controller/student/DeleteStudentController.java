@@ -11,19 +11,22 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(urlPatterns = "/delete_student")
+@WebServlet(urlPatterns = "/delete_student")//---URL extension which mapped to this servlet object
 public class DeleteStudentController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        //---------------------------------Retrieve data which submitted to the server----------------------------------
         String regNo = req.getParameter("regNo").trim();
+
+        //------------------------------------------Set data to model object--------------------------------------------
         Student student = new Student();
         student.setUid(regNo);
 
-        PrintWriter writer = resp.getWriter();
-        if (new StudentController().deleteStudent(student)) {
-            writer.println(true);
+        if (new StudentController().deleteStudent(student)) {//---Call the db server (UserController(db_controller)) to delete student
+            resp.getWriter().println(true);
         } else {
-            writer.println(false);
+            resp.getWriter().println(false);
         }
     }
 }

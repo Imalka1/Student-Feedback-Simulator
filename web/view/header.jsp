@@ -2,16 +2,13 @@
     //--------------------------------------------Load the current session----------------------------------------------
     HttpSession sessionLogin = request.getSession(false);
 
-    //--------------------------------------Check whether the session is alive------------------------------------------
-    if (sessionLogin != null) {
-        //------------------------------------Check whether the session variable is alive-------------------------------
-        if (sessionLogin.getAttribute("uid") == null) {
+    //------------------------------------Check whether the session variable is alive-----------------------------------
+    if (sessionLogin.getAttribute("uid") == null) {
 %>
 
 <%-----------------------------------------------Navigate to login page-----------------------------------------------%>
 <jsp:forward page="../index.jsp"/>
 <%
-        }
     }
 %>
 <!DOCTYPE html>
@@ -30,7 +27,8 @@
     <%--<link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">--%>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet'
+          type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
     <!------------------------------------ Custom styles for this template -------------------------------------------->
@@ -90,6 +88,7 @@
 
         <%----------------------------------------------Navigation bar (Start)----------------------------------------%>
 
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style="background-color: rgba(35,35,35,0.81)">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav"
+             style="background-color: rgba(35,35,35,0.81)">
             <div class="container">
                 <a class="navbar-brand js-scroll-trigger">Student Feedback Simulator</a>

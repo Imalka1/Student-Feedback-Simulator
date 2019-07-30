@@ -15,6 +15,8 @@ public class LoginController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        //------------------------------------------Load a new session--------------------------------------------------
         HttpSession sessionLogin = req.getSession(true);
 
         //---------------------------------Retrieve data which submitted to the server----------------------------------
@@ -29,6 +31,8 @@ public class LoginController extends HttpServlet {
         User user = new UserController().chkLogin(userObj);//---Call the db server (UserController(db_controller)) to retrieve user data
 
         if (user != null) {//---Check whether the user is alive
+
+            sessionLogin.setAttribute("uid", uid);
             if (user.getAccountType().equals("student")) {//---Check whether the user is a student
 
                 Student student = new Student();
@@ -52,7 +56,7 @@ public class LoginController extends HttpServlet {
             }
 
         } else {//---If user is not alive
-            resp.sendRedirect("/index.jsp?error=errorLogin");//---Navigate (redirect) to login page with login error
+            resp.sendRedirect("/index.jsp?error=errorLogin");//---Navigate (redirect) again to login page with login error
         }
     }
 }

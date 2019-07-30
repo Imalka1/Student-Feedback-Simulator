@@ -9,25 +9,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
-@WebServlet(urlPatterns = "/change_semester")
+@WebServlet(urlPatterns = "/change_semester")//---URL extension which mapped to this servlet object
 public class ChangeSemesterController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        //---------------------------------Retrieve data which submitted to the server----------------------------------
         int semesterId = Integer.parseInt(req.getParameter("semesterId").trim());
         int facultyId = Integer.parseInt(req.getParameter("facultyId").trim());
         int batchId = Integer.parseInt(req.getParameter("batchId").trim());
+
+        //--------------------------------------Set data to model object------------------------------------------------
         Student student = new Student();
         student.setSemesterId(semesterId);
         student.setFacultyId(facultyId);
         student.setBatchId(batchId);
 
-        PrintWriter writer = resp.getWriter();
-        if (new StudentController().changeSemester(student)) {
-            writer.println(true);
+        if (new StudentController().changeSemester(student)) {//---Call the db server (StudentController(db_controller)) to change semester
+            resp.getWriter().println(true);
         } else {
-            writer.println(false);
+            resp.getWriter().println(false);
         }
     }
 }
