@@ -69,7 +69,7 @@ function loadDegrees() {
                 facultyId: $('#faculty').val()
             },
             success: function (response) {
-                // console.log(response)
+                console.log(response)
                 var degrees = '';
                 var obj = JSON.parse(response);
                 for (var i = 0; i < obj.Degrees.length; i++) {
@@ -212,7 +212,6 @@ function loadStudents() {
             },
             success: function (response) {
                 students = JSON.parse(response).Students;
-                // console.log(obj.Students)
                 for (var i = 0; i < students.length; i++) {
                     tableData += '' +
                         '<tr>' +

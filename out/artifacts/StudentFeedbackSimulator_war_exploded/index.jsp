@@ -4,11 +4,9 @@
     //--------------------------------------------Load the current session----------------------------------------------
     HttpSession sessionLogin = request.getSession(false);
 
-    //--------------------------------------Check whether the session is alive------------------------------------------
-    if (sessionLogin != null) {
-        //------------------------------------Check whether the session variable is alive-------------------------------
-        if (sessionLogin.getAttribute("accountType") != null) {
-            if (sessionLogin.getAttribute("accountType").equals("admin")) {
+    //------------------------------------Check whether the session variable is alive-------------------------------
+    if (sessionLogin.getAttribute("accountType") != null) {
+        if (sessionLogin.getAttribute("accountType").equals("admin")) {
 %>
 
 <%------------------------------------------Navigate to admin landing page--------------------------------------------%>
@@ -20,7 +18,6 @@
 <%-----------------------------------------Navigate to student landing page-------------------------------------------%>
 <jsp:forward page="view/student/landing_page(student).jsp"/>
 <%
-            }
         }
     }
 
@@ -113,7 +110,8 @@
 
         <%----------------------------------------------Navigation bar (Start)----------------------------------------%>
 
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style="background-color: rgba(35,35,35,0.81)">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav"
+             style="background-color: rgba(35,35,35,0.81)">
             <div class="container">
                 <a class="navbar-brand js-scroll-trigger">Student Feedback Simulator</a>
             </div>
@@ -186,20 +184,20 @@
         </div>
     </div>
 
-<script>
+    <script>
 
-    //------------------------------------------Username to uppercase---------------------------------------------------
+        //------------------------------------------Username to uppercase---------------------------------------------------
 
-    $('#username').keyup(function () {
-        $(this).val($(this).val().toUpperCase())
-    })
+        $('#username').keyup(function () {
+            $(this).val($(this).val().toUpperCase())
+        })
 
-    //---------------------------------------Navigate to forgot password page-------------------------------------------
+        //---------------------------------------Navigate to forgot password page-------------------------------------------
 
-    $('#btnForgotPassword').click(function () {
-        document.location.href = "view/forgot_password.jsp";
-    })
-</script>
+        $('#btnForgotPassword').click(function () {
+            document.location.href = "view/forgot_password.jsp";
+        })
+    </script>
 
-<%---------------------------------------------------Add footer.jsp file----------------------------------------------%>
+    <%---------------------------------------------------Add footer.jsp file----------------------------------------------%>
 <jsp:include page="view/footer.jsp"/>

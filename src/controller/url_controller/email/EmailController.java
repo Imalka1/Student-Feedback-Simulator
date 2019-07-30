@@ -22,47 +22,53 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = {"/email_confirmation_code"})
+@WebServlet(urlPatterns = {"/email_confirmation_code"})//---URL extension which mapped to this servlet object
 public class EmailController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        //-----------------Retrieve data which submitted to the server and set data to model object---------------------
         User user = new User();
         user.setUid(request.getParameter("userId"));
         User emailViaUid = new UserController().getEmailViaUid(user);
+
+        //---------------------------------Generate a random number for the confirmation code---------------------------
         int number = new Random().nextInt(1000000);
 
         try {
+            //------------------------------Set gmail server as smtp mailing server-------------------------------------
             Properties props = new Properties();
             props.setProperty("mail.host", "smtp.gmail.com");
             props.setProperty("mail.smtp.port", "587");
             props.setProperty("mail.smtp.auth", "true");
             props.setProperty("mail.smtp.starttls.enable", "true");
 
+            //----------------------------------------Login to email (sender)-------------------------------------------
             Authenticator auth = new SMTPAuthenticator("webphpjava@gmail.com", "webphpjava1");
 
             Session session = Session.getInstance(props, auth);
 
+            //--------------------------------------Create email text (body)--------------------------------------------
             MimeMessage msg = new MimeMessage(session);
-            msg.setText(String.valueOf(number));
-            msg.setSubject("Confirmation Code");
-            msg.setFrom(new InternetAddress("webphpjava@gmail.com"));
-            msg.addRecipient(Message.RecipientType.TO, new InternetAddress(emailViaUid.getEmailAddress()));
+            msg.setText(String.valueOf(number));//---Set random number to email
+            msg.setSubject("Confirmation Code");//---Set subject
+            msg.setFrom(new InternetAddress("webphpjava@gmail.com"));//---Set email
+            msg.addRecipient(Message.RecipientType.TO, new InternetAddress(emailViaUid.getEmailAddress()));//---Set receiver's email
+
+            //------------------------------------------Send email------------------------------------------------------
             Transport.send(msg);
-        } catch (AuthenticationFailedException ex) {
+        } catch (AuthenticationFailedException ex) {//--Catch if any authentication exception occurred
             ex.printStackTrace();
-            throw new RuntimeException("Authentication failed");
-        } catch (AddressException ex) {
+        } catch (AddressException ex) {//--Catch if any address exception occurred
             ex.printStackTrace();
-            throw new RuntimeException("Invalid email address");
-        } catch (MessagingException ex) {
+        } catch (MessagingException ex) {//--Catch if any messaging exception occurred
             ex.printStackTrace();
-            throw new RuntimeException(ex.getMessage());
         }
-        response.getWriter().println(number);
+        response.getWriter().println(number);//---Print and reply random number as a text and send to ui
     }
 
+    //---------------------------------Authenticate (login to) email (sender)-------------------------------------------
     private class SMTPAuthenticator extends Authenticator {
 
         private PasswordAuthentication authentication;

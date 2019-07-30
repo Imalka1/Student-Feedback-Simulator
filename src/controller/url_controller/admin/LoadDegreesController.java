@@ -14,26 +14,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet(urlPatterns = "/load_degrees")
+@WebServlet(urlPatterns = "/load_degrees")//---URL extension which mapped to this servlet object
 public class LoadDegreesController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        //-----------------Retrieve data which submitted to the server and set data to model object---------------------
         Faculty faculty = new Faculty();
         faculty.setFacid(Integer.parseInt(req.getParameter("facultyId")));
-        List<Degree> allDegreesViaFaculty = new DegreeController().getAllDegreesViaFaculty(faculty);
-        JSONObject obj = new JSONObject();
-        JSONArray degreesJson = new JSONArray();
+
+        List<Degree> allDegreesViaFaculty = new DegreeController().getAllDegreesViaFaculty(faculty);//---Call the db server (DegreeController(db_controller)) to get all degrees via faculty
+
+        JSONObject obj = new JSONObject();//---Creates a JSON object {}
+        JSONArray degreesJson = new JSONArray();//---Creates a JSON array to store JSON objects []
         for (Degree degree : allDegreesViaFaculty) {
-            JSONObject degreeJson = new JSONObject();
-            degreeJson.put("DegId", degree.getDegid());
-            degreeJson.put("DegreeName", degree.getDegreeName());
-            degreesJson.add(degreeJson);
+            JSONObject degreeJson = new JSONObject();//---Creates a JSON object {}
+            degreeJson.put("DegId", degree.getDegid());//---Add data to JSON {"DegId":"1"}
+            degreeJson.put("DegreeName", degree.getDegreeName());//---Add data to JSON {"DegId":"1","DegreeName":"BSc(Computer Science)"}
+            degreesJson.add(degreeJson);//---Add JSON object to JSON array [{"DegId":"1","DegreeName":"BSc(Computer Science)"},{"DegId":"2","DegreeName":"BSc(Information Systems)"}]
         }
-        obj.put("Degrees", degreesJson);
-        PrintWriter writer = resp.getWriter();
-        writer.println(obj.toJSONString());
+        obj.put("Degrees", degreesJson);//---Add JSON array to JSON object {"Degrees":[{"DegId":"1","DegreeName":"BSc(Computer Science)"},{"DegId":"2","DegreeName":"BSc(Information Systems)"}]}
+        resp.getWriter().println(obj.toJSONString());//---Print and reply JSON as a text
     }
 }

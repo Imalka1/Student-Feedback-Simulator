@@ -27,15 +27,14 @@ public class LoadDatesController extends HttpServlet {
 
         List<Mark> allDatesViaSubjectAndLecturer = new SubjectLecturerController().getAllDatesViaSubjectAndLecturer(subjectLecturer);//---Call the db server (SubjectLecturerController(db_controller)) to get all dates via subject lecturer
 
-        JSONObject obj = new JSONObject();//---JSON
-        JSONArray datesJson = new JSONArray();
+        JSONObject obj = new JSONObject();//---Creates a JSON object {}
+        JSONArray datesJson = new JSONArray();//---Creates a JSON array to store JSON objects []
         for (Mark mark : allDatesViaSubjectAndLecturer) {
-            JSONObject dateJson = new JSONObject();
-            dateJson.put("DateOfSubmission", mark.getDateOfSubmission());
-            datesJson.add(dateJson);
+            JSONObject dateJson = new JSONObject();//---Creates a JSON object {}
+            dateJson.put("DateOfSubmission", mark.getDateOfSubmission());//---Add data to JSON {"DateOfSubmission":"2019-02-05"}
+            datesJson.add(dateJson);//---Add JSON object to JSON array [{"DateOfSubmission":"2019-02-05"},{"DateOfSubmission":"2019-03-06"}]
         }
-        obj.put("Dates", datesJson);
-        PrintWriter writer = resp.getWriter();
-        writer.println(obj.toJSONString());
+        obj.put("Dates", datesJson);//---Add JSON array to JSON object {"Dates":[{"DateOfSubmission":"2019-02-05"}]} / {"Dates":[{"DateOfSubmission":"2019-02-05"},{"DateOfSubmission":"2019-03-06"}]}
+        resp.getWriter().println(obj.toJSONString());//---Print and reply JSON as a text
     }
 }

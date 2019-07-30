@@ -16,23 +16,26 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet(urlPatterns = "/load_lecturers")
+@WebServlet(urlPatterns = "/load_lecturers")//---URL extension which mapped to this servlet object
 public class LoadLecturersController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        //-----------------Retrieve data which submitted to the server and set data to model object---------------------
         Subject subject = new Subject();
         subject.setSubjectId(req.getParameter("subjectId"));
-        List<Lecturer> allLecturersViaSubject = new SubjectLecturerController().getAllLecturersViaSubject(subject);
-        JSONObject obj = new JSONObject();
-        JSONArray lecturersJson = new JSONArray();
+
+        List<Lecturer> allLecturersViaSubject = new SubjectLecturerController().getAllLecturersViaSubject(subject);//---Call the db server (SubjectLecturerController(db_controller)) to get all lecturers via subject
+
+        JSONObject obj = new JSONObject();//---Creates a JSON object {}
+        JSONArray lecturersJson = new JSONArray();//---Creates a JSON array to store JSON objects []
         for (Lecturer lecturer : allLecturersViaSubject) {
-            JSONObject lecturerJson = new JSONObject();
-            lecturerJson.put("LecturerId", lecturer.getLecId());
-            lecturerJson.put("LecturerName", lecturer.getLecturerName());
-            lecturersJson.add(lecturerJson);
+            JSONObject lecturerJson = new JSONObject();//---Creates a JSON object {}
+            lecturerJson.put("LecturerId", lecturer.getLecId());//---Add data to JSON {"LecturerId":"1"}
+            lecturerJson.put("LecturerName", lecturer.getLecturerName());//---Add data to JSON {"LecturerId":"1","LecturerName":"Kamal Silva"}
+            lecturersJson.add(lecturerJson);//---Add JSON object to JSON array [{"LecturerId":"1","LecturerName":"Kamal Silva"},{"LecturerId":"2","LecturerName":"Nimal Silva"}]
         }
-        obj.put("Lecturers", lecturersJson);
-        PrintWriter writer = resp.getWriter();
-        writer.println(obj.toJSONString());
+        obj.put("Lecturers", lecturersJson);//---Add JSON array to JSON object {"Lecturers":[{"LecturerId":"1","LecturerName":"Kamal Silva"},{"LecturerId":"2","LecturerName":"Nimal Silva"}]}
+        resp.getWriter().println(obj.toJSONString());//---Print and reply JSON as a text
     }
 }

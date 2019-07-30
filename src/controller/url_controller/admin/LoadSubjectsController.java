@@ -15,23 +15,26 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet(urlPatterns = "/load_subjects")
+@WebServlet(urlPatterns = "/load_subjects")//---URL extension which mapped to this servlet object
 public class LoadSubjectsController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        //-----------------Retrieve data which submitted to the server and set data to model object---------------------
         Semester semester = new Semester();
         semester.setSemid(Integer.parseInt(req.getParameter("semesterId")));
-        List<Subject> allSubjectsViaDegree = new SubjectController().getAllSubjectsViaDegreeAndSemester(semester);
-        JSONObject obj = new JSONObject();
-        JSONArray subjectsJson = new JSONArray();
+
+        List<Subject> allSubjectsViaDegree = new SubjectController().getAllSubjectsViaDegreeAndSemester(semester);//---Call the db server (SubjectController(db_controller)) to get subjects via degree and semester
+
+        JSONObject obj = new JSONObject();//---Creates a JSON object {}
+        JSONArray subjectsJson = new JSONArray();//---Creates a JSON array to store JSON objects []
         for (Subject subjectObj : allSubjectsViaDegree) {
-            JSONObject subjectJson = new JSONObject();
-            subjectJson.put("SubjectId", subjectObj.getSubjectId());
-            subjectJson.put("SubjectName", subjectObj.getSubjectName());
-            subjectsJson.add(subjectJson);
+            JSONObject subjectJson = new JSONObject();//---Creates a JSON object {}
+            subjectJson.put("SubjectId", subjectObj.getSubjectId());//---Add data to JSON {"SubjectId":"1"}
+            subjectJson.put("SubjectName", subjectObj.getSubjectName());//---Add data to JSON {"SubjectId":"1","SubjectName":"Programming"}
+            subjectsJson.add(subjectJson);//---Add JSON object to JSON array [{"SubjectId":"1","SubjectName":"Programming"},{"SubjectId":"2","SubjectName":"Database"}]
         }
-        obj.put("Subjects", subjectsJson);
-        PrintWriter writer = resp.getWriter();
-        writer.println(obj.toJSONString());
+        obj.put("Subjects", subjectsJson);//---Add JSON array to JSON object {"Subjects":[{"SubjectId":"1","SubjectName":"Programming"},{"SubjectId":"2","SubjectName":"Database"}]}
+        resp.getWriter().println(obj.toJSONString());//---Print and reply JSON as a text
     }
 }

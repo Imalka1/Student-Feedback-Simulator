@@ -14,30 +14,35 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet(urlPatterns = "/load_students")
+@WebServlet(urlPatterns = "/load_students")//---URL extension which mapped to this servlet object
 public class LoadStudentsController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        //---------------------------------Retrieve data which submitted to the server----------------------------------
         int degreeId = Integer.parseInt(req.getParameter("degreeId").trim());
         int batchId = Integer.parseInt(req.getParameter("batchId").trim());
         int semesterId = Integer.parseInt(req.getParameter("semesterId").trim());
-        Student student=new Student();
+
+        //------------------------------------------Set data to model object--------------------------------------------
+        Student student = new Student();
         student.setDegId(degreeId);
         student.setBatchId(batchId);
         student.setSemesterId(semesterId);
-        List<Student> allStudents = new StudentController().getAllStudents(student);
-        JSONObject obj = new JSONObject();
-        JSONArray studentsJson = new JSONArray();
+
+        List<Student> allStudents = new StudentController().getAllStudents(student);//---Call the db server (StudentController(db_controller)) to all students
+
+        JSONObject obj = new JSONObject();//---Creates a JSON object {}
+        JSONArray studentsJson = new JSONArray();//---Creates a JSON array to store JSON objects []
         for (Student studentObj : allStudents) {
-            JSONObject studentJson = new JSONObject();
-            studentJson.put("RegId", studentObj.getUid());
-            studentJson.put("StudentName", studentObj.getStudentName());
-            studentJson.put("NationalId", studentObj.getNationalId());
-            studentJson.put("EmailAddress", studentObj.getEmailAddress());
-            studentsJson.add(studentJson);
+            JSONObject studentJson = new JSONObject();//---Creates a JSON object {}
+            studentJson.put("RegId", studentObj.getUid());//---Add data to JSON {"RegId":"IT123"}
+            studentJson.put("StudentName", studentObj.getStudentName());//---Add data to JSON {"RegId":"IT123","StudentName":"Amal"}
+            studentJson.put("NationalId", studentObj.getNationalId());//---Add data to JSON {"RegId":"IT123","StudentName":"Amal","NationalId":"961251465V"}
+            studentJson.put("EmailAddress", studentObj.getEmailAddress());//---Add data to JSON {"RegId":"IT123","StudentName":"Amal","NationalId":"961251465V","EmailAddress":"amal@gmail.com"}
+            studentsJson.add(studentJson);//---Add JSON object to JSON array [{"RegId":"IT123","StudentName":"Amal","NationalId":"961251465V","EmailAddress":"amal@gmail.com"},{"RegId":"IT456","StudentName":"Nimal","NationalId":"961251465V","EmailAddress":"nimal@gmail.com"}]
         }
-        obj.put("Students",studentsJson);
-        PrintWriter writer = resp.getWriter();
-        writer.println(obj.toJSONString());
+        obj.put("Students", studentsJson);//---Add JSON array to JSON object {"Students":[{"RegId":"IT123","StudentName":"Amal","NationalId":"961251465V","EmailAddress":"amal@gmail.com"},{"RegId":"IT456","StudentName":"Nimal","NationalId":"961251465V","EmailAddress":"nimal@gmail.com"}]}
+        resp.getWriter().println(obj.toJSONString());//---Print and reply JSON as a text
     }
 }
