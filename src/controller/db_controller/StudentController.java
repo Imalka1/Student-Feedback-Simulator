@@ -56,7 +56,7 @@ public class StudentController {
 
     //-------------------------------Get all students via degree id, batch id, semester id------------------------------
     public List<Student> getAllStudents(Student student) {
-        List<Student> students = new ArrayList<>();//---Creates an array object (Arraylist) to store multiple objects
+        List<Student> students = new ArrayList<>();//---Creates an array object (ArrayList) to store multiple objects
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
             PreparedStatement preparedStatement = connection.prepareStatement("select u.uid,student_name,national_id,emailAddress from student s,batch b,degree d,user u where b.batchid=s.batchid && d.degid=s.degid && u.uid=s.uid && d.degid=? && b.batchid=? && s.semid=? order by stid desc");//---Prepare sql as a java object

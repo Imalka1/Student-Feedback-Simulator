@@ -14,64 +14,67 @@ import java.util.List;
 
 public class SubjectController {
 
+    //------------------------------------Get subjects via semester and degree------------------------------------------
     public List<Subject> getSubjectsViaSemesterAndDegree(Subject subject) {
-        List<Subject> subjects = new ArrayList<>();
+        List<Subject> subjects = new ArrayList<>();//---Creates an array object (ArrayList) to store multiple objects
         try {
-            Connection connection = DBConnection.getDBConnection().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("select s.subid,title,l.name,credits from subject s,lecturer l,subject_lecturer sl,subject_degree sd where l.lecid=sl.lecid && s.subid=sl.subid && s.subid=sd.subid && degid=? && semid=? && current=true");
-            preparedStatement.setObject(1, subject.getDegid());
-            preparedStatement.setObject(2, subject.getSemid());
-            ResultSet rst = preparedStatement.executeQuery();
-            while (rst.next()) {
-                Subject subjectSemesterAndDegree = new Subject();
-                subjectSemesterAndDegree.setSubjectId(rst.getString(1));
-                subjectSemesterAndDegree.setSubjectName(rst.getString(2));
-                subjectSemesterAndDegree.setLecturerName(rst.getString(3));
-                subjectSemesterAndDegree.setCredits(rst.getInt(4));
-                subjects.add(subjectSemesterAndDegree);
+            Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
+            PreparedStatement preparedStatement = connection.prepareStatement("select s.subid,title,l.name,credits from subject s,lecturer l,subject_lecturer sl,subject_degree sd where l.lecid=sl.lecid && s.subid=sl.subid && s.subid=sd.subid && degid=? && semid=? && current=true");//---Prepare sql as a java object
+            preparedStatement.setObject(1, subject.getDegid());//---Set values to sql object
+            preparedStatement.setObject(2, subject.getSemid());//---Set values to sql object
+            ResultSet rst = preparedStatement.executeQuery();//---Execute sql and store result
+            while (rst.next()) {//---Navigate pointer to result rows until it ends
+                Subject subjectSemesterAndDegree = new Subject();//---Creates a subject object
+                subjectSemesterAndDegree.setSubjectId(rst.getString(1));//---Set table row data to subject model object
+                subjectSemesterAndDegree.setSubjectName(rst.getString(2));//---Set table row data to subject model object
+                subjectSemesterAndDegree.setLecturerName(rst.getString(3));//---Set table row data to subject model object
+                subjectSemesterAndDegree.setCredits(rst.getInt(4));//---Set table row data to subject model object
+                subjects.add(subjectSemesterAndDegree);//---Add subject object to array object
             }
-        } catch (SQLException e) {
+        } catch (SQLException e) {//--Catch if any sql exception occurred
             e.printStackTrace();
         }
-        return subjects;
+        return subjects;//---Return subjects array object with a length > 0 if subjects exists, if not array object returns with a length = 0
     }
 
+    //----------------------------------------Get subject name and credits----------------------------------------------
     public Subject getSubjectNameAndCredits(Subject subject) {
         Subject subjectNameAndCredits = null;
         try {
-            Connection connection = DBConnection.getDBConnection().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("select title,credits,l.name,sublecid from subject s,lecturer l,subject_lecturer sl where l.lecid=sl.lecid && s.subid=sl.subid && s.subid=? && current=true");
-            preparedStatement.setObject(1, subject.getSubjectId());
-            ResultSet rst = preparedStatement.executeQuery();
-            if (rst.next()) {
+            Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
+            PreparedStatement preparedStatement = connection.prepareStatement("select title,credits,l.name,sublecid from subject s,lecturer l,subject_lecturer sl where l.lecid=sl.lecid && s.subid=sl.subid && s.subid=? && current=true");//---Prepare sql as a java object
+            preparedStatement.setObject(1, subject.getSubjectId());//---Set values to sql object
+            ResultSet rst = preparedStatement.executeQuery();//---Execute sql and store result
+            if (rst.next()) {//---Navigate pointer to results
                 subjectNameAndCredits = new Subject();
-                subjectNameAndCredits.setSubjectName(rst.getString(1));
-                subjectNameAndCredits.setCredits(rst.getInt(2));
-                subjectNameAndCredits.setLecturerName(rst.getString(3));
-                subjectNameAndCredits.setSublecId(rst.getInt(4));
+                subjectNameAndCredits.setSubjectName(rst.getString(1));//---Set table row data to subject model object
+                subjectNameAndCredits.setCredits(rst.getInt(2));//---Set table row data to subject model object
+                subjectNameAndCredits.setLecturerName(rst.getString(3));//---Set table row data to subject model object
+                subjectNameAndCredits.setSublecId(rst.getInt(4));//---Set table row data to subject model object
             }
-        } catch (SQLException e) {
+        } catch (SQLException e) {//--Catch if any sql exception occurred
             e.printStackTrace();
         }
-        return subjectNameAndCredits;
+        return subjectNameAndCredits;//---Return subject object if subject id exist, if not return null
     }
 
+    //---------------------------------Get all subjects via degree and semester-----------------------------------------
     public List<Subject> getAllSubjectsViaDegreeAndSemester(Semester semester){
-        List<Subject> subjects = new ArrayList<>();
+        List<Subject> subjects = new ArrayList<>();//---Creates an array object (ArrayList) to store multiple objects
         try {
-            Connection connection = DBConnection.getDBConnection().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("select subid,title from subject where semid=?");
-            preparedStatement.setObject(1, semester.getSemid());
-            ResultSet rst = preparedStatement.executeQuery();
-            while (rst.next()) {
-                Subject subjectObj = new Subject();
-                subjectObj.setSubjectId(rst.getString(1));
-                subjectObj.setSubjectName(rst.getString(2));
-                subjects.add(subjectObj);
+            Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
+            PreparedStatement preparedStatement = connection.prepareStatement("select subid,title from subject where semid=?");//---Prepare sql as a java object
+            preparedStatement.setObject(1, semester.getSemid());//---Set values to sql object
+            ResultSet rst = preparedStatement.executeQuery();//---Execute sql and store result
+            while (rst.next()) {//---Navigate pointer to result rows until it ends
+                Subject subjectObj = new Subject();//---Creates a subject object
+                subjectObj.setSubjectId(rst.getString(1));//---Set table row data to subject model object
+                subjectObj.setSubjectName(rst.getString(2));//---Set table row data to subject model object
+                subjects.add(subjectObj);//---Add subject object to array object
             }
-        } catch (SQLException e) {
+        } catch (SQLException e) {//--Catch if any sql exception occurred
             e.printStackTrace();
         }
-        return subjects;
+        return subjects;//---Return subjects array object with a length > 0 if subjects exists, if not array object returns with a length = 0
     }
 }
