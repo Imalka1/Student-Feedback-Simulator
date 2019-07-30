@@ -1,3 +1,10 @@
+<%
+    //--------If an login error occurred, it retrieves the error data via query string and stores to variable-----------
+    String error = "";
+    if (request.getParameter("error") != null) {
+        error = request.getParameter("error");
+    }
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,67 +80,92 @@
             </div>
         </nav>
         <div style="margin-top: 80px;margin-left: 30px;margin-right: 30px">
+
+            <%----------------------------------------------Error message box (Start)-----------------------------------------%>
+
+            <%
+                if (error.equals("errorReset")) {
+            %>
             <div class="row">
-                <div class="col-12" style="padding: 0px" id="messageBox"></div>
+                <div class="col-12" style="padding: 0px">
+                    <div class="alert alert-danger" style="text-align: center;font-weight: bold">Failed to reset
+                        Password
+                    </div>
+                </div>
             </div>
+            <%
+                }
+            %>
+
+            <%-----------------------------------------------Error message box (End)------------------------------------------%>
+
             <div class="row">
                 <div class="col-12" style="font-size: 13px"><b>Note:-</b> Type your student / admin id and click on
                     send.
                     System will send a confirmation code to your email.
                 </div>
             </div>
-            <div class="row" style="margin-top: 20px">
-                <div class="col-3">
-                    Student / Admin ID :
-                </div>
-                <div class="col-7">
-                    <input class="form-control" type="text" id="userId">
-                </div>
-                <div class="col-2">
-                    <button id="btnSendEmail" class="btn" style="background-color: #ffbf05;width: 100%" disabled>Send
-                    </button>
-                </div>
-            </div>
-            <div class="row" style="margin-top: 20px">
-                <div class="col-3">
-                    Confirmation Code :
-                </div>
-                <div class="col-9">
-                    <input class="form-control" type="text" id="confirmationCode">
-                </div>
-            </div>
 
-            <hr style="margin-top: 50px;margin-bottom: 50px;background-color: #b0b0b0">
+            <%-----------------------Submit data to server (ForgotController(url_controller)) (Start)-----------------%>
 
-            <div class="row">
-                <div class="col-12" style="font-size: 32px;text-align: center">
-                    Reset Password
+            <form action="/forgot_password" method="post">
+                <div class="row" style="margin-top: 20px">
+                    <div class="col-3">
+                        Student / Admin ID :
+                    </div>
+                    <div class="col-7">
+                        <input class="form-control" type="text" id="userId" name="userId">
+                    </div>
+                    <div class="col-2">
+                        <button id="btnSendEmail" type="button" class="btn" style="background-color: #ffbf05;width: 100%" disabled>
+                            Send
+                        </button>
+                    </div>
                 </div>
-            </div>
-            <div class="row" style="margin-top: 20px">
-                <div class="col-3">
-                    New Password :
+                <div class="row" style="margin-top: 20px">
+                    <div class="col-3">
+                        Confirmation Code :
+                    </div>
+                    <div class="col-9">
+                        <input class="form-control" type="text" id="confirmationCode">
+                    </div>
                 </div>
-                <div class="col-9">
-                    <input class="form-control" type="password" id="nPassword" disabled>
+
+                <hr style="margin-top: 50px;margin-bottom: 50px;background-color: #b0b0b0">
+
+                <div class="row">
+                    <div class="col-12" style="font-size: 32px;text-align: center">
+                        Reset Password
+                    </div>
                 </div>
-            </div>
-            <div class="row" style="margin-top: 20px">
-                <div class="col-3">
-                    Confirm Password :
+                <div class="row" style="margin-top: 20px">
+                    <div class="col-3">
+                        New Password :
+                    </div>
+                    <div class="col-9">
+                        <input class="form-control" type="password" id="nPassword" name="password" disabled>
+                    </div>
                 </div>
-                <div class="col-9">
-                    <input class="form-control" type="password" id="cPassword" disabled>
+                <div class="row" style="margin-top: 20px">
+                    <div class="col-3">
+                        Confirm Password :
+                    </div>
+                    <div class="col-9">
+                        <input class="form-control" type="password" id="cPassword" disabled>
+                    </div>
                 </div>
-            </div>
-            <div class="row" style="margin-top: 50px;margin-bottom: 30px">
-                <div class="col-2" style="float: none;margin: 0 auto">
-                    <button id="btnResetPassword" class="btn"
-                            style="background-color: #ffbf05;position: relative;left: 50%;transform: translateX(-50%)"
-                            disabled>Reset Password
-                    </button>
+                <div class="row" style="margin-top: 50px;margin-bottom: 30px">
+                    <div class="col-2" style="float: none;margin: 0 auto">
+                        <button id="btnResetPassword" class="btn" type="submit"
+                                style="background-color: #ffbf05;position: relative;left: 50%;transform: translateX(-50%)"
+                                disabled>Reset Password
+                        </button>
+                    </div>
                 </div>
-            </div>
+            </form>
+
+            <%-----------------------Submit data to server (ForgotController(url_controller)) (End)-------------------%>
+
         </div>
     </div>
 

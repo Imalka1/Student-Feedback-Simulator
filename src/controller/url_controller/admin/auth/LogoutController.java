@@ -8,19 +8,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/logout")
+@WebServlet(urlPatterns = "/logout")//---URL extension which mapped to this servlet object
 public class LogoutController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession sessionLogin = req.getSession(false);
+        HttpSession sessionLogin = req.getSession(false);//---Load the current session
         if (sessionLogin != null) {
-            sessionLogin.invalidate();
+            sessionLogin.invalidate();//---Remove the current session
         }
-        resp.sendRedirect("/index.jsp");
-//        HttpSession sessionRep = req.getSession(false);
-//        if (!sessionRep.isNew()) {
-//            sessionRep.invalidate();
-//        }
-//        resp.sendRedirect("index.jsp");
+        resp.sendRedirect("/index.jsp");//---Navigate (redirect) to login page
     }
 }

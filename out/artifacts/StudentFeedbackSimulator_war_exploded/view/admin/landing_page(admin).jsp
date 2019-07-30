@@ -2,12 +2,13 @@
 <%@ page import="model.*" %>
 <%@ page import="java.util.List" %>
 
+<%---------------------------------------------Add header(admin).jsp file---------------------------------------------%>
 <jsp:include page="header(admin).jsp"/>
 <%
+    //----------------------------------------------URL to logout-------------------------------------------------------
     HttpSession sessionLogin = request.getSession(false);
 %>
 
-<!-- Header -->
 <header class="masthead">
     <div class="container">
         <div class="intro-text" style="padding-top: 100px">
@@ -15,6 +16,7 @@
                  style="background-color: #ffb508;width: fit-content;color: #402901;padding: 20px;padding-left: 30px;padding-right: 30px;font-size: 18px;border-radius: 35px;margin-top: 80px;font-weight: bold">
                 <%
                     {
+                        //--------Call the db server (AdminController(db_controller)) to retrieve admin data------------
                         Admin adminObj = new Admin();
                         adminObj.setUid(sessionLogin.getAttribute("uid").toString());
                         Admin admin = new AdminController().getAdminUsername(adminObj);
@@ -30,7 +32,6 @@
     </div>
 </header>
 
-<!-- About -->
 <section id="about">
     <div class="container-fluid">
         <div class="row" style="margin-bottom: 30px">
@@ -65,6 +66,8 @@
 </section>
 </div>
 
+<%-------------------------------------------Javascript controller of this page---------------------------------------%>
 <script src="/controller/admin/landingPage(admin)Controller.js"></script>
+
+<%---------------------------------------------------Add footer.jsp file----------------------------------------------%>
 <jsp:include page="../footer.jsp"/>
-<!-- Footer -->

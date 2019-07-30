@@ -2,11 +2,16 @@
 <%@ page import="model.*" %>
 <%@ page import="java.util.List" %>
 
+<%---------------------------------------------------Add header.jsp file----------------------------------------------%>
 <jsp:include page="../header.jsp"/>
 <%
+    //----------------------------------------------URL to logout-------------------------------------------------------
     String logout = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/logout";
+
+    //--------------------------------------------Load the current session----------------------------------------------
     HttpSession sessionLogin = request.getSession(false);
 
+    //---------------------Call the db server (StudentController(db_controller)) to retrieve student data---------------
     Student studentUserID = new Student();
     studentUserID.setUid(sessionLogin.getAttribute("uid").toString());
     Student student = new StudentController().getStudentLandingPageData(studentUserID);
@@ -14,6 +19,9 @@
 
 <div class="collapse navbar-collapse" id="navbarResponsive">
     <ul class="navbar-nav text-uppercase ml-auto">
+
+        <%----------------------------------------------Logout tab (Start)--------------------------------------------%>
+
         <form action="logout" method="post">
             <li class="nav-item">
                 <a id="btnLogout" class="js-scroll-trigger" href="<%= logout%>"
@@ -22,14 +30,21 @@
                 </a>
             </li>
         </form>
+
+        <%----------------------------------------------Logout tab (End)----------------------------------------------%>
+
     </ul>
 </div>
 </div>
 </nav>
 
-<!-- Header -->
+<%-------------------------------------------------Navigation bar (End)-----------------------------------------------%>
+
 <header class="masthead">
     <div class="container">
+
+        <%-----------------------------------------Display student data (Start)---------------------------------------%>
+
         <div class="intro-text" style="padding-top: 200px">
             <%
                 {
@@ -66,10 +81,12 @@
                 %>
             </div>
         </div>
+
+        <%------------------------------------------Display student data (End)----------------------------------------%>
+
     </div>
 </header>
 
-<!-- About -->
 <section id="about">
     <div class="container-fluid">
         <div class="row" style="margin-bottom: 80px">
@@ -79,9 +96,13 @@
         </div>
         <div class="row">
             <div class="col-lg-12" style="padding: 0px">
+
+                <%------------------------------------Display subject data (Start)------------------------------------%>
+
                 <ul class="timeline">
                     <%
                         {
+                            //-------Call the server (SubjectController(db_controller)) to retrieve subject data--------
                             Subject subjectObj = new Subject();
                             subjectObj.setDegid(student.getDegId());
                             subjectObj.setSemid(student.getSemesterId());
@@ -113,16 +134,18 @@
                             }
                         }
                     %>
-                    <%--<li class="timeline-inverted">--%>
-                    <%--<div class="timeline-image" style="background-color: #c8a52a"></div>--%>
-                    <%--</li>--%>
                 </ul>
+
+                <%------------------------------------Display subject data (End)--------------------------------------%>
+
             </div>
         </div>
     </div>
 </section>
 </div>
 
+<%-------------------------------------------Javascript controller of this page---------------------------------------%>
 <script src="/controller/student/landingPage(student)Controller.js"></script>
+
+<%---------------------------------------------------Add footer.jsp file----------------------------------------------%>
 <jsp:include page="../footer.jsp"/>
-<!-- Footer -->

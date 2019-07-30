@@ -1,7 +1,11 @@
+<%---------------------------------------------------Add header.jsp file----------------------------------------------%>
 <jsp:include page="../header.jsp"/>
 <%
+    //----------------------------------------------URL to logout-------------------------------------------------------
     String logout = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/logout";
 %>
+
+<%---------------------------------------------------CSS dropdown(Start)----------------------------------------------%>
 
 <style>
     .dropdown-content {
@@ -30,8 +34,13 @@
     }
 </style>
 
+<%-----------------------------------------------------CSS dropdown(End)----------------------------------------------%>
+
 <div class="collapse navbar-collapse" id="navbarResponsive">
     <ul class="navbar-nav text-uppercase ml-auto">
+
+        <%---------------------------------------------Dropdown menu (Start)------------------------------------------%>
+
         <li class="nav-item" style="margin-right: 50px">
             <a class="js-scroll-trigger"
                style="cursor: pointer;font-family: Montserrat,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';text-decoration: none;color: white">
@@ -46,6 +55,11 @@
                 <a href="#">Evaluation Criterias</a>
             </div>
         </li>
+
+        <%---------------------------------------------Dropdown menu (End)--------------------------------------------%>
+
+        <%----------------------------------------------Logout tab (Start)--------------------------------------------%>
+
         <form action="logout" method="post">
             <li class="nav-item">
                 <a id="btnLogout" class="js-scroll-trigger" href="<%= logout%>"
@@ -54,7 +68,12 @@
                 </a>
             </li>
         </form>
+
+        <%----------------------------------------------Logout tab (End)----------------------------------------------%>
+
     </ul>
 </div>
 </div>
 </nav>
+
+<%-------------------------------------------------Navigation bar (End)-----------------------------------------------%>
