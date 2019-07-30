@@ -96,7 +96,7 @@ public class StudentController {
         return false;//---Returns if update fails
     }
 
-    //---------------------------Add student (This process add user and student simultaneously)-------------------------
+    //---------------------------------------------------Add student----------------------------------------------------
     public boolean addStudent(Student student) {
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection

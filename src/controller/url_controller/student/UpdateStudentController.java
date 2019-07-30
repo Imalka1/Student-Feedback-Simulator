@@ -18,6 +18,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 @WebServlet(urlPatterns = "/update_student")//---URL extension which mapped to this servlet object
+
+//-------------Update student (This process update user and student simultaneously using transaction process)-----------
 public class UpdateStudentController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
