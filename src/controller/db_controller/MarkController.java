@@ -42,11 +42,11 @@ public class MarkController {
                     "left join marks on evaluation_criteria.ecid=marks.ecid && dateOfSubmission=? && " +
                     "sublecid=(select sublecid from subject_lecturer where lecid=? && subid=?) " +
                     "group by evaluation_criteria.ecid asc");//---Prepare sql as a java object
-            preparedStatement.setObject(1, mark.getDateOfSubmission());
-            preparedStatement.setObject(2, mark.getLecid());
-            preparedStatement.setObject(3, mark.getSubid());
-            ResultSet rst = preparedStatement.executeQuery();
-            while (rst.next()) {
+            preparedStatement.setObject(1, mark.getDateOfSubmission());//---Set values to sql object
+            preparedStatement.setObject(2, mark.getLecid());//---Set values to sql object
+            preparedStatement.setObject(3, mark.getSubid());//---Set values to sql object
+            ResultSet rst = preparedStatement.executeQuery();//---Execute sql and store result
+            while (rst.next()) {//---Navigate pointer to result rows until it ends
                 Mark markObj = new Mark();//---Creates a mark object
                 markObj.setCriteria(rst.getString(1));//---Set table row data to mark model object
                 markObj.setMarks(rst.getInt(2));//---Set table row data to mark model object
