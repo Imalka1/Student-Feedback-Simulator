@@ -13,7 +13,7 @@
 
     //---------------------Call the db server (StudentController(db_controller)) to retrieve student data---------------
     Student studentUserID = new Student();
-    studentUserID.setUid(sessionLogin.getAttribute("uid").toString());
+    studentUserID.setuId(sessionLogin.getAttribute("uId").toString());
     Student student = new StudentController().getStudentLandingPageData(studentUserID);
 %>
 
@@ -62,7 +62,8 @@
                 {
                     if (student != null) {
             %>
-            <div class="intro-lead-in" style="padding-top: 40px;color: #FFB508"><%= student.getBatchName()%> (<%= student.getSemesterName()%>)
+            <div class="intro-lead-in" style="padding-top: 40px;color: #FFB508"><%= student.getBatchName()%>
+                (<%= student.getSemesterName()%>)
             </div>
             <%
                     }
@@ -103,19 +104,18 @@
                     <%
                         {
                             //-------Call the server (SubjectController(db_controller)) to retrieve subject data--------
-                            Subject subjectObj = new Subject();
-                            subjectObj.setDegid(student.getDegId());
-                            subjectObj.setSemid(student.getSemesterId());
-                            List<Subject> subjects = new SubjectController().getSubjectsViaSemesterAndDegree(subjectObj);
+                            student.setuId(sessionLogin.getAttribute("uId").toString());
+                            List<Subject> subjects = new SubjectController().getSubjectsViaSemesterAndDegree(student);
                             for (Subject subject : subjects) {
                     %>
-                    <li class="timeline-inverted subjects" style="cursor: pointer">
-                        <div class="timeline-image">
+
+                    <li class="timeline-inverted <%= subject.isAllowed() ? "subjects" : ""%>" style="cursor: pointer">
+                        <div class="timeline-image" <%= subject.isAllowed() ? "" : "style='background-color: #e9ecef'"%>>
                             <img class="rounded-circle img-fluid" alt="">
                         </div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4 class="subheading"><%= subject.getSubjectName()%>
+                                <h4 class="subheading" <%= subject.isAllowed() ? "" : "style='color: #6C757D'"%>><%= subject.getSubjectName()%>
                                 </h4>
                             </div>
                             <div class="timeline-body">

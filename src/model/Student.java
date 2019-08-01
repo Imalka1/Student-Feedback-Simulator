@@ -1,13 +1,12 @@
 package model;
 
 public class Student {
-    private int stid;
-    private String uid;
-    private int degId;
+    private int studentId;
+    private String uId;
+    private int degreeId;
     private int batchId;
     private int facultyId;
     private int semesterId;
-    private int year;
     private String nationalId;
     private String batchName;
     private String studentName;
@@ -56,14 +55,6 @@ public class Student {
         this.semesterId = semesterId;
     }
 
-    public int getYear() {
-        return year;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
-    }
-
     public String getBatchName() {
         return batchName;
     }
@@ -72,28 +63,28 @@ public class Student {
         this.batchName = batchName;
     }
 
-    public int getStid() {
-        return stid;
+    public int getStudentId() {
+        return studentId;
     }
 
-    public void setStid(int stid) {
-        this.stid = stid;
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
     }
 
-    public String getUid() {
-        return uid;
+    public String getuId() {
+        return uId;
     }
 
-    public void setUid(String uid) {
-        this.uid = uid;
+    public void setuId(String uId) {
+        this.uId = uId;
     }
 
-    public int getDegId() {
-        return degId;
+    public int getDegreeId() {
+        return degreeId;
     }
 
-    public void setDegId(int degId) {
-        this.degId = degId;
+    public void setDegreeId(int degreeId) {
+        this.degreeId = degreeId;
     }
 
     public int getBatchId() {

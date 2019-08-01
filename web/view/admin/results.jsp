@@ -30,7 +30,7 @@
                         List<Faculty> allFaculties = new FacultyController().getAllFaculties();
                         for (Faculty faculty : allFaculties) {
                 %>
-                <option value="<%= faculty.getFacid()%>"><%= faculty.getFacultyName()%>
+                <option value="<%= faculty.getFacultyId()%>"><%= faculty.getFacultyName()%>
                 </option>
                 <%
                         }
@@ -45,7 +45,7 @@
                 <%--&lt;%&ndash;List<Degree> allDegrees = new DegreeController().getAllDegrees();&ndash;%&gt;--%>
                 <%--&lt;%&ndash;for (Degree degree : allDegrees) {&ndash;%&gt;--%>
                 <%--&lt;%&ndash;%>&ndash;%&gt;--%>
-                <%--&lt;%&ndash;<option value="<%= degree.getDegid()%>"><%= degree.getDegreeName()%>&ndash;%&gt;--%>
+                <%--&lt;%&ndash;<option value="<%= degree.getDegreeId()%>"><%= degree.getDegreeName()%>&ndash;%&gt;--%>
                 <%--&lt;%&ndash;</option>&ndash;%&gt;--%>
                 <%--&lt;%&ndash;&lt;%&ndash;%>--%>
                 <%--&lt;%&ndash;}&ndash;%&gt;--%>
@@ -60,7 +60,7 @@
                         List<Semester> allSemesters = new SemesterController().getAllSemesters();
                         for (Semester semester : allSemesters) {
                 %>
-                <option value="<%= semester.getSemid()%>"><%= semester.getSemesterName()%>
+                <option value="<%= semester.getSemesterId()%>"><%= semester.getSemesterName()%>
                 </option>
                 <%
                         }

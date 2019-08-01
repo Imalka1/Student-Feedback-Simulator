@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 @WebServlet(urlPatterns = "/load_marks")//---URL extension which mapped to this servlet object
@@ -21,8 +20,8 @@ public class LoadMarksController extends HttpServlet {
 
         //-----------------Retrieve data which submitted to the server and set data to model object---------------------
         Mark mark = new Mark();
-        mark.setSubid(req.getParameter("subjectId"));
-        mark.setLecid(req.getParameter("lecturerId"));
+        mark.setSubjectId(req.getParameter("subjectId"));
+        mark.setLecturerId(req.getParameter("lecturerId"));
         mark.setDateOfSubmission(req.getParameter("dateOfSubmission"));
 
         List<Mark> marksViaSubjectAndLecturer = new MarkController().getMarksViaSubjectAndLecturer(mark);//---Call the db server (MarkController(db_controller)) to get marks via subject and lecturer

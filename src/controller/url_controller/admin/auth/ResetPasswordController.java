@@ -17,7 +17,7 @@ public class ResetPasswordController extends HttpServlet {
 
         //-----------------Retrieve data which submitted to the server and set data to model object---------------------
         User user = new User();
-        user.setUid(req.getParameter("userId"));
+        user.setuId(req.getParameter("userId"));
         user.setPassword(req.getParameter("password"));
 
         if (new UserController().updatePassword(user)) {//---Call the db server (UserController(db_controller)) to update password

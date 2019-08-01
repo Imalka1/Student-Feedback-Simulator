@@ -1,6 +1,5 @@
 package controller.url_controller.admin;
 
-import controller.db_controller.SubjectController;
 import controller.db_controller.SubjectLecturerController;
 import model.Lecturer;
 import model.Subject;
@@ -13,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 @WebServlet(urlPatterns = "/load_lecturers")//---URL extension which mapped to this servlet object
@@ -31,7 +29,7 @@ public class LoadLecturersController extends HttpServlet {
         JSONArray lecturersJson = new JSONArray();//---Creates a JSON array to store JSON objects []
         for (Lecturer lecturer : allLecturersViaSubject) {
             JSONObject lecturerJson = new JSONObject();//---Creates a JSON object {}
-            lecturerJson.put("LecturerId", lecturer.getLecId());//---Add data to JSON {"LecturerId":"1"}
+            lecturerJson.put("LecturerId", lecturer.getLecturerId());//---Add data to JSON {"LecturerId":"1"}
             lecturerJson.put("LecturerName", lecturer.getLecturerName());//---Add data to JSON {"LecturerId":"1","LecturerName":"Kamal Silva"}
             lecturersJson.add(lecturerJson);//---Add JSON object to JSON array [{"LecturerId":"1","LecturerName":"Kamal Silva"},{"LecturerId":"2","LecturerName":"Nimal Silva"}]
         }

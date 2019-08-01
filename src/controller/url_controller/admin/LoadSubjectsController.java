@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 @WebServlet(urlPatterns = "/load_subjects")//---URL extension which mapped to this servlet object
@@ -22,7 +21,7 @@ public class LoadSubjectsController extends HttpServlet {
 
         //-----------------Retrieve data which submitted to the server and set data to model object---------------------
         Semester semester = new Semester();
-        semester.setSemid(Integer.parseInt(req.getParameter("semesterId")));
+        semester.setSemesterId(Integer.parseInt(req.getParameter("semesterId")));
 
         List<Subject> allSubjectsViaDegree = new SubjectController().getAllSubjectsViaDegreeAndSemester(semester);//---Call the db server (SubjectController(db_controller)) to get subjects via degree and semester
 

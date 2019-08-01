@@ -15,8 +15,11 @@ public class AdminController {
         Admin adminUsername = null;
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
-            PreparedStatement preparedStatement = connection.prepareStatement("select admin_name from user u,admin a where u.uid=a.uid && u.uid=?");//---Prepare sql as a java object
-            preparedStatement.setObject(1, admin.getUid());//---Set values to sql object
+            PreparedStatement preparedStatement = connection.prepareStatement("" +
+                    "select admin_name " +
+                    "from user u,admin a " +
+                    "where u.uId=a.uId && u.uId=?");//---Prepare sql as a java object
+            preparedStatement.setObject(1, admin.getuId());//---Set values to sql object
             ResultSet rst = preparedStatement.executeQuery();//---Execute sql and store result
             if (rst.next()) {//---Navigate pointer to results
                 adminUsername = new Admin();

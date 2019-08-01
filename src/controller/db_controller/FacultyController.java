@@ -2,7 +2,6 @@ package controller.db_controller;
 
 import db.DBConnection;
 import model.Faculty;
-import model.Student;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,11 +17,11 @@ public class FacultyController {
         List<Faculty> faculties = new ArrayList<>();//---Creates an array object (ArrayList) to store multiple objects
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
-            PreparedStatement preparedStatement = connection.prepareStatement("select facid,name from faculty");//---Prepare sql as a java object
+            PreparedStatement preparedStatement = connection.prepareStatement("select facultyId,name from faculty");//---Prepare sql as a java object
             ResultSet rst = preparedStatement.executeQuery();//---Execute sql and store result
             while (rst.next()) {//---Navigate pointer to result rows until it ends
                 Faculty faculty = new Faculty();//---Creates a faculty object
-                faculty.setFacid(rst.getInt(1));//---Set table row data to faculty model object
+                faculty.setFacultyId(rst.getInt(1));//---Set table row data to faculty model object
                 faculty.setFacultyName(rst.getString(2));//---Set table row data to faculty model object
                 faculties.add(faculty);//---Add faculty object to array object
             }

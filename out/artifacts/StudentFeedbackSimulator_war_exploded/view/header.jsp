@@ -3,7 +3,7 @@
     HttpSession sessionLogin = request.getSession(false);
 
     //------------------------------------Check whether the session variable is alive-----------------------------------
-    if (sessionLogin.getAttribute("uid") == null) {
+    if (sessionLogin.getAttribute("uId") == null) {
 %>
 
 <%-----------------------------------------------Navigate to login page-----------------------------------------------%>
@@ -77,11 +77,11 @@
 
 <body id="page-top">
 
-<%----------------------------------------------Store uid for Js stuff(Start)-----------------------------------------%>
+<%----------------------------------------------Store uId for Js stuff(Start)-----------------------------------------%>
 
-<input type="hidden" id="uid" value="<%= sessionLogin.getAttribute("uid")%>">
+<input type="hidden" id="uId" value="<%= sessionLogin.getAttribute("uId")%>">
 
-<%-----------------------------------------------Store uid for Js stuff(End)------------------------------------------%>
+<%-----------------------------------------------Store uId for Js stuff(End)------------------------------------------%>
 
 <div class="box">
     <div class="row1 content">

@@ -1,25 +1,25 @@
 package model;
 
 public class Degree {
-    private int degid;
-    private int facid;
+    private int degreeId;
+    private int facultyId;
     private String facultyName;
     private String degreeName;
 
-    public int getDegid() {
-        return degid;
+    public int getDegreeId() {
+        return degreeId;
     }
 
-    public void setDegid(int degid) {
-        this.degid = degid;
+    public void setDegreeId(int degreeId) {
+        this.degreeId = degreeId;
     }
 
-    public int getFacid() {
-        return facid;
+    public int getFacultyId() {
+        return facultyId;
     }
 
-    public void setFacid(int facid) {
-        this.facid = facid;
+    public void setFacultyId(int facultyId) {
+        this.facultyId = facultyId;
     }
 
     public String getFacultyName() {

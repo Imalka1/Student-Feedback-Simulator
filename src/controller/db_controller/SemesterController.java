@@ -1,9 +1,7 @@
 package controller.db_controller;
 
 import db.DBConnection;
-import model.Batch;
 import model.Semester;
-import model.Student;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,11 +17,11 @@ public class SemesterController {
         List<Semester> semesters = new ArrayList<>();//---Creates an array object (ArrayList) to store multiple objects
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
-            PreparedStatement preparedStatement = connection.prepareStatement("select semid,name from semester");//---Prepare sql as a java object
+            PreparedStatement preparedStatement = connection.prepareStatement("select semesterId,name from semester");//---Prepare sql as a java object
             ResultSet rst = preparedStatement.executeQuery();//---Execute sql and store result
             while (rst.next()) {//---Navigate pointer to result rows until it ends
                 Semester semester = new Semester();//---Creates a semester object
-                semester.setSemid(rst.getInt(1));//---Set table row data to semester model object
+                semester.setSemesterId(rst.getInt(1));//---Set table row data to semester model object
                 semester.setSemesterName(rst.getString(2));//---Set table row data to semester model object
                 semesters.add(semester);//---Add semester object to array object
             }

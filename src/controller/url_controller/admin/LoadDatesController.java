@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 @WebServlet(urlPatterns = "/load_dates")//---URL extension which mapped to this servlet object
@@ -22,8 +21,8 @@ public class LoadDatesController extends HttpServlet {
 
         //-----------------Retrieve data which submitted to the server and set data to model object---------------------
         SubjectLecturer subjectLecturer = new SubjectLecturer();
-        subjectLecturer.setSubid(req.getParameter("subjectId"));
-        subjectLecturer.setLecid(req.getParameter("lecturerId"));
+        subjectLecturer.setSubjectId(req.getParameter("subjectId"));
+        subjectLecturer.setLecturerId(req.getParameter("lecturerId"));
 
         List<Mark> allDatesViaSubjectAndLecturer = new SubjectLecturerController().getAllDatesViaSubjectAndLecturer(subjectLecturer);//---Call the db server (SubjectLecturerController(db_controller)) to get all dates via subject lecturer
 

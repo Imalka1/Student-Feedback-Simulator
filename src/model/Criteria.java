@@ -1,25 +1,25 @@
 package model;
 
 public class Criteria {
-    private int echid;
-    private int ecid;
+    private int echId;
+    private int ecId;
     private String criteriaHeadingName;
     private String criteriaName;
 
-    public int getEchid() {
-        return echid;
+    public int getEchId() {
+        return echId;
     }
 
-    public void setEchid(int echid) {
-        this.echid = echid;
+    public void setEchId(int echId) {
+        this.echId = echId;
     }
 
-    public int getEcid() {
-        return ecid;
+    public int getEcId() {
+        return ecId;
     }
 
-    public void setEcid(int ecid) {
-        this.ecid = ecid;
+    public void setEcId(int ecId) {
+        this.ecId = ecId;
     }
 
     public String getCriteriaHeadingName() {

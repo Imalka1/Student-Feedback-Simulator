@@ -1,7 +1,7 @@
 //----------------------------------------------Select marks------------------------------------------------------------
 
 $('.tdMark').click(function () {
-    if ($(this).css("background-color") == "rgb(48, 118, 29)") {
+    if ($(this).css("background-color") === "rgb(48, 118, 29)") {
         $(this).css('background-color', "rgba(0, 0, 0, 0)");
         $(this).css('color', 'black');
     } else {
@@ -18,7 +18,7 @@ $('#btnSubmit').click(function () {
     var marks = Array();
     var ecids = Array();
     for (var i = 0; i < $('td.tdMark').length; i++) {
-        if ($('td.tdMark').eq(i).css("background-color") == "rgb(48, 118, 29)") {
+        if ($('td.tdMark').eq(i).css("background-color") === "rgb(48, 118, 29)") {
             ecids.push($('td.tdMark').eq(i).parent().children().eq(1).children('input').val());
             marks.push($('td.tdMark').eq(i).text());
         }
@@ -30,22 +30,21 @@ $('#btnSubmit').click(function () {
                 type: "post",
                 url: "http://" + window.location.hostname + ":8080/processMarks",
                 data: {
-                    uid: $('#uid').val(),
-                    sublecid: $('#sublecid').val(),
+                    uid: $('#uId').val(),
+                    sublecid: $('#subjectLecturerId').val(),
                     marks: JSON.stringify(marks),
                     ecids: JSON.stringify(ecids)
                 },
                 success: function (response) {
                     if (JSON.parse(response) == true) {
-                        $('#btnSubmit').prop("disabled", true);
-                        $('#messageBox').html('<div class="alert alert-success" style="text-align: center;font-weight: bold">Marks have been submitted successfully</div>')
+                        document.location.href = "landing_page(student).jsp";
                     } else {
                         $('#messageBox').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Failed to submit marks</div>')
+                        setTimeout(function () {
+                            $('#messageBox').html('');
+                        }, 4000);
+                        window.scrollTo(0, 0);
                     }
-                    setTimeout(function () {
-                        $('#messageBox').html('');
-                    }, 4000);
-                    window.scrollTo(0, 0);
                 },
                 error: function () {
 

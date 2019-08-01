@@ -1,15 +1,15 @@
 package model;
 
 public class Faculty {
-    private int facid;
+    private int facultyId;
     private String facultyName;
 
-    public int getFacid() {
-        return facid;
+    public int getFacultyId() {
+        return facultyId;
     }
 
-    public void setFacid(int facid) {
-        this.facid = facid;
+    public void setFacultyId(int facultyId) {
+        this.facultyId = facultyId;
     }
 
     public String getFacultyName() {

@@ -17,10 +17,10 @@ public class MarkController {
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
             PreparedStatement preparedStatement = connection.prepareStatement("insert into marks values (?,?,?,?,?)");//---Prepare sql as a java object
-            preparedStatement.setObject(1, mark.getUid());//---Set values to sql object
-            preparedStatement.setObject(2, mark.getEcid());//---Set values to sql object
+            preparedStatement.setObject(1, mark.getuId());//---Set values to sql object
+            preparedStatement.setObject(2, mark.getEcId());//---Set values to sql object
             preparedStatement.setObject(3, mark.getDateOfSubmission());//---Set values to sql object
-            preparedStatement.setObject(4, mark.getSublecid());//---Set values to sql object
+            preparedStatement.setObject(4, mark.getSubjectLecturerId());//---Set values to sql object
             preparedStatement.setObject(5, mark.getMarks());//---Set values to sql object
             if (preparedStatement.executeUpdate() > 0) {//---Execute sql and returns whether it was executed or not
                 return true;
@@ -39,12 +39,12 @@ public class MarkController {
             PreparedStatement preparedStatement = connection.prepareStatement("" +
                     "select text,sum(marks),count(marks) " +
                     "from evaluation_criteria " +
-                    "left join marks on evaluation_criteria.ecid=marks.ecid && dateOfSubmission=? && " +
-                    "sublecid=(select sublecid from subject_lecturer where lecid=? && subid=?) " +
+                    "left join marks on evaluation_criteria.ecId=marks.ecId && dateOfSubmission=? && " +
+                    "subjectLecturerId=(select subjectLecturerId from subject_lecturer where lecturerId=? && subjectId=?) " +
                     "group by evaluation_criteria.ecid asc");//---Prepare sql as a java object
             preparedStatement.setObject(1, mark.getDateOfSubmission());//---Set values to sql object
-            preparedStatement.setObject(2, mark.getLecid());//---Set values to sql object
-            preparedStatement.setObject(3, mark.getSubid());//---Set values to sql object
+            preparedStatement.setObject(2, mark.getLecturerId());//---Set values to sql object
+            preparedStatement.setObject(3, mark.getSubjectId());//---Set values to sql object
             ResultSet rst = preparedStatement.executeQuery();//---Execute sql and store result
             while (rst.next()) {//---Navigate pointer to result rows until it ends
                 Mark markObj = new Mark();//---Creates a mark object

@@ -12,14 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @WebServlet(urlPatterns = "/processMarks")//---URL extension which mapped to this servlet object
 
@@ -43,9 +39,9 @@ public class AddMarksController extends HttpServlet {
 
                 //--------------------------------------Set data to model object----------------------------------------
                 Mark mark = new Mark();
-                mark.setUid(req.getParameter("uid"));
-                mark.setSublecid(Integer.parseInt(req.getParameter("sublecid")));
-                mark.setEcid(Integer.parseInt(jsonObjectIds.get(i).toString()));
+                mark.setuId(req.getParameter("uid"));
+                mark.setSubjectLecturerId(Integer.parseInt(req.getParameter("sublecid")));
+                mark.setEcId(Integer.parseInt(jsonObjectIds.get(i).toString()));
                 mark.setMarks(Integer.parseInt(jsonObjectMarks.get(i).toString()));
                 mark.setDateOfSubmission(dateOfSubmission);
 

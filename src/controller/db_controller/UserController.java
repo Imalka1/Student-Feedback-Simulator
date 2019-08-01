@@ -15,8 +15,8 @@ public class UserController {
         User userObj = null;
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
-            PreparedStatement preparedStatement = connection.prepareStatement("select accountType from user where uid=? && binary(password) = binary(?)");//---Prepare sql as a java object
-            preparedStatement.setObject(1, user.getUid());//---Set values to sql object
+            PreparedStatement preparedStatement = connection.prepareStatement("select accountType from user where uId=? && binary(password) = binary(?)");//---Prepare sql as a java object
+            preparedStatement.setObject(1, user.getuId());//---Set values to sql object
             preparedStatement.setObject(2, user.getPassword());//---Set values to sql object
             ResultSet rst = preparedStatement.executeQuery();//---Execute sql and store result
             if (rst.next()) {//---Navigate pointer to results
@@ -34,8 +34,8 @@ public class UserController {
         User userEmail = null;
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
-            PreparedStatement preparedStatement = connection.prepareStatement("select emailAddress from user where uid=?");//---Prepare sql as a java object
-            preparedStatement.setObject(1, user.getUid());//---Set values to sql object
+            PreparedStatement preparedStatement = connection.prepareStatement("select emailAddress from user where uId=?");//---Prepare sql as a java object
+            preparedStatement.setObject(1, user.getuId());//---Set values to sql object
             ResultSet rst = preparedStatement.executeQuery();//---Execute sql and store result
             if (rst.next()) {//---Navigate pointer to results
                 userEmail = new User();
@@ -51,8 +51,8 @@ public class UserController {
     public boolean addUser(User user) {
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
-            PreparedStatement preparedStatement = connection.prepareStatement("insert into user (uid,password,accountType,emailAddress) values (?,?,?,?)");//---Prepare sql as a java object
-            preparedStatement.setObject(1, user.getUid());//---Set values to sql object
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into user (uId,password,accountType,emailAddress) values (?,?,?,?)");//---Prepare sql as a java object
+            preparedStatement.setObject(1, user.getuId());//---Set values to sql object
             preparedStatement.setObject(2, user.getPassword());//---Set values to sql object
             preparedStatement.setObject(3, "student");//---Set values to sql object
             preparedStatement.setObject(4, user.getEmailAddress());//---Set values to sql object
@@ -69,9 +69,9 @@ public class UserController {
     public boolean updateEmail(User user) {
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
-            PreparedStatement preparedStatement = connection.prepareStatement("update user set emailAddress=? where uid=?");//---Prepare sql as a java object
+            PreparedStatement preparedStatement = connection.prepareStatement("update user set emailAddress=? where uId=?");//---Prepare sql as a java object
             preparedStatement.setObject(1, user.getEmailAddress());//---Set values to sql object
-            preparedStatement.setObject(2, user.getUid());//---Set values to sql object
+            preparedStatement.setObject(2, user.getuId());//---Set values to sql object
             if (preparedStatement.executeUpdate() > 0) {//---Execute sql and returns whether it was executed or not
                 return true;
             }
@@ -85,9 +85,9 @@ public class UserController {
     public boolean updatePassword(User user) {
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
-            PreparedStatement preparedStatement = connection.prepareStatement("update user set password=? where uid=?");//---Prepare sql as a java object
+            PreparedStatement preparedStatement = connection.prepareStatement("update user set password=? where uId=?");//---Prepare sql as a java object
             preparedStatement.setObject(1, user.getPassword());//---Set values to sql object
-            preparedStatement.setObject(2, user.getUid());//---Set values to sql object
+            preparedStatement.setObject(2, user.getuId());//---Set values to sql object
             if (preparedStatement.executeUpdate() > 0) {//---Execute sql and returns whether it was executed or not
                 return true;
             }

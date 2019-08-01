@@ -30,7 +30,7 @@ public class EmailController extends HttpServlet {
 
         //-----------------Retrieve data which submitted to the server and set data to model object---------------------
         User user = new User();
-        user.setUid(request.getParameter("userId"));
+        user.setuId(request.getParameter("userId"));
         User emailViaUid = new UserController().getEmailViaUid(user);
 
         //---------------------------------Generate a random number for the confirmation code---------------------------

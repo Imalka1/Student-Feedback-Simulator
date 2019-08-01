@@ -12,9 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 @WebServlet(urlPatterns = "/update_student")//---URL extension which mapped to this servlet object
@@ -40,17 +38,17 @@ public class UpdateStudentController extends HttpServlet {
 
             //--------------------------------------Set data to model object--------------------------------------------
             User user = new User();
-            user.setUid(regNo);
+            user.setuId(regNo);
             user.setEmailAddress(emailAddress);
 
             if (new UserController().updateEmail(user)) {//---Call the db server (UserController(db_controller)) to update user email
 
                 //--------------------------------------Set data to model object----------------------------------------
                 Student student = new Student();
-                student.setUid(regNo);
+                student.setuId(regNo);
                 student.setStudentName(studetName);
                 student.setNationalId(nationalId);
-                student.setDegId(degreeId);
+                student.setDegreeId(degreeId);
                 student.setBatchId(batchId);
                 student.setSemesterId(semesterId);
 

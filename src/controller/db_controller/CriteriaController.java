@@ -14,11 +14,11 @@ public class CriteriaController {
         List<Criteria> criterias = new ArrayList<>();//---Creates an array object (ArrayList) to store multiple objects
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
-            PreparedStatement preparedStatement = connection.prepareStatement("select echid,text from evaluation_criteria_heading");//---Prepare sql as a java object
+            PreparedStatement preparedStatement = connection.prepareStatement("select echId,text from evaluation_criteria_heading");//---Prepare sql as a java object
             ResultSet rst = preparedStatement.executeQuery();//---Execute sql and store result
             while (rst.next()) {//---Navigate pointer to result rows until it ends
                 Criteria criteria = new Criteria();//---Creates a criteria object
-                criteria.setEchid(rst.getInt(1));//---Set table row data to criteria model object
+                criteria.setEchId(rst.getInt(1));//---Set table row data to criteria model object
                 criteria.setCriteriaHeadingName(rst.getString(2));//---Set table row data to criteria model object
                 criterias.add(criteria);//---Add criteria object to array object
             }
@@ -33,12 +33,12 @@ public class CriteriaController {
         List<Criteria> criterias = new ArrayList<>();//---Creates an array object (ArrayList) to store multiple objects
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
-            PreparedStatement preparedStatement = connection.prepareStatement("select ecid,text from evaluation_criteria where echid=?");//---Prepare sql as a java object
-            preparedStatement.setObject(1, criteria.getEchid());//---Set values to sql object
+            PreparedStatement preparedStatement = connection.prepareStatement("select ecId,text from evaluation_criteria where echId=?");//---Prepare sql as a java object
+            preparedStatement.setObject(1, criteria.getEchId());//---Set values to sql object
             ResultSet rst = preparedStatement.executeQuery();//---Execute sql and store result
             while (rst.next()) {//---Navigate pointer to result rows until it ends
                 Criteria criteriaObj = new Criteria();//---Creates a criteria object
-                criteriaObj.setEcid(rst.getInt(1));//---Set table row data to criteria model object
+                criteriaObj.setEcId(rst.getInt(1));//---Set table row data to criteria model object
                 criteriaObj.setCriteriaName(rst.getString(2));//---Set table row data to criteria model object
                 criterias.add(criteriaObj);//---Add criteria object to array object
             }

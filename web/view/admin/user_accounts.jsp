@@ -28,7 +28,7 @@
                         List<Faculty> allFaculties = new FacultyController().getAllFaculties();
                         for (Faculty faculty : allFaculties) {
                 %>
-                <option value="<%= faculty.getFacid()%>"><%= faculty.getFacultyName()%>
+                <option value="<%= faculty.getFacultyId()%>"><%= faculty.getFacultyName()%>
                 </option>
                 <%
                         }
@@ -61,7 +61,7 @@
                         List<Batch> years = new BatchController().getIntakes();
                         for (Batch batch : years) {
                 %>
-                <option value="<%= batch.getBatchid()%>"><%= batch.getBatchName()%>
+                <option value="<%= batch.getBatchId()%>"><%= batch.getBatchName()%>
                 </option>
                 <%
                         }
@@ -76,7 +76,7 @@
                         List<Semester> allSemesters = new SemesterController().getAllSemesters();
                         for (Semester semester : allSemesters) {
                 %>
-                <option value="<%= semester.getSemid()%>"><%= semester.getSemesterName()%>
+                <option value="<%= semester.getSemesterId()%>"><%= semester.getSemesterName()%>
                 </option>
                 <%
                         }

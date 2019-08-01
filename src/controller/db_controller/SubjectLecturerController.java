@@ -20,12 +20,15 @@ public class SubjectLecturerController {
         List<Lecturer> lecturers = new ArrayList<>();//---Creates an array object (ArrayList) to store multiple objects
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
-            PreparedStatement preparedStatement = connection.prepareStatement("select l.lecid,l.name from lecturer l,subject_lecturer sl where l.lecid=sl.lecid && subid=?");//---Prepare sql as a java object
+            PreparedStatement preparedStatement = connection.prepareStatement("" +
+                    "select l.lecturerId,l.name " +
+                    "from lecturer l,subject_lecturer sl " +
+                    "where l.lecturerId=sl.lecturerId && subjectId=?");//---Prepare sql as a java object
             preparedStatement.setObject(1, subject.getSubjectId());//---Set values to sql object
             ResultSet rst = preparedStatement.executeQuery();//---Execute sql and store result
             while (rst.next()) {//---Navigate pointer to result rows until it ends
                 Lecturer lecturer = new Lecturer();//---Creates a lecturer object
-                lecturer.setLecId(rst.getString(1));//---Set table row data to lecturer model object
+                lecturer.setLecturerId(rst.getString(1));//---Set table row data to lecturer model object
                 lecturer.setLecturerName(rst.getString(2));//---Set table row data to lecturer model object
                 lecturers.add(lecturer);//---Add lecturer object to array object
             }
@@ -40,9 +43,13 @@ public class SubjectLecturerController {
         List<Mark> dates = new ArrayList<>();//---Creates an array object (ArrayList) to store multiple objects
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
-            PreparedStatement preparedStatement = connection.prepareStatement("select distinct dateOfSubmission from subject_lecturer sl,marks m where sl.sublecid=m.sublecid && lecid=? && subid=? order by 1 desc");//---Prepare sql as a java object
-            preparedStatement.setObject(1, subjectLecturer.getLecid());//---Set values to sql object
-            preparedStatement.setObject(2, subjectLecturer.getSubid());//---Set values to sql object
+            PreparedStatement preparedStatement = connection.prepareStatement("" +
+                    "select distinct dateOfSubmission " +
+                    "from subject_lecturer sl,marks m " +
+                    "where sl.subjectLecturerId=m.subjectLecturerId && lecturerId=? && subjectId=? " +
+                    "order by 1 desc");//---Prepare sql as a java object
+            preparedStatement.setObject(1, subjectLecturer.getLecturerId());//---Set values to sql object
+            preparedStatement.setObject(2, subjectLecturer.getSubjectId());//---Set values to sql object
             ResultSet rst = preparedStatement.executeQuery();//---Execute sql and store result
             while (rst.next()) {//---Navigate pointer to result rows until it ends
                 Mark mark = new Mark();//---Creates a mark object

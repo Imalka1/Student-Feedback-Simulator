@@ -1,14 +1,14 @@
 package model;
 
 public class Mark {
-    private String uid;
-    private int ecid;
+    private String uId;
+    private int ecId;
     private String criteria;
     private String dateOfSubmission;
-    private int sublecid;
+    private int subjectLecturerId;
     private int marks;
-    private String subid;
-    private String lecid;
+    private String subjectId;
+    private String lecturerId;
     private int studentsCount;
 
     public int getStudentsCount() {
@@ -27,20 +27,20 @@ public class Mark {
         this.criteria = criteria;
     }
 
-    public String getSubid() {
-        return subid;
+    public String getSubjectId() {
+        return subjectId;
     }
 
-    public void setSubid(String subid) {
-        this.subid = subid;
+    public void setSubjectId(String subjectId) {
+        this.subjectId = subjectId;
     }
 
-    public String getLecid() {
-        return lecid;
+    public String getLecturerId() {
+        return lecturerId;
     }
 
-    public void setLecid(String lecid) {
-        this.lecid = lecid;
+    public void setLecturerId(String lecturerId) {
+        this.lecturerId = lecturerId;
     }
 
     public int getMarks() {
@@ -51,20 +51,20 @@ public class Mark {
         this.marks = marks;
     }
 
-    public String getUid() {
-        return uid;
+    public String getuId() {
+        return uId;
     }
 
-    public void setUid(String uid) {
-        this.uid = uid;
+    public void setuId(String uId) {
+        this.uId = uId;
     }
 
-    public int getEcid() {
-        return ecid;
+    public int getEcId() {
+        return ecId;
     }
 
-    public void setEcid(int ecid) {
-        this.ecid = ecid;
+    public void setEcId(int ecId) {
+        this.ecId = ecId;
     }
 
     public String getDateOfSubmission() {
@@ -75,11 +75,11 @@ public class Mark {
         this.dateOfSubmission = dateOfSubmission;
     }
 
-    public int getSublecid() {
-        return sublecid;
+    public int getSubjectLecturerId() {
+        return subjectLecturerId;
     }
 
-    public void setSublecid(int sublecid) {
-        this.sublecid = sublecid;
+    public void setSubjectLecturerId(int subjectLecturerId) {
+        this.subjectLecturerId = subjectLecturerId;
     }
 }

@@ -52,11 +52,11 @@
 
     <form action="/reset_password" method="post">
 
-        <%-------------------------------------------Store uid for Js stuff(Start)------------------------------------%>
+        <%-------------------------------------------Store uId for Js stuff(Start)------------------------------------%>
 
-        <input type="hidden" id="uid" name="userId" value="<%= sessionLogin.getAttribute("uid")%>">
+        <input type="hidden" id="uId" name="userId" value="<%= sessionLogin.getAttribute("uId")%>">
 
-        <%--------------------------------------------Store uid for Js stuff(End)-------------------------------------%>
+        <%--------------------------------------------Store uId for Js stuff(End)-------------------------------------%>
 
         <div class="row">
             <div class="col-12" style="font-size: 32px;text-align: center">

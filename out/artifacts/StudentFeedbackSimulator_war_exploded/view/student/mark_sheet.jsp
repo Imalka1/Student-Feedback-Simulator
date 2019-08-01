@@ -18,11 +18,11 @@
 
     //---------------------Call the db server (StudentController(db_controller)) to retrieve student data---------------
     Student studentUserID = new Student();
-    studentUserID.setUid(sessionLogin.getAttribute("uid").toString());
+    studentUserID.setuId(sessionLogin.getAttribute("uId").toString());
     Student student = new StudentController().getStudentLandingPageData(studentUserID);
 
     //---------------------------------------------Get current date-----------------------------------------------------
-    String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+    String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 %>
 
 <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -107,7 +107,7 @@
 
             <%-------------------------------Store subject lecturer ID for Js stuff(Start)----------------------------%>
 
-            <input type="hidden" id="sublecid" value="<%= subject.getSublecId()%>">
+            <input type="hidden" id="subjectLecturerId" value="<%= subject.getSubjectLecturerId()%>">
 
             <%-------------------------------Store subject lecturer ID for Js stuff(End)------------------------------%>
 
@@ -163,7 +163,7 @@
                     {
                         //--------Call the server (CriteriaController(db_controller)) to retrieve criterias-------------
                         Criteria criteriaObj = new Criteria();
-                        criteriaObj.setEchid(criteriaHeadDTO.getEchid());
+                        criteriaObj.setEchId(criteriaHeadDTO.getEchId());
                         List<Criteria> criterias = new CriteriaController().getCriterias(criteriaObj);
                         for (Criteria criteria : criterias) {
                 %>
@@ -171,7 +171,7 @@
                     <td style="text-align: right;padding-right: 5px"><%= value%>
                     </td>
                     <td style="padding-left: 5px">
-                        <%= criteria.getCriteriaName()%><input type="hidden" value="<%= criteria.getEcid()%>">
+                        <%= criteria.getCriteriaName()%><input type="hidden" value="<%= criteria.getEcId()%>">
                     </td>
                     <td class="tdMark" style="text-align: center;cursor: pointer">5</td>
                     <td class="tdMark" style="text-align: center;cursor: pointer">4</td>

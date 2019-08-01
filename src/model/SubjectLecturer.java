@@ -1,33 +1,33 @@
 package model;
 
 public class SubjectLecturer {
-    private int sublecid;
-    private String subid;
-    private String lecid;
+    private int subjectLecturerId;
+    private String subjectId;
+    private String lecturerId;
     private boolean current;
 
-    public int getSublecid() {
-        return sublecid;
+    public int getSubjectLecturerId() {
+        return subjectLecturerId;
     }
 
-    public void setSublecid(int sublecid) {
-        this.sublecid = sublecid;
+    public void setSubjectLecturerId(int subjectLecturerId) {
+        this.subjectLecturerId = subjectLecturerId;
     }
 
-    public String getSubid() {
-        return subid;
+    public String getSubjectId() {
+        return subjectId;
     }
 
-    public void setSubid(String subid) {
-        this.subid = subid;
+    public void setSubjectId(String subjectId) {
+        this.subjectId = subjectId;
     }
 
-    public String getLecid() {
-        return lecid;
+    public String getLecturerId() {
+        return lecturerId;
     }
 
-    public void setLecid(String lecid) {
-        this.lecid = lecid;
+    public void setLecturerId(String lecturerId) {
+        this.lecturerId = lecturerId;
     }
 
     public boolean isCurrent() {

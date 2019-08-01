@@ -12,9 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 @WebServlet(urlPatterns = "/add_student")//---URL extension which mapped to this servlet object
@@ -40,7 +38,7 @@ public class AddStudentController extends HttpServlet {
 
             //--------------------------------------Set data to model object--------------------------------------------
             User user = new User();
-            user.setUid(regNo);
+            user.setuId(regNo);
             user.setPassword(nationalId);
             user.setEmailAddress(emailAddress);
 
@@ -48,10 +46,10 @@ public class AddStudentController extends HttpServlet {
 
                 //--------------------------------------Set data to model object----------------------------------------
                 Student student = new Student();
-                student.setUid(regNo);
+                student.setuId(regNo);
                 student.setStudentName(studetName);
                 student.setNationalId(nationalId);
-                student.setDegId(degreeId);
+                student.setDegreeId(degreeId);
                 student.setBatchId(batchId);
                 student.setSemesterId(semesterId);
 

@@ -18,7 +18,7 @@
                     {
                         //--------Call the db server (AdminController(db_controller)) to retrieve admin data------------
                         Admin adminObj = new Admin();
-                        adminObj.setUid(sessionLogin.getAttribute("uid").toString());
+                        adminObj.setuId(sessionLogin.getAttribute("uId").toString());
                         Admin admin = new AdminController().getAdminUsername(adminObj);
                         if (admin != null) {
                 %>

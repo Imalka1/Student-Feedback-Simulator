@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 @WebServlet(urlPatterns = "/load_students")//---URL extension which mapped to this servlet object
@@ -26,7 +25,7 @@ public class LoadStudentsController extends HttpServlet {
 
         //------------------------------------------Set data to model object--------------------------------------------
         Student student = new Student();
-        student.setDegId(degreeId);
+        student.setDegreeId(degreeId);
         student.setBatchId(batchId);
         student.setSemesterId(semesterId);
 
@@ -36,7 +35,7 @@ public class LoadStudentsController extends HttpServlet {
         JSONArray studentsJson = new JSONArray();//---Creates a JSON array to store JSON objects []
         for (Student studentObj : allStudents) {
             JSONObject studentJson = new JSONObject();//---Creates a JSON object {}
-            studentJson.put("RegId", studentObj.getUid());//---Add data to JSON {"RegId":"IT123"}
+            studentJson.put("RegId", studentObj.getuId());//---Add data to JSON {"RegId":"IT123"}
             studentJson.put("StudentName", studentObj.getStudentName());//---Add data to JSON {"RegId":"IT123","StudentName":"Amal"}
             studentJson.put("NationalId", studentObj.getNationalId());//---Add data to JSON {"RegId":"IT123","StudentName":"Amal","NationalId":"961251465V"}
             studentJson.put("EmailAddress", studentObj.getEmailAddress());//---Add data to JSON {"RegId":"IT123","StudentName":"Amal","NationalId":"961251465V","EmailAddress":"amal@gmail.com"}

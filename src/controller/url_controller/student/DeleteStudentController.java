@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet(urlPatterns = "/delete_student")//---URL extension which mapped to this servlet object
 public class DeleteStudentController extends HttpServlet {
@@ -21,7 +20,7 @@ public class DeleteStudentController extends HttpServlet {
 
         //------------------------------------------Set data to model object--------------------------------------------
         Student student = new Student();
-        student.setUid(regNo);
+        student.setuId(regNo);
 
         if (new StudentController().deleteStudent(student)) {//---Call the db server (UserController(db_controller)) to delete student
             resp.getWriter().println(true);

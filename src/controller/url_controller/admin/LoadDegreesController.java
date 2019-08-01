@@ -1,10 +1,8 @@
 package controller.url_controller.admin;
 
 import controller.db_controller.DegreeController;
-import controller.db_controller.FacultyController;
 import model.Degree;
 import model.Faculty;
-import model.Student;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -23,7 +21,7 @@ public class LoadDegreesController extends HttpServlet {
 
         //-----------------Retrieve data which submitted to the server and set data to model object---------------------
         Faculty faculty = new Faculty();
-        faculty.setFacid(Integer.parseInt(req.getParameter("facultyId")));
+        faculty.setFacultyId(Integer.parseInt(req.getParameter("facultyId")));
 
         List<Degree> allDegreesViaFaculty = new DegreeController().getAllDegreesViaFaculty(faculty);//---Call the db server (DegreeController(db_controller)) to get all degrees via faculty
 
@@ -31,7 +29,7 @@ public class LoadDegreesController extends HttpServlet {
         JSONArray degreesJson = new JSONArray();//---Creates a JSON array to store JSON objects []
         for (Degree degree : allDegreesViaFaculty) {
             JSONObject degreeJson = new JSONObject();//---Creates a JSON object {}
-            degreeJson.put("DegId", degree.getDegid());//---Add data to JSON {"DegId":"1"}
+            degreeJson.put("DegId", degree.getDegreeId());//---Add data to JSON {"DegId":"1"}
             degreeJson.put("DegreeName", degree.getDegreeName());//---Add data to JSON {"DegId":"1","DegreeName":"BSc(Computer Science)"}
             degreesJson.add(degreeJson);//---Add JSON object to JSON array [{"DegId":"1","DegreeName":"BSc(Computer Science)"},{"DegId":"2","DegreeName":"BSc(Information Systems)"}]
         }

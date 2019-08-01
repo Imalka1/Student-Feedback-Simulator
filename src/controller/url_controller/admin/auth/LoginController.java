@@ -25,18 +25,18 @@ public class LoginController extends HttpServlet {
 
         //--------------------------------------Set data to model object------------------------------------------------
         User userObj = new User();
-        userObj.setUid(uid);
+        userObj.setuId(uid);
         userObj.setPassword(password);
 
         User user = new UserController().chkLogin(userObj);//---Call the db server (UserController(db_controller)) to retrieve user data
 
         if (user != null) {//---Check whether the user is alive
 
-            sessionLogin.setAttribute("uid", uid);
+            sessionLogin.setAttribute("uId", uid);
             if (user.getAccountType().equals("student")) {//---Check whether the user is a student
 
                 Student student = new Student();
-                student.setUid(uid);
+                student.setuId(uid);
                 Student studentNic = new StudentController().getStudentNic(student);//---Call the db server (StudentController(db_controller)) to retrieve student nic data
                 if (password.equals(studentNic.getNationalId())) {//---Check whether the password and student nic is equal
                     resp.sendRedirect("/view/reset_password.jsp");//---Navigate (redirect) to reset password page

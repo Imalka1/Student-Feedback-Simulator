@@ -3,7 +3,6 @@ package controller.db_controller;
 import db.DBConnection;
 import model.Degree;
 import model.Faculty;
-import model.Student;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -16,12 +15,12 @@ public class DegreeController {
         List<Degree> degrees = new ArrayList<>();//---Creates an array object (ArrayList) to store multiple objects
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
-            PreparedStatement preparedStatement = connection.prepareStatement("select degid,name from degree where facid=?");//---Prepare sql as a java object
-            preparedStatement.setObject(1, faculty.getFacid());//---Set values to sql object
+            PreparedStatement preparedStatement = connection.prepareStatement("select degreeId,name from degree where facultyId=?");//---Prepare sql as a java object
+            preparedStatement.setObject(1, faculty.getFacultyId());//---Set values to sql object
             ResultSet rst = preparedStatement.executeQuery();//---Execute sql and store result
             while (rst.next()) {//---Navigate pointer to result rows until it ends
                 Degree degree = new Degree();//---Creates a degree object
-                degree.setDegid(rst.getInt(1));//---Set table row data to degree model object
+                degree.setDegreeId(rst.getInt(1));//---Set table row data to degree model object
                 degree.setDegreeName(rst.getString(2));//---Set table row data to degree model object
                 degrees.add(degree);//---Add degree object to array object
             }
