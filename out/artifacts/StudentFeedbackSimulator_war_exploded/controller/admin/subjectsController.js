@@ -29,7 +29,7 @@ function loadSubjects() {
                 var obj = JSON.parse(response);
                 for (var i = 0; i < obj.Subjects.length; i++) {
                     subjects +=
-                        '<tr>' +
+                        '<tr style="font-size: 17px">' +
                         '<td style="padding-right: 5px;text-align: right;font-weight: bold">' + ++count + '</td>' +
                         '<td style="text-align: center;font-weight: bold">' + obj.Subjects[i].SubjectId + '</td>' +
                         '<td style="padding-left: 5px">' + obj.Subjects[i].SubjectName + '</td>';

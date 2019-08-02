@@ -59,11 +59,11 @@
     <div class="row" style="margin-bottom: 50px;margin-top: 20px">
         <div class="col-12" style="padding: 0px">
             <table border="1px" style="width: 100%">
-                <tr>
+                <tr style="font-size: 18px">
                     <th width="5%"></th>
                     <th width="15%" style="text-align: center">Subject Code</th>
                     <th width="70%" style="text-align: center">Subject</th>
-                    <th width="10%" style="text-align: center">Allowed</th>
+                    <th width="10%" style="text-align: center">Subject Allowed</th>
                 </tr>
                 <tbody id="marksBody">
                 </tbody>
