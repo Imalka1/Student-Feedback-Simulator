@@ -1,4 +1,4 @@
-package controller.url_controller;
+package controller.url_controller.student;
 
 import controller.db_controller.MarkController;
 import db.DBConnection;

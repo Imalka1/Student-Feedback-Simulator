@@ -29,11 +29,12 @@ public class LoadSubjectsController extends HttpServlet {
         JSONArray subjectsJson = new JSONArray();//---Creates a JSON array to store JSON objects []
         for (Subject subjectObj : allSubjectsViaDegree) {
             JSONObject subjectJson = new JSONObject();//---Creates a JSON object {}
-            subjectJson.put("SubjectId", subjectObj.getSubjectId());//---Add data to JSON {"SubjectId":"1"}
-            subjectJson.put("SubjectName", subjectObj.getSubjectName());//---Add data to JSON {"SubjectId":"1","SubjectName":"Programming"}
-            subjectsJson.add(subjectJson);//---Add JSON object to JSON array [{"SubjectId":"1","SubjectName":"Programming"},{"SubjectId":"2","SubjectName":"Database"}]
+            subjectJson.put("SubjectId", subjectObj.getSubjectId());//---Add data to JSON {"SubjectId":1}
+            subjectJson.put("SubjectName", subjectObj.getSubjectName());//---Add data to JSON {"SubjectId":1,"SubjectName":"Programming"}
+            subjectJson.put("Allowed", subjectObj.isAllowed());//---Add data to JSON {"SubjectId":1,"SubjectName":"Programming","Allowed":true}
+            subjectsJson.add(subjectJson);//---Add JSON object to JSON array [{"SubjectId":"1","SubjectName":"Programming","Allowed":"true"},{"SubjectId":"2","SubjectName":"Database","Allowed":"true"}]
         }
-        obj.put("Subjects", subjectsJson);//---Add JSON array to JSON object {"Subjects":[{"SubjectId":"1","SubjectName":"Programming"},{"SubjectId":"2","SubjectName":"Database"}]}
+        obj.put("Subjects", subjectsJson);//---Add JSON array to JSON object {"Subjects":[{"SubjectId":1,"SubjectName":"Programming","Allowed":true},{"SubjectId":2,"SubjectName":"Database","Allowed":true}]}
         resp.getWriter().println(obj.toJSONString());//---Print and reply JSON as a text
     }
 }

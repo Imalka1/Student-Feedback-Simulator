@@ -49,7 +49,7 @@
             <div class="dropdown-content" style="padding-top: 14px;font-size: 14px">
                 <a href="landing_page(admin).jsp">Home</a>
                 <a href="user_accounts.jsp">User Accounts</a>
-                <a href="#">Subjetcs</a>
+                <a href="subjects.jsp">Subjetcs</a>
                 <a href="#">Lecturers</a>
                 <a href="#">Semesters</a>
                 <a href="#">Evaluation Criterias</a>

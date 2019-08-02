@@ -1,8 +1,4 @@
-<%@ page import="controller.db_controller.BatchController" %>
-<%@ page import="model.Batch" %>
 <%@ page import="java.util.List" %>
-<%@ page import="controller.db_controller.DegreeController" %>
-<%@ page import="model.Degree" %>
 <%@ page import="controller.db_controller.SemesterController" %>
 <%@ page import="model.Semester" %>
 <%@ page import="controller.db_controller.FacultyController" %>
@@ -15,9 +11,6 @@
         <div class="col-6">
             Faculty
         </div>
-        <%--<div class="col-7">--%>
-            <%--Degree--%>
-        <%--</div>--%>
         <div class="col-6">
             Semester
         </div>
@@ -38,21 +31,6 @@
                 %>
             </select>
         </div>
-        <%--<div class="col-7">--%>
-            <%--<select class="form-control" id="degree">--%>
-                <%--&lt;%&ndash;&lt;%&ndash;%>--%>
-                <%--&lt;%&ndash;{&ndash;%&gt;--%>
-                <%--&lt;%&ndash;List<Degree> allDegrees = new DegreeController().getAllDegrees();&ndash;%&gt;--%>
-                <%--&lt;%&ndash;for (Degree degree : allDegrees) {&ndash;%&gt;--%>
-                <%--&lt;%&ndash;%>&ndash;%&gt;--%>
-                <%--&lt;%&ndash;<option value="<%= degree.getDegreeId()%>"><%= degree.getDegreeName()%>&ndash;%&gt;--%>
-                <%--&lt;%&ndash;</option>&ndash;%&gt;--%>
-                <%--&lt;%&ndash;&lt;%&ndash;%>--%>
-                <%--&lt;%&ndash;}&ndash;%&gt;--%>
-                <%--&lt;%&ndash;}&ndash;%&gt;--%>
-                <%--&lt;%&ndash;%>&ndash;%&gt;--%>
-            <%--</select>--%>
-        <%--</div>--%>
         <div class="col-6">
             <select class="form-control" id="semester">
                 <%
@@ -82,14 +60,10 @@
     </div>
     <div class="row">
         <div class="col-6">
-            <select class="form-control" id="subjects">
-                <%--<option value=""></option>--%>
-            </select>
+            <select class="form-control" id="subjects"></select>
         </div>
         <div class="col-6">
-            <select class="form-control" id="lecturers">
-                <%--<option value=""></option>--%>
-            </select>
+            <select class="form-control" id="lecturers"></select>
         </div>
     </div>
 

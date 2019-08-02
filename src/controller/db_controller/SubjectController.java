@@ -22,7 +22,8 @@ public class SubjectController {
                     "inner join subject_lecturer on subject.subjectId=subject_lecturer.subjectId && semesterId=? " +
                     "inner join lecturer on subject_lecturer.lecturerId=lecturer.lecturerId && current=true " +
                     "inner join subject_degree on subject.subjectId=subject_degree.subjectId && degreeId=? " +
-                    "left join marks on marks.subjectLecturerId=subject_lecturer.subjectLecturerId && uId=? && dateOfSubmission=curdate() group by 1");//---Prepare sql as a java object
+                    "left join marks on marks.subjectLecturerId=subject_lecturer.subjectLecturerId && uId=? && dateOfSubmission=curdate() " +
+                    "group by 1");//---Prepare sql as a java object
             preparedStatement.setObject(1, student.getSemesterId());//---Set values to sql object
             preparedStatement.setObject(2, student.getDegreeId());//---Set values to sql object
             preparedStatement.setObject(3, student.getuId());//---Set values to sql object
@@ -71,13 +72,14 @@ public class SubjectController {
         List<Subject> subjects = new ArrayList<>();//---Creates an array object (ArrayList) to store multiple objects
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
-            PreparedStatement preparedStatement = connection.prepareStatement("select subjectId,title from subject where semesterId=?");//---Prepare sql as a java object
+            PreparedStatement preparedStatement = connection.prepareStatement("select subjectId,title,allowed from subject where semesterId=?");//---Prepare sql as a java object
             preparedStatement.setObject(1, semester.getSemesterId());//---Set values to sql object
             ResultSet rst = preparedStatement.executeQuery();//---Execute sql and store result
             while (rst.next()) {//---Navigate pointer to result rows until it ends
                 Subject subjectObj = new Subject();//---Creates a subject object
                 subjectObj.setSubjectId(rst.getString(1));//---Set table row data to subject model object
                 subjectObj.setSubjectName(rst.getString(2));//---Set table row data to subject model object
+                subjectObj.setAllowed(rst.getBoolean(3));//---Set table row data to subject model object
                 subjects.add(subjectObj);//---Add subject object to array object
             }
         } catch (SQLException e) {//--Catch if any sql exception occurred
@@ -86,24 +88,21 @@ public class SubjectController {
         return subjects;//---Return subjects array object with a length > 0 if subjects exists, if not array object returns with a length = 0
     }
 
-//    public boolean subjectIsAllowedAndMarksAreNotSubmitted(Mark mark) {
-//        try {
-//            Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
-//            PreparedStatement preparedStatement = connection.prepareStatement("select count(marks),allowed from subject s,marks m,subject_lecturer sl where s.subid=sl.subid && sl.sublecid=m.sublecid && uid=? && s.subid=? && dateOfSubmission=?");//---Prepare sql as a java object
-//            preparedStatement.setObject(1, mark.getuId());//---Set values to sql object
-//            preparedStatement.setObject(2, mark.getSubjectId());//---Set values to sql object
-//            preparedStatement.setObject(3, new SimpleDateFormat("yyyy-MM-dd").format(new Date()));//---Set values to sql object
-//            ResultSet rst = preparedStatement.executeQuery();//---Execute sql and store result
-//            if (rst.next()) {//---Execute sql and returns whether it was executed or not
-//                if (rst.getInt(1) == 0 && rst.getBoolean(2)) {
-//                    return true;
-//                } else {
-//                    return false;
-//                }
-//            }
-//        } catch (SQLException e) {//---Catch if any sql exception occurred
-//            e.printStackTrace();
-//        }
-//        return true;
-//    }
+    public boolean changeAllow(Subject subject){
+        try {
+            Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
+            PreparedStatement preparedStatement = connection.prepareStatement("" +
+                    "update subject " +
+                    "set allowed=? " +
+                    "where subjectId=?");//---Prepare sql as a java object
+            preparedStatement.setObject(1, subject.isAllowed());//---Set values to sql object
+            preparedStatement.setObject(2, subject.getSubjectId());//---Set values to sql object
+            if (preparedStatement.executeUpdate() > 0) {//---Execute sql and returns whether it was executed or not
+                return true;
+            }
+        } catch (SQLException e) {//---Catch if any sql exception occurred
+            e.printStackTrace();
+        }
+        return false;
+    }
 }
