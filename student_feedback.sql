@@ -334,3 +334,5 @@ inner join subject_degree on subject.subjectId=subject_degree.subjectId && degre
 left join marks on marks.subjectLecturerId=subject_lecturer.subjectLecturerId && uId='IT789' && dateOfSubmission='2019-08-01' group by 1;
 
 select s.subjectId,title,l.name,credits from subject s,lecturer l,subject_lecturer sl,subject_degree sd where l.lecturerId=sl.lecturerId && s.subjectId=sl.subjectId && s.subjectId=sd.subjectId && degreeId=? && semesterId=? && current=true;
+
+select count(marks),allowed from subject s,marks m,subject_lecturer sl where s.subjectId=sl.subjectId && sl.subjectLecturerId=m.subjectLecturerId && m.uid='IT789' && m.subjectLecturerId=4 && dateOfSubmission=curdate();

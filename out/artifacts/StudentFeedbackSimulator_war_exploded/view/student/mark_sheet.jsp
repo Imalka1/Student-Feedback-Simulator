@@ -21,8 +21,22 @@
     studentUserID.setuId(sessionLogin.getAttribute("uId").toString());
     Student student = new StudentController().getStudentLandingPageData(studentUserID);
 
-    //---------------------------------------------Get current date-----------------------------------------------------
-    String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+    //---------------------Call the db server (SubjectController(db_controller)) to retrieve subject data---------------
+    Subject subjectObj = new Subject();
+    subjectObj.setSubjectId(subjectId);
+    Subject subject = new SubjectController().getSubjectNameAndCredits(subjectObj);
+
+    student.setuId(sessionLogin.getAttribute("uId").toString());
+    List<Subject> subjects = new SubjectController().getSubjectsViaSemesterAndDegree(student);
+    for (Subject subjectToCheck : subjects) {
+        if (subjectToCheck.getSubjectId().equals(subjectId) && !subjectToCheck.isAllowed()) {
+%>
+
+<%-----------------------------------------------Navigate to login page-----------------------------------------------%>
+<jsp:forward page="landing_page(student).jsp"/>
+<%
+        }
+    }
 %>
 
 <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -97,13 +111,10 @@
         <div class="col-md-8" style="border: 1px solid black;color: #747474">
             <%
                 {
-                    //---------Call the db server (SubjectController(db_controller)) to retrieve subject data-----------
-                    Subject subjectObj = new Subject();
-                    subjectObj.setSubjectId(subjectId);
-                    Subject subject = new SubjectController().getSubjectNameAndCredits(subjectObj);
                     if (subject != null) {
             %>
-            <%= subject.getSubjectName()%> / <%= subjectId%> / <%= subject.getCredits()%> / <%= subject.getLecturerName()%>
+            <%= subject.getSubjectName()%> / <%= subjectId%> / <%= subject.getCredits()%>
+            / <%= subject.getLecturerName()%>
 
             <%-------------------------------Store subject lecturer ID for Js stuff(Start)----------------------------%>
 
@@ -122,7 +133,7 @@
             Date of Evaluation
         </div>
         <div class="col-md-8" style="border: 1px solid black;color: #747474">
-            <%= date%>
+            <%= new SimpleDateFormat("yyyy-MM-dd").format(new Date())%>
         </div>
     </div>
     <div class="row">

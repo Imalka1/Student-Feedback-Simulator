@@ -88,7 +88,7 @@ public class SubjectController {
         return subjects;//---Return subjects array object with a length > 0 if subjects exists, if not array object returns with a length = 0
     }
 
-    public boolean changeAllow(Subject subject){
+    public boolean changeAllow(Subject subject) {
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
             PreparedStatement preparedStatement = connection.prepareStatement("" +
@@ -105,4 +105,23 @@ public class SubjectController {
         }
         return false;
     }
+
+//    public boolean isAllowed(Mark mark) {
+//        try {
+//            Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
+//            PreparedStatement preparedStatement = connection.prepareStatement("" +
+//                    "select count(marks),allowed " +
+//                    "from subject s,marks m,subject_lecturer sl " +
+//                    "where s.subjectId=sl.subjectId && sl.subjectLecturerId=m.subjectLecturerId && m.uid=? && m.subjectLecturerId=? && dateOfSubmission=curdate()");//---Prepare sql as a java object
+//            preparedStatement.setObject(1, mark.getuId());//---Set values to sql object
+//            preparedStatement.setObject(2, mark.getSubjectLecturerId());//---Set values to sql object
+//            ResultSet rst = preparedStatement.executeQuery();//---Execute sql and store result
+//            if (rst.next()) {//---Execute sql and returns whether it was executed or not
+//                return rst.getInt(1) == 0 && rst.getBoolean(2);
+//            }
+//        } catch (SQLException e) {//---Catch if any sql exception occurred
+//            e.printStackTrace();
+//        }
+//        return false;
+//    }
 }
