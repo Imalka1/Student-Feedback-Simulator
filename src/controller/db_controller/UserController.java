@@ -15,7 +15,10 @@ public class UserController {
         User userObj = null;
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
-            PreparedStatement preparedStatement = connection.prepareStatement("select accountType from user where uId=? && binary(password) = binary(?)");//---Prepare sql as a java object
+            PreparedStatement preparedStatement = connection.prepareStatement("" +
+                    "select accountType " +
+                    "from user " +
+                    "where uId=? && binary(password) = binary(?)");//---Prepare sql as a java object
             preparedStatement.setObject(1, user.getuId());//---Set values to sql object
             preparedStatement.setObject(2, user.getPassword());//---Set values to sql object
             ResultSet rst = preparedStatement.executeQuery();//---Execute sql and store result

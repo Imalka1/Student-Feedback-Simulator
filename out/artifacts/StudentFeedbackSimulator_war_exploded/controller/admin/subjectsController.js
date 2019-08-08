@@ -34,10 +34,11 @@ function loadSubjects() {
                         '<td style="text-align: center;font-weight: bold">' + obj.Subjects[i].SubjectId + '</td>' +
                         '<td style="padding-left: 5px">' + obj.Subjects[i].SubjectName + '</td>';
                     if (obj.Subjects[i].Allowed === true) {
-                        subjects += '<td class="btnChangeAllow" style="text-align: center;cursor: pointer"><i class="fa fa-check fa-2x" style="color: green"></i></td></tr>'
+                        subjects += '<td class="btnChangeAllow" style="text-align: center;cursor: pointer"><i class="fa fa-check fa-2x" style="color: green"></i></td>'
                     } else {
-                        subjects += '<td class="btnChangeAllow" style="text-align: center;cursor: pointer"><i class="fa fa-times fa-2x" style="color: red"></i></td></tr>'
+                        subjects += '<td class="btnChangeAllow" style="text-align: center;cursor: pointer"><i class="fa fa-times fa-2x" style="color: red"></i></td>'
                     }
+                    subjects += '<td class="btnViewStudent" style="text-align: center;cursor: pointer"><i class="fa fa-search"></i></td></tr>';
                 }
                 $('#marksBody').html(subjects);
             },

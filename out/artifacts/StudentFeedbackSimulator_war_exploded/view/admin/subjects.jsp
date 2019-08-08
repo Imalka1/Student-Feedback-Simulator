@@ -48,6 +48,41 @@
         </div>
     </div>
 
+    <div class="row" style="margin-top:20px;text-align: center;font-size: 19px">
+        <div class="col-6">
+            Subject ID
+        </div>
+        <div class="col-6">
+            Subject Title
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <input class="form-control" type="text" id="subjectId">
+        </div>
+        <div class="col-6">
+            <input class="form-control" type="text" id="subjectTitle">
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 50px">
+        <div class="col-4">
+            <div class="col-center" style="width: fit-content;margin: auto">
+                <button id="btnChangeSem" class="btn" style="background-color: #ffbf05">Submit</button>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="col-center" style="width: fit-content;margin: auto">
+                <button id="btnChangeSem" class="btn" style="background-color: #ffbf05">Update</button>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="col-center" style="width: fit-content;margin: auto">
+                <button id="btnChangeSem" class="btn" style="background-color: #ffbf05">Delete</button>
+            </div>
+        </div>
+    </div>
+
     <hr style="margin-top: 30px;margin-bottom: 30px;background-color: #b0b0b0">
 
     <div class="row">
@@ -61,9 +96,10 @@
             <table border="1px" style="width: 100%">
                 <tr style="font-size: 18px">
                     <th width="5%"></th>
-                    <th width="15%" style="text-align: center">Subject Code</th>
+                    <th width="10%" style="text-align: center">Subject Code</th>
                     <th width="70%" style="text-align: center">Subject</th>
                     <th width="10%" style="text-align: center">Subject Allowed</th>
+                    <th width="5%" style="text-align: center">View</th>
                 </tr>
                 <tbody id="marksBody">
                 </tbody>
