@@ -1,23 +1,28 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
+    //--------------------------------------------Load the current session----------------------------------------------
     HttpSession sessionLogin = request.getSession(false);
-    if (sessionLogin != null) {
-        if (sessionLogin.getAttribute("accountType") != null) {
-//            response.sendRedirect("landing_page(student).jsp");
-            if (sessionLogin.getAttribute("accountType").equals("admin")) {
+
+    //------------------------------------Check whether the session variable is alive-------------------------------
+    if (sessionLogin.getAttribute("accountType") != null) {
+        if (sessionLogin.getAttribute("accountType").equals("admin")) {
 %>
+
+<%------------------------------------------Navigate to admin landing page--------------------------------------------%>
 <jsp:forward page="view/admin/landing_page(admin).jsp"/>
 <%
 } else {
 %>
+
+<%-----------------------------------------Navigate to student landing page-------------------------------------------%>
 <jsp:forward page="view/student/landing_page(student).jsp"/>
 <%
-            }
         }
     }
 
-    String error = "abc";
+    //-------If an login error occurred, it retrieves the error data via query string and stores to variable------------
+    String error = "";
     if (request.getParameter("error") != null) {
         error = request.getParameter("error");
     }
@@ -32,20 +37,25 @@
 
     <title>Student Feedback Simulator</title>
 
-    <!-- Bootstrap core CSS -->
+    <!---------------------------------------------Bootstrap CSS------------------------------------------------------->
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-    <!-- Custom fonts for this template -->
-    <link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <!----------------------------------- Custom fonts for this template ---------------------------------------------->
+    <%--<link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">--%>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet'
           type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
-    <!-- Custom styles for this template -->
+    <!--------------------------------- Custom styles for this template ----------------------------------------------->
     <link href="/assets/css/agency.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/assets/font-awesome/latest/css/font-awesome.min.css">
+
+    <%-------------------------------------------------Jquery---------------------------------------------------------%>
     <script src="/assets/js/jquery-3.2.1.min.js"></script>
+
+    <%-----------------------------------------------CSS(Start)-------------------------------------------------------%>
+
     <style>
         .col-center {
             float: none;
@@ -56,6 +66,16 @@
         body {
             height: 100%;
             margin: 0
+        }
+
+        body {
+            background-image: url("/assets/img/image.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            position: relative;
+            min-height: 500px;
+            overflow-y: scroll;
         }
 
         .box {
@@ -72,37 +92,38 @@
             flex: 0 1;
         }
 
-        @media (min-width: 992px) {
-            #mainNav {
-                padding-top: 0px;
-                padding-bottom: 0px;
-            }
+        #mainNav {
+            padding-top: 0px;
+            padding-bottom: 0px;
         }
     </style>
+
+    <%-------------------------------------------------CSS(End)-------------------------------------------------------%>
+
 </head>
-<style>
-    body {
-        background-image: url("/assets/img/image.jpg");
-        background-size: cover;
-        background-repeat: no-repeat;
-        /*background-position: center center;*/
-        background-attachment: fixed;
-        position: relative;
-        min-height: 500px;
-        overflow-y: scroll;
-        /*background-color: #D49E00;*/
-    }
-</style>
+
+<%---------------------------------------------------Body (Start)-----------------------------------------------------%>
+
 <body id="page-top">
 <div class="box">
     <div class="row1 content">
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style="background-color: rgba(35,35,35,0.81)">
+
+        <%----------------------------------------------Navigation bar (Start)----------------------------------------%>
+
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav"
+             style="background-color: rgba(35,35,35,0.81)">
             <div class="container">
                 <a class="navbar-brand js-scroll-trigger">Student Feedback Simulator</a>
             </div>
         </nav>
+
+        <%----------------------------------------------Navigation bar (End)------------------------------------------%>
+
         <div class="row">
             <div class="col-12">
+
+                <%--------------------Submit data to server (LoginController(url_controller)) (Start)-----------------%>
+
                 <form action="/login" method="post">
                     <div class="row" style="margin-top:150px;margin-bottom: 25px">
                         <div class="col-md-4 col-center">
@@ -136,6 +157,9 @@
                             Login using your Student / Admin ID and Password
                         </div>
                     </div>
+
+                    <%-------------------------------------Error message box (Start)----------------------------------%>
+
                     <%
                         if (error.equals("errorLogin")) {
                     %>
@@ -149,29 +173,31 @@
                     <%
                         }
                     %>
+
+                    <%-------------------------------------Error message box (End)------------------------------------%>
+
                 </form>
+
+                <%----------------------Submit data to server (LoginController(url_controller)) (End)-----------------%>
+
             </div>
         </div>
     </div>
-    <div class="container footer">
-        <div class="row">
-            <div class="col-12">
-                <hr style="margin-bottom: 10px">
-                <div style="text-align: center;padding: 10px">Copyright &copy; - 2019</div>
-            </div>
-        </div>
-    </div>
-</div>
 
-<script>
-    $('#username').keyup(function () {
-        $(this).val($(this).val().toUpperCase())
-    })
+    <script>
 
-    $('#btnForgotPassword').click(function () {
-        document.location.href = "view/forgot_password.jsp";
-    })
-</script>
-</body>
+        //------------------------------------------Username to uppercase---------------------------------------------------
 
-</html>
+        $('#username').keyup(function () {
+            $(this).val($(this).val().toUpperCase())
+        })
+
+        //---------------------------------------Navigate to forgot password page-------------------------------------------
+
+        $('#btnForgotPassword').click(function () {
+            document.location.href = "view/forgot_password.jsp";
+        })
+    </script>
+
+    <%---------------------------------------------------Add footer.jsp file----------------------------------------------%>
+<jsp:include page="view/footer.jsp"/>

@@ -4,59 +4,96 @@
 <%@ page import="java.util.Date" %>
 <%@ page import="java.util.List" %>
 
+<%---------------------------------------------------Add header.jsp file----------------------------------------------%>
 <jsp:include page="../header.jsp"/>
 <%
+    //----------------------------------------------URL to logout-------------------------------------------------------
     String logout = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/logout";
+
+    //--------------------------Get Subject ID from query string which binded with URL----------------------------------
     String subjectId = request.getParameter("subjectId");
+
+    //--------------------------------------------Load the current session----------------------------------------------
     HttpSession sessionLogin = request.getSession(false);
 
-    String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+    //---------------------Call the db server (StudentController(db_controller)) to retrieve student data---------------
+    Student studentUserID = new Student();
+    studentUserID.setuId(sessionLogin.getAttribute("uId").toString());
+    Student student = new StudentController().getStudentLandingPageData(studentUserID);
+
+    //---------------------Call the db server (SubjectController(db_controller)) to retrieve subject data---------------
+    Subject subjectObj = new Subject();
+    subjectObj.setSubjectId(subjectId);
+    Subject subject = new SubjectController().getSubjectNameAndCredits(subjectObj);
+
+    student.setuId(sessionLogin.getAttribute("uId").toString());
+    List<Subject> subjects = new SubjectController().getSubjectsViaSemesterAndDegree(student);
+    for (Subject subjectToCheck : subjects) {
+        if (subjectToCheck.getSubjectId().equals(subjectId) && !subjectToCheck.isAllowed()) {
+%>
+
+<%-----------------------------------------------Navigate to login page-----------------------------------------------%>
+<jsp:forward page="landing_page(student).jsp"/>
+<%
+        }
+    }
 %>
 
 <div class="collapse navbar-collapse" id="navbarResponsive">
     <ul class="navbar-nav text-uppercase ml-auto">
+
+        <%----------------------------------------------Page back (Start)---------------------------------------------%>
+
         <li class="nav-item" style="margin-right: 50px">
             <a class="js-scroll-trigger"
                style="cursor: pointer;font-family: Montserrat,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';text-decoration: none;color: white"
                href="landing_page(student).jsp">Back</a>
         </li>
+
+        <%-----------------------------------------------Page back (End)----------------------------------------------%>
+
+        <%----------------------------------------------Logout tab (Start)--------------------------------------------%>
+
         <form action="logout" method="post">
             <li class="nav-item">
                 <a id="btnLogout" class="js-scroll-trigger" href="<%= logout%>"
                    style="cursor: pointer;font-family: Montserrat,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';text-decoration: none;color: white">
                     Logout
-                    <%--<i class="fa fa-sign-out" style="margin-left: 20px"></i>--%>
                 </a>
             </li>
         </form>
+
+        <%----------------------------------------------Logout tab (End)----------------------------------------------%>
+
     </ul>
 </div>
 </div>
 </nav>
+
+<%-------------------------------------------------Navigation bar (End)-----------------------------------------------%>
+
 <div style="margin-top: 80px;margin-left: 30px;margin-right: 30px;">
+
+    <%----------------------------------------------Error message box (Start)-----------------------------------------%>
+
     <div class="row">
         <div class="col-12" style="padding: 0px" id="messageBox"></div>
     </div>
+
+    <%-----------------------------------------------Error message box (End)------------------------------------------%>
+
     <div class="row">
         <div class="col-12" style="background-color: #FFB508;height: 30px"></div>
     </div>
+
+    <%-----------------------------------------------Subject details (Start)------------------------------------------%>
+
     <div class="row">
         <div class="col-md-4" style="border: 1px solid black">
             Degree Programme
         </div>
         <div class="col-md-8" style="border: 1px solid black;color: #747474">
-            <%
-                {
-                    Student studentObj = new Student();
-                    studentObj.setUid(sessionLogin.getAttribute("uid").toString());
-                    Degree degreeName = new DegreeController().getDegreeName(studentObj);
-                    if (degreeName != null) {
-            %>
-            <%= degreeName.getDegreeName()%>
-            <%
-                    }
-                }
-            %>
+            <%= student.getDegreeName()%>
         </div>
     </div>
     <div class="row">
@@ -64,23 +101,7 @@
             Year and Semester
         </div>
         <div class="col-md-8" style="border: 1px solid black;color: #747474">
-            <%
-                {
-                    Student studentObj = new Student();
-                    studentObj.setUid(sessionLogin.getAttribute("uid").toString());
-                    Batch batch = new BatchController().getYearAndMonthDiff(studentObj);
-                    if (batch != null) {
-                        Semester semester = new Semester();
-                        semester.setSemid((batch.getYearDiff() * 12 + batch.getMonthDiff()) / 6 + 1);
-                        Semester semesterName = new SemesterController().getSemesterName(semester);
-                        if (semesterName != null) {
-            %>
-            <%= semesterName.getSemesterName()%>
-            <%
-                        }
-                    }
-                }
-            %>
+            <%= student.getSemesterName()%>
         </div>
     </div>
     <div class="row">
@@ -90,14 +111,17 @@
         <div class="col-md-8" style="border: 1px solid black;color: #747474">
             <%
                 {
-                    Subject subjectObj = new Subject();
-                    subjectObj.setSubjectId(subjectId);
-                    Subject subject = new SubjectController().getSubjectNameAndCredits(subjectObj);
                     if (subject != null) {
             %>
             <%= subject.getSubjectName()%> / <%= subjectId%> / <%= subject.getCredits()%>
             / <%= subject.getLecturerName()%>
-            <input type="hidden" id="sublecid" value="<%= subject.getSublecId()%>">
+
+            <%-------------------------------Store subject lecturer ID for Js stuff(Start)----------------------------%>
+
+            <input type="hidden" id="subjectLecturerId" value="<%= subject.getSubjectLecturerId()%>">
+
+            <%-------------------------------Store subject lecturer ID for Js stuff(End)------------------------------%>
+
             <%
                     }
                 }
@@ -109,14 +133,20 @@
             Date of Evaluation
         </div>
         <div class="col-md-8" style="border: 1px solid black;color: #747474">
-            <%= date%>
+            <%= new SimpleDateFormat("yyyy-MM-dd").format(new Date())%>
         </div>
     </div>
     <div class="row">
         <div class="col-12" style="background-color: #FFB508;height: 30px"></div>
     </div>
+
+    <%------------------------------------------------Subject details (End)-------------------------------------------%>
+
     <div class="row" style="margin-bottom: 50px">
         <div class="col-12" style="padding: 0px">
+
+            <%--------------------------------------Display mark sheet (Start)----------------------------------------%>
+
             <table border="1px" style="width: 100%">
                 <tr>
                     <th width="5%" style="text-align: center">Srt.No</th>
@@ -130,6 +160,8 @@
                 <%
                     {
                         int value = 0;
+
+                        //--------Call the server (CriteriaController(db_controller)) to retrieve criteria heads--------
                         List<Criteria> criteriaHeadings = new CriteriaController().getCriteriaHeadings();
                         for (Criteria criteriaHeadDTO : criteriaHeadings) {
                 %>
@@ -140,8 +172,9 @@
                 </tr>
                 <%
                     {
+                        //--------Call the server (CriteriaController(db_controller)) to retrieve criterias-------------
                         Criteria criteriaObj = new Criteria();
-                        criteriaObj.setEchid(criteriaHeadDTO.getEchid());
+                        criteriaObj.setEchId(criteriaHeadDTO.getEchId());
                         List<Criteria> criterias = new CriteriaController().getCriterias(criteriaObj);
                         for (Criteria criteria : criterias) {
                 %>
@@ -149,7 +182,7 @@
                     <td style="text-align: right;padding-right: 5px"><%= value%>
                     </td>
                     <td style="padding-left: 5px">
-                        <%= criteria.getCriteriaName()%><input type="hidden" value="<%= criteria.getEcid()%>">
+                        <%= criteria.getCriteriaName()%><input type="hidden" value="<%= criteria.getEcId()%>">
                     </td>
                     <td class="tdMark" style="text-align: center;cursor: pointer">5</td>
                     <td class="tdMark" style="text-align: center;cursor: pointer">4</td>
@@ -164,8 +197,14 @@
                     }
                 %>
             </table>
+
+            <%---------------------------------------Display mark sheet (End)-----------------------------------------%>
+
         </div>
     </div>
+
+    <%--------------------------------------------Submit marks button (Start)-----------------------------------------%>
+
     <div class="row">
         <div class="col-12">
             <div class="col-center" style="width: fit-content;margin: auto">
@@ -175,8 +214,14 @@
             </div>
         </div>
     </div>
+
+    <%---------------------------------------------Submit marks button (End)------------------------------------------%>
+
 </div>
 </div>
 
+<%-------------------------------------------Javascript controller of this page---------------------------------------%>
 <script src="/controller/student/marksController.js"></script>
+
+<%---------------------------------------------------Add footer.jsp file----------------------------------------------%>
 <jsp:include page="../footer.jsp"/>

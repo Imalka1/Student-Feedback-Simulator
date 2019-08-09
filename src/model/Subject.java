@@ -2,12 +2,21 @@ package model;
 
 public class Subject {
     private String subjectId;
-    private int sublecId;
-    private int degid;
-    private int semid;
+    private int subjectLecturerId;
+    private int degreeId;
+    private int semesterId;
     private String subjectName;
     private int credits;
     private String lecturerName;
+    private boolean allowed;
+
+    public boolean isAllowed() {
+        return allowed;
+    }
+
+    public void setAllowed(boolean allowed) {
+        this.allowed = allowed;
+    }
 
     public String getLecturerName() {
         return lecturerName;
@@ -25,28 +34,28 @@ public class Subject {
         this.subjectId = subjectId;
     }
 
-    public int getSublecId() {
-        return sublecId;
+    public int getSubjectLecturerId() {
+        return subjectLecturerId;
     }
 
-    public void setSublecId(int sublecId) {
-        this.sublecId = sublecId;
+    public void setSubjectLecturerId(int subjectLecturerId) {
+        this.subjectLecturerId = subjectLecturerId;
     }
 
-    public int getDegid() {
-        return degid;
+    public int getDegreeId() {
+        return degreeId;
     }
 
-    public void setDegid(int degid) {
-        this.degid = degid;
+    public void setDegreeId(int degreeId) {
+        this.degreeId = degreeId;
     }
 
-    public int getSemid() {
-        return semid;
+    public int getSemesterId() {
+        return semesterId;
     }
 
-    public void setSemid(int semid) {
-        this.semid = semid;
+    public void setSemesterId(int semesterId) {
+        this.semesterId = semesterId;
     }
 
     public String getSubjectName() {

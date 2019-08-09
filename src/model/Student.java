@@ -1,22 +1,58 @@
 package model;
 
 public class Student {
-    private int stid;
-    private String uid;
-    private int degId;
+    private int studentId;
+    private String uId;
+    private int degreeId;
     private int batchId;
-    private int year;
-    private String studentName;
+    private int facultyId;
+    private int semesterId;
     private String nationalId;
     private String batchName;
+    private String studentName;
+    private String semesterName;
+    private String facultyName;
+    private String degreeName;
     private String emailAddress;
 
-    public int getYear() {
-        return year;
+    public int getFacultyId() {
+        return facultyId;
     }
 
-    public void setYear(int year) {
-        this.year = year;
+    public void setFacultyId(int facultyId) {
+        this.facultyId = facultyId;
+    }
+
+    public String getFacultyName() {
+        return facultyName;
+    }
+
+    public void setFacultyName(String facultyName) {
+        this.facultyName = facultyName;
+    }
+
+    public String getDegreeName() {
+        return degreeName;
+    }
+
+    public void setDegreeName(String degreeName) {
+        this.degreeName = degreeName;
+    }
+
+    public String getSemesterName() {
+        return semesterName;
+    }
+
+    public void setSemesterName(String semesterName) {
+        this.semesterName = semesterName;
+    }
+
+    public int getSemesterId() {
+        return semesterId;
+    }
+
+    public void setSemesterId(int semesterId) {
+        this.semesterId = semesterId;
     }
 
     public String getBatchName() {
@@ -27,28 +63,28 @@ public class Student {
         this.batchName = batchName;
     }
 
-    public int getStid() {
-        return stid;
+    public int getStudentId() {
+        return studentId;
     }
 
-    public void setStid(int stid) {
-        this.stid = stid;
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
     }
 
-    public String getUid() {
-        return uid;
+    public String getuId() {
+        return uId;
     }
 
-    public void setUid(String uid) {
-        this.uid = uid;
+    public void setuId(String uId) {
+        this.uId = uId;
     }
 
-    public int getDegId() {
-        return degId;
+    public int getDegreeId() {
+        return degreeId;
     }
 
-    public void setDegId(int degId) {
-        this.degId = degId;
+    public void setDegreeId(int degreeId) {
+        this.degreeId = degreeId;
     }
 
     public int getBatchId() {

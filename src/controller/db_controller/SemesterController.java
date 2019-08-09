@@ -1,7 +1,6 @@
 package controller.db_controller;
 
 import db.DBConnection;
-import model.Batch;
 import model.Semester;
 
 import java.sql.Connection;
@@ -13,38 +12,22 @@ import java.util.List;
 
 public class SemesterController {
 
-    public Semester getSemesterName(Semester semester) {
-        Semester semDTO = null;
-        try {
-            Connection connection = DBConnection.getDBConnection().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("select name from semester where semid=?");
-            preparedStatement.setObject(1, semester.getSemid());
-            ResultSet rst = preparedStatement.executeQuery();
-            if (rst.next()) {
-                semDTO = new Semester();
-                semDTO.setSemesterName(rst.getString(1));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return semDTO;
-    }
-
+    //-----------------------------------------------Get all semesters--------------------------------------------------
     public List<Semester> getAllSemesters() {
-        List<Semester> semesters = new ArrayList<>();
+        List<Semester> semesters = new ArrayList<>();//---Creates an array object (ArrayList) to store multiple objects
         try {
-            Connection connection = DBConnection.getDBConnection().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("select semid,name from semester");
-            ResultSet rst = preparedStatement.executeQuery();
-            while (rst.next()) {
-                Semester semester = new Semester();
-                semester.setSemid(rst.getInt(1));
-                semester.setSemesterName(rst.getString(2));
-                semesters.add(semester);
+            Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
+            PreparedStatement preparedStatement = connection.prepareStatement("select semesterId,name from semester");//---Prepare sql as a java object
+            ResultSet rst = preparedStatement.executeQuery();//---Execute sql and store result
+            while (rst.next()) {//---Navigate pointer to result rows until it ends
+                Semester semester = new Semester();//---Creates a semester object
+                semester.setSemesterId(rst.getInt(1));//---Set table row data to semester model object
+                semester.setSemesterName(rst.getString(2));//---Set table row data to semester model object
+                semesters.add(semester);//---Add semester object to array object
             }
-        } catch (SQLException e) {
+        } catch (SQLException e) {//--Catch if any sql exception occurred
             e.printStackTrace();
         }
-        return semesters;
+        return semesters;//---Return semesters array object with a length > 0 if semesters exists, if not array object returns with a length = 0
     }
 }

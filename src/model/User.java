@@ -1,7 +1,7 @@
 package model;
 
 public class User {
-    private String uid;
+    private String uId;
     private String password;
     private String accountType;
     private String emailAddress;
@@ -14,12 +14,12 @@ public class User {
         this.emailAddress = emailAddress;
     }
 
-    public String getUid() {
-        return uid;
+    public String getuId() {
+        return uId;
     }
 
-    public void setUid(String uid) {
-        this.uid = uid;
+    public void setuId(String uId) {
+        this.uId = uId;
     }
 
     public String getPassword() {

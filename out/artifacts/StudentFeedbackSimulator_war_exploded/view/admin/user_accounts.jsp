@@ -10,27 +10,25 @@
 
         </div>
     </div>
+
     <div class="row" style="margin-top: 20px;text-align: center;font-size: 19px">
-        <div class="col-3">
+        <div class="col-4">
             Faculty
         </div>
-        <div class="col-7">
+        <div class="col-8">
             Degree
-        </div>
-        <div class="col-2">
-            Intake
         </div>
     </div>
 
     <div class="row">
-        <div class="col-3">
+        <div class="col-4">
             <select class="form-control" id="faculty">
                 <%
                     {
                         List<Faculty> allFaculties = new FacultyController().getAllFaculties();
                         for (Faculty faculty : allFaculties) {
                 %>
-                <option value="<%= faculty.getFacid()%>"><%= faculty.getFacultyName()%>
+                <option value="<%= faculty.getFacultyId()%>"><%= faculty.getFacultyName()%>
                 </option>
                 <%
                         }
@@ -38,29 +36,32 @@
                 %>
             </select>
         </div>
-        <div class="col-7">
-            <select class="form-control" id="degree">
-                <%--<%--%>
-                    <%--{--%>
-                        <%--List<Degree> allDegrees = new DegreeController().getAllDegrees();--%>
-                        <%--for (Degree degree : allDegrees) {--%>
-                <%--%>--%>
-                <%--<option value="<%= degree.getDegid()%>"><%= degree.getDegreeName()%>--%>
-                <%--</option>--%>
-                <%--<%--%>
-                        <%--}--%>
-                    <%--}--%>
-                <%--%>--%>
-            </select>
+        <div class="col-8">
+            <select class="form-control" id="degree"></select>
         </div>
-        <div class="col-2">
+    </div>
+
+    <div class="row" style="margin-top: 20px;text-align: center;font-size: 19px">
+        <div class="col-5">
+            Intake
+        </div>
+        <div class="col-4">
+            Semester
+        </div>
+        <div class="col-3" style="font-size: 12px">
+            (Change all students to next semester)
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-5">
             <select class="form-control" id="batch">
                 <%
                     {
                         List<Batch> years = new BatchController().getIntakes();
                         for (Batch batch : years) {
                 %>
-                <option value="<%= batch.getBatchid()%>"><%= batch.getBatchName()%>
+                <option value="<%= batch.getBatchId()%>"><%= batch.getBatchName()%>
                 </option>
                 <%
                         }
@@ -68,26 +69,27 @@
                 %>
             </select>
         </div>
-        <%--<div class="col-2">--%>
-            <%--<select class="form-control" id="batch">--%>
-                <%--<%--%>
-                    <%--{--%>
-                        <%--List<Semester> allSemesters = new SemesterController().getAllSemesters();--%>
-                        <%--for (Semester semester : allSemesters) {--%>
-                <%--%>--%>
-                <%--<option value="<%= semester.getSemid()%>"><%= semester.getSemesterName()%>--%>
-                <%--</option>--%>
-                <%--<%--%>
-                        <%--}--%>
-                    <%--}--%>
-                <%--%>--%>
-            <%--</select>--%>
-        <%--</div>--%>
-        <%--<div class="col-2">--%>
-        <%--<div>--%>
-        <%--<button type="submit" id="btnSearch" class="btn" style="background-color: #ffbf05;width: 100%">Search</button>--%>
-        <%--</div>--%>
-        <%--</div>--%>
+        <div class="col-4">
+            <select class="form-control" id="semester">
+                <%
+                    {
+                        List<Semester> allSemesters = new SemesterController().getAllSemesters();
+                        for (Semester semester : allSemesters) {
+                %>
+                <option value="<%= semester.getSemesterId()%>"><%= semester.getSemesterName()%>
+                </option>
+                <%
+                        }
+                    }
+                %>
+            </select>
+        </div>
+        <div class="col-3">
+            <div>
+                <button id="btnChangeSem" class="btn" style="background-color: #ffbf05;width: 100%">Change to next semester
+                </button>
+            </div>
+        </div>
     </div>
 
     <hr style="margin-top: 50px;margin-bottom: 50px;background-color: #b0b0b0">
@@ -102,12 +104,6 @@
         <div class="col-5">
             (The registration number cannot be updated)
         </div>
-        <%--<div class="col-2" style="text-align: center">--%>
-            <%--(Search student)--%>
-        <%--</div>--%>
-        <%--<div class="col-2" style="text-align: center">--%>
-            <%--(Click to clear fields)--%>
-        <%--</div>--%>
     </div>
     <div class="row">
         <div class="col-3">
@@ -117,7 +113,8 @@
             <input class="form-control" type="text" id="regNo">
         </div>
         <div class="col-2">
-            <button id="btnSearchStudent" class="btn" style="background-color: #ffbf05;width: 100%">Search student</button>
+            <button id="btnSearchStudent" class="btn" style="background-color: #ffbf05;width: 100%">Search student
+            </button>
         </div>
         <div class="col-2">
             <button id="btnClear" class="btn" style="background-color: #ffbf05;width: 100%">Clear</button>
@@ -150,17 +147,22 @@
     <div class="row" style="margin-top: 50px">
         <div class="col-4">
             <div class="col-center" style="width: fit-content;margin: auto">
-                <button id="btnAdd" class="btn" style="background-color: #ffbf05;margin-bottom: 50px" disabled>Submit</button>
+                <button id="btnAdd" class="btn" style="background-color: #ffbf05;margin-bottom: 50px">Submit
+                </button>
             </div>
         </div>
         <div class="col-4">
             <div class="col-center" style="width: fit-content;margin: auto">
-                <button id="btnUpdate" class="btn" style="background-color: #ffbf05;margin-bottom: 50px" disabled>Update</button>
+                <button id="btnUpdate" class="btn" style="background-color: #ffbf05;margin-bottom: 50px" disabled>
+                    Update
+                </button>
             </div>
         </div>
         <div class="col-4">
             <div class="col-center" style="width: fit-content;margin: auto">
-                <button id="btnDelete" class="btn" style="background-color: #ffbf05;margin-bottom: 50px" disabled>Delete</button>
+                <button id="btnDelete" class="btn" style="background-color: #ffbf05;margin-bottom: 50px" disabled>
+                    Delete
+                </button>
             </div>
         </div>
     </div>
@@ -186,11 +188,6 @@
                 </tbody>
             </table>
         </div>
-    </div>
-    <div class="row" style="margin-bottom: 50px">
-        <div class="col-4"><i class="fa fa-arrow-circle-left fa-3x" style="float: right;margin-right: 30px" id="decPageNo"></i></div>
-        <div class="col-4" style="text-align: center;font-size: 30px;font-weight: bold" id="pageNo"></div>
-        <div class="col-4"><i class="fa fa-arrow-circle-right fa-3x" style="margin-left: 30px" id="incPageNo"></i></div>
     </div>
 </div>
 </div>

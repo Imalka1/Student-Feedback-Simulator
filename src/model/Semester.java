@@ -1,15 +1,15 @@
 package model;
 
 public class Semester {
-    private int semid;
+    private int semesterId;
     private String semesterName;
 
-    public int getSemid() {
-        return semid;
+    public int getSemesterId() {
+        return semesterId;
     }
 
-    public void setSemid(int semid) {
-        this.semid = semid;
+    public void setSemesterId(int semesterId) {
+        this.semesterId = semesterId;
     }
 
     public String getSemesterName() {

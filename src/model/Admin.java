@@ -2,7 +2,7 @@ package model;
 
 public class Admin {
     private int adminId;
-    private String uid;
+    private String uId;
     private String adminName;
     private String emailAddress;
 
@@ -22,12 +22,12 @@ public class Admin {
         this.adminId = adminId;
     }
 
-    public String getUid() {
-        return uid;
+    public String getuId() {
+        return uId;
     }
 
-    public void setUid(String uid) {
-        this.uid = uid;
+    public void setuId(String uId) {
+        this.uId = uId;
     }
 
     public String getAdminName() {

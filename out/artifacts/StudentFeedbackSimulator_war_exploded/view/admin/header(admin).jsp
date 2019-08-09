@@ -1,7 +1,11 @@
+<%---------------------------------------------------Add header.jsp file----------------------------------------------%>
 <jsp:include page="../header.jsp"/>
 <%
+    //----------------------------------------------URL to logout-------------------------------------------------------
     String logout = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/logout";
 %>
+
+<%---------------------------------------------------CSS dropdown(Start)----------------------------------------------%>
 
 <style>
     .dropdown-content {
@@ -30,8 +34,13 @@
     }
 </style>
 
+<%-----------------------------------------------------CSS dropdown(End)----------------------------------------------%>
+
 <div class="collapse navbar-collapse" id="navbarResponsive">
     <ul class="navbar-nav text-uppercase ml-auto">
+
+        <%---------------------------------------------Dropdown menu (Start)------------------------------------------%>
+
         <li class="nav-item" style="margin-right: 50px">
             <a class="js-scroll-trigger"
                style="cursor: pointer;font-family: Montserrat,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';text-decoration: none;color: white">
@@ -40,22 +49,30 @@
             <div class="dropdown-content" style="padding-top: 14px;font-size: 14px">
                 <a href="landing_page(admin).jsp">Home</a>
                 <a href="user_accounts.jsp">User Accounts</a>
-                <a href="#">Subjetcs</a>
-                <a href="#">Lecturers</a>
+                <a href="subjects.jsp">Subjetcs</a>
                 <a href="#">Semesters</a>
                 <a href="#">Evaluation Criterias</a>
             </div>
         </li>
+
+        <%---------------------------------------------Dropdown menu (End)--------------------------------------------%>
+
+        <%----------------------------------------------Logout tab (Start)--------------------------------------------%>
+
         <form action="logout" method="post">
             <li class="nav-item">
                 <a id="btnLogout" class="js-scroll-trigger" href="<%= logout%>"
                    style="cursor: pointer;font-family: Montserrat,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';text-decoration: none;color: white">
                     Logout
-                    <%--<i class="fa fa-sign-out" style="margin-left: 20px"></i>--%>
                 </a>
             </li>
         </form>
+
+        <%----------------------------------------------Logout tab (End)----------------------------------------------%>
+
     </ul>
 </div>
 </div>
 </nav>
+
+<%-------------------------------------------------Navigation bar (End)-----------------------------------------------%>

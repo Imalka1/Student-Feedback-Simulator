@@ -2,8 +2,6 @@ package controller.db_controller;
 
 import db.DBConnection;
 import model.Batch;
-import model.Semester;
-import model.Student;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,55 +12,22 @@ import java.util.List;
 
 public class BatchController {
 
-    public Batch getYearAndMonthDiff(Student student) {
-        Batch batch = new Batch();
-        try {
-            Connection connection = DBConnection.getDBConnection().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("select year(curdate())-year(b.intake),month(curdate())-month(b.intake) from student s,batch b,user u where s.batchid=b.batchid && u.uid=s.uid && s.uid=?");
-            preparedStatement.setObject(1, student.getUid());
-            ResultSet rst = preparedStatement.executeQuery();
-            if (rst.next()) {
-                batch.setYearDiff(rst.getInt(1));
-                batch.setMonthDiff(rst.getInt(2));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return batch;
-    }
-
+    //---------------------------------------------Get all intakes------------------------------------------------------
     public List<Batch> getIntakes() {
-        List<Batch> batches = new ArrayList<>();
+        List<Batch> batches = new ArrayList<>();//---Creates an array object (ArrayList) to store multiple objects
         try {
-            Connection connection = DBConnection.getDBConnection().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("select batchid,name from batch");
-            ResultSet rst = preparedStatement.executeQuery();
-            while (rst.next()) {
-                Batch batch = new Batch();
-                batch.setBatchid(rst.getInt(1));
-                batch.setBatchName(rst.getString(2));
-                batches.add(batch);
+            Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
+            PreparedStatement preparedStatement = connection.prepareStatement("select batchId,name from batch");//---Prepare sql as a java object
+            ResultSet rst = preparedStatement.executeQuery();//---Execute sql and store result
+            while (rst.next()) {//---Navigate pointer to result rows until it ends
+                Batch batch = new Batch();//---Creates a batch object
+                batch.setBatchId(rst.getInt(1));//---Set table row data to batch model object
+                batch.setBatchName(rst.getString(2));//---Set table row data to batch model object
+                batches.add(batch);//---Add batch object to array object
             }
-        } catch (SQLException e) {
+        } catch (SQLException e) {//--Catch if any sql exception occurred
             e.printStackTrace();
         }
-        return batches;
-    }
-
-    public Batch getBatchNameViaUid(Student student) {
-        Batch batch = null;
-        try {
-            Connection connection = DBConnection.getDBConnection().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("select name from batch b,student s where b.batchid=s.batchid && uid=?");
-            preparedStatement.setObject(1, student.getUid());
-            ResultSet rst = preparedStatement.executeQuery();
-            if (rst.next()) {
-                batch = new Batch();
-                batch.setBatchName(rst.getString(1));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return batch;
+        return batches;//---Return batches array object with a length > 0 if batches exists, if not array object returns with a length = 0
     }
 }

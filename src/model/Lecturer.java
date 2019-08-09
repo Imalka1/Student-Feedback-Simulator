@@ -1,15 +1,15 @@
 package model;
 
 public class Lecturer {
-    private String lecId;
+    private String lecturerId;
     private String lecturerName;
 
-    public String getLecId() {
-        return lecId;
+    public String getLecturerId() {
+        return lecturerId;
     }
 
-    public void setLecId(String lecId) {
-        this.lecId = lecId;
+    public void setLecturerId(String lecturerId) {
+        this.lecturerId = lecturerId;
     }
 
     public String getLecturerName() {

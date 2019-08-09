@@ -3,7 +3,6 @@ package controller.db_controller;
 import db.DBConnection;
 import model.Degree;
 import model.Faculty;
-import model.Student;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -11,58 +10,23 @@ import java.util.List;
 
 public class DegreeController {
 
-    public Degree getDegreeData(Student student) {
-        Degree degree = null;
-        try {
-            Connection connection = DBConnection.getDBConnection().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("select f.name,d.name,d.degid from student s,faculty f,degree d where f.facid=d.facid && d.degid=s.degid && s.uid=?");
-            preparedStatement.setObject(1, student.getUid());
-            ResultSet rst = preparedStatement.executeQuery();
-            if (rst.next()) {
-                degree = new Degree();
-                degree.setFacultyName(rst.getString(1));
-                degree.setDegreeName(rst.getString(2));
-                degree.setDegid(rst.getInt(3));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return degree;
-    }
-
-    public Degree getDegreeName(Student student){
-        Degree degree = null;
-        try {
-            Connection connection = DBConnection.getDBConnection().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("select d.name from student s,degree d where d.degid=s.degid && s.uid=?");
-            preparedStatement.setObject(1, student.getUid());
-            ResultSet rst = preparedStatement.executeQuery();
-            if (rst.next()) {
-                degree = new Degree();
-                degree.setDegreeName(rst.getString(1));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return degree;
-    }
-
+    //----------------------------------------Get all degrees via faculty-----------------------------------------------
     public List<Degree> getAllDegreesViaFaculty(Faculty faculty){
-        List<Degree> degrees = new ArrayList<>();
+        List<Degree> degrees = new ArrayList<>();//---Creates an array object (ArrayList) to store multiple objects
         try {
-            Connection connection = DBConnection.getDBConnection().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("select degid,name from degree where facid=?");
-            preparedStatement.setObject(1, faculty.getFacid());
-            ResultSet rst = preparedStatement.executeQuery();
-            while (rst.next()) {
-                Degree degree = new Degree();
-                degree.setDegid(rst.getInt(1));
-                degree.setDegreeName(rst.getString(2));
-                degrees.add(degree);
+            Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
+            PreparedStatement preparedStatement = connection.prepareStatement("select degreeId,name from degree where facultyId=?");//---Prepare sql as a java object
+            preparedStatement.setObject(1, faculty.getFacultyId());//---Set values to sql object
+            ResultSet rst = preparedStatement.executeQuery();//---Execute sql and store result
+            while (rst.next()) {//---Navigate pointer to result rows until it ends
+                Degree degree = new Degree();//---Creates a degree object
+                degree.setDegreeId(rst.getInt(1));//---Set table row data to degree model object
+                degree.setDegreeName(rst.getString(2));//---Set table row data to degree model object
+                degrees.add(degree);//---Add degree object to array object
             }
-        } catch (SQLException e) {
+        } catch (SQLException e) {//--Catch if any sql exception occurred
             e.printStackTrace();
         }
-        return degrees;
+        return degrees;//---Return degrees array object with a length > 0 if degrees exists, if not array object returns with a length = 0
     }
 }
