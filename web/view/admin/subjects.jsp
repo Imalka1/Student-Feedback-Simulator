@@ -126,10 +126,10 @@
                 <tr style="font-size: 18px">
                     <th width="5%"></th>
                     <th width="10%" style="text-align: center">Subject Code</th>
-                    <th width="60%" style="text-align: center">Subject Title</th>
+                    <th width="65%" style="text-align: center">Subject Title</th>
                     <th width="5%" style="text-align: center">Credits</th>
-                    <th width="10%" style="text-align: center">Subject Allowed</th>
                     <th width="5%" style="text-align: center">Lecturer</th>
+                    <th width="5%" style="text-align: center">Allowed</th>
                     <th width="5%" style="text-align: center">View</th>
                 </tr>
                 <tbody id="subjectsBody">

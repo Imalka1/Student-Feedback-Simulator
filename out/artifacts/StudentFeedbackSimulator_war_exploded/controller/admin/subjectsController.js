@@ -65,14 +65,14 @@ function loadSubjects() {
                         '<td style="padding-right: 5px;text-align: right;font-weight: bold">' + ++count + '</td>' +
                         '<td style="text-align: center;font-weight: bold">' + obj.Subjects[i].SubjectId + '</td>' +
                         '<td style="padding-left: 5px">' + obj.Subjects[i].SubjectName + '</td>'+
-                        '<td style="text-align: center">' + obj.Subjects[i].Credits + '</td>';
+                        '<td style="text-align: center">' + obj.Subjects[i].Credits + '</td>'+
+                        '<td class="btnLecturer" style="text-align: center;cursor: pointer"><i class="fa fa-pencil"></i></td>';
                     if (obj.Subjects[i].Allowed === true) {
                         subjects += '<td class="btnChangeAllow" style="text-align: center;cursor: pointer"><i class="fa fa-check" style="color: green"></i></td>'
                     } else {
                         subjects += '<td class="btnChangeAllow" style="text-align: center;cursor: pointer"><i class="fa fa-times" style="color: red"></i></td>'
                     }
                     subjects +=
-                        '<td class="btnViewSubject" style="text-align: center;cursor: pointer"><i class="fa fa-pencil"></i></td>' +
                         '<td class="btnViewSubject" style="text-align: center;cursor: pointer"><i class="fa fa-search"></i></td>' +
                         '</tr>';
                 }
@@ -249,3 +249,9 @@ function setTextFieldsEmpty() {
     $('#credits').val('')
     setFieldsToNewSubject();
 }
+
+//----------------------------------------------------Go to lecturer----------------------------------------------------
+
+$(document).on('click', '.btnLecturer', function () {
+    document.location.href = "lecturer.jsp?subjectId=" + $(this).parent().children().eq(1).html();
+})
