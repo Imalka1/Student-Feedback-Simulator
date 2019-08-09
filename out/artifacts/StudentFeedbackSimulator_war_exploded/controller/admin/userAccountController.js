@@ -104,6 +104,7 @@ $('#btnAdd').click(function () {
             success: function (response) {
                 if (JSON.parse(response) == true) {
                     loadStudents();
+                    setTextFieldsEmpty();
                     $('#response').html('<div class="alert alert-success" style="text-align: center;font-weight: bold">Student has been submitted successfully</div>')
                 } else {
                     $('#response').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Failed to add student</div>')
@@ -137,6 +138,8 @@ $('#btnUpdate').click(function () {
             success: function (response) {
                 if (JSON.parse(response) == true) {
                     loadStudents();
+                    setTextFieldsEmpty();
+                    setFieldsToNewStudent();
                     $('#response').html('<div class="alert alert-success" style="text-align: center;font-weight: bold">Student has been updated successfully</div>')
                 } else {
                     $('#response').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Failed to update student</div>')
@@ -164,9 +167,9 @@ $('#btnDelete').click(function () {
             success: function (response) {
                 if (JSON.parse(response) == true) {
                     loadStudents();
-                    $('#response').html('<div class="alert alert-success" style="text-align: center;font-weight: bold">Student has been deleted successfully</div>');
                     setTextFieldsEmpty();
                     setFieldsToNewStudent();
+                    $('#response').html('<div class="alert alert-success" style="text-align: center;font-weight: bold">Student has been deleted successfully</div>');
                 } else {
                     $('#response').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Failed to delete student</div>')
                 }

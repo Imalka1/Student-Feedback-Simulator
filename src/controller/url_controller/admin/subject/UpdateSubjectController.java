@@ -1,10 +1,9 @@
-package controller.url_controller.student;
+package controller.url_controller.admin.subject;
 
-import controller.db_controller.StudentController;
-import controller.db_controller.UserController;
+import controller.db_controller.SubjectController;
+import controller.db_controller.SubjectDegreeController;
 import db.DBConnection;
-import model.Student;
-import model.User;
+import model.Subject;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,21 +14,16 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-@WebServlet(urlPatterns = "/update_student")//---URL extension which mapped to this servlet object
-
-//-------------Update student (This process update user and student simultaneously using transaction process)-----------
-public class UpdateStudentController extends HttpServlet {
+@WebServlet(urlPatterns = "/update_subject")
+public class UpdateSubjectController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         //---------------------------------Retrieve data which submitted to the server----------------------------------
         int degreeId = Integer.parseInt(req.getParameter("degreeId").trim());
-        int batchId = Integer.parseInt(req.getParameter("batchId").trim());
         int semesterId = Integer.parseInt(req.getParameter("semesterId").trim());
-        String regNo = req.getParameter("regNo").trim();
-        String studetName = req.getParameter("studetName").trim();
-        String nationalId = req.getParameter("nationalId").trim();
-        String emailAddress = req.getParameter("emailAddress").trim();
+        int credits = Integer.parseInt(req.getParameter("credits").trim());
+        String subjectId = req.getParameter("subjectId").trim();
+        String subjectTitle = req.getParameter("subjectTitle").trim();
 
         Connection connection = null;
         try {
@@ -37,22 +31,20 @@ public class UpdateStudentController extends HttpServlet {
             connection.setAutoCommit(false);//---Temporary disable automatically commit(write) data on database
 
             //--------------------------------------Set data to model object--------------------------------------------
-            User user = new User();
-            user.setuId(regNo);
-            user.setEmailAddress(emailAddress);
+            Subject subject = new Subject();
+            subject.setSubjectId(subjectId);
+            subject.setSemesterId(semesterId);
+            subject.setSubjectName(subjectTitle);
+            subject.setCredits(credits);
 
-            if (new UserController().updateEmail(user)) {//---Call the db server (UserController(db_controller)) to update user email
+            if (new SubjectController().updateSubject(subject)) {//---Call the db server (SubjectController(db_controller)) to add subject
 
                 //--------------------------------------Set data to model object----------------------------------------
-                Student student = new Student();
-                student.setuId(regNo);
-                student.setStudentName(studetName);
-                student.setNationalId(nationalId);
-                student.setDegreeId(degreeId);
-                student.setBatchId(batchId);
-                student.setSemesterId(semesterId);
+                Subject subjectDegree = new Subject();
+                subjectDegree.setSubjectId(subjectId);
+                subjectDegree.setDegreeId(degreeId);
 
-                if (new StudentController().updateStudent(student)) {//---Call the db server (StudentController(db_controller)) to update student
+                if (new SubjectDegreeController().updateSubjectDegree(subjectDegree)) {//---Call the db server (StudentController(db_controller)) to add student
                     connection.commit();//---If all data were sent for both tables, then commit (write) data on both tables
                     resp.getWriter().println(true);//---Reply / Response
                     return;
@@ -62,6 +54,7 @@ public class UpdateStudentController extends HttpServlet {
             } else {
                 connection.rollback();//---If user insertion false, this removes user data on database
             }
+
         } catch (SQLException e) {//---Catch if any sql exception occurred
             e.printStackTrace();
         } finally {//---Runs if any error occurred or not
@@ -71,6 +64,6 @@ public class UpdateStudentController extends HttpServlet {
                 e.printStackTrace();
             }
         }
-        resp.getWriter().println(false);
+        resp.getWriter().println(false);//---Reply / Response
     }
 }

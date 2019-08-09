@@ -1,4 +1,4 @@
-package controller.url_controller.admin;
+package controller.url_controller.admin.subject;
 
 import controller.db_controller.SubjectController;
 import model.Semester;
@@ -31,10 +31,11 @@ public class LoadSubjectsController extends HttpServlet {
             JSONObject subjectJson = new JSONObject();//---Creates a JSON object {}
             subjectJson.put("SubjectId", subjectObj.getSubjectId());//---Add data to JSON {"SubjectId":1}
             subjectJson.put("SubjectName", subjectObj.getSubjectName());//---Add data to JSON {"SubjectId":1,"SubjectName":"Programming"}
-            subjectJson.put("Allowed", subjectObj.isAllowed());//---Add data to JSON {"SubjectId":1,"SubjectName":"Programming","Allowed":true}
-            subjectsJson.add(subjectJson);//---Add JSON object to JSON array [{"SubjectId":"1","SubjectName":"Programming","Allowed":"true"},{"SubjectId":"2","SubjectName":"Database","Allowed":"true"}]
+            subjectJson.put("Credits", subjectObj.getCredits());//---Add data to JSON {"SubjectId":1,"SubjectName":"Programming","Credits":2}
+            subjectJson.put("Allowed", subjectObj.isAllowed());//---Add data to JSON {"SubjectId":1,"SubjectName":"Programming","Credits":2,"Allowed":true}
+            subjectsJson.add(subjectJson);//---Add JSON object to JSON array [{"SubjectId":"1","SubjectName":"Programming","Credits":2,"Allowed":"true"},{"SubjectId":"2","SubjectName":"Database","Credits":2,"Allowed":"true"}]
         }
-        obj.put("Subjects", subjectsJson);//---Add JSON array to JSON object {"Subjects":[{"SubjectId":1,"SubjectName":"Programming","Allowed":true},{"SubjectId":2,"SubjectName":"Database","Allowed":true}]}
+        obj.put("Subjects", subjectsJson);//---Add JSON array to JSON object {"Subjects":[{"SubjectId":1,"SubjectName":"Programming","Credits":2,"Allowed":true},{"SubjectId":2,"SubjectName":"Database","Credits":2,"Allowed":true}]}
         resp.getWriter().println(obj.toJSONString());//---Print and reply JSON as a text
     }
 }
