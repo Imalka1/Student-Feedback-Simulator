@@ -137,7 +137,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="19" />
-          <entry key="java" value="11587" />
+          <entry key="java" value="11597" />
           <entry key="js" value="6767" />
           <entry key="jsp" value="9066" />
         </counts>
@@ -145,7 +145,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="2" />
-          <entry key="JAVA" value="11541" />
+          <entry key="JAVA" value="11551" />
           <entry key="JSP" value="9066" />
           <entry key="JavaScript" value="6764" />
           <entry key="PLAIN_TEXT" value="19" />
@@ -160,7 +160,7 @@
           <entry key="java" value="529" />
           <entry key="jpg" value="1" />
           <entry key="js" value="123" />
-          <entry key="jsp" value="318" />
+          <entry key="jsp" value="319" />
           <entry key="sql" value="1" />
           <entry key="xml" value="2" />
         </counts>
@@ -171,7 +171,7 @@
           <entry key="HTML" value="1" />
           <entry key="Image" value="1" />
           <entry key="JAVA" value="529" />
-          <entry key="JSP" value="318" />
+          <entry key="JSP" value="319" />
           <entry key="JavaScript" value="123" />
           <entry key="SQL" value="1" />
           <entry key="XML" value="2" />
@@ -205,11 +205,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/db_controller/SubjectDegreeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-22">
-              <caret line="19" selection-start-line="19" selection-end-line="19" />
+            <state relative-caret-position="607">
+              <caret line="36" column="64" selection-start-line="36" selection-start-column="64" selection-end-line="36" selection-end-column="64" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -220,8 +220,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/db_controller/SubjectController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-433">
+            <state relative-caret-position="128">
               <caret line="135" column="35" selection-start-line="135" selection-start-column="35" selection-end-line="135" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/view/admin/header(admin).jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="51" column="51" selection-start-line="51" selection-start-column="51" selection-end-line="51" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -315,13 +324,11 @@
         <option value="$PROJECT_DIR$/web/controller/student/marksController.js" />
         <option value="$PROJECT_DIR$/src/controller/db_controller/StudentController.java" />
         <option value="$PROJECT_DIR$/web/view/admin/subject.jsp" />
-        <option value="$PROJECT_DIR$/web/view/admin/header(admin).jsp" />
         <option value="$PROJECT_DIR$/web/view/admin/results.jsp" />
         <option value="$PROJECT_DIR$/src/controller/url_controller/admin/LoadSubjectsController.java" />
         <option value="$PROJECT_DIR$/src/controller/url_controller/admin/ChangeAllow.java" />
         <option value="$PROJECT_DIR$/web/view/student/mark_sheet.jsp" />
         <option value="$PROJECT_DIR$/src/controller/db_controller/UserController.java" />
-        <option value="$PROJECT_DIR$/src/controller/db_controller/SubjectDegreeController.java" />
         <option value="$PROJECT_DIR$/src/controller/url_controller/admin/subject/LoadSubjectsController.java" />
         <option value="$PROJECT_DIR$/web/view/admin/subjects.jsp" />
         <option value="$PROJECT_DIR$/src/controller/url_controller/admin/subject/AddSubjectController.java" />
@@ -330,6 +337,8 @@
         <option value="$PROJECT_DIR$/src/controller/url_controller/admin/subject/UpdateSubjectController.java" />
         <option value="$PROJECT_DIR$/src/controller/url_controller/admin/subject/DeleteSubjectController.java" />
         <option value="$PROJECT_DIR$/src/controller/db_controller/SubjectController.java" />
+        <option value="$PROJECT_DIR$/src/controller/db_controller/SubjectDegreeController.java" />
+        <option value="$PROJECT_DIR$/web/view/admin/header(admin).jsp" />
       </list>
     </option>
   </component>
@@ -354,7 +363,7 @@
   <component name="PhpServers">
     <servers />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-10" />
     <option name="y" value="-10" />
     <option name="width" value="1940" />
@@ -511,7 +520,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1565373363815" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1565373765608" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/StudentFeedbackSimulator(Part 1)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -697,12 +706,12 @@
       <workItem from="1565196970676" duration="1000" />
       <workItem from="1565196980989" duration="3120000" />
       <workItem from="1565269437870" duration="3127000" />
-      <workItem from="1565362611489" duration="8157000" />
+      <workItem from="1565362611489" duration="8605000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="636513000" />
+    <option name="totallyTimeSpent" value="636961000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -885,13 +894,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="401">
           <caret line="329" selection-start-line="329" selection-end-line="333" selection-end-column="137" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/view/admin/header(admin).jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="867">
-          <caret line="51" column="37" selection-start-line="51" selection-start-column="37" selection-end-line="51" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -1131,20 +1133,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/SubjectDegreeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="607">
+          <caret line="36" column="64" selection-start-line="36" selection-start-column="64" selection-end-line="36" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/db_controller/SubjectController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-433">
+        <state relative-caret-position="128">
           <caret line="135" column="35" selection-start-line="135" selection-start-column="35" selection-end-line="135" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/SubjectDegreeController.java">
+    <entry file="file://$PROJECT_DIR$/web/view/admin/header(admin).jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-22">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="171">
+          <caret line="51" column="51" selection-start-line="51" selection-start-column="51" selection-end-line="51" selection-end-column="51" />
         </state>
       </provider>
     </entry>
