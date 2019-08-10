@@ -218,7 +218,6 @@
     <%---------------------------------------------Submit marks button (End)------------------------------------------%>
 
 </div>
-</div>
 
 <%-------------------------------------------Javascript controller of this page---------------------------------------%>
 <script src="/controller/student/marksController.js"></script>

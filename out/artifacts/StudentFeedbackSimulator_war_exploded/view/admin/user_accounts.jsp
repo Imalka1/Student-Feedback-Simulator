@@ -190,8 +190,6 @@
         </div>
     </div>
 </div>
-</div>
-<%--</div>--%>
 
 <script src="/controller/admin/userAccountController.js"></script>
 <jsp:include page="../footer.jsp"/>

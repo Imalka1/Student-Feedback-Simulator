@@ -142,7 +142,6 @@
         </div>
     </div>
 </section>
-</div>
 
 <%-------------------------------------------Javascript controller of this page---------------------------------------%>
 <script src="/controller/student/landingPage(student)Controller.js"></script>

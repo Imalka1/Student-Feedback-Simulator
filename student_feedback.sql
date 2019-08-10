@@ -76,7 +76,7 @@ constraint foreign key(echId) references evaluation_criteria_heading(echId) on d
 
 create table lecturer(
 lecturerId varchar(100),
-name varchar(100),
+lecturer_name varchar(100),
 constraint primary key(lecturerId)
 );
 
@@ -207,7 +207,7 @@ VALUES
 
 INSERT INTO `studentfeedback`.`lecturer`
 (`lecturerId`,
-`name`)
+`lecturer_name`)
 VALUES
 ('L001','Kamal Perera'),('L002','Nimal Silva');
 
@@ -302,6 +302,12 @@ SELECT `subject_lecturer`.`subjectLecturerId`,
     `subject_lecturer`.`current`
 FROM `studentfeedback`.`subject_lecturer`;
 
+SELECT `subject`.`subjectId`,
+    `subject`.`semesterId`,
+    `subject`.`title`,
+    `subject`.`credits`,
+    `subject`.`allowed`
+FROM `studentfeedback`.`subject`;
 
 select emailAddress from user where uId='IT123';
 

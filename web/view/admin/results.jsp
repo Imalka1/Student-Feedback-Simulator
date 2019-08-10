@@ -98,7 +98,6 @@
         </div>
     </div>
 </div>
-</div>
 
 <script src="/controller/admin/resultsController.js"></script>
 <jsp:include page="../footer.jsp"/>

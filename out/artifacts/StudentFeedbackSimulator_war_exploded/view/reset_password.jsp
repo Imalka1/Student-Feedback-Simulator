@@ -92,7 +92,6 @@
     <%-------------------------Submit data to server (ResetController(url_controller)) (End)--------------------------%>
 
 </div>
-</div>
 
 <%-------------------------------------------Javascript controller of this page---------------------------------------%>
 <script src="/controller/resetPasswordController.js"></script>

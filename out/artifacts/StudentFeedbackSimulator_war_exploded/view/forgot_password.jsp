@@ -117,7 +117,8 @@
                         <input class="form-control" type="text" id="userId" name="userId">
                     </div>
                     <div class="col-2">
-                        <button id="btnSendEmail" type="button" class="btn" style="background-color: #ffbf05;width: 100%" disabled>
+                        <button id="btnSendEmail" type="button" class="btn"
+                                style="background-color: #ffbf05;width: 100%" disabled>
                             Send
                         </button>
                     </div>
@@ -167,7 +168,6 @@
             <%-----------------------Submit data to server (ForgotController(url_controller)) (End)-------------------%>
 
         </div>
-    </div>
 
-    <script src="/controller/forgotPasswordController.js"></script>
+        <script src="/controller/forgotPasswordController.js"></script>
 <jsp:include page="footer.jsp"/>

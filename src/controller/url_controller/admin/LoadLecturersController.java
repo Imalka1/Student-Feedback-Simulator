@@ -3,6 +3,7 @@ package controller.url_controller.admin;
 import controller.db_controller.SubjectLecturerController;
 import model.Lecturer;
 import model.Subject;
+import model.SubjectLecturer;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -23,17 +24,18 @@ public class LoadLecturersController extends HttpServlet {
         Subject subject = new Subject();
         subject.setSubjectId(req.getParameter("subjectId"));
 
-        List<Lecturer> allLecturersViaSubject = new SubjectLecturerController().getAllLecturersViaSubject(subject);//---Call the db server (SubjectLecturerController(db_controller)) to get all lecturers via subject
+        List<SubjectLecturer> allLecturersViaSubject = new SubjectLecturerController().getAllLecturersViaSubject(subject);//---Call the db server (SubjectLecturerController(db_controller)) to get all lecturers via subject
 
         JSONObject obj = new JSONObject();//---Creates a JSON object {}
         JSONArray lecturersJson = new JSONArray();//---Creates a JSON array to store JSON objects []
-        for (Lecturer lecturer : allLecturersViaSubject) {
+        for (SubjectLecturer subjectLecturer : allLecturersViaSubject) {
             JSONObject lecturerJson = new JSONObject();//---Creates a JSON object {}
-            lecturerJson.put("LecturerId", lecturer.getLecturerId());//---Add data to JSON {"LecturerId":"1"}
-            lecturerJson.put("LecturerName", lecturer.getLecturerName());//---Add data to JSON {"LecturerId":"1","LecturerName":"Kamal Silva"}
-            lecturersJson.add(lecturerJson);//---Add JSON object to JSON array [{"LecturerId":"1","LecturerName":"Kamal Silva"},{"LecturerId":"2","LecturerName":"Nimal Silva"}]
+            lecturerJson.put("LecturerId", subjectLecturer.getLecturerId());//---Add data to JSON {"LecturerId":"1"}
+            lecturerJson.put("LecturerName", subjectLecturer.getLecturerName());//---Add data to JSON {"LecturerId":"1","LecturerName":"Kamal Silva"}
+            lecturerJson.put("Current", subjectLecturer.isCurrent());//---Add data to JSON {"LecturerId":"1","LecturerName":"Kamal Silva","Current":true}
+            lecturersJson.add(lecturerJson);//---Add JSON object to JSON array [{"LecturerId":"1","LecturerName":"Kamal Silva","Current":true},{"LecturerId":"2","LecturerName":"Nimal Silva","Current":true}]
         }
-        obj.put("Lecturers", lecturersJson);//---Add JSON array to JSON object {"Lecturers":[{"LecturerId":"1","LecturerName":"Kamal Silva"},{"LecturerId":"2","LecturerName":"Nimal Silva"}]}
+        obj.put("Lecturers", lecturersJson);//---Add JSON array to JSON object {"Lecturers":[{"LecturerId":"1","LecturerName":"Kamal Silva","Current":true},{"LecturerId":"2","LecturerName":"Nimal Silva","Current":true}]}
         resp.getWriter().println(obj.toJSONString());//---Print and reply JSON as a text
     }
 }

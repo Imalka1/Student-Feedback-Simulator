@@ -3,7 +3,6 @@ package model;
 public class Subject {
     private String subjectId;
     private int subjectLecturerId;
-    private int degreeId;
     private int semesterId;
     private String subjectName;
     private int credits;
@@ -40,14 +39,6 @@ public class Subject {
 
     public void setSubjectLecturerId(int subjectLecturerId) {
         this.subjectLecturerId = subjectLecturerId;
-    }
-
-    public int getDegreeId() {
-        return degreeId;
-    }
-
-    public void setDegreeId(int degreeId) {
-        this.degreeId = degreeId;
     }
 
     public int getSemesterId() {

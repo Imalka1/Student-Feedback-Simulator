@@ -4,6 +4,7 @@ import controller.db_controller.SubjectController;
 import controller.db_controller.SubjectDegreeController;
 import db.DBConnection;
 import model.Subject;
+import model.SubjectDegree;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -40,7 +41,7 @@ public class UpdateSubjectController extends HttpServlet {
             if (new SubjectController().updateSubject(subject)) {//---Call the db server (SubjectController(db_controller)) to add subject
 
                 //--------------------------------------Set data to model object----------------------------------------
-                Subject subjectDegree = new Subject();
+                SubjectDegree subjectDegree = new SubjectDegree();
                 subjectDegree.setSubjectId(subjectId);
                 subjectDegree.setDegreeId(degreeId);
 
