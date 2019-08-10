@@ -66,8 +66,8 @@ public class SubjectLecturerController {
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
             PreparedStatement preparedStatement = connection.prepareStatement("" +
-                    "insert into subject_lecturer (subjectId,lecturerId) " +
-                    "values (?,?)");//---Prepare sql as a java object
+                    "insert into subject_lecturer (subjectId,lecturerId,current) " +
+                    "values (?,?,true)");//---Prepare sql as a java object
             preparedStatement.setObject(1, subjectLecturer.getSubjectId());//---Set values to sql object
             preparedStatement.setObject(2, subjectLecturer.getLecturerId());//---Set values to sql object
             if (preparedStatement.executeUpdate() > 0) {//---Execute sql and returns whether it was executed or not

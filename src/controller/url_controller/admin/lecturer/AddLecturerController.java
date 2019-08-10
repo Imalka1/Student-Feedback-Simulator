@@ -43,12 +43,19 @@ public class AddLecturerController extends HttpServlet {
                 SubjectLecturer subjectLecturer = new SubjectLecturer();
                 subjectLecturer.setSubjectId(subjectId);
                 subjectLecturer.setLecturerId(lecturerId);
-                subjectLecturer.setCurrent(true);
 
-                if (new SubjectLecturerController().addSubjectLecturer(subjectLecturer)) {//---Call the db server (StudentController(db_controller)) to add student
-                    connection.commit();//---If all data were sent for both tables, then commit (write) data on both tables
-                    resp.getWriter().println(true);//---Reply / Response
-                    return;
+                if (new SubjectLecturerController().addSubjectLecturer(subjectLecturer)) {
+                    if (new SubjectLecturerController().setAllSubjectLecturersCurrentStatusToFalse(subjectLecturer)) {//---Call the db server (SubjectLecturerController(db_controller)) to add student
+                        if (new SubjectLecturerController().setSubjectLecturersCurrentStatusToTrue(subjectLecturer)) {//---Call the db server (SubjectLecturerController(db_controller)) to add student
+                            connection.commit();//---If all data were sent for both tables, then commit (write) data on both tables
+                            resp.getWriter().println(true);//---Reply / Response
+                            return;
+                        }else{
+                            connection.rollback();//---If student insertion false, this removes both student and user data on database
+                        }
+                    } else {
+                        connection.rollback();//---If student insertion false, this removes both student and user data on database
+                    }
                 } else {
                     connection.rollback();//---If student insertion false, this removes both student and user data on database
                 }
