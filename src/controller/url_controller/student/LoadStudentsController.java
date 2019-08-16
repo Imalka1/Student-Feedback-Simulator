@@ -1,4 +1,4 @@
-package controller.url_controller.admin.student;
+package controller.url_controller.student;
 
 import controller.db_controller.StudentController;
 import model.Student;

@@ -251,5 +251,5 @@ function setTextFieldsEmpty() {
 //----------------------------------------------------Go to lecturer----------------------------------------------------
 
 $(document).on('click', '.btnLecturer', function () {
-    document.location.href = "lecturer.jsp?subjectId=" + $(this).parent().children().eq(1).html() + "&subjectTitle=" + $(this).parent().children().eq(2).html();
+    document.location.href = "/view/admin/lecturer.jsp?subjectId=" + $(this).parent().children().eq(1).html() + "&subjectTitle=" + $(this).parent().children().eq(2).html();
 })

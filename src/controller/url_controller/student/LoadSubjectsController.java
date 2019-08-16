@@ -1,4 +1,4 @@
-package controller.url_controller.admin.subject;
+package controller.url_controller.student;
 
 import controller.db_controller.SubjectController;
 import model.Semester;

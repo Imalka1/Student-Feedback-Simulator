@@ -194,7 +194,7 @@
             //---------------------------------------Navigate to forgot password page-------------------------------------------
 
             $('#btnForgotPassword').click(function () {
-                document.location.href = "view/forgot_password.jsp";
+                document.location.href = "/view/forgot_password.jsp";
             })
         </script>
 
