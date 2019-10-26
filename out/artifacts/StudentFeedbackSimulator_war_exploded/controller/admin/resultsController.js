@@ -131,9 +131,16 @@ function loadMarks() {
                         if (parseInt(obj[j].Marks[i].StudentsCount) == 0) {
                             tableData += '<td style="text-align: center">0</td></tr>';
                         } else {
-                            tableData += '<td style="text-align: center">' + parseFloat(parseInt(obj[j].Marks[i].Marks) / parseInt(obj[j].Marks[i].StudentsCount)).toFixed(2) + '</td></tr>';
+                            tableData += '<td style="text-align: center">' + parseFloat(parseInt(obj[j].Marks[i].Marks) / parseInt(obj[j].Marks[i].StudentsCount)).toFixed(2) + '</td>';
                         }
                     }
+                    tableData +=
+                        '<tr>' +
+                        '<td></td>' +
+                        '<td colspan="2" style="padding-left: 5px">Average For ' + obj[j].EvaluationCriteriaHeading + '</td>' +
+                        '<td></td>' +
+                        '<td></td>' +
+                        '</tr>'
                 }
                 $('#marksBody').html(tableData);
             },
@@ -144,6 +151,10 @@ function loadMarks() {
     );
 }
 
-$('#btnGraph').click(function () {
-    document.location.href = "graph.jsp";
+$('#btnGraph1').click(function () {
+    document.location.href = 'graph.jsp?graph=ech&subjectId=' + $('#subjects').val() + '&lecturerId=' + $('#lecturers').val() + '&dateOfSubmission=' + $('#dates').val();
+})
+
+$('#btnGraph2').click(function () {
+    document.location.href = 'graph.jsp?graph=ec&subjectId=' + $('#subjects').val() + '&lecturerId=' + $('#lecturers').val() + '&dateOfSubmission=' + $('#dates').val();
 })

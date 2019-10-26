@@ -40,6 +40,8 @@
 
 <%-------------------------------------------------Navigation bar (End)-----------------------------------------------%>
 
+<div id="chart" style="margin-top: 100px;margin-left: 20px"></div>
+
 <%-------------------------------------------Javascript controller of this page---------------------------------------%>
 <script src="/controller/admin/graphController.js"></script>
 

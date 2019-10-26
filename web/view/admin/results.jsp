@@ -79,9 +79,15 @@
     <%--------------------------------------------Submit marks button (Start)-----------------------------------------%>
 
     <div class="row">
-        <div class="col-12">
+        <div class="col-6">
             <div class="col-center" style="width: fit-content;margin: auto">
-                <button id="btnGraph" class="btn" style="background-color: #ffbf05;margin-bottom: 50px">Show Graph
+                <button id="btnGraph1" class="btn" style="background-color: #ffbf05;margin-bottom: 50px">Show Graph (Criteria Heading)
+                </button>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="col-center" style="width: fit-content;margin: auto">
+                <button id="btnGraph2" class="btn" style="background-color: #ffbf05;margin-bottom: 50px">Show Graph (Criteria)
                 </button>
             </div>
         </div>
