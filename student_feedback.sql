@@ -52,11 +52,18 @@ constraint primary key(adminid),
 constraint foreign key(uId) references user(uId) on delete cascade
 );
 
+create table evaluation_criteria_heading(
+echId int,
+text varchar(100),
+constraint primary key(echId)
+);
+
 create table evaluation_criteria(
 ecId int auto_increment,
+echId int,
 text varchar(100),
-criteriaHeading boolean,
-constraint primary key(ecId)
+constraint primary key(ecId),
+constraint foreign key(echId) references evaluation_criteria_heading(echId) on delete cascade
 );
 
 create table lecturer(
@@ -146,38 +153,43 @@ INSERT INTO `studentfeedback`.`admin`
 VALUES
 ('ADMIN789','Nimal Silva');
 
-INSERT INTO `studentfeedback`.`evaluation_criteria`
-(`text`,
-`criteriaHeading`)
+INSERT INTO `studentfeedback`.`evaluation_criteria_heading`
+(`echId`,
+`text`)
 VALUES
-('Enthusiasm',true),
-('Lecturer was punctual',false),
-('Organization',true),
-('Lecturer was prepared for lectures',false),
-('Lectureres were well structured',false),
-('Details of course content and learning outcomes were provided',false),
-('Lecturer student interaction',true),
-('Student were encouraged to ask questions',false),
-('Lecturer appreciated students participation',false),
-('Student were motivated to learn',false),
-('Attention was given to the students individually',false),
-('Feedback provided for the students questions were understood',false),
-('Task Organization',true),
-('Speed of the lecturer was reasonable',false),
-('Usage of teaching aid(PPT, video clips, white board, etc)',false),
-('Usage of textbooks, websites, periodicals, etc. were recommended',false),
-('Worked examples/tutorials were provided',false),
-('Sufficient time was provided for tutorials/worked examples',false),
-('Lecturer advised regarding examinations',false),
-('Feedback on continous assignments/tutorials were helpful',false),
-('Clarity',true),
-('Black/white board or powerpoint presentations were clear',false),
-('Lecturer was sufficiently audible',false),
-('Lecturer was clear when communicating with students',false),
-('Learning Experiences',true),
-('Lecture was good',false),
-('Course content',false),
-('Module/subject was understood',false);
+(1,'Enthusiasm'),
+(2,'Organization'),
+(3,'Lecturer student interaction'),
+(4,'Task Organization'),
+(5,'Clarity'),
+(6,'Learning Experiences');
+
+INSERT INTO `studentfeedback`.`evaluation_criteria`
+(`echId`,
+`text`)
+VALUES
+(1,'Lecturer was punctual'),
+(2,'Lecturer was prepared for lectures'),
+(2,'Lectureres were well structured'),
+(2,'Details of course content and learning outcomes were provided'),
+(3,'Student were encouraged to ask questions'),
+(3,'Lecturer appreciated students participation'),
+(3,'Student were motivated to learn'),
+(3,'Attention was given to the students individually'),
+(3,'Feedback provided for the students questions were understood'),
+(4,'Speed of the lecturer was reasonable'),
+(4,'Usage of teaching aid(PPT, video clips, white board, etc)'),
+(4,'Usage of textbooks, websites, periodicals, etc. were recommended'),
+(4,'Worked examples/tutorials were provided'),
+(4,'Sufficient time was provided for tutorials/worked examples'),
+(4,'Lecturer advised regarding examinations'),
+(4,'Feedback on continous assignments/tutorials were helpful'),
+(5,'Black/white board or powerpoint presentations were clear'),
+(5,'Lecturer was sufficiently audible'),
+(5,'Lecturer was clear when communicating with students'),
+(6,'Lecture was good'),
+(6,'Course content'),
+(6,'Module/subject was understood');
 
 INSERT INTO `studentfeedback`.`lecturer`
 (`lecturerId`,

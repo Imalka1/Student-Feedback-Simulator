@@ -1,10 +1,18 @@
 package model;
 
 public class Criteria {
+    private int echId;
     private int ecId;
     private String criteriaHeadingName;
     private String criteriaName;
-    private boolean criteriaHeading;
+
+    public int getEchId() {
+        return echId;
+    }
+
+    public void setEchId(int echId) {
+        this.echId = echId;
+    }
 
     public int getEcId() {
         return ecId;
@@ -12,14 +20,6 @@ public class Criteria {
 
     public void setEcId(int ecId) {
         this.ecId = ecId;
-    }
-
-    public boolean isCriteriaHeading() {
-        return criteriaHeading;
-    }
-
-    public void setCriteriaHeading(boolean criteriaHeading) {
-        this.criteriaHeading = criteriaHeading;
     }
 
     public String getCriteriaHeadingName() {

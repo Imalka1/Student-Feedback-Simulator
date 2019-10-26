@@ -38,7 +38,7 @@ public class MarkController {
             Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
             PreparedStatement preparedStatement = connection.prepareStatement("" +
                     "select text,sum(marks),count(marks) " +
-                    "from (select * from evaluation_criteria where criteriaHeading=false) as evaluation_criteria " +
+                    "from evaluation_criteria " +
                     "left join marks on evaluation_criteria.ecId=marks.ecId && dateOfSubmission=? && " +
                     "subjectLecturerId=(select subjectLecturerId from subject_lecturer where lecturerId=? && subjectId=?) " +
                     "group by evaluation_criteria.ecid asc");//---Prepare sql as a java object

@@ -141,18 +141,22 @@
                 <%
                     {
                         int value = 0;
-                        //--------Call the server (CriteriaController(db_controller)) to retrieve criterias-------------
-                        List<Criteria> criterias = new CriteriaController().getCriterias();
-                        for (Criteria criteria : criterias) {
-                            if (criteria.isCriteriaHeading()) {
+                        //--------Call the server (CriteriaController(db_controller)) to retrieve criteria heads--------
+                        List<Criteria> criteriaHeadings = new CriteriaController().getCriteriaHeadings();
+                        for (Criteria criteriaHeadDTO : criteriaHeadings) {
                 %>
                 <tr>
-                    <td colspan="7" style="font-weight: bold">
-                        <%= criteria.getCriteriaName()%>
+                    <td colspan="7" class="padding_5_txt"
+                        style="font-weight: 600"><%= criteriaHeadDTO.getCriteriaHeadingName()%>
                     </td>
                 </tr>
                 <%
-                } else {
+                    {
+                        //--------Call the server (CriteriaController(db_controller)) to retrieve criterias-------------
+                        Criteria criteriaObj = new Criteria();
+                        criteriaObj.setEchId(criteriaHeadDTO.getEchId());
+                        List<Criteria> criterias = new CriteriaController().getCriterias(criteriaObj);
+                        for (Criteria criteria : criterias) {
                 %>
                 <tr id="tr<%= ++value%>" class="trMarks">
                     <td style="text-align: right;padding-right: 5px"><%= value%>
@@ -167,6 +171,7 @@
                     <td class="tdMark" style="text-align: center;cursor: pointer">1</td>
                 </tr>
                 <%
+                                }
                             }
                         }
                     }
