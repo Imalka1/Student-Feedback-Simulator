@@ -192,30 +192,30 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="100" />
-          <entry key="js" value="27" />
-          <entry key="jsp" value="48" />
+          <entry key="java" value="101" />
+          <entry key="js" value="29" />
+          <entry key="jsp" value="50" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="100" />
-          <entry key="JSP" value="48" />
-          <entry key="JavaScript" value="27" />
+          <entry key="JAVA" value="101" />
+          <entry key="JSP" value="50" />
+          <entry key="JavaScript" value="29" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="169" />
-          <entry key="js" value="181" />
+          <entry key="java" value="361" />
+          <entry key="js" value="231" />
           <entry key="jsp" value="453" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="165" />
+          <entry key="JAVA" value="357" />
           <entry key="JSP" value="453" />
-          <entry key="JavaScript" value="181" />
+          <entry key="JavaScript" value="231" />
           <entry key="SQL" value="4" />
         </counts>
       </usages-collector>
@@ -223,29 +223,56 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/controller/url_controller/admin/mark_sheet/LoadMarksController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/controller/admin/resultsController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="96">
+              <caret line="121" column="39" selection-start-line="121" selection-start-column="39" selection-end-line="121" selection-end-column="39" />
+              <folding>
+                <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/view/student/mark_sheet.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="578">
+              <caret line="178" column="20" selection-start-line="178" selection-start-column="20" selection-end-line="178" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controller/db_controller/MarkController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="53" column="53" selection-start-line="53" selection-start-column="53" selection-end-line="53" selection-end-column="53" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/view/admin/results.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="524">
+            <state relative-caret-position="1139">
               <caret line="83" column="36" selection-start-line="83" selection-start-column="36" selection-end-line="83" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/url_controller/admin/mark_sheet/LoadMarksController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="26" column="78" lean-forward="true" selection-start-line="26" selection-start-column="78" selection-end-line="26" selection-end-column="78" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/controller/db_controller/MarkController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="34" column="22" selection-start-line="34" selection-start-column="22" selection-end-line="34" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -267,6 +294,7 @@
       <find>background-image</find>
       <find>img</find>
       <find>subjects</find>
+      <find>console</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -275,8 +303,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/controller/url_controller/admin/subject/DeleteSubjectController.java" />
-        <option value="$PROJECT_DIR$/web/view/reset_password.jsp" />
         <option value="$PROJECT_DIR$/web/view/forgot_password.jsp" />
         <option value="$PROJECT_DIR$/web/view/admin/landing_page(admin).jsp" />
         <option value="$PROJECT_DIR$/src/controller/db_controller/LecturerController.java" />
@@ -301,7 +327,6 @@
         <option value="$PROJECT_DIR$/web/view/admin/header(admin).jsp" />
         <option value="$PROJECT_DIR$/web/controller/student/landingPage(student)Controller.js" />
         <option value="$PROJECT_DIR$/web/controller/admin/subjectsController.js" />
-        <option value="$PROJECT_DIR$/src/controller/db_controller/MarkController.java" />
         <option value="$PROJECT_DIR$/src/controller/db_controller/DegreeController.java" />
         <option value="$PROJECT_DIR$/src/controller/url_controller/admin/subject/LoadDegreesController.java" />
         <option value="$PROJECT_DIR$/web/view/admin/user_accounts.jsp" />
@@ -321,11 +346,14 @@
         <option value="$PROJECT_DIR$/web/controller/admin/userAccountController.js" />
         <option value="$PROJECT_DIR$/web/controller/admin/graphController.js" />
         <option value="$PROJECT_DIR$/web/view/admin/results.jsp" />
-        <option value="$PROJECT_DIR$/web/controller/admin/resultsController.js" />
         <option value="$PROJECT_DIR$/web/view/admin/graph.jsp" />
         <option value="$PROJECT_DIR$/web/view/student/mark_sheet.jsp" />
         <option value="$PROJECT_DIR$/src/model/Criteria.java" />
         <option value="$PROJECT_DIR$/src/controller/db_controller/CriteriaController.java" />
+        <option value="$PROJECT_DIR$/src/model/Mark.java" />
+        <option value="$PROJECT_DIR$/src/controller/db_controller/MarkController.java" />
+        <option value="$PROJECT_DIR$/web/controller/admin/resultsController.js" />
+        <option value="$PROJECT_DIR$/src/controller/url_controller/admin/mark_sheet/LoadMarksController.java" />
       </list>
     </option>
   </component>
@@ -488,7 +516,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1572098746028" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1572105130254" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -710,12 +738,12 @@
       <workItem from="1571356502137" duration="267000" />
       <workItem from="1571643202874" duration="1044000" />
       <workItem from="1571743557698" duration="6182000" />
-      <workItem from="1572093096859" duration="3331000" />
+      <workItem from="1572093096859" duration="9970000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="742301000" />
+    <option name="totallyTimeSpent" value="748940000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -731,7 +759,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="0" weight="0.18297872" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32907802" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932885" visible="true" weight="0.23687944" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932885" visible="true" weight="0.3134752" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
@@ -803,13 +831,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/Semester.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Mark.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
@@ -1024,17 +1045,6 @@
     <entry file="file://$PROJECT_DIR$/web/controller/admin/graphController.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/controller/student/marksController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="39" column="68" lean-forward="true" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="68" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/view/admin/graph.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -1059,23 +1069,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/view/student/mark_sheet.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="728">
-          <caret line="178" column="20" selection-start-line="178" selection-start-column="20" selection-end-line="178" selection-end-column="20" />
-          <folding>
-            <element signature="e#7112#7136#0#HTML" expanded="true" />
-            <element signature="e#7797#7841#0#HTML" expanded="true" />
-            <element signature="e#7904#7929#0#HTML" expanded="true" />
-            <element signature="e#8107#8149#0#HTML" expanded="true" />
-            <element signature="e#8196#8238#0#HTML" expanded="true" />
-            <element signature="e#8285#8327#0#HTML" expanded="true" />
-            <element signature="e#8374#8416#0#HTML" expanded="true" />
-            <element signature="e#8463#8505#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/db_controller/CriteriaController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -1083,11 +1076,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Mark.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="86" column="40" selection-start-line="86" selection-start-column="40" selection-end-line="86" selection-end-column="40" />
+          <folding>
+            <element signature="e#1852#1853#0" expanded="true" />
+            <element signature="e#1914#1915#0" expanded="true" />
+            <element signature="e#1968#1969#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/MarkController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="53" column="53" selection-start-line="53" selection-start-column="53" selection-end-line="53" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/view/admin/results.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1139">
+          <caret line="83" column="36" selection-start-line="83" selection-start-column="36" selection-end-line="83" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/controller/student/marksController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="71">
+          <caret line="39" column="68" lean-forward="true" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/view/student/mark_sheet.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="178" column="20" selection-start-line="178" selection-start-column="20" selection-end-line="178" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web/controller/admin/resultsController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="683">
-          <caret line="139" column="35" selection-start-line="139" selection-start-column="35" selection-end-line="139" selection-end-column="35" />
+        <state relative-caret-position="96">
+          <caret line="121" column="39" selection-start-line="121" selection-start-column="39" selection-end-line="121" selection-end-column="39" />
           <folding>
+            <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
@@ -1098,24 +1132,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/view/admin/results.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="83" column="36" selection-start-line="83" selection-start-column="36" selection-end-line="83" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/url_controller/admin/mark_sheet/LoadMarksController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="26" column="78" lean-forward="true" selection-start-line="26" selection-start-column="78" selection-end-line="26" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/MarkController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="34" column="22" selection-start-line="34" selection-start-column="22" selection-end-line="34" selection-end-column="22" />
+        <state relative-caret-position="252">
+          <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
         </state>
       </provider>
     </entry>

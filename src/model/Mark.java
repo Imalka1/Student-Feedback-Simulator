@@ -3,6 +3,7 @@ package model;
 public class Mark {
     private String uId;
     private int ecId;
+    private String criteriaHeading;
     private String criteria;
     private String dateOfSubmission;
     private int subjectLecturerId;
@@ -81,5 +82,13 @@ public class Mark {
 
     public void setSubjectLecturerId(int subjectLecturerId) {
         this.subjectLecturerId = subjectLecturerId;
+    }
+
+    public String getCriteriaHeading() {
+        return criteriaHeading;
+    }
+
+    public void setCriteriaHeading(String criteriaHeading) {
+        this.criteriaHeading = criteriaHeading;
     }
 }

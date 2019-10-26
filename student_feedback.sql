@@ -159,7 +159,7 @@ INSERT INTO `studentfeedback`.`evaluation_criteria_heading`
 VALUES
 (1,'Enthusiasm'),
 (2,'Organization'),
-(3,'Lecturer student interaction'),
+(3,'Lecturer Student Interaction'),
 (4,'Task Organization'),
 (5,'Clarity'),
 (6,'Learning Experiences');

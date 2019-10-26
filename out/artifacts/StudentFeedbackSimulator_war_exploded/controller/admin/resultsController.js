@@ -20,7 +20,7 @@ function loadSubjects() {
                 semesterId: $('#semester').val()
             },
             success: function (response) {
-                console.log(response)
+                // console.log(response)
                 var subjects = '';
                 var obj = JSON.parse(response);
                 for (var i = 0; i < obj.Subjects.length; i++) {
@@ -51,7 +51,7 @@ function loadLecturers() {
                 subjectId: $('#subjects').val()
             },
             success: function (response) {
-                console.log(response)
+                // console.log(response)
                 var lecturers = '';
                 var obj = JSON.parse(response);
                 for (var i = 0; i < obj.Lecturers.length; i++) {
@@ -114,17 +114,25 @@ function loadMarks() {
                 var count = 0;
                 var tableData = '';
                 var obj = JSON.parse(response);
-                for (var i = 0; i < obj.Marks.length; i++) {
+                console.log(response)
+                console.log(obj)
+                for (var j = 0; j < obj.length; j++) {
                     tableData +=
                         '<tr>' +
-                        '<td style="padding-right: 5px;text-align: right;font-weight: bold">' + ++count + '</td>' +
-                        '<td style="padding-left: 5px">' + obj.Marks[i].EvaluationCriteria + '</td>' +
-                        '<td style="text-align: center">' + obj.Marks[i].Marks + '</td>' +
-                        '<td style="text-align: center">' + obj.Marks[i].StudentsCount + '</td>';
-                    if (parseInt(obj.Marks[i].StudentsCount) == 0) {
-                        tableData += '<td style="text-align: center">0</td></tr>';
-                    } else {
-                        tableData += '<td style="text-align: center">' + parseFloat(parseInt(obj.Marks[i].Marks) / parseInt(obj.Marks[i].StudentsCount)).toFixed(2) + '</td></tr>';
+                        '<td colspan="5" style="padding-left: 5px;font-weight: bold">' + obj[j].EvaluationCriteriaHeading + '</td>' +
+                        '</tr>';
+                    for (var i = 0; i < obj[j].Marks.length; i++) {
+                        tableData +=
+                            '<tr>' +
+                            '<td style="padding-right: 5px;text-align: right;font-weight: bold">' + ++count + '</td>' +
+                            '<td style="padding-left: 5px">' + obj[j].Marks[i].EvaluationCriteria + '</td>' +
+                            '<td style="text-align: center">' + obj[j].Marks[i].Marks + '</td>' +
+                            '<td style="text-align: center">' + obj[j].Marks[i].StudentsCount + '</td>';
+                        if (parseInt(obj[j].Marks[i].StudentsCount) == 0) {
+                            tableData += '<td style="text-align: center">0</td></tr>';
+                        } else {
+                            tableData += '<td style="text-align: center">' + parseFloat(parseInt(obj[j].Marks[i].Marks) / parseInt(obj[j].Marks[i].StudentsCount)).toFixed(2) + '</td></tr>';
+                        }
                     }
                 }
                 $('#marksBody').html(tableData);
