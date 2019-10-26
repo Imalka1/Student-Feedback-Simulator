@@ -1,10 +1,7 @@
 package controller.db_controller;
 
 import db.DBConnection;
-import model.Lecturer;
-import model.Mark;
-import model.Subject;
-import model.SubjectLecturer;
+import model.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,21 +13,23 @@ import java.util.List;
 public class SubjectLecturerController {
 
     //----------------------------------------Get all lecturers via subject---------------------------------------------
-    public List<Lecturer> getAllLecturersViaSubject(Subject subject) {
-        List<Lecturer> lecturers = new ArrayList<>();//---Creates an array object (ArrayList) to store multiple objects
+    public List<SubjectLecturer> getAllLecturersViaSubject(Subject subject) {
+        List<SubjectLecturer> lecturers = new ArrayList<>();//---Creates an array object (ArrayList) to store multiple objects
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
             PreparedStatement preparedStatement = connection.prepareStatement("" +
-                    "select l.lecturerId,l.name " +
+                    "select l.lecturerId,l.lecturer_name,current " +
                     "from lecturer l,subject_lecturer sl " +
-                    "where l.lecturerId=sl.lecturerId && subjectId=?");//---Prepare sql as a java object
+                    "where l.lecturerId=sl.lecturerId && subjectId=? " +
+                    "order by 1 desc");//---Prepare sql as a java object
             preparedStatement.setObject(1, subject.getSubjectId());//---Set values to sql object
             ResultSet rst = preparedStatement.executeQuery();//---Execute sql and store result
             while (rst.next()) {//---Navigate pointer to result rows until it ends
-                Lecturer lecturer = new Lecturer();//---Creates a lecturer object
-                lecturer.setLecturerId(rst.getString(1));//---Set table row data to lecturer model object
-                lecturer.setLecturerName(rst.getString(2));//---Set table row data to lecturer model object
-                lecturers.add(lecturer);//---Add lecturer object to array object
+                SubjectLecturer subjectLecturer = new SubjectLecturer();//---Creates a lecturer object
+                subjectLecturer.setLecturerId(rst.getString(1));//---Set table row data to lecturer model object
+                subjectLecturer.setLecturerName(rst.getString(2));//---Set table row data to lecturer model object
+                subjectLecturer.setCurrent(rst.getBoolean(3));//---Set table row data to lecturer model object
+                lecturers.add(subjectLecturer);//---Add lecturer object to array object
             }
         } catch (SQLException e) {//--Catch if any sql exception occurred
             e.printStackTrace();
@@ -60,5 +59,60 @@ public class SubjectLecturerController {
             e.printStackTrace();
         }
         return dates;//---Return dates array object with a length > 0 if dates exists, if not array object returns with a length = 0
+    }
+
+    //---------------------------------------------------Add subject----------------------------------------------------
+    public boolean addSubjectLecturer(SubjectLecturer subjectLecturer) {
+        try {
+            Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
+            PreparedStatement preparedStatement = connection.prepareStatement("" +
+                    "insert into subject_lecturer (subjectId,lecturerId,current) " +
+                    "values (?,?,true)");//---Prepare sql as a java object
+            preparedStatement.setObject(1, subjectLecturer.getSubjectId());//---Set values to sql object
+            preparedStatement.setObject(2, subjectLecturer.getLecturerId());//---Set values to sql object
+            if (preparedStatement.executeUpdate() > 0) {//---Execute sql and returns whether it was executed or not
+                return true;
+            }
+        } catch (SQLException e) {//---Catch if any sql exception occurred
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    //-------------------------------------------------Update subject---------------------------------------------------
+    public boolean setAllSubjectLecturersCurrentStatusToFalse(SubjectLecturer subjectLecturer) {
+        try {
+            Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
+            PreparedStatement preparedStatement = connection.prepareStatement("" +
+                    "update subject_lecturer " +
+                    "set current=false " +
+                    "where subjectId=?");//---Prepare sql as a java object
+            preparedStatement.setObject(1, subjectLecturer.getSubjectId());//---Set values to sql object
+            if (preparedStatement.executeUpdate() > 0) {//---Execute sql and returns whether it was executed or not
+                return true;
+            }
+        } catch (SQLException e) {//---Catch if any sql exception occurred
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    //-------------------------------------------------Update subject---------------------------------------------------
+    public boolean setSubjectLecturersCurrentStatusToTrue(SubjectLecturer subjectLecturer) {
+        try {
+            Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
+            PreparedStatement preparedStatement = connection.prepareStatement("" +
+                    "update subject_lecturer " +
+                    "set current=true " +
+                    "where subjectId=? && lecturerId=?");//---Prepare sql as a java object
+            preparedStatement.setObject(1, subjectLecturer.getSubjectId());//---Set values to sql object
+            preparedStatement.setObject(2, subjectLecturer.getLecturerId());//---Set values to sql object
+            if (preparedStatement.executeUpdate() > 0) {//---Execute sql and returns whether it was executed or not
+                return true;
+            }
+        } catch (SQLException e) {//---Catch if any sql exception occurred
+            e.printStackTrace();
+        }
+        return false;
     }
 }

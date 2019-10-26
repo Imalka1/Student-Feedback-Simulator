@@ -26,6 +26,7 @@
     subjectObj.setSubjectId(subjectId);
     Subject subject = new SubjectController().getSubjectNameAndCredits(subjectObj);
 
+    //-------------------------------Prevent from unauthorised access to this page--------------------------------------
     student.setuId(sessionLogin.getAttribute("uId").toString());
     List<Subject> subjects = new SubjectController().getSubjectsViaSemesterAndDegree(student);
     for (Subject subjectToCheck : subjects) {
@@ -217,7 +218,6 @@
 
     <%---------------------------------------------Submit marks button (End)------------------------------------------%>
 
-</div>
 </div>
 
 <%-------------------------------------------Javascript controller of this page---------------------------------------%>

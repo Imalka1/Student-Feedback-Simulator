@@ -22,10 +22,10 @@
     }
 
     //-------If an login error occurred, it retrieves the error data via query string and stores to variable------------
-    String error = "";
-    if (request.getParameter("error") != null) {
-        error = request.getParameter("error");
-    }
+//    String error = "";
+//    if (request.getParameter("error") != null) {
+//        error = request.getParameter("error");
+//    }
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -161,7 +161,7 @@
                     <%-------------------------------------Error message box (Start)----------------------------------%>
 
                     <%
-                        if (error.equals("errorLogin")) {
+                        if (request.getParameter("error") != null) {
                     %>
                     <div class="row">
                         <div class="col-md-4 col-center">
@@ -182,22 +182,21 @@
 
             </div>
         </div>
-    </div>
 
-    <script>
+        <script>
 
-        //------------------------------------------Username to uppercase---------------------------------------------------
+            //------------------------------------------Username to uppercase---------------------------------------------------
 
-        $('#username').keyup(function () {
-            $(this).val($(this).val().toUpperCase())
-        })
+            $('#username').keyup(function () {
+                $(this).val($(this).val().toUpperCase())
+            })
 
-        //---------------------------------------Navigate to forgot password page-------------------------------------------
+            //---------------------------------------Navigate to forgot password page-------------------------------------------
 
-        $('#btnForgotPassword').click(function () {
-            document.location.href = "view/forgot_password.jsp";
-        })
-    </script>
+            $('#btnForgotPassword').click(function () {
+                document.location.href = "/view/forgot_password.jsp";
+            })
+        </script>
 
-    <%---------------------------------------------------Add footer.jsp file----------------------------------------------%>
+        <%---------------------------------------------------Add footer.jsp file----------------------------------------------%>
 <jsp:include page="view/footer.jsp"/>

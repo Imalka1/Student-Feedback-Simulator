@@ -26,7 +26,6 @@ function loadDegrees() {
                     degrees += '<option value="' + obj.Degrees[i].DegId + '">' + obj.Degrees[i].DegreeName + '</option>';
                 }
                 $('#degree').html(degrees);
-                loadStudents();
             },
             error: function () {
 
@@ -49,7 +48,6 @@ $('#semester').change(function () {
 function loadSubjects() {
     $.ajax(
         {
-            // async: false,
             type: "post",
             url: window.location.origin + "/load_subjects",
             data: {
@@ -64,8 +62,8 @@ function loadSubjects() {
                         '<tr style="font-size: 17px">' +
                         '<td style="padding-right: 5px;text-align: right;font-weight: bold">' + ++count + '</td>' +
                         '<td style="text-align: center;font-weight: bold">' + obj.Subjects[i].SubjectId + '</td>' +
-                        '<td style="padding-left: 5px">' + obj.Subjects[i].SubjectName + '</td>'+
-                        '<td style="text-align: center">' + obj.Subjects[i].Credits + '</td>'+
+                        '<td style="padding-left: 5px">' + obj.Subjects[i].SubjectName + '</td>' +
+                        '<td style="text-align: center">' + obj.Subjects[i].Credits + '</td>' +
                         '<td class="btnLecturer" style="text-align: center;cursor: pointer"><i class="fa fa-pencil"></i></td>';
                     if (obj.Subjects[i].Allowed === true) {
                         subjects += '<td class="btnChangeAllow" style="text-align: center;cursor: pointer"><i class="fa fa-check" style="color: green"></i></td>'
@@ -253,5 +251,5 @@ function setTextFieldsEmpty() {
 //----------------------------------------------------Go to lecturer----------------------------------------------------
 
 $(document).on('click', '.btnLecturer', function () {
-    document.location.href = "lecturer.jsp?subjectId=" + $(this).parent().children().eq(1).html();
+    document.location.href = "/view/admin/lecturer.jsp?subjectId=" + $(this).parent().children().eq(1).html() + "&subjectTitle=" + $(this).parent().children().eq(2).html();
 })

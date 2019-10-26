@@ -138,7 +138,6 @@
         </div>
     </div>
 </div>
-</div>
 
 <script src="/controller/admin/subjectsController.js"></script>
 <jsp:include page="../footer.jsp"/>

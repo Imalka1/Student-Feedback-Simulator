@@ -64,7 +64,6 @@
         </div>
     </div>
 </section>
-</div>
 
 <%-------------------------------------------Javascript controller of this page---------------------------------------%>
 <script src="/controller/admin/landingPage(admin)Controller.js"></script>

@@ -18,7 +18,7 @@ public class SubjectController {
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
             PreparedStatement preparedStatement = connection.prepareStatement("" +
-                    "select subject.subjectId,title,credits,lecturer.name,allowed,count(marks) from subject " +
+                    "select subject.subjectId,title,credits,lecturer.lecturer_name,allowed,count(marks) from subject " +
                     "inner join subject_lecturer on subject.subjectId=subject_lecturer.subjectId && semesterId=? " +
                     "inner join lecturer on subject_lecturer.lecturerId=lecturer.lecturerId && current=true " +
                     "inner join subject_degree on subject.subjectId=subject_degree.subjectId && degreeId=? " +
@@ -49,7 +49,7 @@ public class SubjectController {
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
             PreparedStatement preparedStatement = connection.prepareStatement("" +
-                    "select title,credits,l.name,subjectLecturerId " +
+                    "select title,credits,l.lecturer_name,subjectLecturerId " +
                     "from subject s,lecturer l,subject_lecturer sl " +
                     "where l.lecturerId=sl.lecturerId && s.subjectId=sl.subjectId && s.subjectId=? && current=true");//---Prepare sql as a java object
             preparedStatement.setObject(1, subject.getSubjectId());//---Set values to sql object
