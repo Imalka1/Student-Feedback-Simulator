@@ -127,11 +127,11 @@ function loadMarks() {
                             '<td style="padding-right: 5px;text-align: right;font-weight: bold">' + ++count + '</td>' +
                             '<td style="padding-left: 5px">' + obj[j].Marks[i].EvaluationCriteria + '</td>' +
                             '<td style="text-align: center">' + obj[j].Marks[i].Marks + '</td>' +
-                            '<td style="text-align: center">' + obj[j].Marks[i].StudentsCount + '</td>';
+                            '<td style="text-align: center">' + obj[j].Marks[i].StudentsCount + ' / ' + obj[j].Marks[i].TotalStudents + '</td>';
                         if (parseInt(obj[j].Marks[i].StudentsCount) == 0) {
                             tableData += '<td style="text-align: center">0</td></tr>';
                         } else {
-                            tableData += '<td style="text-align: center">' + parseFloat(parseInt(obj[j].Marks[i].Marks) / parseInt(obj[j].Marks[i].StudentsCount)).toFixed(2) + '</td>';
+                            tableData += '<td style="text-align: center">' + parseFloat(parseInt(obj[j].Marks[i].Marks) / parseInt(obj[j].Marks[i].TotalStudents)).toFixed(2) + '</td>';
                         }
                     }
                     tableData +=
