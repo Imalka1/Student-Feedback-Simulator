@@ -114,15 +114,18 @@ function loadMarks() {
                 var count = 0;
                 var tableData = '';
                 var obj = JSON.parse(response);
-                var headingAvgStudents;
                 var headingAvgMarks;
-                // console.log(response)
-                // console.log(obj)
+                var headingPercentageMarks;
+
+                $('#studentsCount').html(
+                    '<span style="font-weight: bold">Students Count (Marks Submitted) - ' + obj[0].Marks[0].StudentsCount + '</span>'
+                )
+
                 for (var j = 0; j < obj.length; j++) {
-                    headingAvgStudents = 0;
                     headingAvgMarks = 0;
+                    headingPercentageMarks = 0;
                     tableData +=
-                        '<tr bgcolor="#E6E6E6">' +
+                        '<tr bgcolor="#E5E4E4">' +
                         '<td colspan="5" style="padding-left: 5px;font-weight: bold">' + obj[j].EvaluationCriteriaHeading + '</td>' +
                         '</tr>';
                     for (var i = 0; i < obj[j].Marks.length; i++) {
@@ -130,22 +133,25 @@ function loadMarks() {
                             '<tr>' +
                             '<td style="padding-right: 5px;text-align: right;font-weight: bold">' + ++count + '</td>' +
                             '<td style="padding-left: 5px">' + obj[j].Marks[i].EvaluationCriteria + '</td>' +
-                            '<td style="text-align: center">' + obj[j].Marks[i].Marks + '</td>' +
-                            '<td style="text-align: center">' + obj[j].Marks[i].StudentsCount + ' / ' + obj[j].Marks[i].TotalStudents + '</td>';
+                            '<td style="text-align: center">' + obj[j].Marks[i].Marks + '</td>';
                         if (parseInt(obj[j].Marks[i].StudentsCount) === 0) {
-                            tableData += '<td style="text-align: center">0</td></tr>';
+                            tableData +=
+                                '<td style="text-align: center">0.00</td>' +
+                                '<td style="text-align: center">0.00%</td></tr>';
                         } else {
-                            headingAvgStudents += parseInt(obj[j].Marks[i].StudentsCount);
-                            headingAvgMarks += parseFloat(parseInt(obj[j].Marks[i].Marks) / parseInt(obj[j].Marks[i].TotalStudents));
-                            tableData += '<td style="text-align: center">' + parseFloat(parseInt(obj[j].Marks[i].Marks) / parseInt(obj[j].Marks[i].TotalStudents)).toFixed(2) + '</td>';
+                            headingAvgMarks += parseFloat(parseInt(obj[j].Marks[i].Marks) / parseInt(obj[j].Marks[i].StudentsCount));
+                            headingPercentageMarks += parseFloat(parseInt(obj[j].Marks[i].Marks) / (parseInt(obj[j].Marks[i].StudentsCount) * 5.00)).toFixed(2) * 100;
+                            tableData +=
+                                '<td style="text-align: center">' + parseFloat(parseInt(obj[j].Marks[i].Marks) / parseInt(obj[j].Marks[i].StudentsCount)).toFixed(2) + '</td>' +
+                                '<td style="text-align: center">' + parseFloat((parseInt(obj[j].Marks[i].Marks) / (parseInt(obj[j].Marks[i].StudentsCount) * 5.00)) * 100).toFixed(2) + '%</td></tr>';
                         }
                     }
                     tableData +=
-                        '<tr bgcolor="#F5F5F5">' +
+                        '<tr bgcolor="#F2F2F2">' +
                         '<td></td>' +
                         '<td colspan="2" style="padding-left: 5px">Average For ' + obj[j].EvaluationCriteriaHeading + '</td>' +
-                        '<td style="text-align: center">' + Math.round((headingAvgStudents / obj[j].Marks.length)) + ' / ' + obj[j].Marks[0].TotalStudents + '</td>' +
-                        '<td style="text-align: center">' + (headingAvgMarks / obj[j].Marks.length).toFixed(2) + '</td>' +
+                        '<td style="text-align: center">' + parseFloat(headingAvgMarks / obj[j].Marks.length).toFixed(2) + '</td>' +
+                        '<td style="text-align: center">' + parseFloat(headingPercentageMarks / obj[j].Marks.length).toFixed(2) + '%</td>' +
                         '</tr>'
                 }
                 $('#marksBody').html(tableData);

@@ -23,8 +23,8 @@ $('#btnSubmit').click(function () {
             marks.push($('td.tdMark').eq(i).text());
         }
     }
-    // console.log(JSON.stringify(marks))
-    if (marks.length > 0) {
+
+    if (marks.length === $('.trMarks').length) {
         $.ajax(
             {
                 type: "post",
@@ -52,10 +52,10 @@ $('#btnSubmit').click(function () {
             }
         );
     } else {
-        $('#messageBox').html('<div class="alert alert-warning" style="text-align: center;font-weight: bold">No marks have been selected to submit</div>');
-        setTimeout(function () {
-            $('#messageBox').html('');
-        }, 4000);
+        $('#messageBox').html('<div class="alert alert-warning" style="text-align: center;font-weight: bold">You have ' + ($('.trMarks').length - marks.length) + ' remaining fields. Please select all fields to submit</div>');
+        // setTimeout(function () {
+        //     $('#messageBox').html('');
+        // }, 4000);
         window.scrollTo(0, 0);
     }
 })

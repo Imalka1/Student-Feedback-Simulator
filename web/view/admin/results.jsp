@@ -60,15 +60,20 @@
             Results
         </div>
     </div>
-    <div class="row" style="margin-bottom: 50px;margin-top: 20px">
+    <div class="row" style="margin-top: 20px">
+        <div class="col-12" id="studentsCount">
+
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 50px;margin-top: 5px">
         <div class="col-12" style="padding: 0px">
             <table border="1px" style="width: 100%">
                 <tr>
                     <th width="5%"></th>
                     <th width="50%" style="text-align: center">Evaluation Criteria</th>
-                    <th width="15%" style="text-align: center">Marks</th>
-                    <th width="15%" style="text-align: center">Students Count<br>(Marks Submitted)</th>
-                    <th width="15%" style="text-align: center">Average Mark</th>
+                    <th width="15%" style="text-align: center">Marks (Total)</th>
+                    <th width="15%" style="text-align: center">Marks (Average)</th>
+                    <th width="15%" style="text-align: center">Marks (Percentage)</th>
                 </tr>
                 <tbody id="marksBody">
                 </tbody>

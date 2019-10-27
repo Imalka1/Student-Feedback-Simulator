@@ -37,8 +37,7 @@ public class MarkController {
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
             PreparedStatement preparedStatement = connection.prepareStatement("" +
-                    "select evaluation_criteria_heading.text,evaluation_criteria.text,sum(marks),count(marks)," +
-                    "(select count(distinct uid) from marks where dateOfSubmission=? && subjectLecturerId=(select subjectLecturerId from subject_lecturer where lecturerId=? && subjectId=?)) as totalStudents " +
+                    "select evaluation_criteria_heading.text,evaluation_criteria.text,sum(marks),count(marks)" +
                     "from evaluation_criteria " +
                     "inner join evaluation_criteria_heading on evaluation_criteria_heading.echid=evaluation_criteria.echid " +
                     "left join marks on evaluation_criteria.ecId=marks.ecId && dateOfSubmission=? && " +
@@ -47,9 +46,6 @@ public class MarkController {
             preparedStatement.setObject(1, mark.getDateOfSubmission());//---Set values to sql object
             preparedStatement.setObject(2, mark.getLecturerId());//---Set values to sql object
             preparedStatement.setObject(3, mark.getSubjectId());//---Set values to sql object
-            preparedStatement.setObject(4, mark.getDateOfSubmission());//---Set values to sql object
-            preparedStatement.setObject(5, mark.getLecturerId());//---Set values to sql object
-            preparedStatement.setObject(6, mark.getSubjectId());//---Set values to sql object
             ResultSet rst = preparedStatement.executeQuery();//---Execute sql and store result
             while (rst.next()) {//---Navigate pointer to result rows until it ends
                 Mark markObj = new Mark();//---Creates a mark object
@@ -57,7 +53,6 @@ public class MarkController {
                 markObj.setCriteria(rst.getString(2));//---Set table row data to mark model object
                 markObj.setMarks(rst.getInt(3));//---Set table row data to mark model object
                 markObj.setStudentsCount(rst.getInt(4));//---Set table row data to mark model object
-                markObj.setTotalStudents(rst.getInt(5));
                 marks.add(markObj);//---Add mark object to array object
             }
         } catch (SQLException e) {//--Catch if any sql exception occurred

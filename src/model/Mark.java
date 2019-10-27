@@ -11,7 +11,6 @@ public class Mark {
     private String subjectId;
     private String lecturerId;
     private int studentsCount;
-    private int totalStudents;
 
     public int getStudentsCount() {
         return studentsCount;
@@ -91,13 +90,5 @@ public class Mark {
 
     public void setCriteriaHeading(String criteriaHeading) {
         this.criteriaHeading = criteriaHeading;
-    }
-
-    public int getTotalStudents() {
-        return totalStudents;
-    }
-
-    public void setTotalStudents(int totalStudents) {
-        this.totalStudents = totalStudents;
     }
 }

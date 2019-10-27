@@ -41,7 +41,6 @@ public class LoadMarksController extends HttpServlet {
                     criteriaJson.put("EvaluationCriteria", markObj.getCriteria());//---Add data to JSON {"EvaluationCriteria":"Lecturer was punctual"}
                     criteriaJson.put("Marks", markObj.getMarks());//---Add data to JSON {"EvaluationCriteria":"Lecturer was punctual","Marks":"25"}
                     criteriaJson.put("StudentsCount", markObj.getStudentsCount());//---Add data to JSON {"EvaluationCriteria":"Lecturer was punctual","Marks":"25","StudentsCount":"5"}
-                    criteriaJson.put("TotalStudents", markObj.getTotalStudents());//---Add data to JSON {"EvaluationCriteria":"Lecturer was punctual","Marks":"25","StudentsCount":"5"}
                     criteriaJsonArray.add(criteriaJson);//---Add JSON object to JSON array [{"EvaluationCriteria":"Lecturer was punctual","Marks":"25","StudentsCount":"5"},{"EvaluationCriteria":"Lecturer was prepared for lectures","Marks":"35","StudentsCount":"7"}]
                 }
             }
