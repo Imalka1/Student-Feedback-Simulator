@@ -38,20 +38,15 @@ public class MarkController {
             Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
             PreparedStatement preparedStatement = connection.prepareStatement("" +
                     "select evaluation_criteria_heading.text,evaluation_criteria.text,sum(marks),count(marks)," +
-                    "(select count(studentId) " +
-                    "from student " +
-                    "where degreeId=(select degreeId from student where uid=(select uid from marks where dateOfSubmission=? limit 1))  && " +
-                    "batchId=(select batchId from student where uid=(select uid from marks where dateOfSubmission=? limit 1))  && " +
-                    "semesterId=(select semesterId from student where uid=(select uid from marks where dateOfSubmission=? limit 1)))" +
-                    "as totalStudents " +
+                    "(select count(distinct uid) from marks where dateOfSubmission=? && subjectLecturerId=(select subjectLecturerId from subject_lecturer where lecturerId=? && subjectId=?)) as totalStudents " +
                     "from evaluation_criteria " +
                     "inner join evaluation_criteria_heading on evaluation_criteria_heading.echid=evaluation_criteria.echid " +
                     "left join marks on evaluation_criteria.ecId=marks.ecId && dateOfSubmission=? && " +
                     "subjectLecturerId=(select subjectLecturerId from subject_lecturer where lecturerId=? && subjectId=?) " +
                     "group by evaluation_criteria.ecid asc");//---Prepare sql as a java object
             preparedStatement.setObject(1, mark.getDateOfSubmission());//---Set values to sql object
-            preparedStatement.setObject(2, mark.getDateOfSubmission());//---Set values to sql object
-            preparedStatement.setObject(3, mark.getDateOfSubmission());//---Set values to sql object
+            preparedStatement.setObject(2, mark.getLecturerId());//---Set values to sql object
+            preparedStatement.setObject(3, mark.getSubjectId());//---Set values to sql object
             preparedStatement.setObject(4, mark.getDateOfSubmission());//---Set values to sql object
             preparedStatement.setObject(5, mark.getLecturerId());//---Set values to sql object
             preparedStatement.setObject(6, mark.getSubjectId());//---Set values to sql object

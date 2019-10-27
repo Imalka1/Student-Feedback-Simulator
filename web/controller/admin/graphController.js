@@ -31,8 +31,15 @@ var options = {
             horizontal: true
         }
     },
+    // series: [{
+    //     name: 'sales',
+    //     data: xaxisData
+    // }],
     series: [{
-        name: 'sales',
+        name: 'sales1',
+        data: xaxisData
+    },{
+        name: 'sales2',
         data: xaxisData
     }],
     xaxis: {
@@ -40,19 +47,21 @@ var options = {
 
     },
     yaxis: {
-        tickAmount: 1,
+        // forceNiceScale: false,
+        // floating:false,
+        tickAmount: 10,
         min: 0,
-        max: 5,
+        max: 100,
         labels: {
-            show: true,
-            rotate: -10,
-            trim: true,
-            minWidth: 50,
-            style: {
+            // show: true,
+            rotate: -10
+            // trim: true,
+            // minWidth: 50,
+            // style: {
                 // colors: [],
-                fontSize: '12px',
+                // fontSize: '12px',
                 // fontFamily: 'Helvetica, Arial, sans-serif'
-            },
+            // },
         }
     },
     tooltip: {
