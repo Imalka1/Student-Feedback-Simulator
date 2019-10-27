@@ -145,7 +145,7 @@
                         List<Criteria> criteriaHeadings = new CriteriaController().getCriteriaHeadings();
                         for (Criteria criteriaHeadDTO : criteriaHeadings) {
                 %>
-                <tr>
+                <tr bgcolor="#EDEDED">
                     <td colspan="7" class="padding_5_txt"
                         style="font-weight: 600"><%= criteriaHeadDTO.getCriteriaHeadingName()%>
                     </td>
