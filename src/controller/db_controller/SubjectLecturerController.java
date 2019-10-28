@@ -60,4 +60,59 @@ public class SubjectLecturerController {
         }
         return dates;//---Return dates array object with a length > 0 if dates exists, if not array object returns with a length = 0
     }
+
+    //---------------------------------------------------Add subject----------------------------------------------------
+    public boolean addSubjectLecturer(SubjectLecturer subjectLecturer) {
+        try {
+            Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
+            PreparedStatement preparedStatement = connection.prepareStatement("" +
+                    "insert into subject_lecturer (subjectId,lecturerId,current) " +
+                    "values (?,?,true)");//---Prepare sql as a java object
+            preparedStatement.setObject(1, subjectLecturer.getSubjectId());//---Set values to sql object
+            preparedStatement.setObject(2, subjectLecturer.getLecturerId());//---Set values to sql object
+            if (preparedStatement.executeUpdate() > 0) {//---Execute sql and returns whether it was executed or not
+                return true;
+            }
+        } catch (SQLException e) {//---Catch if any sql exception occurred
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    //-------------------------------------------------Update subject---------------------------------------------------
+    public boolean setAllSubjectLecturersCurrentStatusToFalse(SubjectLecturer subjectLecturer) {
+        try {
+            Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
+            PreparedStatement preparedStatement = connection.prepareStatement("" +
+                    "update subject_lecturer " +
+                    "set current=false " +
+                    "where subjectId=?");//---Prepare sql as a java object
+            preparedStatement.setObject(1, subjectLecturer.getSubjectId());//---Set values to sql object
+            if (preparedStatement.executeUpdate() > 0) {//---Execute sql and returns whether it was executed or not
+                return true;
+            }
+        } catch (SQLException e) {//---Catch if any sql exception occurred
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    //-------------------------------------------------Update subject---------------------------------------------------
+    public boolean setSubjectLecturersCurrentStatusToTrue(SubjectLecturer subjectLecturer) {
+        try {
+            Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
+            PreparedStatement preparedStatement = connection.prepareStatement("" +
+                    "update subject_lecturer " +
+                    "set current=true " +
+                    "where subjectId=? && lecturerId=?");//---Prepare sql as a java object
+            preparedStatement.setObject(1, subjectLecturer.getSubjectId());//---Set values to sql object
+            preparedStatement.setObject(2, subjectLecturer.getLecturerId());//---Set values to sql object
+            if (preparedStatement.executeUpdate() > 0) {//---Execute sql and returns whether it was executed or not
+                return true;
+            }
+        } catch (SQLException e) {//---Catch if any sql exception occurred
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

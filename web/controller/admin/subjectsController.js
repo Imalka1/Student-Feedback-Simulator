@@ -37,7 +37,6 @@ function loadDegrees() {
 //-----------------------------------------------------Load subjects----------------------------------------------------
 
 $('#faculty').change(function () {
-    loadDegrees();
     loadSubjects();
 })
 
