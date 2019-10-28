@@ -43,60 +43,61 @@
 
 <%-------------------------------------------------Navigation bar (End)-----------------------------------------------%>
 
+<input type="hidden" id="graph" value="<%= request.getParameter("graph")%>">
 <input type="hidden" id="subjectId" value="<%= request.getParameter("subjectId")%>">
 <input type="hidden" id="lecturerId" value="<%= request.getParameter("lecturerId")%>">
 <input type="hidden" id="dateOfSubmission" value="<%= request.getParameter("dateOfSubmission")%>">
 
 <div class="row" style="margin-top: 100px">
-    <div class="col-12" style="font-size: 20px;text-align: center">Evaluation Criteria</div>
+    <div class="col-12" style="font-size: 20px;text-align: center" id="graphHeading"></div>
 </div>
 
-<div id="chart" style="margin-left: 20px"></div>
+<div id="chart" style=""></div>
 
-<div class="row" style="margin: 10px">
-    <div class="col-6" style="border: 1px solid black">
-        <div class="row" id="creiterias">
+<%--<div class="row" style="margin: 10px">--%>
+    <%--<div class="col-6" style="border: 1px solid black">--%>
+        <%--<div class="row" id="creiterias">--%>
 
-        </div>
-    </div>
-    <div class="col-6" style="border: 1px solid black">
-        <div class="row">
-            <div class="col-12" style="text-align: center;border-bottom: 1px solid black">
-                Y - Axis
-            </div>
-            <div class="col-2" style="padding-left: 5px;border-right: 1px solid black;border-bottom: 1px solid black">
-                20%
-            </div>
-            <div class="col-10" style="padding-left: 5px;border-bottom: 1px solid black">
-                Strongly Disagree
-            </div>
-            <div class="col-2" style="padding-left: 5px;border-right: 1px solid black;border-bottom: 1px solid black">
-                40%
-            </div>
-            <div class="col-10" style="padding-left: 5px;border-bottom: 1px solid black">
-                Disagree
-            </div>
-            <div class="col-2" style="padding-left: 5px;border-right: 1px solid black;border-bottom: 1px solid black">
-                60%
-            </div>
-            <div class="col-10" style="padding-left: 5px;border-bottom: 1px solid black">
-                Cannot Comment
-            </div>
-            <div class="col-2" style="padding-left: 5px;border-right: 1px solid black;border-bottom: 1px solid black">
-                80%
-            </div>
-            <div class="col-10" style="padding-left: 5px;border-bottom: 1px solid black">
-                Agree
-            </div>
-            <div class="col-2" style="padding-left: 5px;border-right: 1px solid black;border-bottom: 1px solid black">
-                100%
-            </div>
-            <div class="col-10" style="padding-left: 5px;border-bottom: 1px solid black">
-                Strongly Agree
-            </div>
-        </div>
-    </div>
-</div>
+        <%--</div>--%>
+    <%--</div>--%>
+    <%--<div class="col-6" style="border: 1px solid black">--%>
+        <%--<div class="row">--%>
+            <%--<div class="col-12" style="text-align: center;border-bottom: 1px solid black">--%>
+                <%--Y - Axis--%>
+            <%--</div>--%>
+            <%--<div class="col-2" style="padding-left: 5px;border-right: 1px solid black;border-bottom: 1px solid black">--%>
+                <%--20%--%>
+            <%--</div>--%>
+            <%--<div class="col-10" style="padding-left: 5px;border-bottom: 1px solid black">--%>
+                <%--Strongly Disagree--%>
+            <%--</div>--%>
+            <%--<div class="col-2" style="padding-left: 5px;border-right: 1px solid black;border-bottom: 1px solid black">--%>
+                <%--40%--%>
+            <%--</div>--%>
+            <%--<div class="col-10" style="padding-left: 5px;border-bottom: 1px solid black">--%>
+                <%--Disagree--%>
+            <%--</div>--%>
+            <%--<div class="col-2" style="padding-left: 5px;border-right: 1px solid black;border-bottom: 1px solid black">--%>
+                <%--60%--%>
+            <%--</div>--%>
+            <%--<div class="col-10" style="padding-left: 5px;border-bottom: 1px solid black">--%>
+                <%--Cannot Comment--%>
+            <%--</div>--%>
+            <%--<div class="col-2" style="padding-left: 5px;border-right: 1px solid black;border-bottom: 1px solid black">--%>
+                <%--80%--%>
+            <%--</div>--%>
+            <%--<div class="col-10" style="padding-left: 5px;border-bottom: 1px solid black">--%>
+                <%--Agree--%>
+            <%--</div>--%>
+            <%--<div class="col-2" style="padding-left: 5px;border-right: 1px solid black;border-bottom: 1px solid black">--%>
+                <%--100%--%>
+            <%--</div>--%>
+            <%--<div class="col-10" style="padding-left: 5px;border-bottom: 1px solid black">--%>
+                <%--Strongly Agree--%>
+            <%--</div>--%>
+        <%--</div>--%>
+    <%--</div>--%>
+<%--</div>--%>
 
 <%-------------------------------------------Javascript controller of this page---------------------------------------%>
 <script src="/controller/admin/graphController.js"></script>

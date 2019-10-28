@@ -1,11 +1,18 @@
 $(window).on("load", function () {
+    setCriteriaType();
     loadMarks();
 });
 
-var xaxisText = Array();
-for (var i = 0; i < 22; i++) {
-    xaxisText.push('Criteria ' + (i + 1));
+var criteriaType;
+
+function setCriteriaType() {
+    criteriaType = $('#graph').val()
 }
+
+// var xaxisText = Array();
+// for (var i = 0; i < 22; i++) {
+//     xaxisText.push('Criteria ' + (i + 1));
+// }
 
 var marks = Array();
 var criterias = Array();
@@ -23,12 +30,27 @@ function loadMarks() {
             success: function (response) {
                 var obj = JSON.parse(response);
 
-                for (var j = 0; j < obj.length; j++) {
-                    for (var i = 0; i < obj[j].Marks.length; i++) {
-                        criterias.push(obj[j].Marks[i].EvaluationCriteria);
-                        marks.push(parseFloat((parseInt(obj[j].Marks[i].Marks) / (parseInt(obj[j].Marks[i].StudentsCount) * 5.00)) * 100).toFixed(2));
+                if (criteriaType === 'ec') {
+                    $('#graphHeading').text('Evaluation Criteria');
+                    for (var j = 0; j < obj.length; j++) {
+                        for (var i = 0; i < obj[j].Marks.length; i++) {
+                            criterias.push(obj[j].Marks[i].EvaluationCriteria);
+                            marks.push(parseFloat(parseInt(obj[j].Marks[i].Marks) / parseInt(obj[j].Marks[i].StudentsCount)).toFixed(2));
+                        }
+                    }
+                } else if(criteriaType === 'ech'){
+                    $('#graphHeading').text('Evaluation Criteria Heading');
+                    var headingAvgMarks;
+                    for (var j = 0; j < obj.length; j++) {
+                        headingAvgMarks = 0;
+                        criterias.push(obj[j].EvaluationCriteriaHeading);
+                        for (var i = 0; i < obj[j].Marks.length; i++) {
+                            headingAvgMarks += parseFloat(parseInt(obj[j].Marks[i].Marks) / parseInt(obj[j].Marks[i].StudentsCount));
+                        }
+                        marks.push(parseFloat(headingAvgMarks / obj[j].Marks.length).toFixed(2));
                     }
                 }
+
                 setCriterias();
             },
             error: function () {
@@ -46,7 +68,7 @@ function setCriterias() {
             '<div class="col-2" style="padding-left: 5px;border-right: 1px solid black;border-bottom: 1px solid black">Criteria ' + (i + 1) + '</div>' +
             '<div class="col-10" style="padding-left: 5px;border-bottom: 1px solid black">' + criterias[i] + '</div>';
     }
-    $('#creiterias').html(setData);
+    // $('#creiterias').html(setData);
 }
 
 var xaxisData = Array();
@@ -58,7 +80,7 @@ var options = {
     chart: {
         type: 'bar',
         width: '97%',
-        height: 1200
+        height: 800
     },
     grid: {
         xaxis: {
@@ -74,7 +96,7 @@ var options = {
     },
     plotOptions: {
         bar: {
-            horizontal: true
+            horizontal: false
         }
     },
     // series: [{
@@ -92,26 +114,27 @@ var options = {
         // }
     ],
     xaxis: {
-        categories: xaxisText,
-
-    },
-    yaxis: {
-        // forceNiceScale: false,
-        // floating:false,
-        tickAmount: 10,
-        min: 0,
-        max: 100,
+        categories: criterias,
         labels: {
-            // show: true,
-            rotate: -10
+            show: true,
+            rotate: -55,
+            rotateAlways: true,
             // trim: true,
-            // minWidth: 50,
+            minHeight: 200,
+            maxHeight: 600,
             // style: {
             // colors: [],
             // fontSize: '12px',
             // fontFamily: 'Helvetica, Arial, sans-serif'
             // },
         }
+    },
+    yaxis: {
+        forceNiceScale: true,
+        // floating:false,
+        tickAmount: 1,
+        min: 0,
+        max: 5
     },
     tooltip: {
         y: {
