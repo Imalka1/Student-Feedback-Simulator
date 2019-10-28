@@ -135,4 +135,61 @@ public class SubjectController {
         }
         return false;
     }
+
+    //---------------------------------------------------Add subject----------------------------------------------------
+    public boolean addSubject(Subject subject) {
+        try {
+            Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
+            PreparedStatement preparedStatement = connection.prepareStatement("" +
+                    "insert into subject (subjectId,semesterId,title,credits,allowed) " +
+                    "values (?,?,?,?,?)");//---Prepare sql as a java object
+            preparedStatement.setObject(1, subject.getSubjectId());//---Set values to sql object
+            preparedStatement.setObject(2, subject.getSemesterId());//---Set values to sql object
+            preparedStatement.setObject(3, subject.getSubjectName());//---Set values to sql object
+            preparedStatement.setObject(4, subject.getCredits());//---Set values to sql object
+            preparedStatement.setObject(5, false);//---Set values to sql object
+            if (preparedStatement.executeUpdate() > 0) {//---Execute sql and returns whether it was executed or not
+                return true;
+            }
+        } catch (SQLException e) {//---Catch if any sql exception occurred
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    //-------------------------------------------------Update subject---------------------------------------------------
+    public boolean updateSubject(Subject subject) {
+        try {
+            Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
+            PreparedStatement preparedStatement = connection.prepareStatement("" +
+                    "update subject " +
+                    "set semesterId=?,title=?,credits=? " +
+                    "where subjectId=?");//---Prepare sql as a java object
+            preparedStatement.setObject(1, subject.getSemesterId());//---Set values to sql object
+            preparedStatement.setObject(2, subject.getSubjectName());//---Set values to sql object
+            preparedStatement.setObject(3, subject.getCredits());//---Set values to sql object
+            preparedStatement.setObject(4, subject.getSubjectId());//---Set values to sql object
+            if (preparedStatement.executeUpdate() > 0) {//---Execute sql and returns whether it was executed or not
+                return true;
+            }
+        } catch (SQLException e) {//---Catch if any sql exception occurred
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    //-------------------------------------------------Delete subject---------------------------------------------------
+    public boolean deleteSubject(Subject subject) {
+        try {
+            Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
+            PreparedStatement preparedStatement = connection.prepareStatement("delete from subject where subjectId=?");//---Prepare sql as a java object
+            preparedStatement.setObject(1, subject.getSubjectId());//---Set values to sql object
+            if (preparedStatement.executeUpdate() > 0) {//---Execute sql and returns whether it was executed or not
+                return true;
+            }
+        } catch (SQLException e) {//---Catch if any sql exception occurred
+            e.printStackTrace();
+        }
+        return false;
+    }
 }
