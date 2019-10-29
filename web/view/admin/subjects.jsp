@@ -12,22 +12,30 @@
     </div>
 
     <div class="row" style="margin-top: 20px;text-align: center;font-size: 19px">
-        <div class="col-4">
+        <div class="col-3">
             <%--Faculty--%>
         </div>
-        <div class="col-6">
+        <div class="col-5">
             Degree
+        </div>
+        <div class="col-2">
+
         </div>
         <div class="col-2">
             Semester
         </div>
     </div>
     <div class="row">
-        <div class="col-4" style="text-align: center;font-weight: bold">
+        <div class="col-3" style="text-align: center;font-weight: bold">
             Faculty Of Computing
         </div>
-        <div class="col-6">
+        <div class="col-5">
             <select class="form-control" id="degree"></select>
+        </div>
+        <div class="col-2">
+            <div>
+                <button id="btnAddDegree" class="btn" style="background-color: #ffbf05;width: 100%">Add</button>
+            </div>
         </div>
         <div class="col-2">
             <select class="form-control" id="semester">
@@ -102,7 +110,7 @@
 
     <div class="row">
         <div class="col-12" style="margin-top: 20px;font-size: 13px">
-            <b>Note :- </b>Change only faculty and semester to view subjects
+            <b>Note :- </b>Change only semester to view subjects
         </div>
     </div>
 
@@ -119,6 +127,25 @@
                     <th width="5%" style="text-align: center">View</th>
                 </tr>
                 <tbody id="subjectsBody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12" style="font-size: 32px;text-align: center">
+            Degree Programmes
+        </div>
+    </div>
+
+    <div class="row" style="margin-bottom: 50px;margin-top: 10px">
+        <div class="col-12" style="padding: 0px">
+            <table border="1px" style="width: 100%">
+                <tr style="font-size: 18px">
+                    <th width="90%" style="text-align: center">Degree</th>
+                    <th width="10%" style="text-align: center">Remove</th>
+                </tr>
+                <tbody id="degreeBody">
                 </tbody>
             </table>
         </div>

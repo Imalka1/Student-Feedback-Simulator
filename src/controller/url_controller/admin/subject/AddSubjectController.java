@@ -5,6 +5,8 @@ import controller.db_controller.SubjectDegreeController;
 import db.DBConnection;
 import model.Subject;
 import model.SubjectDegree;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONValue;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,11 +22,13 @@ public class AddSubjectController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //---------------------------------Retrieve data which submitted to the server----------------------------------
-        int degreeId = Integer.parseInt(req.getParameter("degreeId").trim());
+
+        JSONArray jsonDegreeIds = (JSONArray) JSONValue.parse(req.getParameter("degreeIds"));//---Convert JSON text to JSON object (Criteria ids)
         int semesterId = Integer.parseInt(req.getParameter("semesterId").trim());
         int credits = Integer.parseInt(req.getParameter("credits").trim());
         String subjectId = req.getParameter("subjectId").trim();
         String subjectTitle = req.getParameter("subjectTitle").trim();
+        int count = 0;
 
         Connection connection = null;
         try {
@@ -41,16 +45,21 @@ public class AddSubjectController extends HttpServlet {
             if (new SubjectController().addSubject(subject)) {//---Call the db server (SubjectController(db_controller)) to add subject
 
                 //--------------------------------------Set data to model object----------------------------------------
-                SubjectDegree subjectDegree = new SubjectDegree();
-                subjectDegree.setSubjectId(subjectId);
-                subjectDegree.setDegreeId(degreeId);
+                for (int i = 0; i < jsonDegreeIds.size(); i++) {
+                    SubjectDegree subjectDegree = new SubjectDegree();
+                    subjectDegree.setSubjectId(subjectId);
+                    subjectDegree.setDegreeId(Integer.parseInt(jsonDegreeIds.get(i).toString()));
 
-                if (new SubjectDegreeController().addSubjectDegree(subjectDegree)) {//---Call the db server (StudentController(db_controller)) to add student
+                    if (new SubjectDegreeController().addSubjectDegree(subjectDegree)) {//---Call the db server (StudentController(db_controller)) to add student
+                        count++;
+                    }
+                }
+                if (count == jsonDegreeIds.size()) {
                     connection.commit();//---If all data were sent for both tables, then commit (write) data on both tables
                     resp.getWriter().println(true);//---Reply / Response
                     return;
                 } else {
-                    connection.rollback();//---If student insertion false, this removes both student and user data on database
+                    connection.rollback();
                 }
             } else {
                 connection.rollback();//---If user insertion false, this removes user data on database

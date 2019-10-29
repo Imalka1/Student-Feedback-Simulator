@@ -11,6 +11,15 @@ $('#subjectId').keyup(function () {
 
 //------------------------------------------------Load degrees----------------------------------------------------------
 
+$('#btnAddDegree').click(function () {
+    var degrees =
+        '<tr style="font-size: 17px">' +
+        '<td style="padding-left: 5px"><input type="hidden" value="' + $('#degree').children('option:selected').val() + '">' + $('#degree').children('option:selected').html() + '</td>' +
+        '<td class="btnDegreeRemove" style="text-align: center;cursor: pointer"><i style="color: red" class="fa fa-times"></i></td></tr>';
+
+    $('#degreeBody').append(degrees);
+})
+
 function loadDegrees() {
     $.ajax(
         {
@@ -34,6 +43,36 @@ function loadDegrees() {
     );
 }
 
+function loadDegreesViaSubject(subjectId) {
+    $.ajax(
+        {
+            type: "post",
+            url: window.location.origin + "/load_degrees_via_subject",
+            data: {
+                subjectId: subjectId
+            },
+            success: function (response) {
+                var obj = JSON.parse(response);
+                var degrees = '';
+                for (var i = 0; i < obj.Degrees.length; i++) {
+                    degrees +=
+                        '<tr style="font-size: 17px">' +
+                        '<td style="padding-left: 5px"><input type="hidden" value="' + obj.Degrees[i].DegId + '">' + obj.Degrees[i].DegreeName + '</td>' +
+                        '<td class="btnDegreeRemove" style="text-align: center;cursor: pointer"><i style="color: red" class="fa fa-times"></i></td></tr>';
+                }
+                $('#degreeBody').html(degrees);
+            },
+            error: function () {
+
+            }
+        }
+    );
+}
+
+$(document).on('click', '.btnDegreeRemove', function () {
+    $(this).parent().remove();
+});
+
 //-----------------------------------------------------Load subjects----------------------------------------------------
 
 $('#faculty').change(function () {
@@ -53,6 +92,7 @@ function loadSubjects() {
                 semesterId: $('#semester').val()
             },
             success: function (response) {
+                $('#degreeBody').html('')
                 var count = 0;
                 var subjects = '';
                 var obj = JSON.parse(response);
@@ -84,13 +124,21 @@ function loadSubjects() {
 
 //-----------------------------------------------Add Delete Update------------------------------------------------------
 
+function collectDegreeProgrammes() {
+    var degreeProgrammes = Array();
+    for (var i = 0; i < $('#degreeBody').children().length; i++) {
+        degreeProgrammes.push($('#degreeBody').children().eq(i).children().eq(0).children('input').val())
+    }
+    return degreeProgrammes;
+}
+
 $('#btnAdd').click(function () {
     $.ajax(
         {
             type: "post",
             url: window.location.origin + "/add_subject",
             data: {
-                degreeId: $('#degree').val(),
+                degreeIds: JSON.stringify(collectDegreeProgrammes()),
                 semesterId: $('#semester').val(),
                 subjectId: $('#subjectId').val(),
                 subjectTitle: $('#subjectTitle').val(),
@@ -122,7 +170,7 @@ $('#btnUpdate').click(function () {
             type: "post",
             url: window.location.origin + "/update_subject",
             data: {
-                degreeId: $('#degree').val(),
+                degreeIds: JSON.stringify(collectDegreeProgrammes()),
                 semesterId: $('#semester').val(),
                 subjectId: $('#subjectId').val(),
                 subjectTitle: $('#subjectTitle').val(),
@@ -215,6 +263,7 @@ $(document).on('click', '.btnViewSubject', function () {
     $('#subjectTitle').val($(this).parent().children().eq(2).html())
     $('#credits').val($(this).parent().children().eq(3).html())
     setFieldsToExistingSubject();
+    loadDegreesViaSubject($(this).parent().children().eq(1).html())
 })
 
 //---------------------------------------------New vs existing----------------------------------------------------------
