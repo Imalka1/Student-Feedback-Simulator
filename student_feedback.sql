@@ -83,20 +83,18 @@ constraint foreign key(semesterId) references semester(semesterId) on delete cas
 );
 
 create table subject_degree(
-subdegid int auto_increment,
 degreeId int,
 subjectId varchar(100),
-constraint primary key(subdegid),
+constraint primary key(degreeId,subjectId),
 constraint foreign key(degreeId) references degree(degreeId) on delete cascade,
 constraint foreign key(subjectId) references subject(subjectId) on delete cascade
 );
 
 create table subject_lecturer(
-subjectLecturerId int auto_increment,
 subjectId varchar(100),
 lecturerId varchar(100),
 current boolean,
-constraint primary key(subjectLecturerId),
+constraint primary key(subjectId,lecturerId),
 constraint foreign key(subjectId) references subject(subjectId) on delete cascade,
 constraint foreign key(lecturerId) references lecturer(lecturerId) on delete cascade
 );
@@ -105,11 +103,12 @@ create table marks(
 uId varchar(100),
 ecId int,
 dateOfSubmission date,
-subjectLecturerId int,
+subjectId varchar(100),
+lecturerId varchar(100),
 marks int,
-constraint primary key(uId,ecId,dateOfSubmission,subjectLecturerId),
+constraint primary key(uId,ecId,dateOfSubmission,subjectId,lecturerId),
 constraint foreign key(uId) references user(uId) on delete cascade,
-constraint foreign key(subjectLecturerId) references subject_lecturer(subjectLecturerId) on delete cascade,
+constraint foreign key(subjectId,lecturerId) references subject_lecturer(subjectId,lecturerId) on delete cascade,
 constraint foreign key(ecId) references evaluation_criteria(ecId) on delete cascade
 );
 
