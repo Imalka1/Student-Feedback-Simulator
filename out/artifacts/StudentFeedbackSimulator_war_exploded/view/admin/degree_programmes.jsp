@@ -67,7 +67,7 @@
         </div>
     </div>
 
-    <div class="row" style="margin-bottom: 50px;margin-top: 10px">
+    <div class="row" style="margin-bottom: 100px;margin-top: 10px">
         <div class="col-12" style="padding: 0px">
             <table border="1px" style="width: 100%">
                 <tr style="font-size: 18px">
@@ -114,7 +114,7 @@
         </div>
     </div>
 
-    <div class="row" style="margin-bottom: 50px;margin-top: 10px">
+    <div class="row" style="margin-bottom: 100px;margin-top: 10px">
         <div class="col-12" style="padding: 0px">
             <table border="1px" style="width: 100%">
                 <tr style="font-size: 18px">
