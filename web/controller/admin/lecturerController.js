@@ -3,6 +3,7 @@
 $(window).on("load", function () {
     loadLecturers();
     loadSubjects();
+    validateSubmission();
 });
 
 $('#lecturerId').keyup(function () {
@@ -126,7 +127,8 @@ $('#btnAdd').click(function () {
             },
             success: function (response) {
                 if (JSON.parse(response) == true) {
-                    setTextFieldsEmpty();
+                    loadLecturers();
+                    setFieldsToNewLecturer();
                     $('#response').html('<div class="alert alert-success" style="text-align: center;font-weight: bold">Lecturer  has been submitted successfully</div>')
                 } else {
                     $('#response').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Failed to add lecturer </div>')
@@ -154,7 +156,7 @@ $('#btnUpdate').click(function () {
             },
             success: function (response) {
                 if (JSON.parse(response) == true) {
-                    setTextFieldsEmpty();
+                    loadLecturers();
                     setFieldsToNewLecturer();
                     $('#response').html('<div class="alert alert-success" style="text-align: center;font-weight: bold">Lecturer  has been updated successfully</div>')
                 } else {
@@ -182,7 +184,7 @@ $('#btnDelete').click(function () {
             },
             success: function (response) {
                 if (JSON.parse(response) == true) {
-                    setTextFieldsEmpty();
+                    loadLecturers();
                     setFieldsToNewLecturer();
                     $('#response').html('<div class="alert alert-success" style="text-align: center;font-weight: bold">Lecturer  has been deleted successfully</div>');
                 } else {
@@ -212,29 +214,51 @@ $(document).on('click', '.btnViewLecturer', function () {
 
 //---------------------------------------------New vs existing----------------------------------------------------------
 
+var newLecturer = true;
+
 function setFieldsToExistingLecturer() {
+    newLecturer = false;
     $('#btnAdd').prop("disabled", true);
     $('#btnUpdate').prop("disabled", false);
     $('#btnDelete').prop("disabled", false);
+    $('#lecturerId').prop("disabled", true);
 }
 
 function setFieldsToNewLecturer() {
-    $('#btnAdd').prop("disabled", false);
+    newLecturer = true;
+    $('#btnAdd').prop("disabled", true);
     $('#btnUpdate').prop("disabled", true);
     $('#btnDelete').prop("disabled", true);
+    $('#lecturerId').prop("disabled", false);
+    $('#lecturerId').val('');
+    $('#lecturerName').val('');
 }
 
 //--------------------------------------------------Clear fields--------------------------------------------------------
-
-$('#btnClear').click(function () {
-    setTextFieldsEmpty();
-    setFieldsToNewLecturer();
+$('#lecturerId').keyup(function () {
+    validateSubmission();
 })
 
-function setTextFieldsEmpty() {
-    $('#lecturerId').val('');
-    $('#lecturerName').val('');
+$('#lecturerName').keyup(function () {
+    validateSubmission();
+})
+
+$('#btnClear').click(function () {
     setFieldsToNewLecturer();
+    validateSubmission();
+})
+
+function validateSubmission() {
+    if (newLecturer && $('#lecturerId').val() !== '' && $('#lecturerName').val() !== '') {
+        $('#btnAdd').prop("disabled", false);
+        $('#btnUpdate').prop("disabled", true);
+    } else if (!newLecturer && $('#lecturerId').val() !== '' && $('#lecturerName').val() !== '') {
+        $('#btnAdd').prop("disabled", true);
+        $('#btnUpdate').prop("disabled", false);
+    } else {
+        $('#btnAdd').prop("disabled", true);
+        $('#btnUpdate').prop("disabled", true);
+    }
 }
 
 $(document).on('click', '.btnAddSubject', function () {
@@ -325,9 +349,7 @@ $(document).on('click', '.btnCurrentLecturer', function () {
             },
             success: function (response) {
                 if (JSON.parse(response) === true) {
-                    if ($(that).children().attr('class') === 'fa fa-check') {
-                        $(that).html('<i class="fa fa-times" style="color: red"></i>')
-                    } else if ($(that).children().attr('class') === 'fa fa-times') {
+                    if ($(that).children().attr('class') === 'fa fa-times') {
                         $(that).html('<i class="fa fa-check" style="color: green"></i>')
                     }
                 }

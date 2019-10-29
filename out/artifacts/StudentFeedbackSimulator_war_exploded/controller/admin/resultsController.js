@@ -46,7 +46,7 @@ function loadLecturers() {
     $.ajax(
         {
             type: "post",
-            url: window.location.origin + "/load_lecturers",
+            url: window.location.origin + "/load_lecturers_via_subject",
             data: {
                 subjectId: $('#subjects').val()
             },
@@ -68,6 +68,10 @@ function loadLecturers() {
 }
 
 //-------------------------------------------------Load dates-----------------------------------------------------------
+
+$('#lecturers').change(function () {
+    loadDates();
+})
 
 function loadDates() {
     $.ajax(

@@ -2,11 +2,8 @@
 
 $(window).on("load", function () {
     loadSubjects();
+    validateSubmission();
 });
-
-$('#subjectId').keyup(function () {
-    $(this).val($(this).val().toUpperCase())
-})
 
 //-----------------------------------------------------Load subjects----------------------------------------------------
 
@@ -68,10 +65,10 @@ $('#btnAdd').click(function () {
             success: function (response) {
                 if (JSON.parse(response) == true) {
                     loadSubjects();
-                    setTextFieldsEmpty();
-                    $('#response').html('<div class="alert alert-success" style="text-align: center;font-weight: bold">Student has been submitted successfully</div>')
+                    setFieldsToNewSubject();
+                    $('#response').html('<div class="alert alert-success" style="text-align: center;font-weight: bold">Subject has been submitted successfully</div>')
                 } else {
-                    $('#response').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Failed to add student</div>')
+                    $('#response').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Failed to add subject</div>')
                 }
                 window.scrollTo(0, 0);
                 setTimeout(function () {
@@ -99,7 +96,6 @@ $('#btnUpdate').click(function () {
             success: function (response) {
                 if (JSON.parse(response) == true) {
                     loadSubjects();
-                    setTextFieldsEmpty();
                     setFieldsToNewSubject();
                     $('#response').html('<div class="alert alert-success" style="text-align: center;font-weight: bold">Subject has been updated successfully</div>')
                 } else {
@@ -128,7 +124,6 @@ $('#btnDelete').click(function () {
             success: function (response) {
                 if (JSON.parse(response) == true) {
                     loadSubjects();
-                    setTextFieldsEmpty();
                     setFieldsToNewSubject();
                     $('#response').html('<div class="alert alert-success" style="text-align: center;font-weight: bold">Subject has been deleted successfully</div>');
                 } else {
@@ -187,7 +182,10 @@ $(document).on('click', '.btnViewSubject', function () {
 
 //---------------------------------------------New vs existing----------------------------------------------------------
 
+var newSubject = true;
+
 function setFieldsToExistingSubject() {
+    newSubject = false;
     $('#btnAdd').prop("disabled", true);
     $('#btnUpdate').prop("disabled", false);
     $('#btnDelete').prop("disabled", false);
@@ -195,22 +193,45 @@ function setFieldsToExistingSubject() {
 }
 
 function setFieldsToNewSubject() {
-    $('#btnAdd').prop("disabled", false);
+    newSubject = true;
+    $('#btnAdd').prop("disabled", true);
     $('#btnUpdate').prop("disabled", true);
     $('#btnDelete').prop("disabled", true);
     $('#subjectId').prop("disabled", false);
+    $('#subjectId').val('')
+    $('#subjectTitle').val('')
+    $('#credits').val('1')
 }
 
 //--------------------------------------------------Clear fields--------------------------------------------------------
 
-$('#btnClear').click(function () {
-    setTextFieldsEmpty();
-    setFieldsToNewSubject();
+$('#subjectId').keyup(function () {
+    $(this).val($(this).val().toUpperCase())
+    validateSubmission();
 })
 
-function setTextFieldsEmpty() {
-    $('#subjectId').val('')
-    $('#subjectTitle').val('')
-    $('#credits').val('')
+$('#subjectTitle').keyup(function () {
+    validateSubmission();
+})
+
+$('#credits').keyup(function () {
+    validateSubmission();
+})
+
+$('#btnClear').click(function () {
     setFieldsToNewSubject();
+    validateSubmission();
+})
+
+function validateSubmission() {
+    if (newSubject && $('#subjectId').val() !== '' && $('#subjectTitle').val() !== '' && $('#credits').val() !== '') {
+        $('#btnAdd').prop("disabled", false);
+        $('#btnUpdate').prop("disabled", true);
+    } else if (!newSubject && $('#subjectId').val() !== '' && $('#subjectTitle').val() !== '' && $('#credits').val() !== '') {
+        $('#btnAdd').prop("disabled", true);
+        $('#btnUpdate').prop("disabled", false);
+    } else {
+        $('#btnAdd').prop("disabled", true);
+        $('#btnUpdate').prop("disabled", true);
+    }
 }

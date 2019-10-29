@@ -1,12 +1,7 @@
 package controller.url_controller.admin.subject;
 
 import controller.db_controller.SubjectController;
-import controller.db_controller.SubjectDegreeController;
-import db.DBConnection;
 import model.Subject;
-import model.SubjectDegree;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONValue;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

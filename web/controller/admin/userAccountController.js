@@ -84,7 +84,6 @@ function sendRequestToServer(urlExtension, successResponse, failResponse) {
             success: function (response) {
                 if (JSON.parse(response) == true) {
                     loadStudents();
-                    setTextFieldsEmpty();
                     setFieldsToNewStudent();
                     $('#response').html('<div class="alert alert-success" style="text-align: center;font-weight: bold">' + successResponse + '</div>')
                 } else {
@@ -157,6 +156,10 @@ function setFieldsToNewStudent() {
     $('#btnUpdate').prop("disabled", true);
     $('#btnDelete').prop("disabled", true);
     $('#regNo').prop("disabled", false);
+    $('#regNo').val('')
+    $('#studetName').val('')
+    $('#nationalId').val('')
+    $('#emailAddress').val('')
 }
 
 function setFieldsToExistingStudent() {
@@ -223,15 +226,6 @@ function isEmail(email) {
 //--------------------------------------------------Clear fields--------------------------------------------------------
 
 $('#btnClear').click(function () {
-    setTextFieldsEmpty();
     setFieldsToNewStudent();
     validateSubmission();
 })
-
-function setTextFieldsEmpty() {
-    $('#regNo').val('')
-    $('#studetName').val('')
-    $('#nationalId').val('')
-    $('#emailAddress').val('')
-    setFieldsToNewStudent();
-}

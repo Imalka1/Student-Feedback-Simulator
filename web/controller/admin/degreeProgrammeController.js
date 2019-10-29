@@ -3,6 +3,7 @@
 $(window).on("load", function () {
     loadDegrees();
     loadSubjects();
+    validateSubmission();
 });
 
 //------------------------------------------------Load degrees----------------------------------------------------------
@@ -113,7 +114,8 @@ $('#btnAdd').click(function () {
             },
             success: function (response) {
                 if (JSON.parse(response) == true) {
-                    setTextFieldsEmpty();
+                    loadDegrees();
+                    setFieldsToNewDegree();
                     $('#response').html('<div class="alert alert-success" style="text-align: center;font-weight: bold">Degree programme has been submitted successfully</div>')
                 } else {
                     $('#response').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Failed to add degree programme</div>')
@@ -136,11 +138,12 @@ $('#btnUpdate').click(function () {
             type: "post",
             url: window.location.origin + "/update_degree",
             data: {
+                degreeId: $('#degreeId').val(),
                 degreeTitle: $('#degreeTitle').val()
             },
             success: function (response) {
                 if (JSON.parse(response) == true) {
-                    setTextFieldsEmpty();
+                    loadDegrees();
                     setFieldsToNewDegree();
                     $('#response').html('<div class="alert alert-success" style="text-align: center;font-weight: bold">Degree programme has been updated successfully</div>')
                 } else {
@@ -164,11 +167,11 @@ $('#btnDelete').click(function () {
             type: "post",
             url: window.location.origin + "/delete_degree",
             data: {
-                subjectId: $('#subjectId').val()
+                degreeId: $('#degreeId').val()
             },
             success: function (response) {
                 if (JSON.parse(response) == true) {
-                    setTextFieldsEmpty();
+                    loadDegrees();
                     setFieldsToNewDegree();
                     $('#response').html('<div class="alert alert-success" style="text-align: center;font-weight: bold">Degree programme has been deleted successfully</div>');
                 } else {
@@ -198,28 +201,46 @@ $(document).on('click', '.btnViewDegree', function () {
 
 //---------------------------------------------New vs existing----------------------------------------------------------
 
+var newDegree = true;
+
 function setFieldsToExistingDegree() {
+    newDegree = false;
     $('#btnAdd').prop("disabled", true);
     $('#btnUpdate').prop("disabled", false);
     $('#btnDelete').prop("disabled", false);
 }
 
 function setFieldsToNewDegree() {
-    $('#btnAdd').prop("disabled", false);
+    newDegree = true;
+    $('#btnAdd').prop("disabled", true);
     $('#btnUpdate').prop("disabled", true);
     $('#btnDelete').prop("disabled", true);
+    $('#degreeTitle').val('')
 }
 
 //--------------------------------------------------Clear fields--------------------------------------------------------
 
-$('#btnClear').click(function () {
-    setTextFieldsEmpty();
-    setFieldsToNewDegree();
+$('#degreeTitle').keyup(function () {
+    validateSubmission();
 })
 
-function setTextFieldsEmpty() {
-    $('#degreeTitle').val('')
+$('#btnClear').click(function () {
     setFieldsToNewDegree();
+    validateSubmission();
+})
+
+function validateSubmission() {
+    if (newDegree && $('#degreeTitle').val() !== '') {
+        $('#btnAdd').prop("disabled", false);
+        $('#btnUpdate').prop("disabled", true);
+    } else if (!newDegree && $('#degreeTitle').val() !== '') {
+        $('#btnAdd').prop("disabled", true);
+        $('#btnUpdate').prop("disabled", false);
+    } else {
+        $('#btnAdd').prop("disabled", true);
+        $('#btnUpdate').prop("disabled", true);
+        $('#btnDelete').prop("disabled", true);
+    }
 }
 
 $(document).on('click', '.btnAddSubject', function () {

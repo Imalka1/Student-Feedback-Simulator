@@ -61,6 +61,30 @@ public class SubjectLecturerController {
         return dates;//---Return dates array object with a length > 0 if dates exists, if not array object returns with a length = 0
     }
 
+    //----------------------------------------Get all lecturers via subject---------------------------------------------
+    public List<SubjectLecturer> getAllLecturersViaSubject(Subject subject) {
+        List<SubjectLecturer> lecturers = new ArrayList<>();//---Creates an array object (ArrayList) to store multiple objects
+        try {
+            Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
+            PreparedStatement preparedStatement = connection.prepareStatement("" +
+                    "select l.lecturerId,l.lecturer_name,current " +
+                    "from lecturer l,subject_lecturer sl " +
+                    "where l.lecturerId=sl.lecturerId && subjectId=?");//---Prepare sql as a java object
+            preparedStatement.setObject(1, subject.getSubjectId());//---Set values to sql object
+            ResultSet rst = preparedStatement.executeQuery();//---Execute sql and store result
+            while (rst.next()) {//---Navigate pointer to result rows until it ends
+                SubjectLecturer subjectLecturer = new SubjectLecturer();//---Creates a lecturer object
+                subjectLecturer.setLecturerId(rst.getString(1));//---Set table row data to lecturer model object
+                subjectLecturer.setLecturerName(rst.getString(2));//---Set table row data to lecturer model object
+                subjectLecturer.setCurrent(rst.getBoolean(3));//---Set table row data to lecturer model object
+                lecturers.add(subjectLecturer);//---Add lecturer object to array object
+            }
+        } catch (SQLException e) {//--Catch if any sql exception occurred
+            e.printStackTrace();
+        }
+        return lecturers;//---Return lecturers array object with a length > 0 if lecturers exists, if not array object returns with a length = 0
+    }
+
     //-------------------------------------------------Update subject---------------------------------------------------
     public boolean setAllSubjectLecturersCurrentStatusToFalse(SubjectLecturer subjectLecturer) {
         try {

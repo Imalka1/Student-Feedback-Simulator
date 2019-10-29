@@ -12,7 +12,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row" style="margin-top: 20px">
         <div class="col-12" id="response">
 
         </div>
@@ -66,7 +66,7 @@
             <input class="form-control" type="text" id="subjectTitle">
         </div>
         <div class="col-1">
-            <input class="form-control" type="number" id="credits" min="1">
+            <input class="form-control" type="number" id="credits" min="1" value="1">
         </div>
         <div class="col-2">
             <div>
