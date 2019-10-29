@@ -1,8 +1,7 @@
-package controller.url_controller.admin.subject;
+package controller.url_controller.admin.degree;
 
 import controller.db_controller.DegreeController;
 import model.Degree;
-import model.Subject;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -14,21 +13,18 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(urlPatterns = "/load_degrees_via_subject")//---URL extension which mapped to this servlet object
-public class LoadDegreeViaSubjectController extends HttpServlet {
+@WebServlet(urlPatterns = "/load_degrees")//---URL extension which mapped to this servlet object
+public class LoadDegreesController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         //-----------------Retrieve data which submitted to the server and set data to model object---------------------
 
-        Subject subject = new Subject();
-        subject.setSubjectId(req.getParameter("subjectId"));
-
-        List<Degree> allDegreesViaSubject = new DegreeController().getAllDegreesViaSubject(subject);//---Call the db server (DegreeController(db_controller)) to get all degrees via faculty
+        List<Degree> allDegreesViaFaculty = new DegreeController().getAllDegrees();//---Call the db server (DegreeController(db_controller)) to get all degrees via faculty
 
         JSONObject obj = new JSONObject();//---Creates a JSON object {}
         JSONArray degreesJson = new JSONArray();//---Creates a JSON array to store JSON objects []
-        for (Degree degree : allDegreesViaSubject) {
+        for (Degree degree : allDegreesViaFaculty) {
             JSONObject degreeJson = new JSONObject();//---Creates a JSON object {}
             degreeJson.put("DegId", degree.getDegreeId());//---Add data to JSON {"DegId":"1"}
             degreeJson.put("DegreeName", degree.getDegreeName());//---Add data to JSON {"DegId":"1","DegreeName":"BSc(Computer Science)"}

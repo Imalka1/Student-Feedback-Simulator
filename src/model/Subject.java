@@ -4,6 +4,7 @@ public class Subject {
     private String subjectId;
     private int subjectLecturerId;
     private int semesterId;
+    private String semesterName;
     private String subjectName;
     private int credits;
     private String lecturerName;
@@ -63,5 +64,13 @@ public class Subject {
 
     public void setCredits(int credits) {
         this.credits = credits;
+    }
+
+    public String getSemesterName() {
+        return semesterName;
+    }
+
+    public void setSemesterName(String semesterName) {
+        this.semesterName = semesterName;
     }
 }

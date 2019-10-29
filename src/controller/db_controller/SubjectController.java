@@ -118,6 +118,26 @@ public class SubjectController {
         return subjects;//---Return subjects array object with a length > 0 if subjects exists, if not array object returns with a length = 0
     }
 
+    public List<Subject> getSubjectsViaDegree(Degree degree) {
+        List<Subject> subjects = new ArrayList<>();//---Creates an array object (ArrayList) to store multiple objects
+        try {
+            Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
+            PreparedStatement preparedStatement = connection.prepareStatement("select s.subjectId,s.title,sem.name from subject_degree sd,subject s,semester sem where sd.subjectId=s.subjectId && s.semesterId=sem.semesterId && degreeId=?");//---Prepare sql as a java object
+            preparedStatement.setObject(1, degree.getDegreeId());//---Set values to sql object
+            ResultSet rst = preparedStatement.executeQuery();//---Execute sql and store result
+            while (rst.next()) {//---Navigate pointer to result rows until it ends
+                Subject subject = new Subject();
+                subject.setSubjectId(rst.getString(1));
+                subject.setSubjectName(rst.getString(2));
+                subject.setSemesterName(rst.getString(3));
+                subjects.add(subject);
+            }
+        } catch (SQLException e) {//--Catch if any sql exception occurred
+            e.printStackTrace();
+        }
+        return subjects;//---Return subjects array object with a length > 0 if subjects exists, if not array object returns with a length = 0
+    }
+
     public boolean changeAllow(Subject subject) {
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
