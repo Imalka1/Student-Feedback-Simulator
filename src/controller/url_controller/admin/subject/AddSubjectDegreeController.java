@@ -1,4 +1,4 @@
-package controller.url_controller.admin.degree;
+package controller.url_controller.admin.subject;
 
 import controller.db_controller.SubjectController;
 import controller.db_controller.SubjectDegreeController;

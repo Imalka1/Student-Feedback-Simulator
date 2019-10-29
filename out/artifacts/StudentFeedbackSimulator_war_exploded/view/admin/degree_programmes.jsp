@@ -138,7 +138,7 @@
 
     <div class="row">
         <div class="col-12" style="margin-top: 20px;font-size: 15px" id="subjectDegreeTitle">
-            <b>Subject :- </b>No subject
+            <b>Subject :- </b>No degree programme selected
         </div>
     </div>
 

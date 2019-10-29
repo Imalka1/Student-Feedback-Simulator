@@ -99,7 +99,8 @@
 
             <%-------------------------------Store subject lecturer ID for Js stuff(Start)----------------------------%>
 
-            <input type="hidden" id="subjectLecturerId" value="<%= subject.getSubjectLecturerId()%>">
+            <input type="hidden" id="subjectId" value="<%= subject.getSubjectId()%>">
+            <input type="hidden" id="lecturerId" value="<%= subject.getLecturerId()%>">
 
             <%-------------------------------Store subject lecturer ID for Js stuff(End)------------------------------%>
 

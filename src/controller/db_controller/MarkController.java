@@ -16,12 +16,13 @@ public class MarkController {
     public boolean addMarks(Mark mark) {
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
-            PreparedStatement preparedStatement = connection.prepareStatement("insert into marks values (?,?,?,?,?)");//---Prepare sql as a java object
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into marks values (?,?,?,?,?,?)");//---Prepare sql as a java object
             preparedStatement.setObject(1, mark.getuId());//---Set values to sql object
             preparedStatement.setObject(2, mark.getEcId());//---Set values to sql object
             preparedStatement.setObject(3, mark.getDateOfSubmission());//---Set values to sql object
-            preparedStatement.setObject(4, mark.getSubjectLecturerId());//---Set values to sql object
-            preparedStatement.setObject(5, mark.getMarks());//---Set values to sql object
+            preparedStatement.setObject(4, mark.getSubjectId());//---Set values to sql object
+            preparedStatement.setObject(5, mark.getLecturerId());//---Set values to sql object
+            preparedStatement.setObject(6, mark.getMarks());//---Set values to sql object
             if (preparedStatement.executeUpdate() > 0) {//---Execute sql and returns whether it was executed or not
                 return true;
             }
@@ -40,8 +41,7 @@ public class MarkController {
                     "select evaluation_criteria_heading.text,evaluation_criteria.text,sum(marks),count(marks)" +
                     "from evaluation_criteria " +
                     "inner join evaluation_criteria_heading on evaluation_criteria_heading.echid=evaluation_criteria.echid " +
-                    "left join marks on evaluation_criteria.ecId=marks.ecId && dateOfSubmission=? && " +
-                    "subjectLecturerId=(select subjectLecturerId from subject_lecturer where lecturerId=? && subjectId=?) " +
+                    "left join marks on evaluation_criteria.ecId=marks.ecId && dateOfSubmission=? && lecturerId=? && subjectId=? " +
                     "group by evaluation_criteria.ecid asc");//---Prepare sql as a java object
             preparedStatement.setObject(1, mark.getDateOfSubmission());//---Set values to sql object
             preparedStatement.setObject(2, mark.getLecturerId());//---Set values to sql object

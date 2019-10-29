@@ -32,7 +32,7 @@ public class ChangeCurrentLecturerController extends HttpServlet {
             subjectLecturer.setCurrent(true);
 
             if (new SubjectLecturerController().setAllSubjectLecturersCurrentStatusToFalse(subjectLecturer)) {//---Call the db server (UserController(db_controller)) to update user email
-                if (new SubjectLecturerController().setSubjectLecturersCurrentStatusToTrue(subjectLecturer)) {
+                if (new SubjectLecturerController().setSubjectLecturerCurrentStatusToTrue(subjectLecturer)) {
                     connection.commit();//---If all data were sent for both tables, then commit (write) data on both tables
                     resp.getWriter().println(true);//---Reply / Response
                     return;

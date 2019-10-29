@@ -2,9 +2,8 @@ package model;
 
 public class Subject {
     private String subjectId;
-    private int subjectLecturerId;
+    private String lecturerId;
     private int semesterId;
-    private String semesterName;
     private String subjectName;
     private int credits;
     private String lecturerName;
@@ -34,12 +33,12 @@ public class Subject {
         this.subjectId = subjectId;
     }
 
-    public int getSubjectLecturerId() {
-        return subjectLecturerId;
+    public String getLecturerId() {
+        return lecturerId;
     }
 
-    public void setSubjectLecturerId(int subjectLecturerId) {
-        this.subjectLecturerId = subjectLecturerId;
+    public void setLecturerId(String lecturerId) {
+        this.lecturerId = lecturerId;
     }
 
     public int getSemesterId() {
@@ -64,13 +63,5 @@ public class Subject {
 
     public void setCredits(int credits) {
         this.credits = credits;
-    }
-
-    public String getSemesterName() {
-        return semesterName;
-    }
-
-    public void setSemesterName(String semesterName) {
-        this.semesterName = semesterName;
     }
 }

@@ -7,15 +7,6 @@ $(window).on("load", function () {
 
 //------------------------------------------------Load degrees----------------------------------------------------------
 
-$('#btnAddDegree').click(function () {
-    var degrees =
-        '<tr style="font-size: 17px">' +
-        '<td style="padding-left: 5px"><input type="hidden" value="' + $('#degree').children('option:selected').val() + '">' + $('#degree').children('option:selected').html() + '</td>' +
-        '<td class="btnDegreeRemove" style="text-align: center;cursor: pointer"><i style="color: red" class="fa fa-times"></i></td></tr>';
-
-    $('#degreeBody').append(degrees);
-})
-
 function loadDegrees() {
     $.ajax(
         {

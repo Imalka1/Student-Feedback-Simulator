@@ -5,16 +5,11 @@ $(window).on("load", function () {
     loadSubjects();
 });
 
-//------------------------------------------------Load degrees----------------------------------------------------------
-
-$('#btnAddDegree').click(function () {
-    var degrees =
-        '<tr style="font-size: 17px">' +
-        '<td style="padding-left: 5px"><input type="hidden" value="' + $('#degree').children('option:selected').val() + '">' + $('#degree').children('option:selected').html() + '</td>' +
-        '<td class="btnDegreeRemove" style="text-align: center;cursor: pointer"><i style="color: red" class="fa fa-times"></i></td></tr>';
-
-    $('#degreeBody').append(degrees);
+$('#lecturerId').keyup(function () {
+    $(this).val($(this).val().toUpperCase())
 })
+
+//------------------------------------------------Load degrees----------------------------------------------------------
 
 function loadLecturers() {
     $.ajax(
@@ -46,13 +41,13 @@ function loadLecturers() {
     );
 }
 
-function loadSubjectsViaDegree(degreeId) {
+function loadSubjectsViaLecturer(lecturerId) {
     $.ajax(
         {
             type: "post",
-            url: window.location.origin + "/load_subjects_via_degree",
+            url: window.location.origin + "/load_subjects_via_lecturer",
             data: {
-                degreeId: degreeId
+                lecturerId: lecturerId
             },
             success: function (response) {
                 var count = 0;
@@ -64,10 +59,16 @@ function loadSubjectsViaDegree(degreeId) {
                         '<td style="padding-right: 5px;text-align: right;font-weight: bold">' + ++count + '</td>' +
                         '<td style="text-align: center;font-weight: bold">' + obj.Subjects[i].SubjectId + '</td>' +
                         '<td style="padding-left: 5px">' + obj.Subjects[i].SubjectName + '</td>' +
-                        '<td style="text-align: center">' + obj.Subjects[i].Semester + '</td>' +
+                        '<td style="text-align: center">' + obj.Subjects[i].Semester + '</td>';
+                    if (obj.Subjects[i].Current === true) {
+                        subjects += '<td style="text-align: center;cursor: pointer" class="btnCurrentLecturer"><i class="fa fa-check" style="color: green"></i></td>'
+                    } else {
+                        subjects += '<td style="text-align: center;cursor: pointer" class="btnCurrentLecturer"><i class="fa fa-times" style="color: red"></i></td>'
+                    }
+                    subjects +=
                         '<td class="btnSubjectRemove" style="text-align: center;cursor: pointer"><i style="color: red" class="fa fa-times"></i></td></tr>';
                 }
-                $('#subjectDegreeBody').html(subjects);
+                $('#subjectLecturerBody').html(subjects);
             },
             error: function () {
 
@@ -118,16 +119,17 @@ $('#btnAdd').click(function () {
     $.ajax(
         {
             type: "post",
-            url: window.location.origin + "/add_degree",
+            url: window.location.origin + "/add_lecturer",
             data: {
-                degreeTitle: $('#degreeTitle').val()
+                lecturerId: $('#lecturerId').val(),
+                lecturerName: $('#lecturerName').val()
             },
             success: function (response) {
                 if (JSON.parse(response) == true) {
                     setTextFieldsEmpty();
-                    $('#response').html('<div class="alert alert-success" style="text-align: center;font-weight: bold">Degree programme has been submitted successfully</div>')
+                    $('#response').html('<div class="alert alert-success" style="text-align: center;font-weight: bold">Lecturer  has been submitted successfully</div>')
                 } else {
-                    $('#response').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Failed to add degree programme</div>')
+                    $('#response').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Failed to add lecturer </div>')
                 }
                 window.scrollTo(0, 0);
                 setTimeout(function () {
@@ -145,17 +147,18 @@ $('#btnUpdate').click(function () {
     $.ajax(
         {
             type: "post",
-            url: window.location.origin + "/update_degree",
+            url: window.location.origin + "/update_lecturer",
             data: {
-                degreeTitle: $('#degreeTitle').val()
+                lecturerId: $('#lecturerId').val(),
+                lecturerName: $('#lecturerName').val()
             },
             success: function (response) {
                 if (JSON.parse(response) == true) {
                     setTextFieldsEmpty();
                     setFieldsToNewLecturer();
-                    $('#response').html('<div class="alert alert-success" style="text-align: center;font-weight: bold">Degree programme has been updated successfully</div>')
+                    $('#response').html('<div class="alert alert-success" style="text-align: center;font-weight: bold">Lecturer  has been updated successfully</div>')
                 } else {
-                    $('#response').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Failed to update degree programme</div>')
+                    $('#response').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Failed to update lecturer </div>')
                 }
                 window.scrollTo(0, 0);
                 setTimeout(function () {
@@ -173,17 +176,17 @@ $('#btnDelete').click(function () {
     $.ajax(
         {
             type: "post",
-            url: window.location.origin + "/delete_degree",
+            url: window.location.origin + "/delete_lecturer",
             data: {
-                subjectId: $('#subjectId').val()
+                lecturerId: $('#lecturerId').val()
             },
             success: function (response) {
                 if (JSON.parse(response) == true) {
                     setTextFieldsEmpty();
                     setFieldsToNewLecturer();
-                    $('#response').html('<div class="alert alert-success" style="text-align: center;font-weight: bold">Degree programme has been deleted successfully</div>');
+                    $('#response').html('<div class="alert alert-success" style="text-align: center;font-weight: bold">Lecturer  has been deleted successfully</div>');
                 } else {
-                    $('#response').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Failed to delete degree programme</div>')
+                    $('#response').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Failed to delete lecturer </div>')
                 }
                 window.scrollTo(0, 0);
                 setTimeout(function () {
@@ -204,7 +207,7 @@ $(document).on('click', '.btnViewLecturer', function () {
     $('#lecturerName').val($(this).parent().children().eq(2).html())
     $('#subjectLecturerName').html('<b>Lecturer :- </b>' + $(this).parent().children().eq(2).html())
     setFieldsToExistingLecturer();
-    // loadSubjectsViaDegree($(this).parent().children().eq(1).children('input').val())
+    loadSubjectsViaLecturer($(this).parent().children().eq(1).html())
 })
 
 //---------------------------------------------New vs existing----------------------------------------------------------
@@ -249,12 +252,13 @@ $(document).on('click', '.btnAddSubject', function () {
                     if (JSON.parse(response) == true) {
                         var subjects =
                             '<tr style="font-size: 17px">' +
-                            '<td style="padding-right: 5px;text-align: right;font-weight: bold">' + ($('#subjectDegreeBody').children().length + 1) + '</td>' +
+                            '<td style="padding-right: 5px;text-align: right;font-weight: bold">' + ($('#subjectLecturerBody').children().length + 1) + '</td>' +
                             '<td style="text-align: center;font-weight: bold">' + $(that).parent().children().eq(1).html() + '</td>' +
                             '<td style="padding-left: 5px">' + $(that).parent().children().eq(2).html() + '</td>' +
                             '<td style="text-align: center">' + $('#semester').children('option:selected').html().trim() + '</td>' +
+                            '<td style="text-align: center;cursor: pointer" class="btnCurrentLecturer"><i class="fa fa-times" style="color: red"></i></td>' +
                             '<td class="btnSubjectRemove" style="text-align: center;cursor: pointer"><i style="color: red" class="fa fa-times"></i></td></tr>';
-                        $('#subjectDegreeBody').append(subjects);
+                        $('#subjectLecturerBody').append(subjects);
                     } else {
                         $('#response').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Failed to add subject</div>')
                         window.scrollTo(0, 0);
@@ -269,7 +273,7 @@ $(document).on('click', '.btnAddSubject', function () {
             }
         );
     } else {
-        $('#response').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Please select a degree programme to add subjects</div>')
+        $('#response').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Please select a lecturer to add subjects</div>')
         window.scrollTo(0, 0);
         setTimeout(function () {
             $('#response').html('');
@@ -288,13 +292,13 @@ $(document).on('click', '.btnSubjectRemove', function () {
                 subjectId: $(that).parent().children().eq(1).html()
             },
             success: function (response) {
-                if (JSON.parse(response) == true) {
+                if (JSON.parse(response) === true) {
                     $(that).parent().remove();
-                    for (var i = 0; i < $('#subjectDegreeBody').children().length; i++) {
-                        $('#subjectDegreeBody').children().eq(i).children().eq(0).html(i + 1)
+                    for (var i = 0; i < $('#subjectLecturerBody').children().length; i++) {
+                        $('#subjectLecturerBody').children().eq(i).children().eq(0).html(i + 1)
                     }
                 } else {
-                    $('#response').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Failed to delete subject</div>')
+                    $('#response').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Failed to delete lecturer</div>')
                     window.scrollTo(0, 0);
                     setTimeout(function () {
                         $('#response').html('');
@@ -307,3 +311,27 @@ $(document).on('click', '.btnSubjectRemove', function () {
         }
     );
 });
+
+$(document).on('click', '.btnCurrentLecturer', function () {
+    var that = this;
+    console.log($(that).html())
+    $.ajax(
+        {
+            type: "post",
+            url: window.location.origin + "/change_current_lecturer",
+            data: {
+                lecturerId: $('#lecturerId').val(),
+                subjectId: $(that).parent().children().eq(1).html()
+            },
+            success: function (response) {
+                if (JSON.parse(response) === true) {
+                    if ($(that).children().attr('class') === 'fa fa-check') {
+                        $(that).html('<i class="fa fa-times" style="color: red"></i>')
+                    } else if ($(that).children().attr('class') === 'fa fa-times') {
+                        $(that).html('<i class="fa fa-check" style="color: green"></i>')
+                    }
+                }
+            }
+        }
+    );
+})

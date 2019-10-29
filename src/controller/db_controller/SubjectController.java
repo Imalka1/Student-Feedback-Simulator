@@ -22,7 +22,7 @@ public class SubjectController {
                     "from subject inner join subject_lecturer on subject.subjectId=subject_lecturer.subjectId && semesterId=(select sem.semesterId from student s,semester sem where s.semesterId=sem.semesterId && s.uId=?)" +
                     "inner join lecturer on subject_lecturer.lecturerId=lecturer.lecturerId && current=true " +
                     "inner join subject_degree on subject.subjectId=subject_degree.subjectId && degreeId=(select d.degreeId from student s,degree d where s.degreeId=d.degreeId && s.uId=?)" +
-                    "left join marks on marks.subjectLecturerId=subject_lecturer.subjectLecturerId && uId=? && dateOfSubmission=curdate() group by 1");//---Prepare sql as a java object
+                    "left join marks on marks.subjectId=subject_lecturer.subjectId && marks.lecturerId=subject_lecturer.lecturerId && uId=? && dateOfSubmission=curdate() group by 1");//---Prepare sql as a java object
             preparedStatement.setObject(1, student.getuId());//---Set values to sql object
             preparedStatement.setObject(2, student.getuId());//---Set values to sql object
             preparedStatement.setObject(3, student.getuId());//---Set values to sql object
@@ -52,7 +52,7 @@ public class SubjectController {
                     "from subject inner join subject_lecturer on subject.subjectId=subject_lecturer.subjectId && semesterId=(select sem.semesterId from student s,semester sem where s.semesterId=sem.semesterId && s.uId=?)" +
                     "inner join lecturer on subject_lecturer.lecturerId=lecturer.lecturerId && current=true " +
                     "inner join subject_degree on subject.subjectId=subject_degree.subjectId && degreeId=(select d.degreeId from student s,degree d where s.degreeId=d.degreeId && s.uId=?)" +
-                    "left join marks on marks.subjectLecturerId=subject_lecturer.subjectLecturerId && uId=? && dateOfSubmission=curdate() group by 1");//---Prepare sql as a java object
+                    "left join marks on marks.subjectId=subject_lecturer.subjectId && marks.lecturerId=subject_lecturer.lecturerId && uId=? && dateOfSubmission=curdate() group by 1");//---Prepare sql as a java object
             preparedStatement.setObject(1, student.getuId());//---Set values to sql object
             preparedStatement.setObject(2, student.getuId());//---Set values to sql object
             preparedStatement.setObject(3, student.getuId());//---Set values to sql object
@@ -78,7 +78,7 @@ public class SubjectController {
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
             PreparedStatement preparedStatement = connection.prepareStatement("" +
-                    "select title,credits,l.lecturer_name,subjectLecturerId " +
+                    "select title,credits,l.lecturer_name,s.subjectId,l.lecturerId " +
                     "from subject s,lecturer l,subject_lecturer sl " +
                     "where l.lecturerId=sl.lecturerId && s.subjectId=sl.subjectId && s.subjectId=? && current=true");//---Prepare sql as a java object
             preparedStatement.setObject(1, subject.getSubjectId());//---Set values to sql object
@@ -88,7 +88,8 @@ public class SubjectController {
                 subjectNameAndCredits.setSubjectName(rst.getString(1));//---Set table row data to subject model object
                 subjectNameAndCredits.setCredits(rst.getInt(2));//---Set table row data to subject model object
                 subjectNameAndCredits.setLecturerName(rst.getString(3));//---Set table row data to subject model object
-                subjectNameAndCredits.setSubjectLecturerId(rst.getInt(4));//---Set table row data to subject model object
+                subjectNameAndCredits.setSubjectId(rst.getString(4));//---Set table row data to subject model object
+                subjectNameAndCredits.setLecturerId(rst.getString(5));//---Set table row data to subject model object
             }
         } catch (SQLException e) {//--Catch if any sql exception occurred
             e.printStackTrace();
@@ -111,26 +112,6 @@ public class SubjectController {
                 subjectObj.setCredits(rst.getInt(3));//---Set table row data to subject model object
                 subjectObj.setAllowed(rst.getBoolean(4));//---Set table row data to subject model object
                 subjects.add(subjectObj);//---Add subject object to array object
-            }
-        } catch (SQLException e) {//--Catch if any sql exception occurred
-            e.printStackTrace();
-        }
-        return subjects;//---Return subjects array object with a length > 0 if subjects exists, if not array object returns with a length = 0
-    }
-
-    public List<Subject> getSubjectsViaDegree(Degree degree) {
-        List<Subject> subjects = new ArrayList<>();//---Creates an array object (ArrayList) to store multiple objects
-        try {
-            Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
-            PreparedStatement preparedStatement = connection.prepareStatement("select s.subjectId,s.title,sem.name from subject_degree sd,subject s,semester sem where sd.subjectId=s.subjectId && s.semesterId=sem.semesterId && degreeId=?");//---Prepare sql as a java object
-            preparedStatement.setObject(1, degree.getDegreeId());//---Set values to sql object
-            ResultSet rst = preparedStatement.executeQuery();//---Execute sql and store result
-            while (rst.next()) {//---Navigate pointer to result rows until it ends
-                Subject subject = new Subject();
-                subject.setSubjectId(rst.getString(1));
-                subject.setSubjectName(rst.getString(2));
-                subject.setSemesterName(rst.getString(3));
-                subjects.add(subject);
             }
         } catch (SQLException e) {//--Catch if any sql exception occurred
             e.printStackTrace();

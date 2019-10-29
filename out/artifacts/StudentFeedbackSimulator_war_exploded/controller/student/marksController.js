@@ -31,7 +31,8 @@ $('#btnSubmit').click(function () {
                 url: "http://" + window.location.hostname + ":8080/processMarks",
                 data: {
                     uid: $('#uId').val(),
-                    sublecid: $('#subjectLecturerId').val(),
+                    subjectId: $('#subjectId').val(),
+                    lecturerId: $('#lecturerId').val(),
                     marks: JSON.stringify(marks),
                     ecids: JSON.stringify(ecids)
                 },

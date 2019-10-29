@@ -13,22 +13,22 @@ import java.util.List;
 public class SubjectLecturerController {
 
     //----------------------------------------Get all lecturers via subject---------------------------------------------
-    public List<SubjectLecturer> getAllLecturersViaSubject(Subject subject) {
+    public List<SubjectLecturer> getSubjectsViaLecturer(Lecturer lecturer) {
         List<SubjectLecturer> lecturers = new ArrayList<>();//---Creates an array object (ArrayList) to store multiple objects
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
             PreparedStatement preparedStatement = connection.prepareStatement("" +
-                    "select l.lecturerId,l.lecturer_name,current " +
-                    "from lecturer l,subject_lecturer sl " +
-                    "where l.lecturerId=sl.lecturerId && subjectId=? " +
-                    "order by 1 desc");//---Prepare sql as a java object
-            preparedStatement.setObject(1, subject.getSubjectId());//---Set values to sql object
+                    "select s.subjectId,s.title,sem.name,current " +
+                    "from subject_lecturer sl,semester sem,subject s " +
+                    "where s.subjectId=sl.subjectId && s.semesterId=sem.semesterId && sl.lecturerId=?");//---Prepare sql as a java object
+            preparedStatement.setObject(1, lecturer.getLecturerId());//---Set values to sql object
             ResultSet rst = preparedStatement.executeQuery();//---Execute sql and store result
             while (rst.next()) {//---Navigate pointer to result rows until it ends
                 SubjectLecturer subjectLecturer = new SubjectLecturer();//---Creates a lecturer object
                 subjectLecturer.setLecturerId(rst.getString(1));//---Set table row data to lecturer model object
                 subjectLecturer.setLecturerName(rst.getString(2));//---Set table row data to lecturer model object
-                subjectLecturer.setCurrent(rst.getBoolean(3));//---Set table row data to lecturer model object
+                subjectLecturer.setSemesterName(rst.getString(3));//---Set table row data to lecturer model object
+                subjectLecturer.setCurrent(rst.getBoolean(4));//---Set table row data to lecturer model object
                 lecturers.add(subjectLecturer);//---Add lecturer object to array object
             }
         } catch (SQLException e) {//--Catch if any sql exception occurred
@@ -45,7 +45,7 @@ public class SubjectLecturerController {
             PreparedStatement preparedStatement = connection.prepareStatement("" +
                     "select distinct dateOfSubmission " +
                     "from subject_lecturer sl,marks m " +
-                    "where sl.subjectLecturerId=m.subjectLecturerId && lecturerId=? && subjectId=? " +
+                    "where sl.subjectId=m.subjectId && sl.lecturerId=m.lecturerId && sl.lecturerId=? && sl.subjectId=? " +
                     "order by 1 desc");//---Prepare sql as a java object
             preparedStatement.setObject(1, subjectLecturer.getLecturerId());//---Set values to sql object
             preparedStatement.setObject(2, subjectLecturer.getSubjectId());//---Set values to sql object
@@ -59,24 +59,6 @@ public class SubjectLecturerController {
             e.printStackTrace();
         }
         return dates;//---Return dates array object with a length > 0 if dates exists, if not array object returns with a length = 0
-    }
-
-    //---------------------------------------------------Add subject----------------------------------------------------
-    public boolean addSubjectLecturer(SubjectLecturer subjectLecturer) {
-        try {
-            Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
-            PreparedStatement preparedStatement = connection.prepareStatement("" +
-                    "insert into subject_lecturer (subjectId,lecturerId,current) " +
-                    "values (?,?,true)");//---Prepare sql as a java object
-            preparedStatement.setObject(1, subjectLecturer.getSubjectId());//---Set values to sql object
-            preparedStatement.setObject(2, subjectLecturer.getLecturerId());//---Set values to sql object
-            if (preparedStatement.executeUpdate() > 0) {//---Execute sql and returns whether it was executed or not
-                return true;
-            }
-        } catch (SQLException e) {//---Catch if any sql exception occurred
-            e.printStackTrace();
-        }
-        return false;
     }
 
     //-------------------------------------------------Update subject---------------------------------------------------
@@ -98,13 +80,47 @@ public class SubjectLecturerController {
     }
 
     //-------------------------------------------------Update subject---------------------------------------------------
-    public boolean setSubjectLecturersCurrentStatusToTrue(SubjectLecturer subjectLecturer) {
+    public boolean setSubjectLecturerCurrentStatusToTrue(SubjectLecturer subjectLecturer) {
         try {
             Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
             PreparedStatement preparedStatement = connection.prepareStatement("" +
                     "update subject_lecturer " +
                     "set current=true " +
                     "where subjectId=? && lecturerId=?");//---Prepare sql as a java object
+            preparedStatement.setObject(1, subjectLecturer.getSubjectId());//---Set values to sql object
+            preparedStatement.setObject(2, subjectLecturer.getLecturerId());//---Set values to sql object
+            if (preparedStatement.executeUpdate() > 0) {//---Execute sql and returns whether it was executed or not
+                return true;
+            }
+        } catch (SQLException e) {//---Catch if any sql exception occurred
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    //---------------------------------------------------Add subject----------------------------------------------------
+    public boolean addSubjectLecturer(SubjectLecturer subjectLecturer) {
+        try {
+            Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
+            PreparedStatement preparedStatement = connection.prepareStatement("" +
+                    "insert into subject_lecturer (subjectId,lecturerId,current) " +
+                    "values (?,?,false)");//---Prepare sql as a java object
+            preparedStatement.setObject(1, subjectLecturer.getSubjectId());//---Set values to sql object
+            preparedStatement.setObject(2, subjectLecturer.getLecturerId());//---Set values to sql object
+            if (preparedStatement.executeUpdate() > 0) {//---Execute sql and returns whether it was executed or not
+                return true;
+            }
+        } catch (SQLException e) {//---Catch if any sql exception occurred
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    //-------------------------------------------------Delete subject---------------------------------------------------
+    public boolean deleteSubjectLecturer(SubjectLecturer subjectLecturer) {
+        try {
+            Connection connection = DBConnection.getDBConnection().getConnection();//---Get database connection
+            PreparedStatement preparedStatement = connection.prepareStatement("delete from subject_lecturer where subjectId=? && lecturerId=?");//---Prepare sql as a java object
             preparedStatement.setObject(1, subjectLecturer.getSubjectId());//---Set values to sql object
             preparedStatement.setObject(2, subjectLecturer.getLecturerId());//---Set values to sql object
             if (preparedStatement.executeUpdate() > 0) {//---Execute sql and returns whether it was executed or not

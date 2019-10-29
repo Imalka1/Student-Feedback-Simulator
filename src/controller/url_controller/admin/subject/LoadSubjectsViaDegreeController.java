@@ -2,8 +2,10 @@ package controller.url_controller.admin.subject;
 
 import controller.db_controller.DegreeController;
 import controller.db_controller.SubjectController;
+import controller.db_controller.SubjectDegreeController;
 import model.Degree;
 import model.Subject;
+import model.SubjectDegree;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -25,11 +27,11 @@ public class LoadSubjectsViaDegreeController extends HttpServlet {
         Degree degree = new Degree();
         degree.setDegreeId(Integer.parseInt(req.getParameter("degreeId")));
 
-        List<Subject> subjectsViaDegree = new SubjectController().getSubjectsViaDegree(degree);//---Call the db server (DegreeController(db_controller)) to get all degrees via faculty
+        List<SubjectDegree> subjectsViaDegree = new SubjectDegreeController().getSubjectsViaDegree(degree);//---Call the db server (DegreeController(db_controller)) to get all degrees via faculty
 
         JSONObject obj = new JSONObject();//---Creates a JSON object {}
         JSONArray subjectsJson = new JSONArray();//---Creates a JSON array to store JSON objects []
-        for (Subject subject : subjectsViaDegree) {
+        for (SubjectDegree subject : subjectsViaDegree) {
             JSONObject subjectJson = new JSONObject();//---Creates a JSON object {}
             subjectJson.put("SubjectId", subject.getSubjectId());//---Add data to JSON {"DegId":"1"}
             subjectJson.put("SubjectName", subject.getSubjectName());//---Add data to JSON {"DegId":"1","DegreeName":"BSc(Computer Science)"}

@@ -40,7 +40,8 @@ public class AddMarksController extends HttpServlet {
                 //--------------------------------------Set data to model object----------------------------------------
                 Mark mark = new Mark();
                 mark.setuId(req.getParameter("uid"));
-                mark.setSubjectLecturerId(Integer.parseInt(req.getParameter("sublecid")));
+                mark.setSubjectId(req.getParameter("subjectId"));
+                mark.setLecturerId(req.getParameter("lecturerId"));
                 mark.setEcId(Integer.parseInt(jsonObjectIds.get(i).toString()));
                 mark.setMarks(Integer.parseInt(jsonObjectMarks.get(i).toString()));
                 mark.setDateOfSubmission(dateOfSubmission);

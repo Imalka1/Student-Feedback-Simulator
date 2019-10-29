@@ -6,7 +6,6 @@ public class Mark {
     private String criteriaHeading;
     private String criteria;
     private String dateOfSubmission;
-    private int subjectLecturerId;
     private int marks;
     private String subjectId;
     private String lecturerId;
@@ -74,14 +73,6 @@ public class Mark {
 
     public void setDateOfSubmission(String dateOfSubmission) {
         this.dateOfSubmission = dateOfSubmission;
-    }
-
-    public int getSubjectLecturerId() {
-        return subjectLecturerId;
-    }
-
-    public void setSubjectLecturerId(int subjectLecturerId) {
-        this.subjectLecturerId = subjectLecturerId;
     }
 
     public String getCriteriaHeading() {
