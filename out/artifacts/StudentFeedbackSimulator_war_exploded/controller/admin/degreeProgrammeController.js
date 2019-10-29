@@ -54,8 +54,8 @@ function loadSubjectsViaDegree(degreeId) {
             },
             success: function (response) {
                 var count = 0;
-                var obj = JSON.parse(response);
                 var subjects = '';
+                var obj = JSON.parse(response);
                 for (var i = 0; i < obj.Subjects.length; i++) {
                     subjects +=
                         '<tr style="font-size: 17px">' +
@@ -74,10 +74,6 @@ function loadSubjectsViaDegree(degreeId) {
     );
 }
 
-$(document).on('click', '.btnSubjectRemove', function () {
-    $(this).parent().remove();
-});
-
 //-----------------------------------------------------Load subjects----------------------------------------------------
 
 $('#semester').change(function () {
@@ -93,7 +89,6 @@ function loadSubjects() {
                 semesterId: $('#semester').val()
             },
             success: function (response) {
-                $('#subjectDegreeBody').html('')
                 var count = 0;
                 var subjects = '';
                 var obj = JSON.parse(response);
@@ -104,7 +99,7 @@ function loadSubjects() {
                         '<td style="text-align: center;font-weight: bold">' + obj.Subjects[i].SubjectId + '</td>' +
                         '<td style="padding-left: 5px">' + obj.Subjects[i].SubjectName + '</td>' +
                         '<td style="text-align: center">' + obj.Subjects[i].Credits + '</td>' +
-                        '<td class="btnViewSubject" style="text-align: center;cursor: pointer"><i style="font-size: 20px" class="fa fa-plus-circle"></i></td></tr>'
+                        '<td class="btnAddSubject" style="text-align: center;cursor: pointer"><i style="font-size: 20px" class="fa fa-plus-circle"></i></td></tr>'
                 }
                 $('#subjectsBody').html(subjects);
             },
@@ -235,3 +230,77 @@ function setTextFieldsEmpty() {
     $('#degreeTitle').val('')
     setFieldsToNewDegree();
 }
+
+$(document).on('click', '.btnAddSubject', function () {
+    var that = this;
+    if ($('#degreeId').val() !== '') {
+        $.ajax(
+            {
+                type: "post",
+                url: window.location.origin + "/add_subject_degree",
+                data: {
+                    degreeId: $('#degreeId').val(),
+                    subjectId: $(that).parent().children().eq(1).html()
+                },
+                success: function (response) {
+                    if (JSON.parse(response) == true) {
+                        var subjects =
+                            '<tr style="font-size: 17px">' +
+                            '<td style="padding-right: 5px;text-align: right;font-weight: bold">' + ($('#subjectDegreeBody').children().length + 1) + '</td>' +
+                            '<td style="text-align: center;font-weight: bold">' + $(that).parent().children().eq(1).html() + '</td>' +
+                            '<td style="padding-left: 5px">' + $(that).parent().children().eq(2).html() + '</td>' +
+                            '<td style="text-align: center">' + $('#semester').children('option:selected').html().trim() + '</td>' +
+                            '<td class="btnSubjectRemove" style="text-align: center;cursor: pointer"><i style="color: red" class="fa fa-times"></i></td></tr>';
+                        $('#subjectDegreeBody').append(subjects);
+                    } else {
+                        $('#response').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Failed to add subject</div>')
+                        window.scrollTo(0, 0);
+                        setTimeout(function () {
+                            $('#response').html('');
+                        }, 3000);
+                    }
+                },
+                error: function () {
+
+                }
+            }
+        );
+    } else {
+        $('#response').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Please select a degree programme to add subjects</div>')
+        window.scrollTo(0, 0);
+        setTimeout(function () {
+            $('#response').html('');
+        }, 3000);
+    }
+});
+
+$(document).on('click', '.btnSubjectRemove', function () {
+    var that = this;
+    $.ajax(
+        {
+            type: "post",
+            url: window.location.origin + "/delete_subject_degree",
+            data: {
+                degreeId: $('#degreeId').val(),
+                subjectId: $(that).parent().children().eq(1).html()
+            },
+            success: function (response) {
+                if (JSON.parse(response) == true) {
+                    $(that).parent().remove();
+                    for (var i = 0; i < $('#subjectDegreeBody').children().length; i++) {
+                        $('#subjectDegreeBody').children().eq(i).children().eq(0).html(i + 1)
+                    }
+                } else {
+                    $('#response').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Failed to delete subject</div>')
+                    window.scrollTo(0, 0);
+                    setTimeout(function () {
+                        $('#response').html('');
+                    }, 3000);
+                }
+            },
+            error: function () {
+
+            }
+        }
+    );
+});

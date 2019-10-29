@@ -5,13 +5,20 @@
 <jsp:include page="header(admin).jsp"/>
 
 <div style="margin-top: 75px;margin-left: 30px;margin-right: 30px">
+
+    <div class="row">
+        <div class="col-12" style="background-color: #f0f0f0;padding: 5px">
+            <span style="border-right: 2px solid black;padding-right: 10px;font-weight: bold">Subjects</span>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-12" id="response">
 
         </div>
     </div>
 
-    <div class="row" style="margin-top: 20px;text-align: center;font-size: 19px">
+    <div class="row" style="margin-top: 30px;text-align: center;font-size: 19px">
         <div class="col-3">
             <%--Faculty--%>
         </div>
