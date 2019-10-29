@@ -1,7 +1,6 @@
 //---------------------------------------------------Initial Load-------------------------------------------------------
 
 $(window).on("load", function () {
-    loadDegrees();
     loadSubjects();
 });
 
@@ -9,75 +8,7 @@ $('#subjectId').keyup(function () {
     $(this).val($(this).val().toUpperCase())
 })
 
-//------------------------------------------------Load degrees----------------------------------------------------------
-
-$('#btnAddDegree').click(function () {
-    var degrees =
-        '<tr style="font-size: 17px">' +
-        '<td style="padding-left: 5px"><input type="hidden" value="' + $('#degree').children('option:selected').val() + '">' + $('#degree').children('option:selected').html() + '</td>' +
-        '<td class="btnDegreeRemove" style="text-align: center;cursor: pointer"><i style="color: red" class="fa fa-times"></i></td></tr>';
-
-    $('#degreeBody').append(degrees);
-})
-
-function loadDegrees() {
-    $.ajax(
-        {
-            type: "post",
-            url: window.location.origin + "/load_degrees",
-            // data: {
-            //     facultyId: $('#faculty').val()
-            // },
-            success: function (response) {
-                var degrees = '';
-                var obj = JSON.parse(response);
-                for (var i = 0; i < obj.Degrees.length; i++) {
-                    degrees += '<option value="' + obj.Degrees[i].DegId + '">' + obj.Degrees[i].DegreeName + '</option>';
-                }
-                $('#degree').html(degrees);
-            },
-            error: function () {
-
-            }
-        }
-    );
-}
-
-function loadDegreesViaSubject(subjectId) {
-    $.ajax(
-        {
-            type: "post",
-            url: window.location.origin + "/load_degrees_via_subject",
-            data: {
-                subjectId: subjectId
-            },
-            success: function (response) {
-                var obj = JSON.parse(response);
-                var degrees = '';
-                for (var i = 0; i < obj.Degrees.length; i++) {
-                    degrees +=
-                        '<tr style="font-size: 17px">' +
-                        '<td style="padding-left: 5px"><input type="hidden" value="' + obj.Degrees[i].DegId + '">' + obj.Degrees[i].DegreeName + '</td>' +
-                        '<td class="btnDegreeRemove" style="text-align: center;cursor: pointer"><i style="color: red" class="fa fa-times"></i></td></tr>';
-                }
-                $('#degreeBody').html(degrees);
-            },
-            error: function () {
-
-            }
-        }
-    );
-}
-
-$(document).on('click', '.btnDegreeRemove', function () {
-    $(this).parent().remove();
-});
-
 //-----------------------------------------------------Load subjects----------------------------------------------------
-
-$('#faculty').change(function () {
-    loadSubjects();
-})
 
 $('#semester').change(function () {
     loadSubjects();
@@ -102,8 +33,7 @@ function loadSubjects() {
                         '<td style="padding-right: 5px;text-align: right;font-weight: bold">' + ++count + '</td>' +
                         '<td style="text-align: center;font-weight: bold">' + obj.Subjects[i].SubjectId + '</td>' +
                         '<td style="padding-left: 5px">' + obj.Subjects[i].SubjectName + '</td>' +
-                        '<td style="text-align: center">' + obj.Subjects[i].Credits + '</td>' +
-                        '<td class="btnLecturer" style="text-align: center;cursor: pointer"><i class="fa fa-pencil"></i></td>';
+                        '<td style="text-align: center">' + obj.Subjects[i].Credits + '</td>';
                     if (obj.Subjects[i].Allowed === true) {
                         subjects += '<td class="btnChangeAllow" style="text-align: center;cursor: pointer"><i class="fa fa-check" style="color: green"></i></td>'
                     } else {
@@ -124,21 +54,12 @@ function loadSubjects() {
 
 //-----------------------------------------------Add Delete Update------------------------------------------------------
 
-function collectDegreeProgrammes() {
-    var degreeProgrammes = Array();
-    for (var i = 0; i < $('#degreeBody').children().length; i++) {
-        degreeProgrammes.push($('#degreeBody').children().eq(i).children().eq(0).children('input').val())
-    }
-    return degreeProgrammes;
-}
-
 $('#btnAdd').click(function () {
     $.ajax(
         {
             type: "post",
             url: window.location.origin + "/add_subject",
             data: {
-                degreeIds: JSON.stringify(collectDegreeProgrammes()),
                 semesterId: $('#semester').val(),
                 subjectId: $('#subjectId').val(),
                 subjectTitle: $('#subjectTitle').val(),
@@ -170,7 +91,6 @@ $('#btnUpdate').click(function () {
             type: "post",
             url: window.location.origin + "/update_subject",
             data: {
-                degreeIds: JSON.stringify(collectDegreeProgrammes()),
                 semesterId: $('#semester').val(),
                 subjectId: $('#subjectId').val(),
                 subjectTitle: $('#subjectTitle').val(),
@@ -263,7 +183,6 @@ $(document).on('click', '.btnViewSubject', function () {
     $('#subjectTitle').val($(this).parent().children().eq(2).html())
     $('#credits').val($(this).parent().children().eq(3).html())
     setFieldsToExistingSubject();
-    loadDegreesViaSubject($(this).parent().children().eq(1).html())
 })
 
 //---------------------------------------------New vs existing----------------------------------------------------------
@@ -295,9 +214,3 @@ function setTextFieldsEmpty() {
     $('#credits').val('')
     setFieldsToNewSubject();
 }
-
-//----------------------------------------------------Go to lecturer----------------------------------------------------
-
-$(document).on('click', '.btnLecturer', function () {
-    document.location.href = "/view/admin/lecturer.jsp?subjectId=" + $(this).parent().children().eq(1).html() + "&subjectTitle=" + $(this).parent().children().eq(2).html();
-})
