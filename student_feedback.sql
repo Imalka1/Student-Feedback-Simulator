@@ -129,7 +129,7 @@ INSERT INTO `studentfeedback`.`user`
 `accountType`,
 `emailAddress`)
 VALUES
-('IT123','123','student','imalkagunawardana1@gmail.com'),('IT456','456','student','imalkagunawardana1@gmail.com'),('ADMIN789','789','admin','imalkagunawardana1@gmail.com');
+('IT123','123','student','amal1@gmail.com'),('IT456','456','student','amal2@gmail.com'),('ADMIN789','789','admin','amal3@gmail.com');
 
 INSERT INTO `studentfeedback`.`semester`
 (`name`)
@@ -144,7 +144,7 @@ INSERT INTO `studentfeedback`.`student`
 `student_name`,
 `national_id`)
 VALUES
-('IT123',1,1,1,'Amal Silva','951761150V'),('IT456',2,2,1,'Kamal Silva','961751150V');
+('IT123',1,1,1,'Amal Silva','951761251V'),('IT456',2,2,1,'Kamal Silva','961752170V');
 
 INSERT INTO `studentfeedback`.`admin`
 (`uId`,
