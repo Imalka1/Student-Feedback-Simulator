@@ -125,5 +125,5 @@
     </div>
 </div>
 
-<script src="/controller/admin/subjectsController.js"></script>
+<script src="${pageContext.request.contextPath}/controller/admin/subjectsController.js"></script>
 <jsp:include page="../footer.jsp"/>

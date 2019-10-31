@@ -28,7 +28,7 @@ $('#btnSubmit').click(function () {
         $.ajax(
             {
                 type: "post",
-                url: "http://" + window.location.hostname + ":8080/processMarks",
+                url: window.location.origin + $('#contextPath').val() + "/processMarks",
                 data: {
                     uid: $('#uId').val(),
                     subjectId: $('#subjectId').val(),

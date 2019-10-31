@@ -2,7 +2,7 @@
 <jsp:include page="../header.jsp"/>
 <%
     //----------------------------------------------URL to logout-------------------------------------------------------
-    String logout = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/logout";
+    String logout = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/logout";
 %>
 
 <%---------------------------------------------------CSS dropdown(Start)----------------------------------------------%>
@@ -12,7 +12,7 @@
         display: none;
         position: absolute;
         min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
         z-index: 1;
     }
 

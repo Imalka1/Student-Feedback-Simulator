@@ -166,5 +166,5 @@
     </div>
 </div>
 
-<script src="/controller/admin/lecturerController.js"></script>
+<script src="${pageContext.request.contextPath}/controller/admin/lecturerController.js"></script>
 <jsp:include page="../footer.jsp"/>

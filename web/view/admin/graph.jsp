@@ -54,53 +54,8 @@
 
 <div id="chart" style=""></div>
 
-<%--<div class="row" style="margin: 10px">--%>
-    <%--<div class="col-6" style="border: 1px solid black">--%>
-        <%--<div class="row" id="creiterias">--%>
-
-        <%--</div>--%>
-    <%--</div>--%>
-    <%--<div class="col-6" style="border: 1px solid black">--%>
-        <%--<div class="row">--%>
-            <%--<div class="col-12" style="text-align: center;border-bottom: 1px solid black">--%>
-                <%--Y - Axis--%>
-            <%--</div>--%>
-            <%--<div class="col-2" style="padding-left: 5px;border-right: 1px solid black;border-bottom: 1px solid black">--%>
-                <%--20%--%>
-            <%--</div>--%>
-            <%--<div class="col-10" style="padding-left: 5px;border-bottom: 1px solid black">--%>
-                <%--Strongly Disagree--%>
-            <%--</div>--%>
-            <%--<div class="col-2" style="padding-left: 5px;border-right: 1px solid black;border-bottom: 1px solid black">--%>
-                <%--40%--%>
-            <%--</div>--%>
-            <%--<div class="col-10" style="padding-left: 5px;border-bottom: 1px solid black">--%>
-                <%--Disagree--%>
-            <%--</div>--%>
-            <%--<div class="col-2" style="padding-left: 5px;border-right: 1px solid black;border-bottom: 1px solid black">--%>
-                <%--60%--%>
-            <%--</div>--%>
-            <%--<div class="col-10" style="padding-left: 5px;border-bottom: 1px solid black">--%>
-                <%--Cannot Comment--%>
-            <%--</div>--%>
-            <%--<div class="col-2" style="padding-left: 5px;border-right: 1px solid black;border-bottom: 1px solid black">--%>
-                <%--80%--%>
-            <%--</div>--%>
-            <%--<div class="col-10" style="padding-left: 5px;border-bottom: 1px solid black">--%>
-                <%--Agree--%>
-            <%--</div>--%>
-            <%--<div class="col-2" style="padding-left: 5px;border-right: 1px solid black;border-bottom: 1px solid black">--%>
-                <%--100%--%>
-            <%--</div>--%>
-            <%--<div class="col-10" style="padding-left: 5px;border-bottom: 1px solid black">--%>
-                <%--Strongly Agree--%>
-            <%--</div>--%>
-        <%--</div>--%>
-    <%--</div>--%>
-<%--</div>--%>
-
 <%-------------------------------------------Javascript controller of this page---------------------------------------%>
-<script src="/controller/admin/graphController.js"></script>
+<script src="${pageContext.request.contextPath}/controller/admin/graphController.js"></script>
 
 <%---------------------------------------------------Add footer.jsp file----------------------------------------------%>
 <jsp:include page="../footer.jsp"/>

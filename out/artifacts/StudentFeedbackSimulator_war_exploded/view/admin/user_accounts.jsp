@@ -188,5 +188,5 @@
     </div>
 </div>
 
-<script src="/controller/admin/userAccountController.js"></script>
+<script src="${pageContext.request.contextPath}/controller/admin/userAccountController.js"></script>
 <jsp:include page="../footer.jsp"/>

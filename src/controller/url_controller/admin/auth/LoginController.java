@@ -37,16 +37,16 @@ public class LoginController extends HttpServlet {
 
             if (user.getAccountType().equals("student")) {//---Check whether the user is a student
 
-                resp.sendRedirect("/view/student/landing_page(student).jsp");//---Navigate (redirect) to landing_page(student).jsp
+                resp.sendRedirect("view/student/landing_page(student).jsp");//---Navigate (redirect) to landing_page(student).jsp
 
             } else if (user.getAccountType().equals("admin")) {//---Check whether the user is an admin
 
-                resp.sendRedirect("/view/admin/results.jsp");//---Navigate (redirect) to landing_page(admin).jsp
+                resp.sendRedirect("view/admin/results.jsp");//---Navigate (redirect) to landing_page(admin).jsp
 
             }
 
         } else {//---If user is not alive
-            resp.sendRedirect("/index.jsp?error=errorLogin");//---Navigate (redirect) again to login page with login error
+            resp.sendRedirect("index.jsp?error=errorLogin");//---Navigate (redirect) again to login page with login error
         }
     }
 }

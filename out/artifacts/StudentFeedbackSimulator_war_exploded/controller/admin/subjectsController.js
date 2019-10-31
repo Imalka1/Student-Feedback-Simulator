@@ -15,7 +15,7 @@ function loadSubjects() {
     $.ajax(
         {
             type: "post",
-            url: window.location.origin + "/load_subjects",
+            url: window.location.origin + $('#contextPath').val() + "/load_subjects",
             data: {
                 semesterId: $('#semester').val()
             },
@@ -55,7 +55,7 @@ $('#btnAdd').click(function () {
     $.ajax(
         {
             type: "post",
-            url: window.location.origin + "/add_subject",
+            url: window.location.origin + $('#contextPath').val() + "/add_subject",
             data: {
                 semesterId: $('#semester').val(),
                 subjectId: $('#subjectId').val(),
@@ -86,7 +86,7 @@ $('#btnUpdate').click(function () {
     $.ajax(
         {
             type: "post",
-            url: window.location.origin + "/update_subject",
+            url: window.location.origin + $('#contextPath').val() + "/update_subject",
             data: {
                 semesterId: $('#semester').val(),
                 subjectId: $('#subjectId').val(),
@@ -117,7 +117,7 @@ $('#btnDelete').click(function () {
     $.ajax(
         {
             type: "post",
-            url: window.location.origin + "/delete_subject",
+            url: window.location.origin + $('#contextPath').val() + "/delete_subject",
             data: {
                 subjectId: $('#subjectId').val()
             },
@@ -156,7 +156,7 @@ function setSubjectAllow(subjectId, allow) {
         {
             // async: false,
             type: "post",
-            url: window.location.origin + "/change_allow",
+            url: window.location.origin + $('#contextPath').val() + "/change_allow",
             data: {
                 subjectId: subjectId,
                 allow: allow

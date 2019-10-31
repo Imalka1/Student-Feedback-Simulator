@@ -15,7 +15,7 @@ function loadSubjects() {
         {
             // async: false,
             type: "post",
-            url: window.location.origin + "/load_subjects",
+            url: window.location.origin + $('#contextPath').val() + "/load_subjects",
             data: {
                 semesterId: $('#semester').val()
             },
@@ -46,7 +46,7 @@ function loadLecturers() {
     $.ajax(
         {
             type: "post",
-            url: window.location.origin + "/load_lecturers_via_subject",
+            url: window.location.origin + $('#contextPath').val() + "/load_lecturers_via_subject",
             data: {
                 subjectId: $('#subjects').val()
             },
@@ -77,7 +77,7 @@ function loadDates() {
     $.ajax(
         {
             type: "post",
-            url: window.location.origin + "/load_dates",
+            url: window.location.origin + $('#contextPath').val() + "/load_dates",
             data: {
                 subjectId: $('#subjects').val(),
                 lecturerId: $('#lecturers').val()
@@ -108,7 +108,7 @@ function loadMarks() {
     $.ajax(
         {
             type: "post",
-            url: window.location.origin + "/load_marks",
+            url: window.location.origin + $('#contextPath').val() + "/load_marks",
             data: {
                 subjectId: $('#subjects').val(),
                 lecturerId: $('#lecturers').val(),
@@ -168,9 +168,9 @@ function loadMarks() {
 }
 
 $('#btnGraph1').click(function () {
-    document.location.href = 'graph.jsp?graph=ech&subjectId=' + $('#subjects').val() + '&lecturerId=' + $('#lecturers').val() + '&dateOfSubmission=' + $('#dates').val();
+    document.location.href = $('#contextPath').val() + '/view/admin/graph.jsp?graph=ech&subjectId=' + $('#subjects').val() + '&lecturerId=' + $('#lecturers').val() + '&dateOfSubmission=' + $('#dates').val();
 })
 
 $('#btnGraph2').click(function () {
-    document.location.href = 'graph.jsp?graph=ec&subjectId=' + $('#subjects').val() + '&lecturerId=' + $('#lecturers').val() + '&dateOfSubmission=' + $('#dates').val();
+    document.location.href = $('#contextPath').val() + '/view/admin/graph.jsp?graph=ec&subjectId=' + $('#subjects').val() + '&lecturerId=' + $('#lecturers').val() + '&dateOfSubmission=' + $('#dates').val();
 })

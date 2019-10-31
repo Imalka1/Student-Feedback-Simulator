@@ -8,7 +8,7 @@
 <jsp:include page="../header.jsp"/>
 <%
     //----------------------------------------------URL to logout-------------------------------------------------------
-    String logout = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/logout";
+    String logout = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/logout";
 
     //--------------------------Get Subject ID from query string which binded with URL----------------------------------
     String subjectId = request.getParameter("subjectId");
@@ -201,7 +201,7 @@
 </div>
 
 <%-------------------------------------------Javascript controller of this page---------------------------------------%>
-<script src="/controller/student/marksController.js"></script>
+<script src="${pageContext.request.contextPath}/controller/student/marksController.js"></script>
 
 <%---------------------------------------------------Add footer.jsp file----------------------------------------------%>
 <jsp:include page="../footer.jsp"/>

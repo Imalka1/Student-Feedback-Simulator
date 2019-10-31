@@ -33,7 +33,7 @@
     <title>Student Feedback Simulator</title>
 
     <!---------------------------------------------Bootstrap CSS------------------------------------------------------->
-    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css">
     <!----------------------------------- Custom fonts for this template ---------------------------------------------->
     <%--<link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">--%>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -43,11 +43,11 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
     <!--------------------------------- Custom styles for this template ----------------------------------------------->
-    <link href="/assets/css/agency.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/font-awesome/latest/css/font-awesome.min.css">
+    <link href="${pageContext.request.contextPath}/assets/css/agency.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/font-awesome/latest/css/font-awesome.min.css">
 
     <%-------------------------------------------------Jquery---------------------------------------------------------%>
-    <script src="/assets/js/jquery-3.2.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/jquery-3.2.1.min.js"></script>
 
     <%-----------------------------------------------CSS(Start)-------------------------------------------------------%>
 
@@ -64,7 +64,7 @@
         }
 
         body {
-            background-image: url("/assets/img/image.jpg");
+            background-image: url("${pageContext.request.contextPath}/assets/img/image.jpg");
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -119,7 +119,7 @@
 
                 <%--------------------Submit data to server (LoginController(url_controller)) (Start)-----------------%>
 
-                <form action="/login" method="post">
+                <form action="${pageContext.request.contextPath}/login" method="post">
                     <div class="row" style="margin-top:150px;margin-bottom: 25px">
                         <div class="col-md-4 col-center">
                             <input type="text" class="form-control" autofocus placeholder="Student / Admin ID"

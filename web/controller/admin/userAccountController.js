@@ -22,7 +22,7 @@ $('#btnChangeSem').click(function () {
     $.ajax(
         {
             type: "post",
-            url: window.location.origin + "/change_semester",
+            url: window.location.origin + $('#contextPath').val() + "/change_semester",
             data: {
                 semesterId: $('#semester').val(),
                 batchId: $('#batch').val()
@@ -71,7 +71,7 @@ function sendRequestToServer(urlExtension, successResponse, failResponse) {
     $.ajax(
         {
             type: "post",
-            url: window.location.origin + urlExtension,
+            url: window.location.origin + $('#contextPath').val() + urlExtension,
             data: {
                 degreeId: $('#degree').val(),
                 batchId: $('#batch').val(),
@@ -109,7 +109,7 @@ function loadStudents() {
         {
             async: false,
             type: "post",
-            url: window.location.origin + "/load_students",
+            url: window.location.origin + $('#contextPath').val() + "/load_students",
             data: {
                 degreeId: $('#degree').val(),
                 batchId: $('#batch').val(),

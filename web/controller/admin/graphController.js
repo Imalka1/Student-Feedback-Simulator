@@ -20,7 +20,7 @@ function loadMarks() {
     $.ajax(
         {
             type: "post",
-            url: window.location.origin + "/load_marks",
+            url: window.location.origin + $('#contextPath').val() + "/load_marks",
             data: {
                 subjectId: $('#subjectId').val(),
                 lecturerId: $('#lecturerId').val(),

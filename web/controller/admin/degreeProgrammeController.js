@@ -12,7 +12,7 @@ function loadDegrees() {
     $.ajax(
         {
             type: "post",
-            url: window.location.origin + "/load_degrees",
+            url: window.location.origin + $('#contextPath').val() + "/load_degrees",
             // data: {
             //     facultyId: $('#faculty').val()
             // },
@@ -40,7 +40,7 @@ function loadSubjectsViaDegree(degreeId) {
     $.ajax(
         {
             type: "post",
-            url: window.location.origin + "/load_subjects_via_degree",
+            url: window.location.origin + $('#contextPath').val() + "/load_subjects_via_degree",
             data: {
                 degreeId: degreeId
             },
@@ -86,7 +86,7 @@ function loadSubjects() {
     $.ajax(
         {
             type: "post",
-            url: window.location.origin + "/load_subjects",
+            url: window.location.origin + $('#contextPath').val() + "/load_subjects",
             data: {
                 semesterId: $('#semester').val()
             },
@@ -118,7 +118,7 @@ $('#btnAdd').click(function () {
     $.ajax(
         {
             type: "post",
-            url: window.location.origin + "/add_degree",
+            url: window.location.origin + $('#contextPath').val() + "/add_degree",
             data: {
                 degreeTitle: $('#degreeTitle').val()
             },
@@ -146,7 +146,7 @@ $('#btnUpdate').click(function () {
     $.ajax(
         {
             type: "post",
-            url: window.location.origin + "/update_degree",
+            url: window.location.origin + $('#contextPath').val() + "/update_degree",
             data: {
                 degreeId: $('#degreeId').val(),
                 degreeTitle: $('#degreeTitle').val()
@@ -175,7 +175,7 @@ $('#btnDelete').click(function () {
     $.ajax(
         {
             type: "post",
-            url: window.location.origin + "/delete_degree",
+            url: window.location.origin + $('#contextPath').val() + "/delete_degree",
             data: {
                 degreeId: $('#degreeId').val()
             },
@@ -253,7 +253,7 @@ $(document).on('click', '.btnAddSubject', function () {
         $.ajax(
             {
                 type: "post",
-                url: window.location.origin + "/add_subject_degree",
+                url: window.location.origin + $('#contextPath').val() + "/add_subject_degree",
                 data: {
                     degreeId: $('#degreeId').val(),
                     subjectId: $(that).parent().children().eq(1).html()
@@ -295,7 +295,7 @@ $(document).on('click', '.btnSubjectRemove', function () {
     $.ajax(
         {
             type: "post",
-            url: window.location.origin + "/delete_subject_degree",
+            url: window.location.origin + $('#contextPath').val() + "/delete_subject_degree",
             data: {
                 degreeId: $('#degreeId').val(),
                 subjectId: $(that).parent().children().eq(1).html()

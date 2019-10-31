@@ -22,7 +22,7 @@
     <title>Student Feedback Simulator</title>
 
     <!---------------------------------------------Bootstrap CSS------------------------------------------------------->
-    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css">
     <!------------------------------------- Custom fonts for this template -------------------------------------------->
     <%--<link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">--%>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -32,12 +32,12 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
     <!------------------------------------ Custom styles for this template -------------------------------------------->
-    <link href="/assets/css/agency.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/font-awesome/latest/css/font-awesome.min.css">
+    <link href="${pageContext.request.contextPath}/assets/css/agency.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/font-awesome/latest/css/font-awesome.min.css">
     <%-------------------------------------------------Jquery---------------------------------------------------------%>
-    <script src="/assets/js/jquery-3.2.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/jquery-3.2.1.min.js"></script>
 
-    <script src="/assets/appex-chart/apexcharts.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/appex-chart/apexcharts.js"></script>
 
     <script>
         $(window).bind("pageshow", function(event) {
@@ -93,6 +93,7 @@
 <%----------------------------------------------Store uId for Js stuff(Start)-----------------------------------------%>
 
 <input type="hidden" id="uId" value="<%= sessionLogin.getAttribute("uId")%>">
+<input type="hidden" id="contextPath" value="<%= request.getContextPath()%>">
 
 <%-----------------------------------------------Store uId for Js stuff(End)------------------------------------------%>
 

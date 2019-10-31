@@ -6,7 +6,7 @@
 <jsp:include page="../header.jsp"/>
 <%
     //----------------------------------------------URL to logout-------------------------------------------------------
-    String logout = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/logout";
+    String logout = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/logout";
 
     //--------------------------------------------Load the current session----------------------------------------------
     HttpSession sessionLogin = request.getSession(false);
@@ -93,7 +93,7 @@
 </section>
 
 <%-------------------------------------------Javascript controller of this page---------------------------------------%>
-<script src="/controller/student/landingPage(student)Controller.js"></script>
+<script src="${pageContext.request.contextPath}/controller/student/landingPage(student)Controller.js"></script>
 
 <%---------------------------------------------------Add footer.jsp file----------------------------------------------%>
 <jsp:include page="../footer.jsp"/>

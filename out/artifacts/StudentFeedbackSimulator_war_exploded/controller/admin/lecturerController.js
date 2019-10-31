@@ -16,7 +16,7 @@ function loadLecturers() {
     $.ajax(
         {
             type: "post",
-            url: window.location.origin + "/load_lecturers",
+            url: window.location.origin + $('#contextPath').val() + "/load_lecturers",
             // data: {
             //     facultyId: $('#faculty').val()
             // },
@@ -46,7 +46,7 @@ function loadSubjectsViaLecturer(lecturerId) {
     $.ajax(
         {
             type: "post",
-            url: window.location.origin + "/load_subjects_via_lecturer",
+            url: window.location.origin + $('#contextPath').val() + "/load_subjects_via_lecturer",
             data: {
                 lecturerId: lecturerId
             },
@@ -98,7 +98,7 @@ function loadSubjects() {
     $.ajax(
         {
             type: "post",
-            url: window.location.origin + "/load_subjects",
+            url: window.location.origin + $('#contextPath').val() + "/load_subjects",
             data: {
                 semesterId: $('#semester').val()
             },
@@ -130,7 +130,7 @@ $('#btnAdd').click(function () {
     $.ajax(
         {
             type: "post",
-            url: window.location.origin + "/add_lecturer",
+            url: window.location.origin + $('#contextPath').val() + "/add_lecturer",
             data: {
                 lecturerId: $('#lecturerId').val(),
                 lecturerName: $('#lecturerName').val()
@@ -159,7 +159,7 @@ $('#btnUpdate').click(function () {
     $.ajax(
         {
             type: "post",
-            url: window.location.origin + "/update_lecturer",
+            url: window.location.origin + $('#contextPath').val() + "/update_lecturer",
             data: {
                 lecturerId: $('#lecturerId').val(),
                 lecturerName: $('#lecturerName').val()
@@ -188,7 +188,7 @@ $('#btnDelete').click(function () {
     $.ajax(
         {
             type: "post",
-            url: window.location.origin + "/delete_lecturer",
+            url: window.location.origin + $('#contextPath').val() + "/delete_lecturer",
             data: {
                 lecturerId: $('#lecturerId').val()
             },
@@ -271,7 +271,7 @@ $(document).on('click', '.btnAddSubject', function () {
         $.ajax(
             {
                 type: "post",
-                url: window.location.origin + "/add_subject_lecturer",
+                url: window.location.origin + $('#contextPath').val() + "/add_subject_lecturer",
                 data: {
                     lecturerId: $('#lecturerId').val(),
                     subjectId: $(that).parent().children().eq(1).html()
@@ -314,7 +314,7 @@ $(document).on('click', '.btnSubjectRemove', function () {
     $.ajax(
         {
             type: "post",
-            url: window.location.origin + "/delete_subject_lecturer",
+            url: window.location.origin + $('#contextPath').val() + "/delete_subject_lecturer",
             data: {
                 lecturerId: $('#lecturerId').val(),
                 subjectId: $(that).parent().children().eq(1).html()
@@ -348,7 +348,7 @@ $(document).on('click', '.btnCurrentLecturer', function () {
     $.ajax(
         {
             type: "post",
-            url: window.location.origin + "/change_current_lecturer",
+            url: window.location.origin + $('#contextPath').val() + "/change_current_lecturer",
             data: {
                 lecturerId: $('#lecturerId').val(),
                 subjectId: $(that).parent().children().eq(1).html()

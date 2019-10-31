@@ -108,5 +108,5 @@
     <%---------------------------------------------Submit marks button (End)------------------------------------------%>
 </div>
 
-<script src="/controller/admin/resultsController.js"></script>
+<script src="${pageContext.request.contextPath}/controller/admin/resultsController.js"></script>
 <jsp:include page="../footer.jsp"/>
