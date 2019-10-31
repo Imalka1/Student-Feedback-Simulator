@@ -159,6 +159,14 @@ function loadMarks() {
                         '</tr>'
                 }
                 $('#marksBody').html(tableData);
+
+                if (obj[0].Marks[0].StudentsCount === 0) {
+                    $('#btnGraph1').prop("disabled", true);
+                    $('#btnGraph2').prop("disabled", true);
+                } else {
+                    $('#btnGraph1').prop("disabled", false);
+                    $('#btnGraph2').prop("disabled", false);
+                }
             },
             error: function () {
 
@@ -168,9 +176,9 @@ function loadMarks() {
 }
 
 $('#btnGraph1').click(function () {
-    document.location.href = $('#contextPath').val() + '/view/admin/graph.jsp?graph=ech&subjectId=' + $('#subjects').val() + '&lecturerId=' + $('#lecturers').val() + '&dateOfSubmission=' + $('#dates').val();
+    document.location.href = $('#contextPath').val() + '/view/admin/graph.jsp?graph=ech&subjectId=' + $('#subjects').val() + '&lecturerId=' + $('#lecturers').val() + '&dateOfSubmission=' + $('#dates').val() + '&subjectName=' + $('#subjects option:selected').html() + '&lecturerName=' + $('#lecturers option:selected').html();
 })
 
 $('#btnGraph2').click(function () {
-    document.location.href = $('#contextPath').val() + '/view/admin/graph.jsp?graph=ec&subjectId=' + $('#subjects').val() + '&lecturerId=' + $('#lecturers').val() + '&dateOfSubmission=' + $('#dates').val();
+    document.location.href = $('#contextPath').val() + '/view/admin/graph.jsp?graph=ec&subjectId=' + $('#subjects').val() + '&lecturerId=' + $('#lecturers').val() + '&dateOfSubmission=' + $('#dates').val() + '&subjectName=' + $('#subjects option:selected').html() + '&lecturerName=' + $('#lecturers option:selected').html();
 })

@@ -50,6 +50,9 @@
 
 <div class="row" style="margin-top: 100px">
     <div class="col-12" style="font-size: 20px;text-align: center" id="graphHeading"></div>
+    <div class="col-12" style="font-size: 16px;text-align: center;margin-top: 10px">
+        <%= request.getParameter("subjectName")%> / <%= request.getParameter("lecturerName")%> <br> <%= request.getParameter("dateOfSubmission")%>
+    </div>
 </div>
 
 <div id="chart" style=""></div>
