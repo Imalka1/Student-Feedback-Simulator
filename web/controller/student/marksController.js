@@ -53,7 +53,7 @@ $('#btnSubmit').click(function () {
             }
         );
     } else {
-        $('#messageBox').html('<div class="alert alert-warning" style="text-align: center;font-weight: bold">You have ' + ($('.trMarks').length - marks.length) + ' remaining fields. Please select all fields to submit</div>');
+        $('#messageBox').html('<div class="alert alert-warning" style="text-align: center;font-weight: bold">You have ' + ($('.trMarks').length - marks.length) + ' fields remaining. Please select all fields to submit</div>');
         // setTimeout(function () {
         //     $('#messageBox').html('');
         // }, 4000);

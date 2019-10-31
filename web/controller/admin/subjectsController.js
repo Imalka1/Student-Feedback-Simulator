@@ -141,6 +141,8 @@ $('#btnDelete').click(function () {
     );
 })
 
+//---------------------------------------------------Change Allow-------------------------------------------------------
+
 $(document).on('click', '.btnChangeAllow', function () {
     if ($(this).children().hasClass('fa-check')) {
         setSubjectAllow($(this).parent().children('td').eq(1).html(), false);
@@ -222,6 +224,8 @@ $('#btnClear').click(function () {
     setFieldsToNewSubject();
     validateSubmission();
 })
+
+//------------------------------------------------Validate Fields-------------------------------------------------------
 
 function validateSubmission() {
     if (newSubject && $('#subjectId').val() !== '' && $('#subjectTitle').val() !== '' && $('#credits').val() !== '') {

@@ -3,19 +3,18 @@ $(window).on("load", function () {
     loadMarks();
 });
 
+//--------------------------------------------------Criteria Type-------------------------------------------------------
+
 var criteriaType;
 
 function setCriteriaType() {
     criteriaType = $('#graph').val()
 }
 
-// var xaxisText = Array();
-// for (var i = 0; i < 22; i++) {
-//     xaxisText.push('Criteria ' + (i + 1));
-// }
-
 var marks = Array();
 var criterias = Array();
+
+//--------------------------------------------------Load Marks----------------------------------------------------------
 
 function loadMarks() {
     $.ajax(
@@ -60,6 +59,8 @@ function loadMarks() {
     );
 }
 
+//--------------------------------------------------Load Criteria-------------------------------------------------------
+
 function setCriterias() {
     var setData =
         '<div class="col-12" style="text-align: center;border-bottom: 1px solid black">X - Axis</div>';
@@ -68,12 +69,6 @@ function setCriterias() {
             '<div class="col-2" style="padding-left: 5px;border-right: 1px solid black;border-bottom: 1px solid black">Criteria ' + (i + 1) + '</div>' +
             '<div class="col-10" style="padding-left: 5px;border-bottom: 1px solid black">' + criterias[i] + '</div>';
     }
-    // $('#creiterias').html(setData);
-}
-
-var xaxisData = Array();
-for (var i = 0; i < 22; i++) {
-    xaxisData.push(i + 1);
 }
 
 var options = {
@@ -92,7 +87,7 @@ var options = {
             lines: {
                 show: true,
             }
-        },
+        }
     },
     plotOptions: {
         bar: {
@@ -119,7 +114,6 @@ var options = {
             show: true,
             rotate: -55,
             rotateAlways: true,
-            // trim: true,
             minHeight: 200,
             maxHeight: 600,
             // style: {
@@ -131,7 +125,6 @@ var options = {
     },
     yaxis: {
         forceNiceScale: true,
-        // floating:false,
         tickAmount: 1,
         min: 0,
         max: 5
@@ -144,7 +137,7 @@ var options = {
                     return "Value"
                 }
             }
-        },
+        }
     }
 }
 

@@ -66,6 +66,16 @@ function loadSubjectsViaDegree(degreeId) {
     );
 }
 
+//-------------------------------------------------Select degree on table----------------------------------------------
+
+$(document).on('click', '.btnViewDegree', function () {
+    $('#degreeId').val($(this).parent().children().eq(1).children('input').val())
+    $('#degreeTitle').val($(this).parent().children().eq(1).children('span').html())
+    $('#subjectDegreeTitle').html('<b>Subject :- </b>' + $(this).parent().children().eq(1).children('span').html())
+    setFieldsToExistingDegree();
+    loadSubjectsViaDegree($(this).parent().children().eq(1).children('input').val())
+})
+
 //-----------------------------------------------------Load subjects----------------------------------------------------
 
 $('#semester').change(function () {
@@ -189,16 +199,6 @@ $('#btnDelete').click(function () {
     );
 })
 
-//-------------------------------------------------Select degree on table----------------------------------------------
-
-$(document).on('click', '.btnViewDegree', function () {
-    $('#degreeId').val($(this).parent().children().eq(1).children('input').val())
-    $('#degreeTitle').val($(this).parent().children().eq(1).children('span').html())
-    $('#subjectDegreeTitle').html('<b>Subject :- </b>' + $(this).parent().children().eq(1).children('span').html())
-    setFieldsToExistingDegree();
-    loadSubjectsViaDegree($(this).parent().children().eq(1).children('input').val())
-})
-
 //---------------------------------------------New vs existing----------------------------------------------------------
 
 var newDegree = true;
@@ -229,6 +229,8 @@ $('#btnClear').click(function () {
     validateSubmission();
 })
 
+//------------------------------------------------Validate Fields-------------------------------------------------------
+
 function validateSubmission() {
     if (newDegree && $('#degreeTitle').val() !== '') {
         $('#btnAdd').prop("disabled", false);
@@ -242,6 +244,8 @@ function validateSubmission() {
         $('#btnDelete').prop("disabled", true);
     }
 }
+
+//-----------------------------------------Subjects Of Degree Programme-------------------------------------------------
 
 $(document).on('click', '.btnAddSubject', function () {
     var that = this;

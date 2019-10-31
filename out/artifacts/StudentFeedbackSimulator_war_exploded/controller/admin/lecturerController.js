@@ -10,7 +10,7 @@ $('#lecturerId').keyup(function () {
     $(this).val($(this).val().toUpperCase())
 })
 
-//------------------------------------------------Load degrees----------------------------------------------------------
+//------------------------------------------------Load lecturers----------------------------------------------------------
 
 function loadLecturers() {
     $.ajax(
@@ -77,6 +77,16 @@ function loadSubjectsViaLecturer(lecturerId) {
         }
     );
 }
+
+//-------------------------------------------------Select lecturer on table----------------------------------------------
+
+$(document).on('click', '.btnViewLecturer', function () {
+    $('#lecturerId').val($(this).parent().children().eq(1).html())
+    $('#lecturerName').val($(this).parent().children().eq(2).html())
+    $('#subjectLecturerName').html('<b>Lecturer :- </b>' + $(this).parent().children().eq(2).html())
+    setFieldsToExistingLecturer();
+    loadSubjectsViaLecturer($(this).parent().children().eq(1).html())
+})
 
 //-----------------------------------------------------Load subjects----------------------------------------------------
 
@@ -202,16 +212,6 @@ $('#btnDelete').click(function () {
     );
 })
 
-//-------------------------------------------------Select degree on table----------------------------------------------
-
-$(document).on('click', '.btnViewLecturer', function () {
-    $('#lecturerId').val($(this).parent().children().eq(1).html())
-    $('#lecturerName').val($(this).parent().children().eq(2).html())
-    $('#subjectLecturerName').html('<b>Lecturer :- </b>' + $(this).parent().children().eq(2).html())
-    setFieldsToExistingLecturer();
-    loadSubjectsViaLecturer($(this).parent().children().eq(1).html())
-})
-
 //---------------------------------------------New vs existing----------------------------------------------------------
 
 var newLecturer = true;
@@ -248,6 +248,8 @@ $('#btnClear').click(function () {
     validateSubmission();
 })
 
+//------------------------------------------------Validate Fields-------------------------------------------------------
+
 function validateSubmission() {
     if (newLecturer && $('#lecturerId').val() !== '' && $('#lecturerName').val() !== '') {
         $('#btnAdd').prop("disabled", false);
@@ -260,6 +262,8 @@ function validateSubmission() {
         $('#btnUpdate').prop("disabled", true);
     }
 }
+
+//----------------------------------------------Subjects Of Lecturer----------------------------------------------------
 
 $(document).on('click', '.btnAddSubject', function () {
     var that = this;
@@ -335,6 +339,8 @@ $(document).on('click', '.btnSubjectRemove', function () {
         }
     );
 });
+
+//------------------------------------------Set current lecturer--------------------------------------------------------
 
 $(document).on('click', '.btnCurrentLecturer', function () {
     var that = this;
