@@ -2,7 +2,6 @@
 
 $(window).on("load", function () {
     loadSubjects();
-    validateSubmission();
 });
 
 //-----------------------------------------------------Load subjects----------------------------------------------------
@@ -49,98 +48,6 @@ function loadSubjects() {
     );
 }
 
-//-----------------------------------------------Add Delete Update------------------------------------------------------
-
-$('#btnAdd').click(function () {
-    $.ajax(
-        {
-            type: "post",
-            url: window.location.origin + $('#contextPath').val() + "/add_subject",
-            data: {
-                semesterId: $('#semester').val(),
-                subjectId: $('#subjectId').val(),
-                subjectTitle: $('#subjectTitle').val(),
-                credits: $('#credits').val()
-            },
-            success: function (response) {
-                if (JSON.parse(response) == true) {
-                    loadSubjects();
-                    setFieldsToNewSubject();
-                    $('#response').html('<div class="alert alert-success" style="text-align: center;font-weight: bold">Subject has been submitted successfully</div>')
-                } else {
-                    $('#response').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Failed to add subject</div>')
-                }
-                window.scrollTo(0, 0);
-                setTimeout(function () {
-                    $('#response').html('');
-                }, 3000);
-            },
-            error: function () {
-
-            }
-        }
-    );
-})
-
-$('#btnUpdate').click(function () {
-    $.ajax(
-        {
-            type: "post",
-            url: window.location.origin + $('#contextPath').val() + "/update_subject",
-            data: {
-                semesterId: $('#semester').val(),
-                subjectId: $('#subjectId').val(),
-                subjectTitle: $('#subjectTitle').val(),
-                credits: $('#credits').val()
-            },
-            success: function (response) {
-                if (JSON.parse(response) == true) {
-                    loadSubjects();
-                    setFieldsToNewSubject();
-                    $('#response').html('<div class="alert alert-success" style="text-align: center;font-weight: bold">Subject has been updated successfully</div>')
-                } else {
-                    $('#response').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Failed to update subject</div>')
-                }
-                window.scrollTo(0, 0);
-                setTimeout(function () {
-                    $('#response').html('');
-                }, 3000);
-            },
-            error: function () {
-
-            }
-        }
-    );
-})
-
-$('#btnDelete').click(function () {
-    $.ajax(
-        {
-            type: "post",
-            url: window.location.origin + $('#contextPath').val() + "/delete_subject",
-            data: {
-                subjectId: $('#subjectId').val()
-            },
-            success: function (response) {
-                if (JSON.parse(response) == true) {
-                    loadSubjects();
-                    setFieldsToNewSubject();
-                    $('#response').html('<div class="alert alert-success" style="text-align: center;font-weight: bold">Subject has been deleted successfully</div>');
-                } else {
-                    $('#response').html('<div class="alert alert-danger" style="text-align: center;font-weight: bold">Failed to delete subject</div>')
-                }
-                window.scrollTo(0, 0);
-                setTimeout(function () {
-                    $('#response').html('');
-                }, 4000);
-            },
-            error: function () {
-
-            }
-        }
-    );
-})
-
 //---------------------------------------------------Change Allow-------------------------------------------------------
 
 $(document).on('click', '.btnChangeAllow', function () {
@@ -171,71 +78,4 @@ function setSubjectAllow(subjectId, allow) {
             }
         }
     );
-}
-
-//-------------------------------------------------Select subject on table----------------------------------------------
-
-$(document).on('click', '.btnViewSubject', function () {
-    $('#subjectId').val($(this).parent().children().eq(1).html())
-    $('#subjectTitle').val($(this).parent().children().eq(2).html())
-    $('#credits').val($(this).parent().children().eq(3).html())
-    setFieldsToExistingSubject();
-})
-
-//---------------------------------------------New vs existing----------------------------------------------------------
-
-var newSubject = true;
-
-function setFieldsToExistingSubject() {
-    newSubject = false;
-    $('#btnAdd').prop("disabled", true);
-    $('#btnUpdate').prop("disabled", false);
-    $('#btnDelete').prop("disabled", false);
-    $('#subjectId').prop("disabled", true);
-}
-
-function setFieldsToNewSubject() {
-    newSubject = true;
-    $('#btnAdd').prop("disabled", true);
-    $('#btnUpdate').prop("disabled", true);
-    $('#btnDelete').prop("disabled", true);
-    $('#subjectId').prop("disabled", false);
-    $('#subjectId').val('')
-    $('#subjectTitle').val('')
-    $('#credits').val('1')
-}
-
-//--------------------------------------------------Clear fields--------------------------------------------------------
-
-$('#subjectId').keyup(function () {
-    $(this).val($(this).val().toUpperCase())
-    validateSubmission();
-})
-
-$('#subjectTitle').keyup(function () {
-    validateSubmission();
-})
-
-$('#credits').keyup(function () {
-    validateSubmission();
-})
-
-$('#btnClear').click(function () {
-    setFieldsToNewSubject();
-    validateSubmission();
-})
-
-//------------------------------------------------Validate Fields-------------------------------------------------------
-
-function validateSubmission() {
-    if (newSubject && $('#subjectId').val() !== '' && $('#subjectTitle').val() !== '' && $('#credits').val() !== '') {
-        $('#btnAdd').prop("disabled", false);
-        $('#btnUpdate').prop("disabled", true);
-    } else if (!newSubject && $('#subjectId').val() !== '' && $('#subjectTitle').val() !== '' && $('#credits').val() !== '') {
-        $('#btnAdd').prop("disabled", true);
-        $('#btnUpdate').prop("disabled", false);
-    } else {
-        $('#btnAdd').prop("disabled", true);
-        $('#btnUpdate').prop("disabled", true);
-    }
 }

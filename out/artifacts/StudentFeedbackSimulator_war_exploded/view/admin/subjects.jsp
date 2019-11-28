@@ -47,52 +47,6 @@
         </div>
     </div>
 
-    <div class="row" style="margin-top:20px;text-align: center;font-size: 19px">
-        <div class="col-3">
-            Subject ID
-        </div>
-        <div class="col-6">
-            Subject Title
-        </div>
-        <div class="col-1">
-            Credits
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-3">
-            <input class="form-control" type="text" id="subjectId">
-        </div>
-        <div class="col-6">
-            <input class="form-control" type="text" id="subjectTitle">
-        </div>
-        <div class="col-1">
-            <input class="form-control" type="number" id="credits" min="1" value="1">
-        </div>
-        <div class="col-2">
-            <div>
-                <button id="btnClear" class="btn" style="background-color: #ffbf05;width: 100%">Clear</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="row" style="margin-top: 50px">
-        <div class="col-4">
-            <div class="col-center" style="width: fit-content;margin: auto">
-                <button id="btnAdd" class="btn" style="background-color: #ffbf05">Submit</button>
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="col-center" style="width: fit-content;margin: auto">
-                <button id="btnUpdate" class="btn" style="background-color: #ffbf05" disabled>Update</button>
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="col-center" style="width: fit-content;margin: auto">
-                <button id="btnDelete" class="btn" style="background-color: #ffbf05" disabled>Delete</button>
-            </div>
-        </div>
-    </div>
-
     <hr style="margin-top: 50px;margin-bottom: 50px;background-color: #b0b0b0">
 
     <div class="row">

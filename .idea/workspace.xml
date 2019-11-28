@@ -255,17 +255,17 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="141" />
+          <entry key="java" value="159" />
           <entry key="js" value="55" />
-          <entry key="jsp" value="81" />
+          <entry key="jsp" value="84" />
           <entry key="rnc" value="1" />
           <entry key="xml" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="141" />
-          <entry key="JSP" value="81" />
+          <entry key="JAVA" value="159" />
+          <entry key="JSP" value="84" />
           <entry key="JavaScript" value="55" />
           <entry key="RNG Compact" value="1" />
           <entry key="XML" value="2" />
@@ -275,60 +275,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/view/admin/graph.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="53" column="99" selection-start-line="53" selection-start-column="99" selection-end-line="53" selection-end-column="99" />
-              <folding>
-                <element signature="e#2947#3006#0#HTML" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/controller/admin/graphController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="68" selection-start-line="22" selection-start-column="68" selection-end-line="22" selection-end-column="68" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web/controller/admin/resultsController.js">
+        <entry file="file://$PROJECT_DIR$/src/controller/db_controller/SubjectDegreeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="167" column="58" selection-start-line="167" selection-start-column="58" selection-end-line="167" selection-end-column="58" />
-              <folding>
-                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/view/admin/results.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1297">
-              <caret line="110" column="47" selection-start-line="110" selection-start-column="47" selection-end-line="110" selection-end-column="47" />
+            <state relative-caret-position="68">
+              <caret line="15" column="38" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -373,48 +324,48 @@
         <option value="$PROJECT_DIR$/src/controller/url_controller/admin/degree/AddSubjectDegreeController.java" />
         <option value="$PROJECT_DIR$/src/controller/url_controller/admin/degree/DeleteSubjectDegreeController.java" />
         <option value="$PROJECT_DIR$/src/controller/url_controller/admin/lecturer/LoadLecturersController.java" />
-        <option value="$PROJECT_DIR$/src/controller/db_controller/LecturerController.java" />
         <option value="$PROJECT_DIR$/src/controller/url_controller/admin/lecturer/LoadSubjectsViaLecturerController.java" />
         <option value="$PROJECT_DIR$/src/model/SubjectDegree.java" />
         <option value="$PROJECT_DIR$/src/controller/url_controller/admin/subject/LoadSubjectsViaDegreeController.java" />
         <option value="$PROJECT_DIR$/src/model/SubjectLecturer.java" />
-        <option value="$PROJECT_DIR$/src/controller/db_controller/SubjectDegreeController.java" />
         <option value="$PROJECT_DIR$/src/controller/url_controller/admin/subject/LoadSubjectsViaLecturerController.java" />
         <option value="$PROJECT_DIR$/src/model/Mark.java" />
         <option value="$PROJECT_DIR$/src/controller/db_controller/MarkController.java" />
         <option value="$PROJECT_DIR$/src/model/Subject.java" />
         <option value="$PROJECT_DIR$/src/controller/url_controller/student/AddMarksController.java" />
         <option value="$PROJECT_DIR$/src/controller/url_controller/admin/lecturer/AddLecturerController.java" />
-        <option value="$PROJECT_DIR$/src/controller/db_controller/SubjectController.java" />
         <option value="$PROJECT_DIR$/src/controller/url_controller/admin/subject/AddSubjectLecturerController.java" />
         <option value="$PROJECT_DIR$/src/controller/url_controller/admin/subject/DeleteSubjectLecturerController.java" />
         <option value="$PROJECT_DIR$/src/controller/url_controller/admin/subject/AddSubjectController.java" />
-        <option value="$PROJECT_DIR$/src/controller/db_controller/SubjectLecturerController.java" />
         <option value="$PROJECT_DIR$/src/controller/url_controller/admin/lecturer/LoadLecturersViaSubjectController.java" />
         <option value="$PROJECT_DIR$/src/controller/url_controller/admin/mark_sheet/LoadDatesController.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/web/index.jsp" />
         <option value="$PROJECT_DIR$/src/controller/url_controller/admin/auth/LoginController.java" />
         <option value="$PROJECT_DIR$/src/controller/url_controller/admin/auth/LogoutController.java" />
-        <option value="$PROJECT_DIR$/web/view/admin/header(admin).jsp" />
         <option value="$PROJECT_DIR$/web/view/student/success_page.jsp" />
         <option value="$PROJECT_DIR$/web/view/admin/results.jsp" />
         <option value="$PROJECT_DIR$/web/controller/admin/degreeProgrammeController.js" />
         <option value="$PROJECT_DIR$/web/controller/admin/graphController.js" />
         <option value="$PROJECT_DIR$/web/controller/admin/lecturerController.js" />
-        <option value="$PROJECT_DIR$/web/controller/admin/subjectsController.js" />
         <option value="$PROJECT_DIR$/web/controller/admin/userAccountController.js" />
         <option value="$PROJECT_DIR$/web/controller/student/marksController.js" />
         <option value="$PROJECT_DIR$/web/view/student/landing_page(student).jsp" />
         <option value="$PROJECT_DIR$/web/view/header.jsp" />
         <option value="$PROJECT_DIR$/web/view/student/mark_sheet.jsp" />
         <option value="$PROJECT_DIR$/web/view/admin/user_accounts.jsp" />
-        <option value="$PROJECT_DIR$/web/view/admin/subjects.jsp" />
         <option value="$PROJECT_DIR$/web/view/admin/lecturers.jsp" />
         <option value="$PROJECT_DIR$/web/view/admin/degree_programmes.jsp" />
         <option value="$PROJECT_DIR$/web/controller/student/landingPage(student)Controller.js" />
         <option value="$PROJECT_DIR$/web/view/admin/graph.jsp" />
         <option value="$PROJECT_DIR$/web/controller/admin/resultsController.js" />
+        <option value="$PROJECT_DIR$/web/view/admin/header(admin).jsp" />
+        <option value="$PROJECT_DIR$/web/view/admin/subjects.jsp" />
+        <option value="$PROJECT_DIR$/web/controller/admin/subjectsController.js" />
+        <option value="$PROJECT_DIR$/src/controller/db_controller/SubjectController.java" />
+        <option value="$PROJECT_DIR$/src/controller/db_controller/SubjectDegreeController.java" />
+        <option value="$PROJECT_DIR$/src/controller/db_controller/SubjectLecturerController.java" />
+        <option value="$PROJECT_DIR$/src/controller/db_controller/LecturerController.java" />
       </list>
     </option>
   </component>
@@ -453,6 +404,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -476,6 +429,13 @@
               <item name="StudentFeedbackSimulator(Part 3)" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="db_controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="StudentFeedbackSimulator(Part 3)" type="b2602c69:ProjectViewProjectNode" />
+              <item name="StudentFeedbackSimulator(Part 3)" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
               <item name="url_controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -485,6 +445,41 @@
               <item name="controller" type="462c0819:PsiDirectoryNode" />
               <item name="url_controller" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="StudentFeedbackSimulator(Part 3)" type="b2602c69:ProjectViewProjectNode" />
+              <item name="StudentFeedbackSimulator(Part 3)" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="url_controller" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="auth" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="StudentFeedbackSimulator(Part 3)" type="b2602c69:ProjectViewProjectNode" />
+              <item name="StudentFeedbackSimulator(Part 3)" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="url_controller" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="lecturer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="StudentFeedbackSimulator(Part 3)" type="b2602c69:ProjectViewProjectNode" />
+              <item name="StudentFeedbackSimulator(Part 3)" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="url_controller" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="subject" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="StudentFeedbackSimulator(Part 3)" type="b2602c69:ProjectViewProjectNode" />
+              <item name="StudentFeedbackSimulator(Part 3)" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="url_controller" type="462c0819:PsiDirectoryNode" />
+              <item name="student" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="StudentFeedbackSimulator(Part 3)" type="b2602c69:ProjectViewProjectNode" />
@@ -535,15 +530,13 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1572526534756" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1574917267346" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -775,12 +768,21 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="853909000" />
+    <option name="totallyTimeSpent" value="855863000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18322147" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20604026" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -794,7 +796,7 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32907802" />
       <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
       <window_info anchor="bottom" id="Application Servers" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" />
@@ -823,55 +825,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/StudentController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-14">
-          <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="37">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/SemesterController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="32" column="1" lean-forward="true" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/MarkController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="18" column="116" selection-start-line="18" selection-start-column="116" selection-end-line="18" selection-end-column="116" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/url_controller/admin/lecturer/UpdateLecturerController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/url_controller/admin/lecturer/DeleteLecturerController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/url_controller/admin/subject/AddSubjectDegreeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="33" column="5" lean-forward="true" selection-start-line="16" selection-start-column="4" selection-end-line="33" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/url_controller/admin/lecturer/AddLecturerController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -879,52 +832,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/url_controller/admin/subject/DeleteSubjectDegreeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="31" column="5" lean-forward="true" selection-start-line="14" selection-start-column="4" selection-end-line="31" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/SubjectDegreeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="49" column="5" lean-forward="true" selection-start-line="35" selection-start-column="4" selection-end-line="49" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/url_controller/admin/subject/AddSubjectLecturerController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="26" column="50" lean-forward="true" selection-start-line="20" selection-start-column="8" selection-end-line="26" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/url_controller/admin/subject/DeleteSubjectLecturerController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/url_controller/admin/lecturer/ChangeCurrentLecturerController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="33" column="66" lean-forward="true" selection-start-line="33" selection-start-column="66" selection-end-line="33" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/url_controller/admin/subject/LoadSubjectsViaLecturerController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="35" column="25" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/url_controller/admin/subject/AddSubjectController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-142">
-          <caret line="2" column="50" selection-start-line="2" selection-start-column="50" selection-end-line="2" selection-end-column="50" />
         </state>
       </provider>
     </entry>
@@ -942,38 +853,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/LecturerController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-921">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/url_controller/admin/lecturer/LoadLecturersController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="18" selection-start-line="18" selection-end-line="18" selection-end-column="98" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/url_controller/admin/lecturer/LoadLecturersViaSubjectController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="25" column="11" lean-forward="true" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/SubjectLecturerController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="48" column="36" selection-start-line="45" selection-start-column="21" selection-end-line="48" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/SubjectController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="15" column="25" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -1068,13 +951,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/view/header.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="95" column="75" lean-forward="true" selection-start-line="95" selection-start-column="45" selection-end-line="95" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/view/student/success_page.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1021">
@@ -1096,24 +972,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/view/admin/subjects.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="127" column="47" selection-start-line="127" selection-start-column="47" selection-end-line="127" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/view/admin/degree_programmes.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="356">
           <caret line="161" column="47" selection-start-line="161" selection-start-column="47" selection-end-line="161" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/view/admin/header(admin).jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="134" selection-start-line="4" selection-start-column="134" selection-end-line="4" selection-end-column="134" />
         </state>
       </provider>
     </entry>
@@ -1166,36 +1028,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="22" column="68" selection-start-line="22" selection-start-column="68" selection-end-line="22" selection-end-column="68" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/controller/admin/subjectsController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="192" column="44" lean-forward="true" selection-start-line="192" selection-start-column="4" selection-end-line="192" selection-end-column="44" />
-          <folding>
-            <element signature="n#style#0;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#td#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#td#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1217,6 +1049,168 @@
             <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/view/header.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1371">
+          <caret line="95" column="75" lean-forward="true" selection-start-line="95" selection-start-column="45" selection-end-line="95" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/view/admin/header(admin).jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="55" column="18" selection-start-line="55" selection-start-column="18" selection-end-line="55" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/view/admin/subjects.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="49" column="3" selection-start-line="49" selection-start-column="3" selection-end-line="49" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/SubjectController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="521">
+          <caret line="137" column="5" selection-start-line="137" selection-start-column="5" selection-end-line="137" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/url_controller/admin/subject/AddSubjectController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="30" column="40" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/url_controller/admin/subject/DeleteSubjectController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/url_controller/admin/subject/UpdateSubjectController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/url_controller/admin/subject/AddSubjectDegreeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="28" column="48" selection-start-line="28" selection-start-column="48" selection-end-line="28" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/url_controller/admin/subject/DeleteSubjectDegreeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="31" column="5" lean-forward="true" selection-start-line="14" selection-start-column="4" selection-end-line="31" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/SubjectLecturerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1796">
+          <caret line="122" column="5" selection-start-line="122" selection-start-column="5" selection-end-line="122" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/url_controller/admin/subject/DeleteSubjectLecturerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="26" column="53" lean-forward="true" selection-start-line="26" selection-start-column="53" selection-end-line="26" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/url_controller/admin/subject/AddSubjectLecturerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="26" column="50" lean-forward="true" selection-start-line="20" selection-start-column="8" selection-end-line="26" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/controller/admin/subjectsController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="19" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
+          <folding>
+            <element signature="n#style#0;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/url_controller/admin/subject/ChangeAllowController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/url_controller/admin/subject/LoadSubjectsViaDegreeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/url_controller/admin/subject/LoadSubjectsViaLecturerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="35" column="25" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/MarkController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/url_controller/admin/lecturer/DeleteLecturerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="21" column="36" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/url_controller/admin/lecturer/LoadLecturersController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="18" selection-start-line="18" selection-end-line="18" selection-end-column="98" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/LecturerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="56" column="17" selection-start-line="56" selection-start-column="17" selection-end-line="56" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/db_controller/SubjectDegreeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="15" column="38" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
         </state>
       </provider>
     </entry>

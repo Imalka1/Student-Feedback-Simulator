@@ -1,6 +1,5 @@
 package controller.url_controller.admin.subject;
 
-import controller.db_controller.LecturerController;
 import controller.db_controller.SubjectLecturerController;
 import model.Lecturer;
 import model.SubjectLecturer;

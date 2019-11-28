@@ -50,10 +50,10 @@
                 <a href="results.jsp">Results</a>
                 <a href="user_accounts.jsp">User Accounts</a>
                 <a href="subjects.jsp">Subjetcs</a>
-                <a href="degree_programmes.jsp">Degree Programmes</a>
-                <a href="lecturers.jsp">Lecturers</a>
-                <a href="#">Semesters</a>
-                <a href="#">Evaluation Criteria</a>
+                <a>Degree Programmes</a>
+                <a>Lecturers</a>
+                <a>Semesters</a>
+                <a>Evaluation Criteria</a>
             </div>
         </li>
 
